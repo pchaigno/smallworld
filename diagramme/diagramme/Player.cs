@@ -5,11 +5,10 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface CarteStrategie
+    public interface Player
     {
-    }
+        void getCouleur();
 
-    public interface Carte
-    {
+        void getNom();
     }
 }

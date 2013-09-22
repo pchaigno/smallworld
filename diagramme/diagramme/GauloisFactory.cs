@@ -5,11 +5,11 @@ using System.Text;
 
 namespace diagramme
 {
-    public class FabriqueGaulois : FabriqueUnites
+    public class GauloisFactory : UnitFactory
     {
     }
 
-    public class Nain : UniteAbstraite
+    public class Dwarf : AbstractUnit
     {
     }
 
@@ -17,11 +17,11 @@ namespace diagramme
     {
     }
 
-    public class FabriqueNains : FabriqueUnites
+    public class DwarfFactory : UnitFactory
     {
     }
 
-    public class FabriqueVikings : FabriqueUnites
+    public class VikingFactory : UnitFactory
     {
     }
 }

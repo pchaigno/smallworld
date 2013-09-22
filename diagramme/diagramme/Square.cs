@@ -5,8 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface FabriqueUnites
+    public interface Square
     {
-        void fabriqueUnite(Case c, string j);
     }
 }

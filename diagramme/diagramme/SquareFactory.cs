@@ -5,9 +5,9 @@ using System.Text;
 
 namespace diagramme
 {
-    public class FabriqueCases
+    public class SquareFactory
     {
-        public Foret Foret
+        public Forest Foret
         {
             get
             {
@@ -18,7 +18,7 @@ namespace diagramme
             }
         }
 
-        public Eau Eau
+        public Sea Eau
         {
             get
             {
@@ -29,7 +29,7 @@ namespace diagramme
             }
         }
 
-        public Plaine Plaine
+        public Lowland Plaine
         {
             get
             {
@@ -40,7 +40,7 @@ namespace diagramme
             }
         }
 
-        public Montagne Montagne
+        public Mountain Montagne
         {
             get
             {

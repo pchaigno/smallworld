@@ -5,7 +5,11 @@ using System.Text;
 
 namespace diagramme
 {
-    public abstract class CaseAbstraite : Case
+    public interface CarteStrategie
+    {
+    }
+
+    public interface Map
     {
     }
 }

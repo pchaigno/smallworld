@@ -5,11 +5,12 @@ using System.Text;
 
 namespace diagramme
 {
-    public abstract class CarteStrategieConcret : CarteStrategie
+    public interface Unit
     {
-    }
+        void getPV();
 
-    public abstract class CarteAbstraite : Carte
-    {
+        void getAttaque();
+
+        void getDefense();
     }
 }

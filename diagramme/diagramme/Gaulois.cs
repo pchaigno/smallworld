@@ -5,11 +5,11 @@ using System.Text;
 
 namespace diagramme
 {
-    public class Gaulois : UniteAbstraite
+    public class Gaulois : AbstractUnit
     {
     }
 
-    public class Viking : UniteAbstraite
+    public class Viking : AbstractUnit
     {
     }
 }

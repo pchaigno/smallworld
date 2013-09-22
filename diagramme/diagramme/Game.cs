@@ -5,7 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public abstract class UniteAbstraite : Unite
+    public interface Game
     {
     }
 }

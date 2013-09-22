@@ -5,7 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface Case
+    public class ConcreteGame : Game
     {
     }
 }

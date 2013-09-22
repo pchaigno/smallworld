@@ -5,7 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public class JoueurConcret : Joueur
+    public class ConcretePlayer : Player
     {
         public void getCouleur()
         {

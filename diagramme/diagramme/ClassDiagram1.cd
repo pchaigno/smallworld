@@ -1,26 +1,26 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="diagramme.FabriqueGaulois">
+  <Class Name="diagramme.GauloisFactory">
     <Position X="1.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>FabriqueGaulois.cs</FileName>
+      <FileName>GauloisFactory.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="1.138" />
   </Class>
-  <Class Name="diagramme.FabriqueNains">
+  <Class Name="diagramme.DwarfFactory">
     <Position X="6.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>FabriqueGaulois.cs</FileName>
+      <FileName>GauloisFactory.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="diagramme.FabriqueVikings">
+  <Class Name="diagramme.VikingFactory">
     <Position X="4" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>FabriqueGaulois.cs</FileName>
+      <FileName>GauloisFactory.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.596" />
   </Class>
@@ -38,16 +38,16 @@
       <FileName>Gaulois.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="diagramme.Nain">
+  <Class Name="diagramme.Dwarf">
     <Position X="6.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>FabriqueGaulois.cs</FileName>
+      <FileName>GauloisFactory.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="diagramme.FabriqueCases">
+  <Class Name="diagramme.SquareFactory">
     <Position X="12.75" Y="1.75" Width="1.5" />
-    <AssociationLine Name="Montagne" Type="diagramme.Montagne" FixedFromPoint="true" FixedToPoint="true">
+    <AssociationLine Name="Montagne" Type="diagramme.Mountain" FixedFromPoint="true" FixedToPoint="true">
       <Path>
         <Point X="14.25" Y="2.438" />
         <Point X="15.25" Y="2.438" />
@@ -63,7 +63,7 @@
     </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAAARAAEAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAAA=</HashCode>
-      <FileName>FabriqueCases.cs</FileName>
+      <FileName>SquareFactory.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Foret" />
@@ -73,172 +73,149 @@
       <Property Name="Desert" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="diagramme.Foret">
+  <Class Name="diagramme.Forest">
     <Position X="9.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Foret.cs</FileName>
+      <FileName>Forest.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="diagramme.Eau">
+  <Class Name="diagramme.Sea">
     <Position X="11" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Foret.cs</FileName>
+      <FileName>Forest.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="diagramme.Plaine">
+  <Class Name="diagramme.Lowland">
     <Position X="12.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Foret.cs</FileName>
+      <FileName>Forest.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="diagramme.Montagne">
+  <Class Name="diagramme.Mountain">
     <Position X="14.5" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Foret.cs</FileName>
+      <FileName>Forest.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="diagramme.Desert">
     <Position X="16.25" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Foret.cs</FileName>
+      <FileName>Forest.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="diagramme.MonteurConcret">
-    <Position X="2" Y="13.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>MonteurMiniPartie.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="diagramme.StrategieCarteDemo">
+  <Class Name="diagramme.DemoGameBuilder">
     <Position X="10.75" Y="13.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CarteDemo.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="diagramme.StrategieCartePetite">
+  <Class Name="diagramme.SmallGameBuilder">
     <Position X="12.5" Y="13.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CarteDemo.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="diagramme.StrategieCarteNormale">
+  <Class Name="diagramme.NormalGameBuilder">
     <Position X="14.25" Y="13.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CarteDemo.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="diagramme.CarteStrategieConcret">
+  <Class Name="diagramme.GameBuilder">
     <Position X="12.5" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>CarteAbstraite.cs</FileName>
+      <FileName>AbstractMap.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
-  <Class Name="diagramme.UniteAbstraite">
+  <Class Name="diagramme.AbstractUnit">
     <Position X="4" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>UniteAbstraite.cs</FileName>
+      <FileName>AbstractUnit.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Bottom" Position="0.747" />
   </Class>
-  <Class Name="diagramme.CaseAbstraite">
+  <Class Name="diagramme.AbstractSquare">
     <Position X="12.75" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>CaseAbstraite.cs</FileName>
+      <FileName>AbstractSquare.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Bottom" Position="0.692" />
   </Class>
-  <Class Name="diagramme.JoueurConcret">
+  <Class Name="diagramme.ConcretePlayer">
     <Position X="8" Y="13.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
-      <FileName>JoueurConcret.cs</FileName>
+      <FileName>ConcretePlayer.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="diagramme.PartieConcret">
+  <Class Name="diagramme.ConcreteGame">
     <Position X="5.25" Y="13.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>PartieImpl.cs</FileName>
+      <FileName>ConcreteGame.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="diagramme.CarteAbstraite">
-    <Position X="12.5" Y="15" Width="1.5" />
+  <Class Name="diagramme.AbstractMap">
+    <Position X="1.75" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>CarteAbstraite.cs</FileName>
+      <FileName>AbstractMap.cs</FileName>
     </TypeIdentifier>
     <Lollipop Orientation="Bottom" Position="0.619" />
   </Class>
-  <Interface Name="diagramme.FabriqueUnites">
+  <Interface Name="diagramme.UnitFactory">
     <Position X="4" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>FabriqueUnites.cs</FileName>
+      <FileName>UnitFactory.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="diagramme.Unite">
+  <Interface Name="diagramme.Unit">
     <Position X="4" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAACQAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Unite.cs</FileName>
+      <FileName>Unit.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="diagramme.Case">
+  <Interface Name="diagramme.Square">
     <Position X="12.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Case.cs</FileName>
+      <FileName>Square.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="diagramme.MonteurPartie">
-    <Position X="2" Y="11.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>MonteurPartie.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="diagramme.CarteStrategie">
-    <Position X="12.5" Y="10" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Carte.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="diagramme.Joueur">
+  <Interface Name="diagramme.Player">
     <Position X="8" Y="11.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAIAAAAAAAAA=</HashCode>
-      <FileName>Joueur.cs</FileName>
+      <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="diagramme.Partie">
+  <Interface Name="diagramme.Game">
     <Position X="5.25" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Partie.cs</FileName>
+      <FileName>Game.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="diagramme.Carte">
-    <Position X="12.5" Y="16.5" Width="1.5" />
+  <Interface Name="diagramme.Map">
+    <Position X="1.75" Y="13.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Carte.cs</FileName>
+      <FileName>Map.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

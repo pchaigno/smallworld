@@ -5,7 +5,11 @@ using System.Text;
 
 namespace diagramme
 {
-    public class PartieConcret : Partie
+    public abstract class GameBuilder
+    {
+    }
+
+    public abstract class AbstractMap : Map
     {
     }
 }

@@ -5,10 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface Joueur
+    public abstract class AbstractSquare : Square
     {
-        void getCouleur();
-
-        void getNom();
     }
 }

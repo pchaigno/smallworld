@@ -5,15 +5,15 @@ using System.Text;
 
 namespace diagramme
 {
-    public class StrategieCarteDemo : CarteStrategieConcret
+    public class DemoGameBuilder : GameBuilder
     {
     }
 
-    public class StrategieCarteNormale : CarteStrategieConcret
+    public class NormalGameBuilder : GameBuilder
     {
     }
 
-    public class StrategieCartePetite : CarteStrategieConcret
+    public class SmallGameBuilder : GameBuilder
     {
     }
 }

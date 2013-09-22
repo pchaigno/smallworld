@@ -5,12 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface Unite
+    public abstract class AbstractUnit : Unit
     {
-        void getPV();
-
-        void getAttaque();
-
-        void getDefense();
     }
 }
