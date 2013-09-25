@@ -39,9 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Civilisation.cs" />
+    <Compile Include="Coordinates.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="AbstractMap.cs" />
     <Compile Include="CarteDemo.cs" />
+    <Compile Include="MapImpl.cs" />
     <Compile Include="Square.cs" />
     <Compile Include="AbstractSquare.cs" />
     <Compile Include="Class1.cs" />

@@ -11,5 +11,6 @@ namespace diagramme
 
     public interface Map
     {
+        void attackSquare(Unit unit, Square square);
     }
 }

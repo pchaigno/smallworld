@@ -7,5 +7,15 @@ namespace diagramme
 {
     public class ConcreteGame : Game
     {
+        public Player Player
+        {
+            get
+            {
+                throw new System.NotImplementedException();
+            }
+            set
+            {
+            }
+        }
     }
 }

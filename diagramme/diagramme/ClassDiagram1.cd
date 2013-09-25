@@ -153,68 +153,78 @@
     <Lollipop Orientation="Bottom" Position="0.692" />
   </Class>
   <Class Name="diagramme.ConcretePlayer">
-    <Position X="8" Y="13.25" Width="1.5" />
+    <Position X="8" Y="13.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAA=</HashCode>
       <FileName>ConcretePlayer.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="diagramme.ConcreteGame">
-    <Position X="5.25" Y="13.25" Width="1.5" />
+    <Position X="4.25" Y="12" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAA=</HashCode>
       <FileName>ConcreteGame.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Player" />
+    </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="diagramme.AbstractMap">
-    <Position X="1.75" Y="11.5" Width="1.5" />
+  <Class Name="diagramme.MapImpl">
+    <Position X="8" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MapImpl.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.655" />
+  </Class>
+  <Class Name="diagramme.Coordinates">
+    <Position X="8" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>AbstractMap.cs</FileName>
+      <FileName>Coordinates.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Orientation="Bottom" Position="0.619" />
   </Class>
   <Interface Name="diagramme.UnitFactory">
     <Position X="4" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
       <FileName>UnitFactory.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.Unit">
     <Position X="4" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAACQAAAAEAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAABAAA=</HashCode>
       <FileName>Unit.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.Square">
-    <Position X="12.75" Y="7.75" Width="1.5" />
+    <Position X="12.75" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Square.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.Player">
-    <Position X="8" Y="11.25" Width="1.5" />
+    <Position X="8" Y="11.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAIAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEgAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.Game">
-    <Position X="5.25" Y="11.5" Width="1.5" />
+    <Position X="4.25" Y="10.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.Map">
-    <Position X="1.75" Y="13.25" Width="1.5" />
+    <Position X="8" Y="9.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
       <FileName>Map.cs</FileName>
     </TypeIdentifier>
   </Interface>

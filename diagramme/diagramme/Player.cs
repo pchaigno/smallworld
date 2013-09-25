@@ -7,8 +7,8 @@ namespace diagramme
 {
     public interface Player
     {
-        void getCouleur();
+        void getColor();
 
-        void getNom();
+        void getName();
     }
 }

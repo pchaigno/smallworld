@@ -7,7 +7,7 @@ namespace diagramme
 {
     public class ConcretePlayer : Player
     {
-        public void getCouleur()
+        public void getColor()
         {
             throw new NotImplementedException();
         }

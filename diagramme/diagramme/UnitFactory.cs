@@ -7,6 +7,6 @@ namespace diagramme
 {
     public interface UnitFactory
     {
-        void fabriqueUnite(Square c, string j);
+        void buildUnit(Square c, string j);
     }
 }

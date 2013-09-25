@@ -5,12 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface Unit
+    public interface Civilisation
     {
-        void getLife();
-
-        void getAttack();
-
-        void getDefense();
     }
 }
