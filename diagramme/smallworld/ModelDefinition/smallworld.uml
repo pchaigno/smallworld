@@ -1,0 +1,396 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+  dslVersion="1.0.0.0"
+  Id="43f692c9-e08b-43ba-99a7-2d3912a13b0b"
+  name="smallworld" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <profileInstances>
+    <packageHasProfileInstances
+      Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
+      <profileInstance
+        Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791"
+        name="StandardProfileL2" />
+    </packageHasProfileInstances>
+    <packageHasProfileInstances
+      Id="29349502-908c-4fda-9054-c48619c59ed0">
+      <profileInstance
+        Id="532ea607-fb19-44b8-8502-3351b05452be"
+        name="StandardProfileL3" />
+    </packageHasProfileInstances>
+  </profileInstances>
+  <packagedElements>
+    <packageHasNamedElement>
+      <actor
+        Id="0771261e-b8c5-47d3-8325-25b156c05d34"
+        name="Joueur"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="661d4e55-c69d-4197-b06d-5152d7227fa4"
+            isDerived="false"
+            sourceEndRoleName="Actor1"
+            targetEndRoleName="Créer une partie"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="8ca5fb2b-af6f-4399-bd08-cbce42dd422d"
+              LastKnownName="Créer une partie"
+              LastKnownLocation="smallworld.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="1859b291-73c9-4c9b-ba45-cb36ea50ead5"
+                  name="Actor1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="ee429a06-4d95-4692-b040-eb0b7ec2440c"
+                  name="Créer une partie"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="6b8cf862-0123-49a4-963d-013852d4e48f"
+            isDerived="false"
+            sourceEndRoleName="Actor1"
+            targetEndRoleName="Jouer un coup"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="2fef656e-996f-498a-970a-16bff8c0cfbe"
+              LastKnownName="Jouer un coup"
+              LastKnownLocation="smallworld.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2dc60876-ec80-4b2c-86a5-3373df9977cc"
+                  name="Actor1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="f87afb4a-8db0-4fa4-a68e-02da1a907d2a"
+                  name="Jouer un coup"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <artifact
+        Id="a4171a9b-dc8e-441f-8415-3cc94fbd1f9d"
+        name="Artifact1"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
+        name="Subsystem1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8ca5fb2b-af6f-4399-bd08-cbce42dd422d"
+        name="Créer une partie"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="8935803d-40e2-4921-858f-4a24103b0453">
+            <useCaseMoniker
+              Id="dca9d69c-7d7a-480d-9831-d316945def43"
+              LastKnownName="Choisir type carte"
+              LastKnownLocation="smallworld.uml" />
+          </include>
+          <include
+            Id="1f1e2800-0e33-46d6-b24d-91addcf69068">
+            <useCaseMoniker
+              Id="0b220bfc-3dfc-40d6-be4d-57e152c87ba2"
+              LastKnownName="Choisir peuples"
+              LastKnownLocation="smallworld.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0b220bfc-3dfc-40d6-be4d-57e152c87ba2"
+        name="Choisir peuples"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="dca9d69c-7d7a-480d-9831-d316945def43"
+        name="Choisir type carte"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2fef656e-996f-498a-970a-16bff8c0cfbe"
+        name="Jouer un coup"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="63fb170b-f986-4faf-919f-20d82af64518"
+        name="Déplacer  unité"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="88c3e5af-85bd-45bc-a924-fd6d10dbdea6">
+            <useCaseMoniker
+              Id="2fef656e-996f-498a-970a-16bff8c0cfbe"
+              LastKnownName="Jouer un coup"
+              LastKnownLocation="smallworld.uml" />
+          </extend>
+        </extendedCases>
+        <additions>
+          <include
+            Id="3b7c3664-557f-4e2a-947a-67b6a50a6a35">
+            <useCaseMoniker
+              Id="c77d34af-4916-47a9-8724-e3a08211623e"
+              LastKnownName="Choisir unité"
+              LastKnownLocation="smallworld.uml" />
+          </include>
+          <include
+            Id="193f97c9-7406-4a79-afcc-676dac4dca3c">
+            <useCaseMoniker
+              Id="e77965ad-471c-4800-96aa-4b0471585dc7"
+              LastKnownName="Choisir case arrivée"
+              LastKnownLocation="smallworld.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="c77d34af-4916-47a9-8724-e3a08211623e"
+        name="Choisir unité"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e77965ad-471c-4800-96aa-4b0471585dc7"
+        name="Choisir case arrivée"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="0ce4de25-a660-4d72-bfcd-d2ae2ec9302c"
+        name="Finir le tour"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="f3e80ab0-749d-44a2-aabd-375c01a683e5">
+            <useCaseMoniker
+              Id="2fef656e-996f-498a-970a-16bff8c0cfbe"
+              LastKnownName="Jouer un coup"
+              LastKnownLocation="smallworld.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="cb8242f4-8ffe-475b-b5ea-83cf9190ecaa"
+        name="Annuler dernier coup"
+        isAbstract="false"
+        isLeaf="false">
+        <extendedCases>
+          <extend
+            Id="c6b9a7a4-7e36-49a1-9ef1-1a1866eeb4e8">
+            <useCaseMoniker
+              Id="2fef656e-996f-498a-970a-16bff8c0cfbe"
+              LastKnownName="Jouer un coup"
+              LastKnownLocation="smallworld.uml" />
+          </extend>
+        </extendedCases>
+        <subjects>
+          <subsystemMoniker
+            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="dbe84a33-08a6-4c50-aba8-028f3c240f97"
+        name="Backdoor"
+        isAbstract="false"
+        isLeaf="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="730ed527-7c43-4baf-8a30-40682af252ed"
+        name="NSA"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="6f86f747-21e6-4c7f-aa56-594403339d88"
+            isDerived="false"
+            sourceEndRoleName="Actor1"
+            targetEndRoleName="UseCase1"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="dbe84a33-08a6-4c50-aba8-028f3c240f97"
+              LastKnownName="Backdoor"
+              LastKnownLocation="smallworld.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c859554b-d250-4b00-8934-f4971ae84cf3"
+                  name="Actor1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="c1f99384-4884-4ed6-8443-a85ece94d12d"
+                  name="UseCase1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <interaction
+        Id="d070e20e-5c5e-4d50-906c-bf4d2fc8dfed"
+        name="Sequence1"
+        collapseFragmentsFlag="false"
+        isActiveClass="false"
+        isAbstract="false"
+        isLeaf="false"
+        isReentrant="false" />
+    </packageHasNamedElement>
+  </packagedElements>
+  <primitiveType
+    Id="220a3521-e091-4221-bae9-3ef9018e845c"
+    name="Integer"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="8943dc84-709e-4f62-b15a-a3273aa6f165"
+    name="Boolean"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="59259974-6d55-42c6-b7bd-763d77ac8ef9"
+    name="String"
+    isAbstract="false"
+    isLeaf="false" />
+  <primitiveType
+    Id="3ab42e7d-4969-445a-b209-471f5cb8209c"
+    name="UnlimitedNatural"
+    isAbstract="false"
+    isLeaf="false" />
+</modelStoreModel>
