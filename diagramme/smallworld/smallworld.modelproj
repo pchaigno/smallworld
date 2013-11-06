@@ -22,19 +22,33 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
   <ItemGroup>
-    <Content Include="UMLSequenceDiagram1.sequencediagram">
+    <Content Include="attaquerUnite.sequencediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="UMLSequenceDiagram1.sequencediagram.layout">
+    <Content Include="attaquerUnite.sequencediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>UMLSequenceDiagram1.sequencediagram</DependentUpon>
+      <DependentUpon>attaquerUnite.sequencediagram</DependentUpon>
     </Content>
-    <Content Include="UMLUseCaseDiagram1.usecasediagram">
+    <Content Include="choisirUnite.sequencediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="UMLUseCaseDiagram1.usecasediagram.layout">
+    <Content Include="choisirUnite.sequencediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>UMLUseCaseDiagram1.usecasediagram</DependentUpon>
+      <DependentUpon>choisirUnite.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="creation.sequencediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="creation.sequencediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>creation.sequencediagram</DependentUpon>
+    </Content>
+    <Content Include="joueur.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="joueur.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>joueur.usecasediagram</DependentUpon>
     </Content>
     <Folder Include="ModelDefinition\" />
     <Content Include="ModelDefinition\smallworld.uml">

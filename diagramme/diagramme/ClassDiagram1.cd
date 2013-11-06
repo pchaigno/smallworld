@@ -47,30 +47,16 @@
   </Class>
   <Class Name="diagramme.SquareFactory">
     <Position X="12.75" Y="1.75" Width="1.5" />
-    <AssociationLine Name="Montagne" Type="diagramme.Mountain" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="14.25" Y="2.438" />
-        <Point X="15.25" Y="2.438" />
-        <Point X="15.25" Y="4" />
-      </Path>
-    </AssociationLine>
-    <AssociationLine Name="Desert" Type="diagramme.Desert" FixedFromPoint="true" FixedToPoint="true">
-      <Path>
-        <Point X="14.25" Y="2.188" />
-        <Point X="17" Y="2.188" />
-        <Point X="17" Y="4" />
-      </Path>
-    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAAARAAEAAAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAAA=</HashCode>
       <FileName>SquareFactory.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Foret" />
-      <Property Name="Eau" />
-      <Property Name="Plaine" />
-      <Property Name="Montagne" />
-      <Property Name="Desert" />
+      <Field Name="Desert" />
+      <Field Name="Montagne" />
+      <Field Name="Plaine" />
+      <Field Name="Eau" />
+      <Field Name="Foret" />
     </ShowAsAssociation>
   </Class>
   <Class Name="diagramme.Forest">
@@ -114,6 +100,7 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CarteDemo.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="diagramme.SmallGameBuilder">
     <Position X="12.5" Y="13.25" Width="1.5" />
@@ -121,6 +108,7 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CarteDemo.cs</FileName>
     </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="diagramme.NormalGameBuilder">
     <Position X="14.25" Y="13.25" Width="1.5" />
@@ -128,13 +116,7 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>CarteDemo.cs</FileName>
     </TypeIdentifier>
-  </Class>
-  <Class Name="diagramme.GameBuilder">
-    <Position X="12.5" Y="11.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>AbstractMap.cs</FileName>
-    </TypeIdentifier>
+    <Lollipop Position="0.2" />
   </Class>
   <Class Name="diagramme.AbstractUnit">
     <Position X="4" Y="6.25" Width="1.5" />
@@ -167,7 +149,7 @@
       <FileName>ConcreteGame.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Player" />
+      <Field Name="Player" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
@@ -226,6 +208,13 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
       <FileName>Map.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="diagramme.GameBuilder">
+    <Position X="12.75" Y="11.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>GameBuilder.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

@@ -7,59 +7,14 @@ namespace diagramme
 {
     public class SquareFactory
     {
-        public Forest Foret
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public Forest Foret;
 
-        public Sea Eau
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public Sea Eau;
 
-        public Lowland Plaine
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public Lowland Plaine;
 
-        public Mountain Montagne
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public Mountain Montagne;
 
-        public Desert Desert
-        {
-            get
-            {
-                throw new System.NotImplementedException();
-            }
-            set
-            {
-            }
-        }
+        public Desert Desert;
     }
 }

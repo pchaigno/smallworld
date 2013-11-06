@@ -41,6 +41,7 @@
   <ItemGroup>
     <Compile Include="Civilisation.cs" />
     <Compile Include="Coordinates.cs" />
+    <Compile Include="GameBuilder.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="AbstractMap.cs" />
     <Compile Include="CarteDemo.cs" />
