@@ -42,6 +42,8 @@
     <Compile Include="Civilisation.cs" />
     <Compile Include="Coordinates.cs" />
     <Compile Include="GameBuilder.cs" />
+    <Compile Include="ICoordinates.cs" />
+    <Compile Include="ISquareFactory.cs" />
     <Compile Include="Map.cs" />
     <Compile Include="AbstractMap.cs" />
     <Compile Include="CarteDemo.cs" />
@@ -67,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />
+    <None Include="Copie de ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

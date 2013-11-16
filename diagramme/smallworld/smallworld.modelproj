@@ -29,12 +29,12 @@
       <SubType>Content</SubType>
       <DependentUpon>attaquerUnite.sequencediagram</DependentUpon>
     </Content>
-    <Content Include="choisirUnite.sequencediagram">
+    <Content Include="deplacerUnite.sequencediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="choisirUnite.sequencediagram.layout">
+    <Content Include="deplacerUnite.sequencediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>choisirUnite.sequencediagram</DependentUpon>
+      <DependentUpon>deplacerUnite.sequencediagram</DependentUpon>
     </Content>
     <Content Include="creation.sequencediagram">
       <SubType>Content</SubType>

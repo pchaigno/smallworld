@@ -52,11 +52,11 @@
       <FileName>SquareFactory.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="Foret" />
-      <Field Name="Eau" />
-      <Field Name="Plaine" />
-      <Field Name="Montagne" />
       <Field Name="Desert" />
+      <Field Name="Montagne" />
+      <Field Name="Plaine" />
+      <Field Name="Eau" />
+      <Field Name="Foret" />
     </ShowAsAssociation>
   </Class>
   <Class Name="diagramme.Forest">
@@ -162,7 +162,7 @@
     <Lollipop Position="0.655" />
   </Class>
   <Class Name="diagramme.Coordinates">
-    <Position X="8" Y="6.25" Width="1.5" />
+    <Position X="8" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Coordinates.cs</FileName>
@@ -211,24 +211,10 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.GameBuilder">
-    <Position X="12.75" Y="10.5" Width="1.5" />
+    <Position X="12.75" Y="11.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>GameBuilder.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="diagramme.ISquareFactory">
-    <Position X="13" Y="0.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ISquareFactory.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="diagramme.ICoordinates">
-    <Position X="8" Y="5.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ICoordinates.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
