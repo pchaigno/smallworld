@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="66b85aca-459f-49d7-ad9a-dadca9eeaf64" name="choisirUnite" linkedPackageId="d79d609d-f1e0-4434-893e-ced20f7167eb" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
+<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="66b85aca-459f-49d7-ad9a-dadca9eeaf64" name="choisirUnite" linkedPackageId="d79d609d-f1e0-4434-893e-ced20f7167eb" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
   <packagedElements>
     <packageHasNamedElement>
       <interaction Id="75aa96b4-bb96-4cc6-85a0-c5c151c6d93d" name="choisirUnite" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
@@ -671,7 +671,7 @@
               <messageOccurrenceSpecificationMoniker Id="cce41a32-db9a-4aa2-83cd-b5f83ce53df6" LastKnownName="MessageOccurrenceSpecification20" />
             </receiveEvent>
           </message>
-          <message Id="57610f5e-16f1-4aa1-a5b0-ab3a8632d80a" name="isEnemyPosition(Unit)" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
+          <message Id="57610f5e-16f1-4aa1-a5b0-ab3a8632d80a" name="isEnemyPosition(Coordinate, Unit)" messageKind="Complete" messageSort="SynchCall" createSelfMessage="false">
             <elementDefinition Id="2b54d2a5-703e-411a-87bb-ea8673ab91ea" />
             <sendEvent>
               <messageOccurrenceSpecificationMoniker Id="d55de328-8d71-4358-a15a-cd9336e0a67c" LastKnownName="MessageOccurrenceSpecification23" />

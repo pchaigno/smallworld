@@ -22,13 +22,6 @@
   </PropertyGroup>
   <Import Project="$(VSToolsPath)\ArchitectureTools\Microsoft.VisualStudio.TeamArchitect.ModelingProject.targets" Condition="'$(VSToolsPath)' != ''" />
   <ItemGroup>
-    <Content Include="attaquerUnite.sequencediagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="attaquerUnite.sequencediagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>attaquerUnite.sequencediagram</DependentUpon>
-    </Content>
     <Content Include="deplacerUnite.sequencediagram">
       <SubType>Content</SubType>
     </Content>

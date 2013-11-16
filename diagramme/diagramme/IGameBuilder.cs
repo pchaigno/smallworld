@@ -7,5 +7,6 @@ namespace diagramme
 {
     public interface IGameBuilder
     {
+        IGame buildGame();
     }
 }

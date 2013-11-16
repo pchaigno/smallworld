@@ -49,7 +49,7 @@
     <Compile Include="IGameBuilder.cs" />
     <Compile Include="IGaulois.cs" />
     <Compile Include="IGauloisFactory.cs" />
-    <Compile Include="ILowLand.cs" />
+    <Compile Include="ILowland.cs" />
     <Compile Include="IMap.cs" />
     <Compile Include="IMoutain.cs" />
     <Compile Include="INormalGameBuilder.cs" />

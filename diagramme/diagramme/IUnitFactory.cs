@@ -7,5 +7,6 @@ namespace diagramme
 {
     public interface IUnitFactory
     {
+        IUnit createUnit();
     }
 }

@@ -7,5 +7,8 @@ namespace diagramme
 {
     public interface IPlayer
     {
+        IUnitFactory factory;
+    
+        List<IUnit> createUnits(int nbUnits);
     }
 }
