@@ -5,7 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface MonteurPartie
+    public interface IPlayer
     {
     }
 }

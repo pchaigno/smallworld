@@ -39,37 +39,34 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Civilisation.cs" />
-    <Compile Include="Coordinates.cs" />
-    <Compile Include="GameBuilder.cs" />
     <Compile Include="ICoordinates.cs" />
+    <Compile Include="IDemoGameBuilder.cs" />
+    <Compile Include="IDesert.cs" />
+    <Compile Include="IDwarf.cs" />
+    <Compile Include="IDwarfFactory.cs" />
+    <Compile Include="IForest.cs" />
+    <Compile Include="IGame.cs" />
+    <Compile Include="IGameBuilder.cs" />
+    <Compile Include="IGaulois.cs" />
+    <Compile Include="IGauloisFactory.cs" />
+    <Compile Include="ILowLand.cs" />
+    <Compile Include="IMap.cs" />
+    <Compile Include="IMoutain.cs" />
+    <Compile Include="INormalGameBuilder.cs" />
+    <Compile Include="IPlayer.cs" />
+    <Compile Include="ISea.cs" />
+    <Compile Include="ISmallGameBuilder.cs" />
+    <Compile Include="ISquare.cs" />
     <Compile Include="ISquareFactory.cs" />
-    <Compile Include="Map.cs" />
-    <Compile Include="AbstractMap.cs" />
-    <Compile Include="CarteDemo.cs" />
-    <Compile Include="MapImpl.cs" />
-    <Compile Include="Square.cs" />
-    <Compile Include="AbstractSquare.cs" />
-    <Compile Include="Class1.cs" />
-    <Compile Include="SquareFactory.cs" />
-    <Compile Include="GauloisFactory.cs" />
-    <Compile Include="UnitFactory.cs" />
-    <Compile Include="Forest.cs" />
-    <Compile Include="Gaulois.cs" />
-    <Compile Include="Player.cs" />
-    <Compile Include="ConcretePlayer.cs" />
-    <Compile Include="MonteurCarte.cs" />
-    <Compile Include="MonteurMiniPartie.cs" />
-    <Compile Include="MonteurPartie.cs" />
-    <Compile Include="Game.cs" />
-    <Compile Include="ConcreteGame.cs" />
+    <Compile Include="IUnit.cs" />
+    <Compile Include="IUnitFactory.cs" />
+    <Compile Include="IViking.cs" />
+    <Compile Include="IVikingFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Unit.cs" />
-    <Compile Include="AbstractUnit.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
-    <None Include="Copie de ClassDiagram1.cd" />
+    <None Include="Diagramme de classes.cd" />
+    <None Include="Diagramme API.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -5,10 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface Player
+    public interface ISea : ISquare
     {
-        void getColor();
-
-        void getName();
     }
 }

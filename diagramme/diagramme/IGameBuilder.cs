@@ -5,12 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface Unit
+    public interface IGameBuilder
     {
-        void getLife();
-
-        void getAttack();
-
-        void getDefense();
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public abstract class AbstractSquare : Square
+    public interface ISmallGameBuilder : IGameBuilder
     {
     }
 }

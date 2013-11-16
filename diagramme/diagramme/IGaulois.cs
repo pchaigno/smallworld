@@ -5,7 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public class Coordinates
+    public interface IGaulois : IUnit
     {
     }
 }

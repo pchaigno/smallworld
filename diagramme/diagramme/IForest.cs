@@ -5,7 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface GameBuilder
+    public interface IForest : ISquare
     {
     }
 }

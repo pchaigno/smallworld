@@ -5,11 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public class MonteurCarte
-    {
-    }
-
-    public class MonteurUnites
+    public interface IVikingFactory : IUnitFactory
     {
     }
 }

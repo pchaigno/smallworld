@@ -7,5 +7,10 @@ namespace diagramme
 {
     public interface ISquareFactory
     {
+        ISea ISea;
+        IDesert IDesert;
+        IMoutain IMoutain;
+        ILowLand ILowLand;
+        IForest IForest;
     }
 }

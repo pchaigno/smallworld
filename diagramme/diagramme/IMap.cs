@@ -5,8 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface UnitFactory
+    public interface IMap
     {
-        void buildUnit(Square c, string j);
     }
 }

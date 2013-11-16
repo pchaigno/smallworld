@@ -5,7 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface Civilisation
+    public interface ILowLand : ISquare
     {
     }
 }
