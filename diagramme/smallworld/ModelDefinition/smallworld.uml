@@ -1,8 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
   dslVersion="1.0.0.0"
   Id="43f692c9-e08b-43ba-99a7-2d3912a13b0b"
   name="smallworld" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
+  <ownedCommentsInternal>
+    <comment
+      Id="696b04af-58a7-4d6c-a9e7-8af901ea70c5">
+      <body>Correspond au diagramme deroulementTour</body>
+      <annotatedElements>
+        <opaqueActionMoniker
+          Id="83ffd28f-c269-4fea-a897-977f78297444"
+          LastKnownName="Déroulement du tour du joueur 1"
+          LastKnownLocation="smallworld.uml" />
+        <opaqueActionMoniker
+          Id="8bd9183d-55b7-408f-8f16-51d6fbda48e5"
+          LastKnownName="Déroulement du tour du joueur 2"
+          LastKnownLocation="smallworld.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="3eded6ae-bed5-4d03-84f2-3ef15dd9d56e">
+      <body>Correspond au diagramme lancementJeu</body>
+      <annotatedElements>
+        <opaqueActionMoniker
+          Id="b7b3b0d2-119a-4058-8bf0-fd576b2c7d92"
+          LastKnownName="Lancement de la partie"
+          LastKnownLocation="smallworld.uml" />
+      </annotatedElements>
+    </comment>
+  </ownedCommentsInternal>
   <profileInstances>
     <packageHasProfileInstances
       Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b">
@@ -1149,12 +1175,12 @@
             interactionOperator="Loop">
             <coveredLifelines>
               <lifelineMoniker
-                Id="bcaeff46-8086-4abd-8770-ed70b5391c3c"
-                LastKnownName="Map"
-                LastKnownLocation="smallworld.uml" />
-              <lifelineMoniker
                 Id="e7ab9503-62a1-4d86-a0ed-0b0e3cecd2cf"
                 LastKnownName="GameBuilder"
+                LastKnownLocation="smallworld.uml" />
+              <lifelineMoniker
+                Id="bcaeff46-8086-4abd-8770-ed70b5391c3c"
+                LastKnownName="Map"
                 LastKnownLocation="smallworld.uml" />
             </coveredLifelines>
             <operands>
@@ -1163,12 +1189,12 @@
                 name="InteractionOperand1">
                 <coveredLifelines>
                   <lifelineMoniker
-                    Id="bcaeff46-8086-4abd-8770-ed70b5391c3c"
-                    LastKnownName="Map"
-                    LastKnownLocation="smallworld.uml" />
-                  <lifelineMoniker
                     Id="e7ab9503-62a1-4d86-a0ed-0b0e3cecd2cf"
                     LastKnownName="GameBuilder"
+                    LastKnownLocation="smallworld.uml" />
+                  <lifelineMoniker
+                    Id="bcaeff46-8086-4abd-8770-ed70b5391c3c"
+                    LastKnownName="Map"
                     LastKnownLocation="smallworld.uml" />
                 </coveredLifelines>
                 <guard>
@@ -3970,6 +3996,638 @@
       <executionEvent
         Id="1950f318-1d46-421d-9ddb-78c95f1835c0"
         name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="c2a7a2f2-eec5-4f67-9115-1750bf78a040"
+        name="LancementPartie"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="a2012809-9e27-455d-aa77-9e6acd5962bd"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="628212dc-f074-438d-b5d0-379c0ee40522"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="43ad3420-959b-4528-bf2a-f52f6e07cdc2"
+                  LastKnownName="Decision1"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction
+            Id="c1348d86-ca05-40f2-80e4-6d895ced1440"
+            name="Choix nom du joueur"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="122a6410-a5a0-40eb-86c4-18a5cd99eff3"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="0b6309e5-a4d4-4a3f-8e04-c80509b6d69f"
+                  LastKnownName="Sélection du peuple"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="0b6309e5-a4d4-4a3f-8e04-c80509b6d69f"
+            name="Sélection du peuple"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="08cdf62f-f0cf-4fbf-a067-3e93f5e9af79"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="2ac2a506-e334-44e4-92a7-40ae6ec53ec5"
+                  LastKnownName="Création du joueur"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="2ac2a506-e334-44e4-92a7-40ae6ec53ec5"
+            name="Création du joueur"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="3ba27ccd-0b9b-47f3-ae1b-4c80cf1b95d5"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="fecdaf45-46f7-42e9-97a9-3af5f05bba80"
+                  LastKnownName="Création des unités et placement sur la carte"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="0eb20ac0-dfea-47be-8caf-9e242154c8df"
+            name="Sélection de la partie"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="e296f64a-ac84-4f52-a342-4ece15a1ef2b"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="de08407f-21cc-4078-aeea-b5226b2ee8c6"
+                  LastKnownName="Lancement de la partie"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="de08407f-21cc-4078-aeea-b5226b2ee8c6"
+            name="Lancement de la partie"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="8b2cbd4a-a400-4d74-b2ab-56a5668247d3"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="7ca0ba69-7d99-4607-8976-b126fc5d3eee"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="43ad3420-959b-4528-bf2a-f52f6e07cdc2"
+            name="Decision1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="ff07e73b-6d05-420e-9e93-b352e20b654b"
+                guard="Chargement d'une partie"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="0eb20ac0-dfea-47be-8caf-9e242154c8df"
+                  LastKnownName="Sélection de la partie"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="f73c5796-435b-4c0c-a6b4-450dce40d025"
+                guard="Création d'une nouvelle partie"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="b1d21c71-9a73-4464-a51b-2f4cb16381c0"
+                  LastKnownName="Sélection de la taille de la carte"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <decisionNode
+            Id="f860a157-b40f-46d6-9340-32f1e4e01bc2"
+            name="Decision2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="9c510f5a-12cf-46a3-af29-1a133c1b46f7"
+                guard="1 joueur créé"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="c1348d86-ca05-40f2-80e4-6d895ced1440"
+                  LastKnownName="Choix nom du joueur"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="4d10db6b-95c9-40e0-bf3b-222027001760"
+                guard="2 joueurs créés"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="de08407f-21cc-4078-aeea-b5226b2ee8c6"
+                  LastKnownName="Lancement de la partie"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="b1d21c71-9a73-4464-a51b-2f4cb16381c0"
+            name="Sélection de la taille de la carte"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="dc45a02a-80f7-42a2-a5e9-441af3e804b9"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="c1348d86-ca05-40f2-80e4-6d895ced1440"
+                  LastKnownName="Choix nom du joueur"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode
+            Id="7ca0ba69-7d99-4607-8976-b126fc5d3eee"
+            name="ActivityFinal1"
+            isLeaf="false" />
+          <opaqueAction
+            Id="fecdaf45-46f7-42e9-97a9-3af5f05bba80"
+            name="Création des unités et placement sur la carte"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="86721a3e-c6a7-4b56-bde3-276334419d9d"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="f860a157-b40f-46d6-9340-32f1e4e01bc2"
+                  LastKnownName="Decision2"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="d9dc536a-159c-4829-8c71-b0f5d78186f4"
+        name="déroulementJeu"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="f7b4c1b7-30ee-450c-a08c-c1cc9c9ae76d"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="435f02e4-e255-4f34-b18e-e122db0a17f4"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="b7b3b0d2-119a-4058-8bf0-fd576b2c7d92"
+                  LastKnownName="Lancement de la partie"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction
+            Id="b7b3b0d2-119a-4058-8bf0-fd576b2c7d92"
+            name="Lancement de la partie"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="04ee1af5-0b35-4664-a83a-e3aab9fbe10f"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="1314ad9e-c877-4442-a0a6-4fd4cc19251b"
+                  LastKnownName="Début d'un tour"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="1314ad9e-c877-4442-a0a6-4fd4cc19251b"
+            name="Début d'un tour"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="a6c5d5ce-1a59-497d-96ac-938e7418033d"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="83ffd28f-c269-4fea-a897-977f78297444"
+                  LastKnownName="Déroulement du tour du joueur 1"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="83ffd28f-c269-4fea-a897-977f78297444"
+            name="Déroulement du tour du joueur 1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="5093737b-ffb6-49ff-9d0f-eeea18a59543"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="cbab1afe-b43d-456e-9e37-764a03a4be82"
+                  LastKnownName="Decision1"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="8bd9183d-55b7-408f-8f16-51d6fbda48e5"
+            name="Déroulement du tour du joueur 2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="1d1ff169-be33-4c02-a231-89c661652ccf"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="fb71a29b-dc35-4f38-aa50-45d64013595d"
+                  LastKnownName="Decision2"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="cbed52f4-ccca-4260-aa1a-05d14a79aa47"
+            name="Fin du jeu : Affichage du vainqueur"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="7474281d-e776-45bd-a38d-c4008ce7cf73"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="71e78947-7874-4f9c-bfc3-b35dbfef6d73"
+                  LastKnownName="ActivityFinal2"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="cbab1afe-b43d-456e-9e37-764a03a4be82"
+            name="Decision1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="1cefdf68-5cd7-431d-a55b-32cfd1da6f47"
+                guard="else"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="8bd9183d-55b7-408f-8f16-51d6fbda48e5"
+                  LastKnownName="Déroulement du tour du joueur 2"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="bfe2e6da-988d-463f-96d6-2051f00a3fd2"
+                guard="NbUnités J1 ou J2 &lt; 0"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="cbed52f4-ccca-4260-aa1a-05d14a79aa47"
+                  LastKnownName="Fin du jeu : Affichage du vainqueur"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <decisionNode
+            Id="fb71a29b-dc35-4f38-aa50-45d64013595d"
+            name="Decision2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="9d51a4bb-9020-44bd-acc0-db1a168dfdef"
+                guard="NbUnités J1 ou J2 &lt; 0"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="cbed52f4-ccca-4260-aa1a-05d14a79aa47"
+                  LastKnownName="Fin du jeu : Affichage du vainqueur"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="eb289f20-8cbf-4c98-9a0e-79621fd81979"
+                guard="else"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="1314ad9e-c877-4442-a0a6-4fd4cc19251b"
+                  LastKnownName="Début d'un tour"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <activityFinalNode
+            Id="71e78947-7874-4f9c-bfc3-b35dbfef6d73"
+            name="ActivityFinal2"
+            isLeaf="false" />
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="25f888e9-ea27-4cc9-9120-10e344386e9d"
+        name="deroulementTour"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="39ff1124-5bd0-40a4-aa0e-39ed86d7e314"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="53ce1b10-aeb5-4915-af26-0eba6fd34824"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="83241863-5110-4d0e-aae0-f089c818e4e7"
+                  LastKnownName="Tour en cours"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction
+            Id="83241863-5110-4d0e-aae0-f089c818e4e7"
+            name="Tour en cours"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="3565c7b0-5232-469a-acb2-b0505925bc2f"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="99898271-5e4e-4740-b574-90551decf560"
+                  LastKnownName="Decision1"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="99898271-5e4e-4740-b574-90551decf560"
+            name="Decision1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="c8ae3401-9524-4ea2-aed7-e94ace78e18b"
+                guard="Sélection d'une unité"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="2a08c0dd-94c0-4c79-8366-e51c3999e430"
+                  LastKnownName="Sélection de l'unité"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="70bf0472-4884-44f0-8aea-b407010eda2b"
+                guard="fin du tour"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="037ef130-80d7-467f-a119-498b08df8452"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="2a08c0dd-94c0-4c79-8366-e51c3999e430"
+            name="Sélection de l'unité"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="31dcf54c-5719-4a6c-9b30-16ffcf3777b7"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="ef5b2c44-818f-493f-b89f-c5673634f840"
+                  LastKnownName="Decision2"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="ef5b2c44-818f-493f-b89f-c5673634f840"
+            name="Decision2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="63380e98-12d5-49cd-874a-c1e96fca362e"
+                guard="Sélection nouvelle unité"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="2a08c0dd-94c0-4c79-8366-e51c3999e430"
+                  LastKnownName="Sélection de l'unité"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="101bad48-1f3e-4892-bd82-212a43796c15"
+                guard="Déplacement de l'unité"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="b8b7c1a5-6d6f-42af-9fd8-9ee31fd8586f"
+                  LastKnownName="Decision3"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="69afd373-9aed-4835-ac4c-13731096880f"
+                guard="fin du tour"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="77dbdbae-8005-4973-8b1c-1504624ff055"
+                  LastKnownName="ActivityFinal2"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <decisionNode
+            Id="b8b7c1a5-6d6f-42af-9fd8-9ee31fd8586f"
+            name="Decision3"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="c03d04ed-6a69-4ccb-99f1-4ecd5a925c89"
+                guard="déplacement impossible"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="f6fcf779-972d-4bc5-a0eb-63c113c7e0e0"
+                  LastKnownName="Déselection de l'unité"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="af46df89-5aa6-4e70-a4e4-08a9fd2efc8c"
+                guard="déplacement possible"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="e5237322-c677-4f77-82db-752a8da38de1"
+                  LastKnownName="Sélection de la case d'arrivée"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <decisionNode
+            Id="95f49765-b537-4824-8d63-1eb371688868"
+            name="Decision4"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="0bd4b0b6-2aae-4162-a913-7bdcac765154"
+                guard="case appartenant à l'adversaire"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="d35ac3d3-9374-447f-8a7f-43332168e7df"
+                  LastKnownName="Combat de l'unité sélectionnée contre une unité de la case"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="e2c7bf0a-c807-4d88-955a-41fde6a7f97a"
+                guard="Case d'arrivée vide ou alliée"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="a446b90c-7385-411d-b85c-9760692ee576"
+                  LastKnownName="Déplacement de l'unité sélectionnée"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="f6fcf779-972d-4bc5-a0eb-63c113c7e0e0"
+            name="Déselection de l'unité"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="99c6ef42-1eed-4b6d-a581-30fc94f6ac33"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="83241863-5110-4d0e-aae0-f089c818e4e7"
+                  LastKnownName="Tour en cours"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="d35ac3d3-9374-447f-8a7f-43332168e7df"
+            name="Combat de l'unité sélectionnée contre une unité de la case"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="c5cbb80c-48f6-4230-8fc0-6cb83082b06b"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="bdc13912-2b5e-41e7-bf20-a68fe248dade"
+                  LastKnownName="Decision5"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="a446b90c-7385-411d-b85c-9760692ee576"
+            name="Déplacement de l'unité sélectionnée"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="5f7e8bf6-a23d-48f0-8340-44c4a63092a7"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="83241863-5110-4d0e-aae0-f089c818e4e7"
+                  LastKnownName="Tour en cours"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode
+            Id="037ef130-80d7-467f-a119-498b08df8452"
+            name="ActivityFinal1"
+            isLeaf="false" />
+          <activityFinalNode
+            Id="77dbdbae-8005-4973-8b1c-1504624ff055"
+            name="ActivityFinal2"
+            isLeaf="false" />
+          <decisionNode
+            Id="bdc13912-2b5e-41e7-bf20-a68fe248dade"
+            name="Decision5"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="17cc63c0-96bd-4398-b195-32cc7f33791e"
+                guard="Victoire"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="bb7ecf99-9de1-4168-9627-327f48341bb1"
+                  LastKnownName="Decision6"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="c3d2b1fe-d479-4469-bfe0-b8269c55d746"
+                guard="Défaite"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="83241863-5110-4d0e-aae0-f089c818e4e7"
+                  LastKnownName="Tour en cours"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <decisionNode
+            Id="bb7ecf99-9de1-4168-9627-327f48341bb1"
+            name="Decision6"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="5964ea60-19d8-4754-a15e-608affee8385"
+                guard="case d'arrivée non vide"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="83241863-5110-4d0e-aae0-f089c818e4e7"
+                  LastKnownName="Tour en cours"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="0e0438f7-0c0c-408d-9295-8560015a6eb7"
+                guard="case d'arrivée vide"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="a446b90c-7385-411d-b85c-9760692ee576"
+                  LastKnownName="Déplacement de l'unité sélectionnée"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="e5237322-c677-4f77-82db-752a8da38de1"
+            name="Sélection de la case d'arrivée"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="1e921b33-4c8a-4336-815c-3c08771f81cb"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="95f49765-b537-4824-8d63-1eb371688868"
+                  LastKnownName="Decision4"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+        </nodes>
+      </activity>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType

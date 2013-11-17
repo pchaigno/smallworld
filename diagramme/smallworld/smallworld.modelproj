@@ -36,6 +36,20 @@
       <SubType>Content</SubType>
       <DependentUpon>creation.sequencediagram</DependentUpon>
     </Content>
+    <Content Include="deroulementTour.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="deroulementTour.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>deroulementTour.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="déroulementJeu.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="déroulementJeu.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>déroulementJeu.activitydiagram</DependentUpon>
+    </Content>
     <Content Include="joueur.usecasediagram">
       <SubType>Content</SubType>
     </Content>
@@ -44,6 +58,13 @@
       <DependentUpon>joueur.usecasediagram</DependentUpon>
     </Content>
     <Folder Include="ModelDefinition\" />
+    <Content Include="LancementPartie.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="LancementPartie.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>LancementPartie.activitydiagram</DependentUpon>
+    </Content>
     <Content Include="ModelDefinition\smallworld.uml">
       <SubType>Content</SubType>
     </Content>
