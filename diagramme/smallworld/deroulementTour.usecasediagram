@@ -1,0 +1,190 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" dslVersion="1.0.0.0" Id="50b5d612-7120-4a6d-bba7-5f24d408ff81" name="Déroulement d'un tour" linkedPackageId="e6d42c93-66f0-4fb9-b1c8-aa9df17a2cce" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="cae0a64d-8ec5-4163-85db-9d4c6c225a67" name="Joueur1" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c83e375b-a3eb-42cb-960a-5d8edb2f4517" />
+        <targetEnds>
+          <association Id="eb6b12a5-eb6d-4cbb-8308-fabb24cdd390" isDerived="false" sourceEndRoleName="Joueur1" targetEndRoleName="Annuler dernier coup" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="019af604-45e0-4927-bdc8-0c097c9f8edb" LastKnownName="Annuler dernier coup" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3af8c86f-463e-405c-99c0-864456e8c9d0" name="Joueur1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="8563bdad-e2ef-4e48-ac7f-a1ba1618cd7b" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="60356375-ae04-4f3d-ac32-58a1b91b1f8b" name="Annuler dernier coup" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="3383beea-f33c-43fe-bf5c-789320d1b1a6" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="e425c14c-3575-467d-a6be-92796b7e4297" />
+          </association>
+          <association Id="2fb69a33-b485-4cb7-ae1e-cf44e2c418e3" isDerived="false" sourceEndRoleName="Joueur1" targetEndRoleName="Déplacer  unité1" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="ff389461-7fee-475a-b35a-6ed4c0ea328f" LastKnownName="Déplacer  unité/attaquer" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="56601297-4251-4b1b-a715-c2907d1b3cfb" name="Joueur1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="e795d8ec-ec78-4799-8325-084111e01060" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d367858f-b46a-4d22-a5cf-a6f9124bac6a" name="Déplacer  unité1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="d6aaa297-6580-41ff-a760-fac29b943066" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d89714e1-2b91-4361-b31e-a87945e335cf" />
+          </association>
+          <association Id="4b678b76-a361-45e9-b288-dec8f95911e2" isDerived="false" sourceEndRoleName="Joueur1" targetEndRoleName="Finir le tour" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="acba4253-c961-4ec5-b17c-881043ee7b12" LastKnownName="Finir le tour" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="ee837eeb-1ffb-4c45-ab39-295c46c7ef2d" name="Joueur1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="b4146d58-e286-4521-a32d-597f383a32b4" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="cd3180f8-7643-49a4-8718-d1f213f5c3e8" name="Finir le tour" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="65a80b51-2fda-4c67-9e73-c812ce7597b5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="eb276a60-74c0-4c27-9dc7-d26a2ca1d46b" />
+          </association>
+          <association Id="64a871ef-a65d-45d9-9915-a708c10459ad" isDerived="false" sourceEndRoleName="Joueur1" targetEndRoleName="Sauvegarder" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="e963322d-7cb5-4fc8-9532-9984014484b8" LastKnownName="Sauvegarder" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="782977b0-7523-4a5e-9f29-1b71f50c80be" name="Joueur1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="fdcc93dd-7a4a-4103-b64e-0569e24cc2d0" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="50a8ac04-4abd-479d-b5e0-5ee11794de94" name="Sauvegarder" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="2ccc71c2-3c7b-46d5-9c7a-d6945d5a0d0e" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="d46404ab-0667-474c-9ea7-44d6680da349" />
+          </association>
+        </targetEnds>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <subsystem Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" name="Subsystem1" isAbstract="false" isLeaf="false" isActiveClass="false">
+        <elementDefinition Id="6de75cd9-44c7-4160-8515-9cad150c9b12" />
+      </subsystem>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ff389461-7fee-475a-b35a-6ed4c0ea328f" name="Déplacer  unité/attaquer" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="9105db57-9bae-4ee1-b3cd-65a8914d9887" />
+        <additions>
+          <include Id="e3f0f50e-4494-4274-aca5-c58a3df196f9">
+            <useCaseMoniker Id="ac21b19a-3621-42fa-a3af-88d360761f76" LastKnownName="Choisir unité dans la case" />
+            <elementDefinition Id="c8229d58-601e-499d-b17c-30275e246b35" />
+          </include>
+          <include Id="510928c7-a9e4-4ca8-bdc9-2b32f20fe6fb">
+            <useCaseMoniker Id="90603377-4aa5-449b-8edb-63e8af3e5e88" LastKnownName="Choisir case arrivée" />
+            <elementDefinition Id="d56c1077-5fa7-44f4-aea2-f1d6542bd705" />
+          </include>
+          <include Id="b9483cb9-e958-4c30-b8f2-4fc7f1001a51">
+            <useCaseMoniker Id="c20eb480-0e00-4b18-8171-917442d847c8" LastKnownName="Choisir case" />
+            <elementDefinition Id="4eef5bf5-f6f8-4539-8f36-dd4e16e793f6" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ac21b19a-3621-42fa-a3af-88d360761f76" name="Choisir unité dans la case" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4873b980-0bd4-4fae-aa3f-f744d4175fc1" />
+        <subjects>
+          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="90603377-4aa5-449b-8edb-63e8af3e5e88" name="Choisir case arrivée" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="2fc569b8-f306-4356-ae7a-ff3fbcc1727f" />
+        <subjects>
+          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="acba4253-c961-4ec5-b17c-881043ee7b12" name="Finir le tour" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="90f92186-c7eb-45bd-b64d-43157c8a2908" />
+        <subjects>
+          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="019af604-45e0-4927-bdc8-0c097c9f8edb" name="Annuler dernier coup" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b58b5bdd-eb4d-4482-8bb5-92de9dcd17fc" />
+        <subjects>
+          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c20eb480-0e00-4b18-8171-917442d847c8" name="Choisir case" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8ef96f5e-c891-4e28-a70a-9275372aeec2" />
+        <subjects>
+          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />
+        </subjects>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="e963322d-7cb5-4fc8-9532-9984014484b8" name="Sauvegarder" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="cd6ddf9c-7b2e-4ba9-a528-ef2b90185bb5" />
+        <subjects>
+          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <useCaseModelRootHasTypes>
+      <actor Id="59d5b9d8-c25d-42f8-b603-9b5ed70edf17" name="Joueur 1" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="99fdf5de-d3ab-4405-a7a5-5a0631d4bcf2" />
+        <generalsInternal>
+          <generalization Id="45169db9-dec6-43a1-8fbd-45a1c0d415a9" isSubstitutable="false">
+            <actorMoniker Id="cae0a64d-8ec5-4163-85db-9d4c6c225a67" LastKnownName="Joueur1" />
+            <elementDefinition Id="92ec1dfd-8a2e-4612-92da-31da382d950f" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="4bf9e0f4-67f2-4d04-b491-eadc45a8c2a1" name="Joueur 2" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4fdfb09e-c74b-4f5f-8798-ea13751751bf" />
+        <generalsInternal>
+          <generalization Id="d0a2cb20-e36e-46b0-9a2f-567dde6b8cb5" isSubstitutable="false">
+            <actorMoniker Id="cae0a64d-8ec5-4163-85db-9d4c6c225a67" LastKnownName="Joueur1" />
+            <elementDefinition Id="8ffc874e-5cbe-49c2-a72f-bb4303865481" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="e6d42c93-66f0-4fb9-b1c8-aa9df17a2cce" name="smallworld">
+    <elementDefinition Id="43f692c9-e08b-43ba-99a7-2d3912a13b0b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="9a23f624-9858-4016-b866-4b4b47ae7aa9">
+        <profileInstance Id="6f464700-9be5-4bfb-8511-43648dbabaf8" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="3ec4b525-6fa4-4169-843f-94cbcb6b4ac4">
+        <profileInstance Id="77b67caf-59ff-4e12-bb3d-3dbe219e0b14" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>

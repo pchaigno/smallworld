@@ -57,6 +57,20 @@
       <SubType>Content</SubType>
       <DependentUpon>déroulementJeu.activitydiagram</DependentUpon>
     </Content>
+    <Content Include="déroulementJeu2.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="déroulementJeu2.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>déroulementJeu2.activitydiagram</DependentUpon>
+    </Content>
+    <Content Include="Jouer.usecasediagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="Jouer.usecasediagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>Jouer.usecasediagram</DependentUpon>
+    </Content>
     <Content Include="joueur.usecasediagram">
       <SubType>Content</SubType>
     </Content>

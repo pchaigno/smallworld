@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
   dslVersion="1.0.0.0"
   Id="43f692c9-e08b-43ba-99a7-2d3912a13b0b"
   name="smallworld" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -29,12 +29,26 @@
       </annotatedElements>
     </comment>
     <comment
-      Id="c150ff84-4d12-4f2c-9c4a-6674482fa0f6">
-      <body>Permet de savoir quel joueur joue</body>
+      Id="19d01791-4df7-4ba0-b70c-5cd4f8c3737a">
+      <body>Correspond au diagramme deroulementTour</body>
       <annotatedElements>
         <opaqueActionMoniker
-          Id="4ad7f710-3fd6-4634-8972-7d9eab14e711"
-          LastKnownName="Sélection du joueur 1"
+          Id="2360f6fa-7923-4975-8da5-9913f3c35cdd"
+          LastKnownName="Déroulement du tour du joueur 1"
+          LastKnownLocation="smallworld.uml" />
+        <opaqueActionMoniker
+          Id="27b5f0c3-c756-40ca-a972-8da96bb4eea8"
+          LastKnownName="Déroulement du tour du joueur 2"
+          LastKnownLocation="smallworld.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="b3743626-044b-4719-bc0e-4c2d8ed94213">
+      <body>Correspond au diagramme lancementJeu</body>
+      <annotatedElements>
+        <opaqueActionMoniker
+          Id="4c9f0de9-a0d0-4127-92f5-4aa7eb66097c"
+          LastKnownName="Lancement de la partie"
           LastKnownLocation="smallworld.uml" />
       </annotatedElements>
     </comment>
@@ -101,21 +115,21 @@
             </relationshipOwnedElementsInternal>
           </association>
           <association
-            Id="6b8cf862-0123-49a4-963d-013852d4e48f"
+            Id="adb66648-4c32-4008-9f2e-e3c3e89ab60a"
             isDerived="false"
-            sourceEndRoleName="Actor1"
-            targetEndRoleName="Jouer un coup"
+            sourceEndRoleName="Joueur"
+            targetEndRoleName="Charger une partie"
             isLeaf="false"
             isAbstract="false">
             <useCaseMoniker
-              Id="2fef656e-996f-498a-970a-16bff8c0cfbe"
-              LastKnownName="Jouer un coup"
+              Id="53167354-1561-40d7-be8d-01722d86bdee"
+              LastKnownName="Charger une partie"
               LastKnownLocation="smallworld.uml" />
             <relationshipOwnedElementsInternal>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="2dc60876-ec80-4b2c-86a5-3373df9977cc"
-                  name="Actor1"
+                  Id="a128039f-e65a-47b9-aaac-778411b7f4be"
+                  name="Joueur"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -127,8 +141,8 @@
               </associationHasOwnedEnds>
               <associationHasOwnedEnds>
                 <memberEnd
-                  Id="f87afb4a-8db0-4fa4-a68e-02da1a907d2a"
-                  name="Jouer un coup"
+                  Id="3f9d6c5e-0521-4d02-baad-1b6b1a06ae0d"
+                  name="Charger une partie"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
@@ -152,7 +166,6 @@
     <packageHasNamedElement>
       <subsystem
         Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
-        name="Subsystem1"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false" />
@@ -175,14 +188,20 @@
             Id="1f1e2800-0e33-46d6-b24d-91addcf69068">
             <useCaseMoniker
               Id="0b220bfc-3dfc-40d6-be4d-57e152c87ba2"
-              LastKnownName="Choisir peuples"
+              LastKnownName="Créer Joueurs"
+              LastKnownLocation="smallworld.uml" />
+          </include>
+          <include
+            Id="85cd6372-44e9-4e26-9bba-7d29bc85adef">
+            <useCaseMoniker
+              Id="dec3be01-1c97-4d24-83ec-921761919441"
+              LastKnownName="Choisir nombre de tours"
               LastKnownLocation="smallworld.uml" />
           </include>
         </additions>
         <subjects>
           <subsystemMoniker
             Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
-            LastKnownName="Subsystem1"
             LastKnownLocation="smallworld.uml" />
         </subjects>
       </useCase>
@@ -190,13 +209,28 @@
     <packageHasNamedElement>
       <useCase
         Id="0b220bfc-3dfc-40d6-be4d-57e152c87ba2"
-        name="Choisir peuples"
+        name="Créer Joueurs"
         isAbstract="false"
         isLeaf="false">
+        <additions>
+          <include
+            Id="fb8909c5-c259-43a9-8a88-cdec954d3970">
+            <useCaseMoniker
+              Id="e8f0ca16-4499-490c-a5df-6fb042d78598"
+              LastKnownName="Choisir Peuple"
+              LastKnownLocation="smallworld.uml" />
+          </include>
+          <include
+            Id="bddb7bdc-12db-4f84-a436-d72aa0084294">
+            <useCaseMoniker
+              Id="aa52d326-9ef6-4189-927c-8759a677d0b5"
+              LastKnownName="Choisir noms"
+              LastKnownLocation="smallworld.uml" />
+          </include>
+        </additions>
         <subjects>
           <subsystemMoniker
             Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
-            LastKnownName="Subsystem1"
             LastKnownLocation="smallworld.uml" />
         </subjects>
       </useCase>
@@ -210,141 +244,6 @@
         <subjects>
           <subsystemMoniker
             Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
-            LastKnownName="Subsystem1"
-            LastKnownLocation="smallworld.uml" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="2fef656e-996f-498a-970a-16bff8c0cfbe"
-        name="Jouer un coup"
-        isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
-            LastKnownName="Subsystem1"
-            LastKnownLocation="smallworld.uml" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="63fb170b-f986-4faf-919f-20d82af64518"
-        name="Déplacer  unité"
-        isAbstract="false"
-        isLeaf="false">
-        <extendedCases>
-          <extend
-            Id="88c3e5af-85bd-45bc-a924-fd6d10dbdea6">
-            <useCaseMoniker
-              Id="2fef656e-996f-498a-970a-16bff8c0cfbe"
-              LastKnownName="Jouer un coup"
-              LastKnownLocation="smallworld.uml" />
-          </extend>
-        </extendedCases>
-        <additions>
-          <include
-            Id="3b7c3664-557f-4e2a-947a-67b6a50a6a35">
-            <useCaseMoniker
-              Id="c77d34af-4916-47a9-8724-e3a08211623e"
-              LastKnownName="Choisir unité"
-              LastKnownLocation="smallworld.uml" />
-          </include>
-          <include
-            Id="193f97c9-7406-4a79-afcc-676dac4dca3c">
-            <useCaseMoniker
-              Id="e77965ad-471c-4800-96aa-4b0471585dc7"
-              LastKnownName="Choisir case arrivée"
-              LastKnownLocation="smallworld.uml" />
-          </include>
-          <include
-            Id="a43329c9-6d24-4e0a-9be5-c08f4c67c89a">
-            <useCaseMoniker
-              Id="a4fcc9f3-d2b8-4084-ad3c-246d6142b47e"
-              LastKnownName="Choisir case"
-              LastKnownLocation="smallworld.uml" />
-          </include>
-        </additions>
-        <subjects>
-          <subsystemMoniker
-            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
-            LastKnownName="Subsystem1"
-            LastKnownLocation="smallworld.uml" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="c77d34af-4916-47a9-8724-e3a08211623e"
-        name="Choisir unité"
-        isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
-            LastKnownName="Subsystem1"
-            LastKnownLocation="smallworld.uml" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="e77965ad-471c-4800-96aa-4b0471585dc7"
-        name="Choisir case arrivée"
-        isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
-            LastKnownName="Subsystem1"
-            LastKnownLocation="smallworld.uml" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="0ce4de25-a660-4d72-bfcd-d2ae2ec9302c"
-        name="Finir le tour"
-        isAbstract="false"
-        isLeaf="false">
-        <extendedCases>
-          <extend
-            Id="f3e80ab0-749d-44a2-aabd-375c01a683e5">
-            <useCaseMoniker
-              Id="2fef656e-996f-498a-970a-16bff8c0cfbe"
-              LastKnownName="Jouer un coup"
-              LastKnownLocation="smallworld.uml" />
-          </extend>
-        </extendedCases>
-        <subjects>
-          <subsystemMoniker
-            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
-            LastKnownName="Subsystem1"
-            LastKnownLocation="smallworld.uml" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="cb8242f4-8ffe-475b-b5ea-83cf9190ecaa"
-        name="Annuler dernier coup"
-        isAbstract="false"
-        isLeaf="false">
-        <extendedCases>
-          <extend
-            Id="c6b9a7a4-7e36-49a1-9ef1-1a1866eeb4e8">
-            <useCaseMoniker
-              Id="2fef656e-996f-498a-970a-16bff8c0cfbe"
-              LastKnownName="Jouer un coup"
-              LastKnownLocation="smallworld.uml" />
-          </extend>
-        </extendedCases>
-        <subjects>
-          <subsystemMoniker
-            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
-            LastKnownName="Subsystem1"
             LastKnownLocation="smallworld.uml" />
         </subjects>
       </useCase>
@@ -414,20 +313,6 @@
         isAbstract="false"
         isLeaf="false"
         isReentrant="false" />
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="a4fcc9f3-d2b8-4084-ad3c-246d6142b47e"
-        name="Choisir case"
-        isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
-            LastKnownName="Subsystem1"
-            LastKnownLocation="smallworld.uml" />
-        </subjects>
-      </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <interaction
@@ -4246,7 +4131,7 @@
                 isLeaf="false">
                 <opaqueActionMoniker
                   Id="4ad7f710-3fd6-4634-8972-7d9eab14e711"
-                  LastKnownName="Sélection du joueur 1"
+                  LastKnownName="Début du tour"
                   LastKnownLocation="smallworld.uml" />
               </controlFlow>
             </flowNodeTargets>
@@ -4303,7 +4188,7 @@
             <flowNodeTargets>
               <controlFlow
                 Id="bfe2e6da-988d-463f-96d6-2051f00a3fd2"
-                guard="NbUnités J1 ou J2 &lt; 0"
+                guard="Un joueur n'a plus d'unité"
                 isLeaf="false">
                 <opaqueActionMoniker
                   Id="cbed52f4-ccca-4260-aa1a-05d14a79aa47"
@@ -4316,7 +4201,7 @@
                 isLeaf="false">
                 <opaqueActionMoniker
                   Id="224aac55-15d4-4f30-af3d-601d39cbce0d"
-                  LastKnownName="Sélection du joueur 2"
+                  LastKnownName="Changement de joueur"
                   LastKnownLocation="smallworld.uml" />
               </controlFlow>
             </flowNodeTargets>
@@ -4328,7 +4213,7 @@
             <flowNodeTargets>
               <controlFlow
                 Id="9d51a4bb-9020-44bd-acc0-db1a168dfdef"
-                guard="NbUnités J1 ou J2 &lt; 0"
+                guard="Un joueur n'a plus d'unité"
                 isLeaf="false">
                 <opaqueActionMoniker
                   Id="cbed52f4-ccca-4260-aa1a-05d14a79aa47"
@@ -4341,12 +4226,12 @@
                 isLeaf="false">
                 <opaqueActionMoniker
                   Id="4ad7f710-3fd6-4634-8972-7d9eab14e711"
-                  LastKnownName="Sélection du joueur 1"
+                  LastKnownName="Début du tour"
                   LastKnownLocation="smallworld.uml" />
               </controlFlow>
               <controlFlow
                 Id="34191f6b-ed1a-4594-9ec2-3a88229aa8d9"
-                guard="Fin des tours"
+                guard="fin du jeu"
                 isLeaf="false">
                 <opaqueActionMoniker
                   Id="b96af206-1cd5-454d-963b-e0140ac40fc9"
@@ -4357,7 +4242,7 @@
           </decisionNode>
           <opaqueAction
             Id="4ad7f710-3fd6-4634-8972-7d9eab14e711"
-            name="Sélection du joueur 1"
+            name="Début du tour"
             isLeaf="false">
             <flowNodeTargets>
               <controlFlow
@@ -4372,7 +4257,7 @@
           </opaqueAction>
           <opaqueAction
             Id="224aac55-15d4-4f30-af3d-601d39cbce0d"
-            name="Sélection du joueur 2"
+            name="Changement de joueur"
             isLeaf="false">
             <flowNodeTargets>
               <controlFlow
@@ -4407,7 +4292,7 @@
             <flowNodeTargets>
               <controlFlow
                 Id="a6f7a360-637a-49d6-8bd8-98fd5fbeffda"
-                guard="NbUnités J1 &lt; 0"
+                guard="Joueur 1 n'a plus d'unité"
                 isLeaf="false">
                 <opaqueActionMoniker
                   Id="bc46e8a3-381b-4f2a-a6bd-b56310730eca"
@@ -4416,7 +4301,7 @@
               </controlFlow>
               <controlFlow
                 Id="3cfe8ad6-bf00-4a0f-9fb8-5d8ec4071b47"
-                guard="NbUnités J2 &lt; 0"
+                guard="else"
                 isLeaf="false">
                 <opaqueActionMoniker
                   Id="70419afe-cdce-4a25-b6e0-71ec8ddc0c6b"
@@ -5134,6 +5019,1679 @@
           </opaqueAction>
         </nodes>
       </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <interaction
+        Id="32f65944-895a-45a0-aa8c-3c11e82fa2f4"
+        name="déroulementJeu"
+        collapseFragmentsFlag="false"
+        isActiveClass="false"
+        isAbstract="false"
+        isLeaf="false"
+        isReentrant="false">
+        <fragments>
+          <interactionUse
+            Id="db6aed14-6ffd-4c89-8330-317eb6762048"
+            name="créationPartie">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                LastKnownName="Game"
+                LastKnownLocation="smallworld.uml" />
+              <lifelineMoniker
+                Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                LastKnownName="GestionnaireTour"
+                LastKnownLocation="smallworld.uml" />
+            </coveredLifelines>
+            <interactionUseOccurrenceSpecifications>
+              <interactionUseOccurrenceSpecificationMoniker
+                Id="b286cc86-e81e-4aa9-8bac-eb8bf974fb8a"
+                LastKnownName="InteractionUseOccurrenceSpecification1"
+                LastKnownLocation="smallworld.uml" />
+              <interactionUseOccurrenceSpecificationMoniker
+                Id="286d97cf-d26d-441b-84d6-b010862849a9"
+                LastKnownName="InteractionUseOccurrenceSpecification2"
+                LastKnownLocation="smallworld.uml" />
+            </interactionUseOccurrenceSpecifications>
+          </interactionUse>
+          <interactionUseOccurrenceSpecification
+            Id="b286cc86-e81e-4aa9-8bac-eb8bf974fb8a"
+            name="InteractionUseOccurrenceSpecification1">
+            <covered>
+              <lifelineMoniker
+                Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                LastKnownName="Game"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
+          <interactionUseOccurrenceSpecification
+            Id="286d97cf-d26d-441b-84d6-b010862849a9"
+            name="InteractionUseOccurrenceSpecification2">
+            <covered>
+              <lifelineMoniker
+                Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                LastKnownName="GestionnaireTour"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
+          <behaviorExecutionSpecification
+            Id="bbd24816-84a8-4829-ba62-5485a752d874"
+            name="BehaviorExecutionSpecification1">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                LastKnownName="GestionnaireTour"
+                LastKnownLocation="smallworld.uml" />
+            </coveredLifelines>
+            <finish>
+              <executionOccurrenceSpecificationMoniker
+                Id="4429e182-840e-4614-97ff-fa1bc8361314"
+                LastKnownName="ExecutionOccurrenceSpecification2"
+                LastKnownLocation="smallworld.uml" />
+            </finish>
+            <start>
+              <executionOccurrenceSpecificationMoniker
+                Id="66829574-5de8-4a52-8a4a-82951c1764b4"
+                LastKnownName="ExecutionOccurrenceSpecification1"
+                LastKnownLocation="smallworld.uml" />
+            </start>
+            <nestedOccurrences>
+              <messageOccurrenceSpecificationMoniker
+                Id="e0348fee-ca6a-4eda-ade6-641d7c898c42"
+                LastKnownName="MessageOccurrenceSpecification2"
+                LastKnownLocation="smallworld.uml" />
+            </nestedOccurrences>
+          </behaviorExecutionSpecification>
+          <executionOccurrenceSpecification
+            Id="66829574-5de8-4a52-8a4a-82951c1764b4"
+            name="ExecutionOccurrenceSpecification1">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="7ac2dd7c-c773-4d34-8594-4cd338ee24bf"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="smallworld.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                LastKnownName="GestionnaireTour"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="1390284e-e9f3-45ac-8c97-b9d065f10c92"
+            name="MessageOccurrenceSpecification1">
+            <covered>
+              <lifelineMoniker
+                Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                LastKnownName="Game"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="e0348fee-ca6a-4eda-ade6-641d7c898c42"
+            name="MessageOccurrenceSpecification2">
+            <covered>
+              <lifelineMoniker
+                Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                LastKnownName="GestionnaireTour"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <executionOccurrenceSpecification
+            Id="4429e182-840e-4614-97ff-fa1bc8361314"
+            name="ExecutionOccurrenceSpecification2">
+            <event>
+              <executionOccurrenceSpecificationReferencesEvent>
+                <executionEventMoniker
+                  Id="b92b4164-0735-4895-a4d0-172ccee6be18"
+                  LastKnownName="ExecutionEvent"
+                  LastKnownLocation="smallworld.uml" />
+              </executionOccurrenceSpecificationReferencesEvent>
+            </event>
+            <covered>
+              <lifelineMoniker
+                Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                LastKnownName="GestionnaireTour"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </executionOccurrenceSpecification>
+          <combinedFragment
+            Id="9d8ad9a1-9a6a-477e-b5c5-ab5357ce0115"
+            name="CombinedFragment1"
+            interactionOperator="Loop">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="4997861f-8dac-43a2-abd4-dbf01f14ef0e"
+                LastKnownName="Player"
+                LastKnownLocation="smallworld.uml" />
+              <lifelineMoniker
+                Id="61d8383b-335b-4a13-8b7f-d7dc64b24dbc"
+                LastKnownName="GUI"
+                LastKnownLocation="smallworld.uml" />
+              <lifelineMoniker
+                Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                LastKnownName="Game"
+                LastKnownLocation="smallworld.uml" />
+              <lifelineMoniker
+                Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                LastKnownName="GestionnaireTour"
+                LastKnownLocation="smallworld.uml" />
+            </coveredLifelines>
+            <operands>
+              <interactionOperand
+                Id="f3c7f651-f034-43b1-bcbb-836a270a48b0"
+                name="InteractionOperand1">
+                <coveredLifelines>
+                  <lifelineMoniker
+                    Id="4997861f-8dac-43a2-abd4-dbf01f14ef0e"
+                    LastKnownName="Player"
+                    LastKnownLocation="smallworld.uml" />
+                  <lifelineMoniker
+                    Id="61d8383b-335b-4a13-8b7f-d7dc64b24dbc"
+                    LastKnownName="GUI"
+                    LastKnownLocation="smallworld.uml" />
+                  <lifelineMoniker
+                    Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                    LastKnownName="Game"
+                    LastKnownLocation="smallworld.uml" />
+                  <lifelineMoniker
+                    Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                    LastKnownName="GestionnaireTour"
+                    LastKnownLocation="smallworld.uml" />
+                </coveredLifelines>
+                <fragments>
+                  <combinedFragment
+                    Id="80eceed0-a21d-4058-a292-317fa6fcdbe2"
+                    name="CombinedFragment1"
+                    interactionOperator="Alt"
+                    customInteractionOperator="Loop (0,, le user">
+                    <coveredLifelines>
+                      <lifelineMoniker
+                        Id="61d8383b-335b-4a13-8b7f-d7dc64b24dbc"
+                        LastKnownName="GUI"
+                        LastKnownLocation="smallworld.uml" />
+                      <lifelineMoniker
+                        Id="4997861f-8dac-43a2-abd4-dbf01f14ef0e"
+                        LastKnownName="Player"
+                        LastKnownLocation="smallworld.uml" />
+                      <lifelineMoniker
+                        Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                        LastKnownName="Game"
+                        LastKnownLocation="smallworld.uml" />
+                      <lifelineMoniker
+                        Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                        LastKnownName="GestionnaireTour"
+                        LastKnownLocation="smallworld.uml" />
+                    </coveredLifelines>
+                    <operands>
+                      <interactionOperand
+                        Id="50cf02c9-7dc9-4052-af7a-473e9b9f3cf6"
+                        name="InteractionOperand1">
+                        <coveredLifelines>
+                          <lifelineMoniker
+                            Id="61d8383b-335b-4a13-8b7f-d7dc64b24dbc"
+                            LastKnownName="GUI"
+                            LastKnownLocation="smallworld.uml" />
+                          <lifelineMoniker
+                            Id="4997861f-8dac-43a2-abd4-dbf01f14ef0e"
+                            LastKnownName="Player"
+                            LastKnownLocation="smallworld.uml" />
+                          <lifelineMoniker
+                            Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                            LastKnownName="Game"
+                            LastKnownLocation="smallworld.uml" />
+                          <lifelineMoniker
+                            Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                            LastKnownName="GestionnaireTour"
+                            LastKnownLocation="smallworld.uml" />
+                        </coveredLifelines>
+                        <fragments>
+                          <combinedFragment
+                            Id="da0075e8-3c07-4b4c-a8aa-1e396f1eda04"
+                            name="CombinedFragment1"
+                            interactionOperator="Break">
+                            <coveredLifelines>
+                              <lifelineMoniker
+                                Id="61d8383b-335b-4a13-8b7f-d7dc64b24dbc"
+                                LastKnownName="GUI"
+                                LastKnownLocation="smallworld.uml" />
+                              <lifelineMoniker
+                                Id="4997861f-8dac-43a2-abd4-dbf01f14ef0e"
+                                LastKnownName="Player"
+                                LastKnownLocation="smallworld.uml" />
+                              <lifelineMoniker
+                                Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                                LastKnownName="Game"
+                                LastKnownLocation="smallworld.uml" />
+                              <lifelineMoniker
+                                Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                                LastKnownName="GestionnaireTour"
+                                LastKnownLocation="smallworld.uml" />
+                            </coveredLifelines>
+                            <operands>
+                              <interactionOperand
+                                Id="8b644c17-b16f-4f69-9c9e-40b4c4944c74"
+                                name="InteractionOperand1">
+                                <coveredLifelines>
+                                  <lifelineMoniker
+                                    Id="61d8383b-335b-4a13-8b7f-d7dc64b24dbc"
+                                    LastKnownName="GUI"
+                                    LastKnownLocation="smallworld.uml" />
+                                  <lifelineMoniker
+                                    Id="4997861f-8dac-43a2-abd4-dbf01f14ef0e"
+                                    LastKnownName="Player"
+                                    LastKnownLocation="smallworld.uml" />
+                                  <lifelineMoniker
+                                    Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                                    LastKnownName="Game"
+                                    LastKnownLocation="smallworld.uml" />
+                                  <lifelineMoniker
+                                    Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                                    LastKnownName="GestionnaireTour"
+                                    LastKnownLocation="smallworld.uml" />
+                                </coveredLifelines>
+                                <guard>
+                                  <interactionConstraint
+                                    Id="64974fe2-6ef1-470b-84f2-6138d97f6b3f" />
+                                </guard>
+                                <operandOccurrenceSpecifications>
+                                  <operandOccurrenceSpecificationMoniker
+                                    Id="f4ed38d7-ad92-4efa-b15e-249b500c8f56"
+                                    LastKnownName="OperandOccurrenceSpecification19"
+                                    LastKnownLocation="smallworld.uml" />
+                                  <operandOccurrenceSpecificationMoniker
+                                    Id="a600d08e-e817-4545-9988-5c0eef063097"
+                                    LastKnownName="OperandOccurrenceSpecification20"
+                                    LastKnownLocation="smallworld.uml" />
+                                  <operandOccurrenceSpecificationMoniker
+                                    Id="bc1805b5-e7f3-43b7-a0b5-20f352eb5294"
+                                    LastKnownName="OperandOccurrenceSpecification21"
+                                    LastKnownLocation="smallworld.uml" />
+                                  <operandOccurrenceSpecificationMoniker
+                                    Id="308171ca-b988-4db1-a878-b43a588a6b25"
+                                    LastKnownName="OperandOccurrenceSpecification22"
+                                    LastKnownLocation="smallworld.uml" />
+                                  <operandOccurrenceSpecificationMoniker
+                                    Id="f07d1c60-52c9-4156-b7f5-d286ed3dd520"
+                                    LastKnownName="OperandOccurrenceSpecification23"
+                                    LastKnownLocation="smallworld.uml" />
+                                  <operandOccurrenceSpecificationMoniker
+                                    Id="b5d9a8d5-a28a-4dae-b038-c9e28e8c3551"
+                                    LastKnownName="OperandOccurrenceSpecification24"
+                                    LastKnownLocation="smallworld.uml" />
+                                  <operandOccurrenceSpecificationMoniker
+                                    Id="93c9bc9e-1173-4bbd-a630-fa55291cc446"
+                                    LastKnownName="OperandOccurrenceSpecification25"
+                                    LastKnownLocation="smallworld.uml" />
+                                  <operandOccurrenceSpecificationMoniker
+                                    Id="9004631c-364b-4b08-9332-46bb35f709c0"
+                                    LastKnownName="OperandOccurrenceSpecification26"
+                                    LastKnownLocation="smallworld.uml" />
+                                </operandOccurrenceSpecifications>
+                              </interactionOperand>
+                            </operands>
+                          </combinedFragment>
+                        </fragments>
+                        <guard>
+                          <interactionConstraint
+                            Id="291fe6c2-f4c6-4572-8498-d5d79603cbdc">
+                            <maxInt>
+                              <literalString
+                                Id="461ec860-c293-4e64-a031-de62f0c62f2e"
+                                name="LiteralString1" />
+                            </maxInt>
+                            <minInt>
+                              <literalString
+                                Id="35b7f542-a7d5-4bb8-ae70-623fbefc40e6"
+                                name="LiteralString2" />
+                            </minInt>
+                          </interactionConstraint>
+                        </guard>
+                        <operandOccurrenceSpecifications>
+                          <operandOccurrenceSpecificationMoniker
+                            Id="a755b29d-e18d-4d00-a1c4-2ba4c994c6da"
+                            LastKnownName="OperandOccurrenceSpecification11"
+                            LastKnownLocation="smallworld.uml" />
+                          <operandOccurrenceSpecificationMoniker
+                            Id="4fff782b-0537-4608-afb3-72412b4e5487"
+                            LastKnownName="OperandOccurrenceSpecification12"
+                            LastKnownLocation="smallworld.uml" />
+                          <operandOccurrenceSpecificationMoniker
+                            Id="2ce91a18-ef19-4715-92e5-805050ea1535"
+                            LastKnownName="OperandOccurrenceSpecification13"
+                            LastKnownLocation="smallworld.uml" />
+                          <operandOccurrenceSpecificationMoniker
+                            Id="fda54d97-7959-4878-9c99-3c1234434bf0"
+                            LastKnownName="OperandOccurrenceSpecification14"
+                            LastKnownLocation="smallworld.uml" />
+                          <operandOccurrenceSpecificationMoniker
+                            Id="04ea5989-45a0-46ef-850b-82912d077917"
+                            LastKnownName="OperandOccurrenceSpecification15"
+                            LastKnownLocation="smallworld.uml" />
+                          <operandOccurrenceSpecificationMoniker
+                            Id="d8c97c7f-286b-48c9-8aaf-c4c5c4d4e600"
+                            LastKnownName="OperandOccurrenceSpecification16"
+                            LastKnownLocation="smallworld.uml" />
+                          <operandOccurrenceSpecificationMoniker
+                            Id="afb3b289-1c65-450a-a9c3-34e5c0741b49"
+                            LastKnownName="OperandOccurrenceSpecification17"
+                            LastKnownLocation="smallworld.uml" />
+                          <operandOccurrenceSpecificationMoniker
+                            Id="07300300-b793-4353-8941-c36ebed5764e"
+                            LastKnownName="OperandOccurrenceSpecification18"
+                            LastKnownLocation="smallworld.uml" />
+                        </operandOccurrenceSpecifications>
+                      </interactionOperand>
+                    </operands>
+                  </combinedFragment>
+                </fragments>
+                <guard>
+                  <interactionConstraint
+                    Id="fed3066c-690b-44ec-b43e-743ed4311c4a">
+                    <maxInt>
+                      <literalString
+                        Id="6db02fe7-c373-49d5-8eae-0460c299f7ed"
+                        name="LiteralString1"
+                        value=", un joueur a plus d'unité" />
+                    </maxInt>
+                    <minInt>
+                      <literalString
+                        Id="08292921-a4e4-47db-b9a1-665ad6daaadd"
+                        name="LiteralString2"
+                        value="nbTourMax" />
+                    </minInt>
+                  </interactionConstraint>
+                </guard>
+                <operandOccurrenceSpecifications>
+                  <operandOccurrenceSpecificationMoniker
+                    Id="b1849d4e-9274-47b5-b424-008342af264c"
+                    LastKnownName="OperandOccurrenceSpecification3"
+                    LastKnownLocation="smallworld.uml" />
+                  <operandOccurrenceSpecificationMoniker
+                    Id="1e5a479c-02ab-4270-a33d-9f4e5ddb89d1"
+                    LastKnownName="OperandOccurrenceSpecification4"
+                    LastKnownLocation="smallworld.uml" />
+                  <operandOccurrenceSpecificationMoniker
+                    Id="0673f36e-7832-4852-8704-010dcc1bfda4"
+                    LastKnownName="OperandOccurrenceSpecification5"
+                    LastKnownLocation="smallworld.uml" />
+                  <operandOccurrenceSpecificationMoniker
+                    Id="932b4bce-aed9-4ea4-a428-ed9afc89d269"
+                    LastKnownName="OperandOccurrenceSpecification6"
+                    LastKnownLocation="smallworld.uml" />
+                  <operandOccurrenceSpecificationMoniker
+                    Id="51b704b8-3c8c-421a-af64-0824cff79dd7"
+                    LastKnownName="OperandOccurrenceSpecification7"
+                    LastKnownLocation="smallworld.uml" />
+                  <operandOccurrenceSpecificationMoniker
+                    Id="500d51c5-d502-4ec0-a9ed-2c25e97baa40"
+                    LastKnownName="OperandOccurrenceSpecification8"
+                    LastKnownLocation="smallworld.uml" />
+                  <operandOccurrenceSpecificationMoniker
+                    Id="38e8b40a-c6d3-4951-ba17-e3ea67f80e6c"
+                    LastKnownName="OperandOccurrenceSpecification9"
+                    LastKnownLocation="smallworld.uml" />
+                  <operandOccurrenceSpecificationMoniker
+                    Id="1aab022a-a5ae-488e-ad8f-6cec1f3428a0"
+                    LastKnownName="OperandOccurrenceSpecification10"
+                    LastKnownLocation="smallworld.uml" />
+                </operandOccurrenceSpecifications>
+              </interactionOperand>
+            </operands>
+          </combinedFragment>
+          <operandOccurrenceSpecification
+            Id="38e8b40a-c6d3-4951-ba17-e3ea67f80e6c"
+            name="OperandOccurrenceSpecification9">
+            <covered>
+              <lifelineMoniker
+                Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                LastKnownName="GestionnaireTour"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="51b704b8-3c8c-421a-af64-0824cff79dd7"
+            name="OperandOccurrenceSpecification7">
+            <covered>
+              <lifelineMoniker
+                Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                LastKnownName="Game"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="0673f36e-7832-4852-8704-010dcc1bfda4"
+            name="OperandOccurrenceSpecification5">
+            <covered>
+              <lifelineMoniker
+                Id="61d8383b-335b-4a13-8b7f-d7dc64b24dbc"
+                LastKnownName="GUI"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="b1849d4e-9274-47b5-b424-008342af264c"
+            name="OperandOccurrenceSpecification3">
+            <covered>
+              <lifelineMoniker
+                Id="4997861f-8dac-43a2-abd4-dbf01f14ef0e"
+                LastKnownName="Player"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="afb3b289-1c65-450a-a9c3-34e5c0741b49"
+            name="OperandOccurrenceSpecification17">
+            <covered>
+              <lifelineMoniker
+                Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                LastKnownName="GestionnaireTour"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="04ea5989-45a0-46ef-850b-82912d077917"
+            name="OperandOccurrenceSpecification15">
+            <covered>
+              <lifelineMoniker
+                Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                LastKnownName="Game"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="2ce91a18-ef19-4715-92e5-805050ea1535"
+            name="OperandOccurrenceSpecification13">
+            <covered>
+              <lifelineMoniker
+                Id="4997861f-8dac-43a2-abd4-dbf01f14ef0e"
+                LastKnownName="Player"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="a755b29d-e18d-4d00-a1c4-2ba4c994c6da"
+            name="OperandOccurrenceSpecification11">
+            <covered>
+              <lifelineMoniker
+                Id="61d8383b-335b-4a13-8b7f-d7dc64b24dbc"
+                LastKnownName="GUI"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="93c9bc9e-1173-4bbd-a630-fa55291cc446"
+            name="OperandOccurrenceSpecification25">
+            <covered>
+              <lifelineMoniker
+                Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                LastKnownName="GestionnaireTour"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="f07d1c60-52c9-4156-b7f5-d286ed3dd520"
+            name="OperandOccurrenceSpecification23">
+            <covered>
+              <lifelineMoniker
+                Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                LastKnownName="Game"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="bc1805b5-e7f3-43b7-a0b5-20f352eb5294"
+            name="OperandOccurrenceSpecification21">
+            <covered>
+              <lifelineMoniker
+                Id="4997861f-8dac-43a2-abd4-dbf01f14ef0e"
+                LastKnownName="Player"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="f4ed38d7-ad92-4efa-b15e-249b500c8f56"
+            name="OperandOccurrenceSpecification19">
+            <covered>
+              <lifelineMoniker
+                Id="61d8383b-335b-4a13-8b7f-d7dc64b24dbc"
+                LastKnownName="GUI"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <interactionUse
+            Id="ff6d32ae-687c-469e-a567-53ac78aa5042"
+            name="deplacerUnite">
+            <coveredLifelines>
+              <lifelineMoniker
+                Id="61d8383b-335b-4a13-8b7f-d7dc64b24dbc"
+                LastKnownName="GUI"
+                LastKnownLocation="smallworld.uml" />
+              <lifelineMoniker
+                Id="4997861f-8dac-43a2-abd4-dbf01f14ef0e"
+                LastKnownName="Player"
+                LastKnownLocation="smallworld.uml" />
+              <lifelineMoniker
+                Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                LastKnownName="Game"
+                LastKnownLocation="smallworld.uml" />
+              <lifelineMoniker
+                Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                LastKnownName="GestionnaireTour"
+                LastKnownLocation="smallworld.uml" />
+            </coveredLifelines>
+            <interactionUseOccurrenceSpecifications>
+              <interactionUseOccurrenceSpecificationMoniker
+                Id="92c4cb7d-1ee1-40f1-b37c-12434266d208"
+                LastKnownName="InteractionUseOccurrenceSpecification5"
+                LastKnownLocation="smallworld.uml" />
+              <interactionUseOccurrenceSpecificationMoniker
+                Id="5e068473-4cb4-4d31-80e4-806e9872adf0"
+                LastKnownName="InteractionUseOccurrenceSpecification6"
+                LastKnownLocation="smallworld.uml" />
+              <interactionUseOccurrenceSpecificationMoniker
+                Id="87e5145b-efca-4919-897e-4b4482c57801"
+                LastKnownName="InteractionUseOccurrenceSpecification7"
+                LastKnownLocation="smallworld.uml" />
+              <interactionUseOccurrenceSpecificationMoniker
+                Id="25d1d080-1f31-42db-a049-f9420453390a"
+                LastKnownName="InteractionUseOccurrenceSpecification8"
+                LastKnownLocation="smallworld.uml" />
+            </interactionUseOccurrenceSpecifications>
+          </interactionUse>
+          <interactionUseOccurrenceSpecification
+            Id="87e5145b-efca-4919-897e-4b4482c57801"
+            name="InteractionUseOccurrenceSpecification7">
+            <covered>
+              <lifelineMoniker
+                Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                LastKnownName="Game"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
+          <interactionUseOccurrenceSpecification
+            Id="92c4cb7d-1ee1-40f1-b37c-12434266d208"
+            name="InteractionUseOccurrenceSpecification5">
+            <covered>
+              <lifelineMoniker
+                Id="61d8383b-335b-4a13-8b7f-d7dc64b24dbc"
+                LastKnownName="GUI"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
+          <interactionUseOccurrenceSpecification
+            Id="5e068473-4cb4-4d31-80e4-806e9872adf0"
+            name="InteractionUseOccurrenceSpecification6">
+            <covered>
+              <lifelineMoniker
+                Id="4997861f-8dac-43a2-abd4-dbf01f14ef0e"
+                LastKnownName="Player"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
+          <interactionUseOccurrenceSpecification
+            Id="25d1d080-1f31-42db-a049-f9420453390a"
+            name="InteractionUseOccurrenceSpecification8">
+            <covered>
+              <lifelineMoniker
+                Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                LastKnownName="GestionnaireTour"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </interactionUseOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="a600d08e-e817-4545-9988-5c0eef063097"
+            name="OperandOccurrenceSpecification20">
+            <covered>
+              <lifelineMoniker
+                Id="61d8383b-335b-4a13-8b7f-d7dc64b24dbc"
+                LastKnownName="GUI"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="308171ca-b988-4db1-a878-b43a588a6b25"
+            name="OperandOccurrenceSpecification22">
+            <covered>
+              <lifelineMoniker
+                Id="4997861f-8dac-43a2-abd4-dbf01f14ef0e"
+                LastKnownName="Player"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="b5d9a8d5-a28a-4dae-b038-c9e28e8c3551"
+            name="OperandOccurrenceSpecification24">
+            <covered>
+              <lifelineMoniker
+                Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                LastKnownName="Game"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="9004631c-364b-4b08-9332-46bb35f709c0"
+            name="OperandOccurrenceSpecification26">
+            <covered>
+              <lifelineMoniker
+                Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                LastKnownName="GestionnaireTour"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="fda54d97-7959-4878-9c99-3c1234434bf0"
+            name="OperandOccurrenceSpecification14">
+            <covered>
+              <lifelineMoniker
+                Id="4997861f-8dac-43a2-abd4-dbf01f14ef0e"
+                LastKnownName="Player"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="d8c97c7f-286b-48c9-8aaf-c4c5c4d4e600"
+            name="OperandOccurrenceSpecification16">
+            <covered>
+              <lifelineMoniker
+                Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                LastKnownName="Game"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="07300300-b793-4353-8941-c36ebed5764e"
+            name="OperandOccurrenceSpecification18">
+            <covered>
+              <lifelineMoniker
+                Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                LastKnownName="GestionnaireTour"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="4fff782b-0537-4608-afb3-72412b4e5487"
+            name="OperandOccurrenceSpecification12">
+            <covered>
+              <lifelineMoniker
+                Id="61d8383b-335b-4a13-8b7f-d7dc64b24dbc"
+                LastKnownName="GUI"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="1e5a479c-02ab-4270-a33d-9f4e5ddb89d1"
+            name="OperandOccurrenceSpecification4">
+            <covered>
+              <lifelineMoniker
+                Id="4997861f-8dac-43a2-abd4-dbf01f14ef0e"
+                LastKnownName="Player"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="500d51c5-d502-4ec0-a9ed-2c25e97baa40"
+            name="OperandOccurrenceSpecification8">
+            <covered>
+              <lifelineMoniker
+                Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+                LastKnownName="Game"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="1aab022a-a5ae-488e-ad8f-6cec1f3428a0"
+            name="OperandOccurrenceSpecification10">
+            <covered>
+              <lifelineMoniker
+                Id="a5446013-004f-426d-a1cf-0e78bc344194"
+                LastKnownName="GestionnaireTour"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="932b4bce-aed9-4ea4-a428-ed9afc89d269"
+            name="OperandOccurrenceSpecification6">
+            <covered>
+              <lifelineMoniker
+                Id="61d8383b-335b-4a13-8b7f-d7dc64b24dbc"
+                LastKnownName="GUI"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+        </fragments>
+        <lifelines>
+          <lifeline
+            Id="61d8383b-335b-4a13-8b7f-d7dc64b24dbc"
+            name="GUI"
+            isActor="false"
+            lifelineDisplayName="GUI">
+            <topLevelOccurrences>
+              <operandOccurrenceSpecificationMoniker
+                Id="0673f36e-7832-4852-8704-010dcc1bfda4"
+                LastKnownName="OperandOccurrenceSpecification5"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="a755b29d-e18d-4d00-a1c4-2ba4c994c6da"
+                LastKnownName="OperandOccurrenceSpecification11"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="f4ed38d7-ad92-4efa-b15e-249b500c8f56"
+                LastKnownName="OperandOccurrenceSpecification19"
+                LastKnownLocation="smallworld.uml" />
+              <interactionUseOccurrenceSpecificationMoniker
+                Id="92c4cb7d-1ee1-40f1-b37c-12434266d208"
+                LastKnownName="InteractionUseOccurrenceSpecification5"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="a600d08e-e817-4545-9988-5c0eef063097"
+                LastKnownName="OperandOccurrenceSpecification20"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="4fff782b-0537-4608-afb3-72412b4e5487"
+                LastKnownName="OperandOccurrenceSpecification12"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="932b4bce-aed9-4ea4-a428-ed9afc89d269"
+                LastKnownName="OperandOccurrenceSpecification6"
+                LastKnownLocation="smallworld.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="3ff609cf-f06a-4503-b53c-f60b26619281"
+            name="Game"
+            isActor="false"
+            lifelineDisplayName="Game">
+            <topLevelOccurrences>
+              <interactionUseOccurrenceSpecificationMoniker
+                Id="b286cc86-e81e-4aa9-8bac-eb8bf974fb8a"
+                LastKnownName="InteractionUseOccurrenceSpecification1"
+                LastKnownLocation="smallworld.uml" />
+              <messageOccurrenceSpecificationMoniker
+                Id="1390284e-e9f3-45ac-8c97-b9d065f10c92"
+                LastKnownName="MessageOccurrenceSpecification1"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="51b704b8-3c8c-421a-af64-0824cff79dd7"
+                LastKnownName="OperandOccurrenceSpecification7"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="04ea5989-45a0-46ef-850b-82912d077917"
+                LastKnownName="OperandOccurrenceSpecification15"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="f07d1c60-52c9-4156-b7f5-d286ed3dd520"
+                LastKnownName="OperandOccurrenceSpecification23"
+                LastKnownLocation="smallworld.uml" />
+              <interactionUseOccurrenceSpecificationMoniker
+                Id="87e5145b-efca-4919-897e-4b4482c57801"
+                LastKnownName="InteractionUseOccurrenceSpecification7"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="b5d9a8d5-a28a-4dae-b038-c9e28e8c3551"
+                LastKnownName="OperandOccurrenceSpecification24"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="d8c97c7f-286b-48c9-8aaf-c4c5c4d4e600"
+                LastKnownName="OperandOccurrenceSpecification16"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="500d51c5-d502-4ec0-a9ed-2c25e97baa40"
+                LastKnownName="OperandOccurrenceSpecification8"
+                LastKnownLocation="smallworld.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="a5446013-004f-426d-a1cf-0e78bc344194"
+            name="GestionnaireTour"
+            isActor="false"
+            lifelineDisplayName="GestionnaireTour">
+            <topLevelOccurrences>
+              <interactionUseOccurrenceSpecificationMoniker
+                Id="286d97cf-d26d-441b-84d6-b010862849a9"
+                LastKnownName="InteractionUseOccurrenceSpecification2"
+                LastKnownLocation="smallworld.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="66829574-5de8-4a52-8a4a-82951c1764b4"
+                LastKnownName="ExecutionOccurrenceSpecification1"
+                LastKnownLocation="smallworld.uml" />
+              <executionOccurrenceSpecificationMoniker
+                Id="4429e182-840e-4614-97ff-fa1bc8361314"
+                LastKnownName="ExecutionOccurrenceSpecification2"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="38e8b40a-c6d3-4951-ba17-e3ea67f80e6c"
+                LastKnownName="OperandOccurrenceSpecification9"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="afb3b289-1c65-450a-a9c3-34e5c0741b49"
+                LastKnownName="OperandOccurrenceSpecification17"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="93c9bc9e-1173-4bbd-a630-fa55291cc446"
+                LastKnownName="OperandOccurrenceSpecification25"
+                LastKnownLocation="smallworld.uml" />
+              <interactionUseOccurrenceSpecificationMoniker
+                Id="25d1d080-1f31-42db-a049-f9420453390a"
+                LastKnownName="InteractionUseOccurrenceSpecification8"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="9004631c-364b-4b08-9332-46bb35f709c0"
+                LastKnownName="OperandOccurrenceSpecification26"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="07300300-b793-4353-8941-c36ebed5764e"
+                LastKnownName="OperandOccurrenceSpecification18"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="1aab022a-a5ae-488e-ad8f-6cec1f3428a0"
+                LastKnownName="OperandOccurrenceSpecification10"
+                LastKnownLocation="smallworld.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+          <lifeline
+            Id="4997861f-8dac-43a2-abd4-dbf01f14ef0e"
+            name="Player"
+            isActor="false"
+            lifelineDisplayName="Player">
+            <topLevelOccurrences>
+              <operandOccurrenceSpecificationMoniker
+                Id="b1849d4e-9274-47b5-b424-008342af264c"
+                LastKnownName="OperandOccurrenceSpecification3"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="2ce91a18-ef19-4715-92e5-805050ea1535"
+                LastKnownName="OperandOccurrenceSpecification13"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="bc1805b5-e7f3-43b7-a0b5-20f352eb5294"
+                LastKnownName="OperandOccurrenceSpecification21"
+                LastKnownLocation="smallworld.uml" />
+              <interactionUseOccurrenceSpecificationMoniker
+                Id="5e068473-4cb4-4d31-80e4-806e9872adf0"
+                LastKnownName="InteractionUseOccurrenceSpecification6"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="308171ca-b988-4db1-a878-b43a588a6b25"
+                LastKnownName="OperandOccurrenceSpecification22"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="fda54d97-7959-4878-9c99-3c1234434bf0"
+                LastKnownName="OperandOccurrenceSpecification14"
+                LastKnownLocation="smallworld.uml" />
+              <operandOccurrenceSpecificationMoniker
+                Id="1e5a479c-02ab-4270-a33d-9f4e5ddb89d1"
+                LastKnownName="OperandOccurrenceSpecification4"
+                LastKnownLocation="smallworld.uml" />
+            </topLevelOccurrences>
+          </lifeline>
+        </lifelines>
+        <messages>
+          <message
+            Id="317eeeae-998f-4134-98dc-c6b96969c9ea"
+            name="lauch()"
+            messageKind="Complete"
+            messageSort="AsynchCall"
+            createSelfMessage="false">
+            <sendEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="1390284e-e9f3-45ac-8c97-b9d065f10c92"
+                LastKnownName="MessageOccurrenceSpecification1"
+                LastKnownLocation="smallworld.uml" />
+            </sendEvent>
+            <receiveEvent>
+              <messageOccurrenceSpecificationMoniker
+                Id="e0348fee-ca6a-4eda-ade6-641d7c898c42"
+                LastKnownName="MessageOccurrenceSpecification2"
+                LastKnownLocation="smallworld.uml" />
+            </receiveEvent>
+          </message>
+        </messages>
+      </interaction>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="7ac2dd7c-c773-4d34-8594-4cd338ee24bf"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <executionEvent
+        Id="b92b4164-0735-4895-a4d0-172ccee6be18"
+        name="ExecutionEvent" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <activity
+        Id="c467e1ef-f7fb-4059-aed2-205a8aa674b7"
+        name="déroulementJeu2"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false"
+        isReentrant="false"
+        isReadOnly="false"
+        isSingleExecution="false">
+        <nodes>
+          <initialNode
+            Id="f20065a4-8f95-47be-a418-f25a4137af43"
+            name="Initial1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="f22f1895-55d8-4fa4-acc5-323fab0bc796"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="4c9f0de9-a0d0-4127-92f5-4aa7eb66097c"
+                  LastKnownName="Lancement de la partie"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction
+            Id="4c9f0de9-a0d0-4127-92f5-4aa7eb66097c"
+            name="Lancement de la partie"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="79b09307-6e4c-4021-aa36-f9b2c811f9ca"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="f3f8e120-11c9-415b-ad5b-f0dd8957d81b"
+                  LastKnownName="Début du tour"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="2360f6fa-7923-4975-8da5-9913f3c35cdd"
+            name="Déroulement du tour du joueur 1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="7d285962-45bb-4ace-ad82-d47ca70163c9"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="26569eb7-e90a-42c8-a399-e802960e459f"
+                  LastKnownName="Decision1"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="27b5f0c3-c756-40ca-a972-8da96bb4eea8"
+            name="Déroulement du tour du joueur 2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="600b9e17-2a23-4518-98c7-a329c5d8a82a"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="14e7c620-c5dc-4c21-9e7d-06f63091d776"
+                  LastKnownName="Fin du tour : Calcul des points du tour, Incrément du nombre de tour"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="6dc7723c-1c45-464f-9278-29a726080bf0"
+            name="Fin du jeu"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="569f3595-a425-4d91-9428-36a8858c1671"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="0c2ea323-4077-49ce-9417-f0863a54aa91"
+                  LastKnownName="Decision3"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="26569eb7-e90a-42c8-a399-e802960e459f"
+            name="Decision1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="28b8cfb9-3e93-41df-a20d-5b289e9dfd64"
+                guard="NbUnités J1 ou J2 &lt; 0"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="6dc7723c-1c45-464f-9278-29a726080bf0"
+                  LastKnownName="Fin du jeu"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="5e63a415-fc8c-4881-9c3c-b5fe006fecca"
+                guard="else"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="cdb74140-a023-4c45-8caa-546f18d10d27"
+                  LastKnownName="Changement de joueur"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <decisionNode
+            Id="0fc36eeb-1fc4-4f65-bb44-f5c193cf0519"
+            name="Decision2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="392d5dd7-44f6-404f-acd3-e3ce764e022c"
+                guard="NbUnités J1 ou J2 &lt; 0"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="6dc7723c-1c45-464f-9278-29a726080bf0"
+                  LastKnownName="Fin du jeu"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="be854eb8-83f6-4e0e-9e17-2d9f2319090f"
+                guard="else"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="f3f8e120-11c9-415b-ad5b-f0dd8957d81b"
+                  LastKnownName="Début du tour"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="59818dd5-8d5a-429f-a9b5-0bab3ef7f964"
+                guard="Fin des tours"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="1d52ab9a-09c7-4bac-98ed-208187ac6ac5"
+                  LastKnownName="Calcul des points"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="f3f8e120-11c9-415b-ad5b-f0dd8957d81b"
+            name="Début du tour"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="8a46450e-8df0-4a9a-ab05-f9fa61c091e7"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="2360f6fa-7923-4975-8da5-9913f3c35cdd"
+                  LastKnownName="Déroulement du tour du joueur 1"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="cdb74140-a023-4c45-8caa-546f18d10d27"
+            name="Changement de joueur"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="85987a15-1570-4eb8-9a7d-34799e3a9a89"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="27b5f0c3-c756-40ca-a972-8da96bb4eea8"
+                  LastKnownName="Déroulement du tour du joueur 2"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="14e7c620-c5dc-4c21-9e7d-06f63091d776"
+            name="Fin du tour : Calcul des points du tour, Incrément du nombre de tour"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="4da81645-854c-4c8c-b2bc-b7723c78954e"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="0fc36eeb-1fc4-4f65-bb44-f5c193cf0519"
+                  LastKnownName="Decision2"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="0c2ea323-4077-49ce-9417-f0863a54aa91"
+            name="Decision3"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="5522b3c2-f749-40b5-af7d-b3f799ac16e7"
+                guard="NbUnités J1 &lt; 0"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="bdbe4019-e053-4bca-85b5-1be3225b8d94"
+                  LastKnownName="Victoire du joueur 2"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="b7473a66-2792-4d6a-ae36-ae56589d89d6"
+                guard="NbUnités J2 &lt; 0"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="00e32f0f-0253-4721-a142-3d832b1c5f7d"
+                  LastKnownName="Victoire du joueur 1"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="bdbe4019-e053-4bca-85b5-1be3225b8d94"
+            name="Victoire du joueur 2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="6339da6a-5aeb-45cd-a8d8-e7cf0cbcc462"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="836b0b98-55ce-45ad-a343-636609d964cb"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="00e32f0f-0253-4721-a142-3d832b1c5f7d"
+            name="Victoire du joueur 1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="92a03bea-05f1-43d3-a95c-f8d46f531e56"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="836b0b98-55ce-45ad-a343-636609d964cb"
+                  LastKnownName="ActivityFinal1"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="1d52ab9a-09c7-4bac-98ed-208187ac6ac5"
+            name="Calcul des points"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="8ea1b470-9747-4bb0-8cae-a0988b6d1cad"
+                isLeaf="false">
+                <decisionNodeMoniker
+                  Id="5d6d51d3-c495-421b-9690-0e5088dda716"
+                  LastKnownName="Decision31"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode
+            Id="5d6d51d3-c495-421b-9690-0e5088dda716"
+            name="Decision31"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="21c8e7d8-8f98-451b-b8f5-6f32bba9c588"
+                guard="NbPointJ1 &gt; NBPointJ2"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="29832586-9fb2-4312-9dff-2805bfb8946d"
+                  LastKnownName="Victoire du joueur 21"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="2f132be2-47c4-4eb6-a25b-372d911a3fdb"
+                guard="else"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="a016c1c2-2f2e-4452-a5b1-36882bf7f19f"
+                  LastKnownName="Victoire du joueur 11"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction
+            Id="29832586-9fb2-4312-9dff-2805bfb8946d"
+            name="Victoire du joueur 21"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="37c81b53-ef4b-4316-9d8f-eb3534675b72"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="012edc9e-8770-48f0-84e7-84d8f6343cee"
+                  LastKnownName="ActivityFinal2"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="a016c1c2-2f2e-4452-a5b1-36882bf7f19f"
+            name="Victoire du joueur 11"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="01480c99-e7c0-4bc9-b1b7-e0d5166d74ae"
+                isLeaf="false">
+                <activityFinalNodeMoniker
+                  Id="012edc9e-8770-48f0-84e7-84d8f6343cee"
+                  LastKnownName="ActivityFinal2"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode
+            Id="836b0b98-55ce-45ad-a343-636609d964cb"
+            name="ActivityFinal1"
+            isLeaf="false" />
+          <activityFinalNode
+            Id="012edc9e-8770-48f0-84e7-84d8f6343cee"
+            name="ActivityFinal2"
+            isLeaf="false" />
+        </nodes>
+      </activity>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="c83e375b-a3eb-42cb-960a-5d8edb2f4517"
+        name="Joueur1"
+        isAbstract="false"
+        isLeaf="false">
+        <targetEnds>
+          <association
+            Id="e425c14c-3575-467d-a6be-92796b7e4297"
+            isDerived="false"
+            sourceEndRoleName="Joueur1"
+            targetEndRoleName="Annuler dernier coup"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b58b5bdd-eb4d-4482-8bb5-92de9dcd17fc"
+              LastKnownName="Annuler dernier coup"
+              LastKnownLocation="smallworld.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="8563bdad-e2ef-4e48-ac7f-a1ba1618cd7b"
+                  name="Joueur1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="3383beea-f33c-43fe-bf5c-789320d1b1a6"
+                  name="Annuler dernier coup"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="d89714e1-2b91-4361-b31e-a87945e335cf"
+            isDerived="false"
+            sourceEndRoleName="Joueur1"
+            targetEndRoleName="Déplacer  unité1"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="9105db57-9bae-4ee1-b3cd-65a8914d9887"
+              LastKnownName="Déplacer  unité/attaquer"
+              LastKnownLocation="smallworld.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="e795d8ec-ec78-4799-8325-084111e01060"
+                  name="Joueur1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d6aaa297-6580-41ff-a760-fac29b943066"
+                  name="Déplacer  unité1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="eb276a60-74c0-4c27-9dc7-d26a2ca1d46b"
+            isDerived="false"
+            sourceEndRoleName="Joueur1"
+            targetEndRoleName="Finir le tour"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="90f92186-c7eb-45bd-b64d-43157c8a2908"
+              LastKnownName="Finir le tour"
+              LastKnownLocation="smallworld.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="b4146d58-e286-4521-a32d-597f383a32b4"
+                  name="Joueur1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="65a80b51-2fda-4c67-9e73-c812ce7597b5"
+                  name="Finir le tour"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="d46404ab-0667-474c-9ea7-44d6680da349"
+            isDerived="false"
+            sourceEndRoleName="Joueur1"
+            targetEndRoleName="Sauvegarder"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="cd6ddf9c-7b2e-4ba9-a528-ef2b90185bb5"
+              LastKnownName="Sauvegarder"
+              LastKnownLocation="smallworld.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fdcc93dd-7a4a-4103-b64e-0569e24cc2d0"
+                  name="Joueur1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="2ccc71c2-3c7b-46d5-9c7a-d6945d5a0d0e"
+                  name="Sauvegarder"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+        </targetEnds>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <subsystem
+        Id="6de75cd9-44c7-4160-8515-9cad150c9b12"
+        name="Subsystem1"
+        isAbstract="false"
+        isLeaf="false"
+        isActiveClass="false" />
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="9105db57-9bae-4ee1-b3cd-65a8914d9887"
+        name="Déplacer  unité/attaquer"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="c8229d58-601e-499d-b17c-30275e246b35">
+            <useCaseMoniker
+              Id="4873b980-0bd4-4fae-aa3f-f744d4175fc1"
+              LastKnownName="Choisir unité dans la case"
+              LastKnownLocation="smallworld.uml" />
+          </include>
+          <include
+            Id="d56c1077-5fa7-44f4-aea2-f1d6542bd705">
+            <useCaseMoniker
+              Id="2fc569b8-f306-4356-ae7a-ff3fbcc1727f"
+              LastKnownName="Choisir case arrivée"
+              LastKnownLocation="smallworld.uml" />
+          </include>
+          <include
+            Id="4eef5bf5-f6f8-4539-8f36-dd4e16e793f6">
+            <useCaseMoniker
+              Id="8ef96f5e-c891-4e28-a70a-9275372aeec2"
+              LastKnownName="Choisir case"
+              LastKnownLocation="smallworld.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="6de75cd9-44c7-4160-8515-9cad150c9b12"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="4873b980-0bd4-4fae-aa3f-f744d4175fc1"
+        name="Choisir unité dans la case"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="6de75cd9-44c7-4160-8515-9cad150c9b12"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2fc569b8-f306-4356-ae7a-ff3fbcc1727f"
+        name="Choisir case arrivée"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="6de75cd9-44c7-4160-8515-9cad150c9b12"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="90f92186-c7eb-45bd-b64d-43157c8a2908"
+        name="Finir le tour"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="6de75cd9-44c7-4160-8515-9cad150c9b12"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="b58b5bdd-eb4d-4482-8bb5-92de9dcd17fc"
+        name="Annuler dernier coup"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="6de75cd9-44c7-4160-8515-9cad150c9b12"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="8ef96f5e-c891-4e28-a70a-9275372aeec2"
+        name="Choisir case"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="6de75cd9-44c7-4160-8515-9cad150c9b12"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="cd6ddf9c-7b2e-4ba9-a528-ef2b90185bb5"
+        name="Sauvegarder"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="6de75cd9-44c7-4160-8515-9cad150c9b12"
+            LastKnownName="Subsystem1"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="99fdf5de-d3ab-4405-a7a5-5a0631d4bcf2"
+        name="Joueur 1"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="92ec1dfd-8a2e-4612-92da-31da382d950f"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="c83e375b-a3eb-42cb-960a-5d8edb2f4517"
+              LastKnownName="Joueur1"
+              LastKnownLocation="smallworld.uml" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <actor
+        Id="4fdfb09e-c74b-4f5f-8798-ea13751751bf"
+        name="Joueur 2"
+        isAbstract="false"
+        isLeaf="false">
+        <generalsInternal>
+          <generalization
+            Id="8ffc874e-5cbe-49c2-a72f-bb4303865481"
+            isSubstitutable="false">
+            <actorMoniker
+              Id="c83e375b-a3eb-42cb-960a-5d8edb2f4517"
+              LastKnownName="Joueur1"
+              LastKnownLocation="smallworld.uml" />
+          </generalization>
+        </generalsInternal>
+      </actor>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="53167354-1561-40d7-be8d-01722d86bdee"
+        name="Charger une partie"
+        isAbstract="false"
+        isLeaf="false">
+        <additions>
+          <include
+            Id="92f18174-0cb4-45c8-ad71-f35a63396280">
+            <useCaseMoniker
+              Id="2f5e5270-25db-4620-a970-a063870fb170"
+              LastKnownName="Sélectionner la partie à charger"
+              LastKnownLocation="smallworld.uml" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker
+            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="2f5e5270-25db-4620-a970-a063870fb170"
+        name="Sélectionner la partie à charger"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="dec3be01-1c97-4d24-83ec-921761919441"
+        name="Choisir nombre de tours"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="aa52d326-9ef6-4189-927c-8759a677d0b5"
+        name="Choisir noms"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase
+        Id="e8f0ca16-4499-490c-a5df-6fb042d78598"
+        name="Choisir Peuple"
+        isAbstract="false"
+        isLeaf="false">
+        <subjects>
+          <subsystemMoniker
+            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
+            LastKnownLocation="smallworld.uml" />
+        </subjects>
+      </useCase>
     </packageHasNamedElement>
   </packagedElements>
   <primitiveType
