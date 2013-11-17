@@ -43,6 +43,13 @@
       <SubType>Content</SubType>
       <DependentUpon>deroulementTour.activitydiagram</DependentUpon>
     </Content>
+    <Content Include="deroulementTour2.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="deroulementTour2.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>deroulementTour2.activitydiagram</DependentUpon>
+    </Content>
     <Content Include="déroulementJeu.activitydiagram">
       <SubType>Content</SubType>
     </Content>
