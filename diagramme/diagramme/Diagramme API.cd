@@ -1,5 +1,20 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="Il n'y a qu'une unité par peuple donc pas besoin d'interface peuple.">
+    <Position X="2.552" Y="1.312" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="La disposition de la carte et la position des unités sont contenus dans Map.">
+    <Position X="8.154" Y="9.375" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Toutes les informations nécessaires à la construction du Jeu sont passées directement en arguments de la méthode buildGame.">
+    <Position X="13.779" Y="6.677" Height="0.823" Width="2.231" />
+  </Comment>
+  <Comment CommentText="Game est l'élément central. L'interface utilisateur devra y faire appel.">
+    <Position X="6.039" Y="9.354" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Une fabrique est associé au joueur quand celui-ci choisit son peuple.">
+    <Position X="2.646" Y="6.281" Height="0.75" Width="1.7" />
+  </Comment>
   <Interface Name="diagramme.IDwarfFactory">
     <Position X="6.5" Y="4.25" Width="1.5" />
     <TypeIdentifier>
@@ -122,7 +137,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.ICoordinates">
-    <Position X="8.25" Y="6.25" Width="1.5" />
+    <Position X="8.25" Y="6" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ICoordinates.cs</FileName>
@@ -143,7 +158,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.IMap">
-    <Position X="8.25" Y="7.5" Width="1.5" />
+    <Position X="8.25" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAEAAAAIAAAAAAAAAUAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>IMap.cs</FileName>
@@ -151,6 +166,11 @@
   </Interface>
   <Interface Name="diagramme.IPlayer">
     <Position X="3.5" Y="7.5" Width="1.5" />
+    <AssociationLine Name="factory" Type="diagramme.IUnitFactory">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.1" Y="0.362" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IPlayer.cs</FileName>
@@ -167,7 +187,7 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.ISquare">
-    <Position X="12.5" Y="5.25" Width="1.5" />
+    <Position X="12.5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ISquare.cs</FileName>
