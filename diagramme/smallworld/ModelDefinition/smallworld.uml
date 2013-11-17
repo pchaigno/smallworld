@@ -4164,11 +4164,11 @@
             isLeaf="false">
             <flowNodeTargets>
               <controlFlow
-                Id="dc45a02a-80f7-42a2-a5e9-441af3e804b9"
+                Id="9c9ba52f-3013-49a0-9d43-d6523d619290"
                 isLeaf="false">
                 <opaqueActionMoniker
-                  Id="c1348d86-ca05-40f2-80e4-6d895ced1440"
-                  LastKnownName="Choix nom du joueur"
+                  Id="feb0c866-a497-4da2-9053-70fff9eda28a"
+                  LastKnownName="Sélection du nombre de tour"
                   LastKnownLocation="smallworld.uml" />
               </controlFlow>
             </flowNodeTargets>
@@ -4188,6 +4188,21 @@
                 <decisionNodeMoniker
                   Id="f860a157-b40f-46d6-9340-32f1e4e01bc2"
                   LastKnownName="Decision2"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="feb0c866-a497-4da2-9053-70fff9eda28a"
+            name="Sélection du nombre de tour"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="df1e25bb-ff41-417c-9c9b-cd2273c6c8ec"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="c1348d86-ca05-40f2-80e4-6d895ced1440"
+                  LastKnownName="Choix nom du joueur"
                   LastKnownLocation="smallworld.uml" />
               </controlFlow>
             </flowNodeTargets>

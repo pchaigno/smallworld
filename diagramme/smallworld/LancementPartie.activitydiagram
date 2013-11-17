@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="6b576585-6193-4c79-bb8f-5042709a0ecb" name="LancementPartie" linkedPackageId="2598ccfb-1039-42ec-abd2-fa077796fec0" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="0c84483d-589a-4e15-95cd-ac2f5acb0c43">
-      <profileInstance Id="eb70fa0b-9c92-4047-8a29-72730ab33e31" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="32d62689-1457-482d-80f6-c98988009a72">
-      <profileInstance Id="dc6309c2-f449-4b5c-9fb8-c78ec2b0b2fe" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="6b576585-6193-4c79-bb8f-5042709a0ecb" name="LancementPartie" linkedPackageId="2598ccfb-1039-42ec-abd2-fa077796fec0" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
   <packagedElements>
     <activityRootModelHasActivity>
       <activity Id="21165ec6-a9c9-4942-a197-8bcb144037fb" name="LancementPartie" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
@@ -102,9 +88,9 @@
           <opaqueAction Id="a0fb7b08-c12a-45a1-8495-fedc17718468" name="Sélection de la taille de la carte" isLeaf="false">
             <elementDefinition Id="b1d21c71-9a73-4464-a51b-2f4cb16381c0" />
             <flowNodeTargets>
-              <controlFlow Id="94ecc81f-52f0-4d4b-b38d-2dc63e44f9d1" isLeaf="false">
-                <opaqueActionMoniker Id="775063f2-475f-46ad-b383-022fcada0521" LastKnownName="Choix nom du joueur" />
-                <elementDefinition Id="dc45a02a-80f7-42a2-a5e9-441af3e804b9" />
+              <controlFlow Id="9e6939a2-0e01-418c-8b7b-af7035ba3b21" isLeaf="false">
+                <opaqueActionMoniker Id="39afdeac-03d1-4b0d-9ad7-c150c4620699" LastKnownName="Sélection du nombre de tour" />
+                <elementDefinition Id="9c9ba52f-3013-49a0-9d43-d6523d619290" />
               </controlFlow>
             </flowNodeTargets>
           </opaqueAction>
@@ -120,11 +106,34 @@
               </controlFlow>
             </flowNodeTargets>
           </opaqueAction>
+          <opaqueAction Id="39afdeac-03d1-4b0d-9ad7-c150c4620699" name="Sélection du nombre de tour" isLeaf="false">
+            <elementDefinition Id="feb0c866-a497-4da2-9053-70fff9eda28a" />
+            <flowNodeTargets>
+              <controlFlow Id="0df6f526-d335-4e1a-87ee-abde8147f03e" isLeaf="false">
+                <opaqueActionMoniker Id="775063f2-475f-46ad-b383-022fcada0521" LastKnownName="Choix nom du joueur" />
+                <elementDefinition Id="df1e25bb-ff41-417c-9c9b-cd2273c6c8ec" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
         </nodes>
       </activity>
     </activityRootModelHasActivity>
   </packagedElements>
   <package Id="2598ccfb-1039-42ec-abd2-fa077796fec0" name="smallworld">
     <elementDefinition Id="43f692c9-e08b-43ba-99a7-2d3912a13b0b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="0c84483d-589a-4e15-95cd-ac2f5acb0c43">
+        <profileInstance Id="eb70fa0b-9c92-4047-8a29-72730ab33e31" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="32d62689-1457-482d-80f6-c98988009a72">
+        <profileInstance Id="dc6309c2-f449-4b5c-9fb8-c78ec2b0b2fe" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </activityRootModel>
