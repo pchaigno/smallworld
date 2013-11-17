@@ -64,6 +64,13 @@
       <SubType>Content</SubType>
       <DependentUpon>deroulementTour.usecasediagram</DependentUpon>
     </Content>
+    <Content Include="etat.activitydiagram">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="etat.activitydiagram.layout">
+      <SubType>Content</SubType>
+      <DependentUpon>etat.activitydiagram</DependentUpon>
+    </Content>
     <Content Include="lancementPartie.usecasediagram">
       <SubType>Content</SubType>
     </Content>
