@@ -224,7 +224,7 @@
             Id="bddb7bdc-12db-4f84-a436-d72aa0084294">
             <useCaseMoniker
               Id="aa52d326-9ef6-4189-927c-8759a677d0b5"
-              LastKnownName="Choisir noms"
+              LastKnownName="Choisir nom"
               LastKnownLocation="smallworld.uml" />
           </include>
         </additions>
@@ -6480,14 +6480,14 @@
             Id="d56c1077-5fa7-44f4-aea2-f1d6542bd705">
             <useCaseMoniker
               Id="2fc569b8-f306-4356-ae7a-ff3fbcc1727f"
-              LastKnownName="Choisir case arrivée"
+              LastKnownName="Choisir case  d'arrivée"
               LastKnownLocation="smallworld.uml" />
           </include>
           <include
             Id="4eef5bf5-f6f8-4539-8f36-dd4e16e793f6">
             <useCaseMoniker
               Id="8ef96f5e-c891-4e28-a70a-9275372aeec2"
-              LastKnownName="Choisir case"
+              LastKnownName="Choisir case de départ"
               LastKnownLocation="smallworld.uml" />
           </include>
         </additions>
@@ -6516,7 +6516,7 @@
     <packageHasNamedElement>
       <useCase
         Id="2fc569b8-f306-4356-ae7a-ff3fbcc1727f"
-        name="Choisir case arrivée"
+        name="Choisir case  d'arrivée"
         isAbstract="false"
         isLeaf="false">
         <subjects>
@@ -6558,7 +6558,7 @@
     <packageHasNamedElement>
       <useCase
         Id="8ef96f5e-c891-4e28-a70a-9275372aeec2"
-        name="Choisir case"
+        name="Choisir case de départ"
         isAbstract="false"
         isLeaf="false">
         <subjects>
@@ -6670,7 +6670,7 @@
     <packageHasNamedElement>
       <useCase
         Id="aa52d326-9ef6-4189-927c-8759a677d0b5"
-        name="Choisir noms"
+        name="Choisir nom"
         isAbstract="false"
         isLeaf="false">
         <subjects>

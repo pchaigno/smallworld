@@ -57,34 +57,27 @@
       <SubType>Content</SubType>
       <DependentUpon>déroulementJeu.activitydiagram</DependentUpon>
     </Content>
-    <Content Include="déroulementJeu2.activitydiagram">
+    <Content Include="deroulementTour.usecasediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="déroulementJeu2.activitydiagram.layout">
+    <Content Include="deroulementTour.usecasediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>déroulementJeu2.activitydiagram</DependentUpon>
+      <DependentUpon>deroulementTour.usecasediagram</DependentUpon>
     </Content>
-    <Content Include="Jouer.usecasediagram">
-      <SubType>Content</SubType>
-    </Content>
-    <Content Include="Jouer.usecasediagram.layout">
-      <SubType>Content</SubType>
-      <DependentUpon>Jouer.usecasediagram</DependentUpon>
-    </Content>
-    <Content Include="joueur.usecasediagram">
+    <Content Include="lancementPartie.usecasediagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="joueur.usecasediagram.layout">
+    <Content Include="lancementPartie.usecasediagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>joueur.usecasediagram</DependentUpon>
+      <DependentUpon>lancementPartie.usecasediagram</DependentUpon>
     </Content>
     <Folder Include="ModelDefinition\" />
-    <Content Include="LancementPartie.activitydiagram">
+    <Content Include="lancementPartie.activitydiagram">
       <SubType>Content</SubType>
     </Content>
-    <Content Include="LancementPartie.activitydiagram.layout">
+    <Content Include="lancementPartie.activitydiagram.layout">
       <SubType>Content</SubType>
-      <DependentUpon>LancementPartie.activitydiagram</DependentUpon>
+      <DependentUpon>lancementPartie.activitydiagram</DependentUpon>
     </Content>
     <Content Include="ModelDefinition\smallworld.uml">
       <SubType>Content</SubType>

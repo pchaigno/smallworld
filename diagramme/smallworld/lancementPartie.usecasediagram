@@ -76,7 +76,7 @@
             <elementDefinition Id="fb8909c5-c259-43a9-8a88-cdec954d3970" />
           </include>
           <include Id="6a3d85a4-4f05-4c40-8496-0464d2ccb232">
-            <useCaseMoniker Id="a420208b-6aff-442c-b33b-6a0396982bdf" LastKnownName="Choisir noms" />
+            <useCaseMoniker Id="a420208b-6aff-442c-b33b-6a0396982bdf" LastKnownName="Choisir nom" />
             <elementDefinition Id="bddb7bdc-12db-4f84-a436-d72aa0084294" />
           </include>
         </additions>
@@ -124,7 +124,7 @@
       </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
-      <useCase Id="a420208b-6aff-442c-b33b-6a0396982bdf" name="Choisir noms" isAbstract="false" isLeaf="false">
+      <useCase Id="a420208b-6aff-442c-b33b-6a0396982bdf" name="Choisir nom" isAbstract="false" isLeaf="false">
         <elementDefinition Id="aa52d326-9ef6-4189-927c-8759a677d0b5" />
         <subjects>
           <subsystemMoniker Id="c285374a-5430-4ac6-ba5b-c6811ab357b1" />

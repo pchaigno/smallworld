@@ -30,7 +30,7 @@
         <actorShapeMoniker Id="86684d70-5ccf-483c-acf7-37fdd99c5504" />
       </nodes>
     </useCaseGeneralizationConnector>
-    <SubsystemShape Id="1bb548bc-7d6e-47ca-b0ae-0d2075527d8a" absoluteBounds="2.375, 1, 4.875, 5.625" customColor="White">
+    <SubsystemShape Id="1bb548bc-7d6e-47ca-b0ae-0d2075527d8a" absoluteBounds="2.375, 1, 4.875, 4.625" customColor="White">
       <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />
       <nestedChildShapes>
         <useCaseShape Id="d50dfa48-b70b-43b4-bb41-17cb3524db10" absoluteBounds="3.25, 2.75, 1, 0.75" customColor="238, 237, 131" heightOffset="0">
@@ -42,7 +42,7 @@
           <relativeChildShapes />
         </useCaseShape>
         <useCaseShape Id="9fb47b0a-888e-44d7-a90e-734cc9ccb44d" absoluteBounds="5.5, 3.625, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
-          <useCaseMoniker Id="90603377-4aa5-449b-8edb-63e8af3e5e88" LastKnownName="Choisir case arrivée" />
+          <useCaseMoniker Id="90603377-4aa5-449b-8edb-63e8af3e5e88" LastKnownName="Choisir case  d'arrivée" />
           <relativeChildShapes />
         </useCaseShape>
         <useCaseShape Id="90211642-bb77-4da0-892c-c810e68fd245" absoluteBounds="3.25, 3.875, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
@@ -54,7 +54,7 @@
           <relativeChildShapes />
         </useCaseShape>
         <useCaseShape Id="1ee34431-d6f7-47cb-a710-ce3d573a74ce" absoluteBounds="5.5, 2.125, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
-          <useCaseMoniker Id="c20eb480-0e00-4b18-8171-917442d847c8" LastKnownName="Choisir case" />
+          <useCaseMoniker Id="c20eb480-0e00-4b18-8171-917442d847c8" LastKnownName="Choisir case de départ" />
           <relativeChildShapes />
         </useCaseShape>
         <useCaseShape Id="d6d784f6-153f-46cf-910b-5c782458979f" absoluteBounds="3.25, 4.75, 1, 0.5" customColor="238, 237, 131" heightOffset="0">

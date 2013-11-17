@@ -86,11 +86,11 @@
             <elementDefinition Id="c8229d58-601e-499d-b17c-30275e246b35" />
           </include>
           <include Id="510928c7-a9e4-4ca8-bdc9-2b32f20fe6fb">
-            <useCaseMoniker Id="90603377-4aa5-449b-8edb-63e8af3e5e88" LastKnownName="Choisir case arrivée" />
+            <useCaseMoniker Id="90603377-4aa5-449b-8edb-63e8af3e5e88" LastKnownName="Choisir case  d'arrivée" />
             <elementDefinition Id="d56c1077-5fa7-44f4-aea2-f1d6542bd705" />
           </include>
           <include Id="b9483cb9-e958-4c30-b8f2-4fc7f1001a51">
-            <useCaseMoniker Id="c20eb480-0e00-4b18-8171-917442d847c8" LastKnownName="Choisir case" />
+            <useCaseMoniker Id="c20eb480-0e00-4b18-8171-917442d847c8" LastKnownName="Choisir case de départ" />
             <elementDefinition Id="4eef5bf5-f6f8-4539-8f36-dd4e16e793f6" />
           </include>
         </additions>
@@ -108,7 +108,7 @@
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="90603377-4aa5-449b-8edb-63e8af3e5e88" name="Choisir case arrivée" isAbstract="false" isLeaf="false">
+      <useCase Id="90603377-4aa5-449b-8edb-63e8af3e5e88" name="Choisir case  d'arrivée" isAbstract="false" isLeaf="false">
         <elementDefinition Id="2fc569b8-f306-4356-ae7a-ff3fbcc1727f" />
         <subjects>
           <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />
@@ -132,7 +132,7 @@
       </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <useCase Id="c20eb480-0e00-4b18-8171-917442d847c8" name="Choisir case" isAbstract="false" isLeaf="false">
+      <useCase Id="c20eb480-0e00-4b18-8171-917442d847c8" name="Choisir case de départ" isAbstract="false" isLeaf="false">
         <elementDefinition Id="8ef96f5e-c891-4e28-a70a-9275372aeec2" />
         <subjects>
           <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />

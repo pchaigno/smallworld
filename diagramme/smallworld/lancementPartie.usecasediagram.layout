@@ -6,7 +6,7 @@
       <actorMoniker Id="507d984e-b3cf-42b9-b6be-6800f1f7b0b0" LastKnownName="Joueur" />
       <relativeChildShapes />
     </actorShape>
-    <SubsystemShape Id="144f6a0f-53a6-41bf-9219-14c76dca87c1" absoluteBounds="2.5, 0.75, 5.125, 5.75" customColor="White">
+    <SubsystemShape Id="144f6a0f-53a6-41bf-9219-14c76dca87c1" absoluteBounds="2.5, 0.75, 4, 5.25" customColor="White">
       <subsystemMoniker Id="c285374a-5430-4ac6-ba5b-c6811ab357b1" />
       <nestedChildShapes>
         <useCaseShape Id="dd305277-3c97-428f-9787-4a354f8dc8d0" absoluteBounds="3.125, 1.5, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
@@ -21,11 +21,11 @@
           <useCaseMoniker Id="3112d269-12bb-4724-afd8-f7b3a5fe765f" LastKnownName="Choisir type carte" />
           <relativeChildShapes />
         </useCaseShape>
-        <useCaseShape Id="73c527a0-1596-49d2-a43a-83955c2214bf" absoluteBounds="3.375, 5, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
+        <useCaseShape Id="73c527a0-1596-49d2-a43a-83955c2214bf" absoluteBounds="3.125, 5, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
           <useCaseMoniker Id="8c69802c-86eb-440c-970d-8bdee4b78538" LastKnownName="Charger une partie" />
           <relativeChildShapes />
         </useCaseShape>
-        <useCaseShape Id="b0117766-d800-4cea-a644-3274b2970c5c" absoluteBounds="5.5, 4.875, 1, 0.75" customColor="238, 237, 131" heightOffset="0">
+        <useCaseShape Id="b0117766-d800-4cea-a644-3274b2970c5c" absoluteBounds="5.125, 4.875, 1, 0.75" customColor="238, 237, 131" heightOffset="0">
           <useCaseMoniker Id="9d46146d-9382-4cb2-95c1-904fce4ce70a" LastKnownName="Sélectionner la partie à charger" />
           <relativeChildShapes />
         </useCaseShape>
@@ -34,7 +34,7 @@
           <relativeChildShapes />
         </useCaseShape>
         <useCaseShape Id="519d3d19-2cc8-439f-b523-f60115b14463" absoluteBounds="5.125, 2.75, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
-          <useCaseMoniker Id="a420208b-6aff-442c-b33b-6a0396982bdf" LastKnownName="Choisir noms" />
+          <useCaseMoniker Id="a420208b-6aff-442c-b33b-6a0396982bdf" LastKnownName="Choisir nom" />
           <relativeChildShapes />
         </useCaseShape>
         <useCaseShape Id="87be2bef-1c1f-4d81-90a4-58c33d8c0ca1" absoluteBounds="5.125, 3.75, 1, 0.5" customColor="238, 237, 131" heightOffset="0">
@@ -67,11 +67,11 @@
         <useCaseShapeMoniker Id="dd305277-3c97-428f-9787-4a354f8dc8d0" />
       </nodes>
     </useCaseAssociationConnector>
-    <includeConnector edgePoints="[(4.375 : 5.25); (5.5 : 5.25)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«inclure»">
+    <includeConnector edgePoints="[(4.125 : 5.25); (5.125 : 5.25)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black" useCaseStereotype="«inclure»">
       <includeMoniker Id="1148f572-8059-4e34-bb34-e74636082b7f" />
       <relativeChildShapes />
       <moveableDecoratorHostShapes>
-        <moveableDecoratorHostShape manuallySized="true" absoluteBounds="4.8463154768943788, 4.9419965410232543, 0.90861904621124268, 0.14800345897674561" shapeFieldName="NameDecorator" />
+        <moveableDecoratorHostShape manuallySized="true" absoluteBounds="4.5338154768943788, 4.9419965410232543, 0.90861904621124268, 0.14800345897674561" shapeFieldName="NameDecorator" />
       </moveableDecoratorHostShapes>
       <nodes>
         <useCaseShapeMoniker Id="73c527a0-1596-49d2-a43a-83955c2214bf" />
@@ -94,7 +94,7 @@
         <useCaseShapeMoniker Id="519d3d19-2cc8-439f-b523-f60115b14463" />
       </nodes>
     </includeConnector>
-    <useCaseAssociationConnector edgePoints="[(1.25 : 2.85326086956522); (3.63484268856721 : 5.03072593303962)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
+    <useCaseAssociationConnector edgePoints="[(1.25 : 2.875); (3.40139320225002 : 5.02639320225002)]" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="113, 111, 110" sourceMultiplicity="" targetMultiplicity="">
       <associationMoniker Id="b9b50e17-3237-4655-924d-c4f9fb0c068c" />
       <relativeChildShapes />
       <nodes>
