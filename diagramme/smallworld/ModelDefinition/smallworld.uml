@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
   dslVersion="1.0.0.0"
   Id="43f692c9-e08b-43ba-99a7-2d3912a13b0b"
   name="smallworld" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -25,6 +25,16 @@
         <opaqueActionMoniker
           Id="b7b3b0d2-119a-4058-8bf0-fd576b2c7d92"
           LastKnownName="Lancement de la partie"
+          LastKnownLocation="smallworld.uml" />
+      </annotatedElements>
+    </comment>
+    <comment
+      Id="c150ff84-4d12-4f2c-9c4a-6674482fa0f6">
+      <body>Permet de savoir quel joueur joue</body>
+      <annotatedElements>
+        <opaqueActionMoniker
+          Id="4ad7f710-3fd6-4634-8972-7d9eab14e711"
+          LastKnownName="Sélection du joueur 1"
           LastKnownLocation="smallworld.uml" />
       </annotatedElements>
     </comment>
@@ -4217,26 +4227,11 @@
             isLeaf="false">
             <flowNodeTargets>
               <controlFlow
-                Id="04ee1af5-0b35-4664-a83a-e3aab9fbe10f"
+                Id="15e2c7be-a452-4c86-84ae-4af454dadb36"
                 isLeaf="false">
                 <opaqueActionMoniker
-                  Id="1314ad9e-c877-4442-a0a6-4fd4cc19251b"
-                  LastKnownName="Début d'un tour"
-                  LastKnownLocation="smallworld.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="1314ad9e-c877-4442-a0a6-4fd4cc19251b"
-            name="Début d'un tour"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="a6c5d5ce-1a59-497d-96ac-938e7418033d"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="83ffd28f-c269-4fea-a897-977f78297444"
-                  LastKnownName="Déroulement du tour du joueur 1"
+                  Id="4ad7f710-3fd6-4634-8972-7d9eab14e711"
+                  LastKnownName="Sélection du joueur 1"
                   LastKnownLocation="smallworld.uml" />
               </controlFlow>
             </flowNodeTargets>
@@ -4292,21 +4287,21 @@
             isLeaf="false">
             <flowNodeTargets>
               <controlFlow
-                Id="1cefdf68-5cd7-431d-a55b-32cfd1da6f47"
-                guard="else"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="8bd9183d-55b7-408f-8f16-51d6fbda48e5"
-                  LastKnownName="Déroulement du tour du joueur 2"
-                  LastKnownLocation="smallworld.uml" />
-              </controlFlow>
-              <controlFlow
                 Id="bfe2e6da-988d-463f-96d6-2051f00a3fd2"
                 guard="NbUnités J1 ou J2 &lt; 0"
                 isLeaf="false">
                 <opaqueActionMoniker
                   Id="cbed52f4-ccca-4260-aa1a-05d14a79aa47"
                   LastKnownName="Fin du jeu : Affichage du vainqueur"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="98b7293e-eb0e-4a29-be71-423f7d0e2bb3"
+                guard="else"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="224aac55-15d4-4f30-af3d-601d39cbce0d"
+                  LastKnownName="Sélection du joueur 2"
                   LastKnownLocation="smallworld.uml" />
               </controlFlow>
             </flowNodeTargets>
@@ -4326,12 +4321,11 @@
                   LastKnownLocation="smallworld.uml" />
               </controlFlow>
               <controlFlow
-                Id="eb289f20-8cbf-4c98-9a0e-79621fd81979"
-                guard="else"
+                Id="abb9d653-238d-4266-8cab-3dfe6fe0c49d"
                 isLeaf="false">
                 <opaqueActionMoniker
-                  Id="1314ad9e-c877-4442-a0a6-4fd4cc19251b"
-                  LastKnownName="Début d'un tour"
+                  Id="4ad7f710-3fd6-4634-8972-7d9eab14e711"
+                  LastKnownName="Sélection du joueur 1"
                   LastKnownLocation="smallworld.uml" />
               </controlFlow>
             </flowNodeTargets>
@@ -4340,6 +4334,36 @@
             Id="71e78947-7874-4f9c-bfc3-b35dbfef6d73"
             name="ActivityFinal2"
             isLeaf="false" />
+          <opaqueAction
+            Id="4ad7f710-3fd6-4634-8972-7d9eab14e711"
+            name="Sélection du joueur 1"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="b59b9d61-7071-4327-9940-23a0504e1e83"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="83ffd28f-c269-4fea-a897-977f78297444"
+                  LastKnownName="Déroulement du tour du joueur 1"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction
+            Id="224aac55-15d4-4f30-af3d-601d39cbce0d"
+            name="Sélection du joueur 2"
+            isLeaf="false">
+            <flowNodeTargets>
+              <controlFlow
+                Id="f669ffa9-8f1b-4292-aa11-314dfdde2130"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="8bd9183d-55b7-408f-8f16-51d6fbda48e5"
+                  LastKnownName="Déroulement du tour du joueur 2"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
         </nodes>
       </activity>
     </packageHasNamedElement>
