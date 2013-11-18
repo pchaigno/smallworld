@@ -5,11 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface IPlayer
+    public class Lowland : ILowland
     {
-
-        List<IUnit> createUnits(int nbUnits);
-
-        String getName();
     }
 }

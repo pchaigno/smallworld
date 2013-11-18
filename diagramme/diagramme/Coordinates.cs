@@ -5,11 +5,9 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface IPlayer
+    public class Coordinates : ICoordinates
     {
-
-        List<IUnit> createUnits(int nbUnits);
-
-        String getName();
+        private int x;
+        private int y;
     }
 }

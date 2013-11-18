@@ -5,7 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface IMoutain : ISquare
+    public class Forest : IForest
     {
     }
 }

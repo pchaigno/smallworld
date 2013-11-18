@@ -7,9 +7,6 @@ namespace diagramme
 {
     public interface IMap
     {
-        Dictionary<ICoordinates, IUnit> units;
-        Dictionary<ICoordinates, ISquare> squares;
-    
         List<IUnit> getUnits(ICoordinates coordinates);
 
         bool isEnemyPosition(ICoordinates position, IUnit unit);

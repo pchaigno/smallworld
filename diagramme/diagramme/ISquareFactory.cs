@@ -7,10 +7,15 @@ namespace diagramme
 {
     public interface ISquareFactory
     {
-        ISea sea;
-        IDesert desert;
-        IMoutain mountain;
-        ILowland lowland;
-        IForest forest;
+
+        IDesert getDesert();
+
+        ISea getSea();
+
+        IMountain getMountain();
+
+        IForest getForest();
+
+        ILowland getLowland();
     }
 }

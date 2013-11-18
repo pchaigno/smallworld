@@ -5,11 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface IPlayer
+    public interface IMountain : ISquare
     {
-
-        List<IUnit> createUnits(int nbUnits);
-
-        String getName();
     }
 }

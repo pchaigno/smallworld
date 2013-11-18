@@ -7,8 +7,6 @@ namespace diagramme
 {
     public interface IGame
     {
-        IPlayer player1;
-        IPlayer player2;
 
         boolean isDefeated(IPlayer player);
 
