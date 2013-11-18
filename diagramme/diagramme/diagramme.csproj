@@ -54,6 +54,7 @@
     <Compile Include="IMoutain.cs" />
     <Compile Include="INormalGameBuilder.cs" />
     <Compile Include="IPlayer.cs" />
+    <Compile Include="IRound.cs" />
     <Compile Include="ISea.cs" />
     <Compile Include="ISmallGameBuilder.cs" />
     <Compile Include="ISquare.cs" />
@@ -63,6 +64,7 @@
     <Compile Include="IViking.cs" />
     <Compile Include="IVikingFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestConstructor.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Diagramme de classes.cd" />

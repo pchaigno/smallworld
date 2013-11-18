@@ -5,13 +5,7 @@ using System.Text;
 
 namespace diagramme
 {
-    public interface IUnit
+    public class TestConstructor
     {
-
-        int getDefense();
-
-        int getLifePoints();
-
-        int getAttack();
     }
 }

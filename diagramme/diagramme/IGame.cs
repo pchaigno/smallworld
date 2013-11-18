@@ -9,13 +9,13 @@ namespace diagramme
     {
         IPlayer player1;
         IPlayer player2;
-    
-        List<IUnit> getUnits(ICoordinates coordinates);
 
-        void setCurrentUnit(IUnit unit);
+        boolean isDefeated(IPlayer player);
 
-        List<ICoordinates> getAvailableDestinations();
+        boolean isEndOfGame();
 
-        void setDestination(ICoordinates destination);
+        IPlayer getWinner();
+
+        int computePoints();
     }
 }

@@ -4,16 +4,19 @@
     <Position X="2.552" Y="1.312" Height="0.75" Width="1.7" />
   </Comment>
   <Comment CommentText="La disposition de la carte et la position des unités sont contenus dans Map.">
-    <Position X="8.154" Y="9.375" Height="0.75" Width="1.7" />
+    <Position X="8.178" Y="9.267" Height="0.75" Width="1.7" />
   </Comment>
   <Comment CommentText="Toutes les informations nécessaires à la construction du Jeu sont passées directement en arguments de la méthode buildGame.">
-    <Position X="13.779" Y="6.677" Height="0.823" Width="2.231" />
+    <Position X="16.529" Y="6.677" Height="0.823" Width="2.231" />
   </Comment>
   <Comment CommentText="Game est l'élément central. L'interface utilisateur devra y faire appel.">
-    <Position X="6.039" Y="9.354" Height="0.75" Width="1.7" />
+    <Position X="6.051" Y="9.342" Height="0.75" Width="1.7" />
   </Comment>
   <Comment CommentText="Une fabrique est associé au joueur quand celui-ci choisit son peuple.">
     <Position X="2.646" Y="6.281" Height="0.75" Width="1.7" />
+  </Comment>
+  <Comment CommentText="Round contient les méthodes pour s'occuper de la gestion d'un tour.">
+    <Position X="10.296" Y="9.276" Height="0.75" Width="1.7" />
   </Comment>
   <Interface Name="diagramme.IDwarfFactory">
     <Position X="6.5" Y="4.25" Width="1.5" />
@@ -58,28 +61,28 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.IDemoGameBuilder">
-    <Position X="10.25" Y="8.25" Width="1.5" />
+    <Position X="13" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IDemoGameBuilder.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.ISmallGameBuilder">
-    <Position X="13.75" Y="8.25" Width="1.5" />
+    <Position X="16.5" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ISmallGameBuilder.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.INormalGameBuilder">
-    <Position X="12" Y="8.25" Width="1.5" />
+    <Position X="14.75" Y="8.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>INormalGameBuilder.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.ISquareFactory">
-    <Position X="12.5" Y="1.25" Width="1.5" />
+    <Position X="12.5" Y="1.5" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -151,9 +154,9 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.IUnit">
-    <Position X="4.5" Y="1.25" Width="1.5" />
+    <Position X="4.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAgAAAAAAAAAAAAGAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IUnit.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -172,7 +175,7 @@
       </MemberNameLabel>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>EAAAABAAAAAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>IPlayer.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -180,7 +183,7 @@
     </ShowAsAssociation>
   </Interface>
   <Interface Name="diagramme.IGameBuilder">
-    <Position X="12" Y="6.5" Width="1.5" />
+    <Position X="14.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IGameBuilder.cs</FileName>
@@ -196,13 +199,20 @@
   <Interface Name="diagramme.IGame">
     <Position X="6" Y="7.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>wABAAACAAAAAFAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>wAAAAAAABAAAAAAAAACAAAAAAAABAAAAAAAAAIAAAAA=</HashCode>
       <FileName>IGame.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="player1" />
       <Field Name="player2" />
     </ShowAsAssociation>
+  </Interface>
+  <Interface Name="diagramme.IRound">
+    <Position X="10.25" Y="7.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAANAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IRound.cs</FileName>
+    </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>
