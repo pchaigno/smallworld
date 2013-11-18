@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
   dslVersion="1.0.0.0"
   Id="43f692c9-e08b-43ba-99a7-2d3912a13b0b"
   name="smallworld" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -114,45 +114,6 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
-          <association
-            Id="adb66648-4c32-4008-9f2e-e3c3e89ab60a"
-            isDerived="false"
-            sourceEndRoleName="Joueur"
-            targetEndRoleName="Charger une partie"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="53167354-1561-40d7-be8d-01722d86bdee"
-              LastKnownName="Charger une partie"
-              LastKnownLocation="smallworld.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="a128039f-e65a-47b9-aaac-778411b7f4be"
-                  name="Joueur"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="3f9d6c5e-0521-4d02-baad-1b6b1a06ae0d"
-                  name="Charger une partie"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
@@ -189,13 +150,6 @@
             <useCaseMoniker
               Id="0b220bfc-3dfc-40d6-be4d-57e152c87ba2"
               LastKnownName="Créer Joueurs"
-              LastKnownLocation="smallworld.uml" />
-          </include>
-          <include
-            Id="85cd6372-44e9-4e26-9bba-7d29bc85adef">
-            <useCaseMoniker
-              Id="dec3be01-1c97-4d24-83ec-921761919441"
-              LastKnownName="Choisir nombre de tours"
               LastKnownLocation="smallworld.uml" />
           </include>
         </additions>
@@ -3909,11 +3863,11 @@
             isLeaf="false">
             <flowNodeTargets>
               <controlFlow
-                Id="628212dc-f074-438d-b5d0-379c0ee40522"
+                Id="8a614471-c190-4495-a785-8adaee0d2ef0"
                 isLeaf="false">
-                <decisionNodeMoniker
-                  Id="43ad3420-959b-4528-bf2a-f52f6e07cdc2"
-                  LastKnownName="Decision1"
+                <opaqueActionMoniker
+                  Id="b1d21c71-9a73-4464-a51b-2f4cb16381c0"
+                  LastKnownName="Sélection de la taille de la carte"
                   LastKnownLocation="smallworld.uml" />
               </controlFlow>
             </flowNodeTargets>
@@ -3964,27 +3918,12 @@
             </flowNodeTargets>
           </opaqueAction>
           <opaqueAction
-            Id="0eb20ac0-dfea-47be-8caf-9e242154c8df"
-            name="Sélection de la partie"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="e296f64a-ac84-4f52-a342-4ece15a1ef2b"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="de08407f-21cc-4078-aeea-b5226b2ee8c6"
-                  LastKnownName="Lancement de la partie"
-                  LastKnownLocation="smallworld.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
             Id="de08407f-21cc-4078-aeea-b5226b2ee8c6"
             name="Lancement de la partie"
             isLeaf="false">
             <flowNodeTargets>
               <controlFlow
-                Id="8b2cbd4a-a400-4d74-b2ab-56a5668247d3"
+                Id="30affa5a-5326-459d-926c-28f733573337"
                 isLeaf="false">
                 <activityFinalNodeMoniker
                   Id="7ca0ba69-7d99-4607-8976-b126fc5d3eee"
@@ -3993,31 +3932,6 @@
               </controlFlow>
             </flowNodeTargets>
           </opaqueAction>
-          <decisionNode
-            Id="43ad3420-959b-4528-bf2a-f52f6e07cdc2"
-            name="Decision1"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="ff07e73b-6d05-420e-9e93-b352e20b654b"
-                guard="Chargement d'une partie"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="0eb20ac0-dfea-47be-8caf-9e242154c8df"
-                  LastKnownName="Sélection de la partie"
-                  LastKnownLocation="smallworld.uml" />
-              </controlFlow>
-              <controlFlow
-                Id="f73c5796-435b-4c0c-a6b4-450dce40d025"
-                guard="Création d'une nouvelle partie"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="b1d21c71-9a73-4464-a51b-2f4cb16381c0"
-                  LastKnownName="Sélection de la taille de la carte"
-                  LastKnownLocation="smallworld.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </decisionNode>
           <decisionNode
             Id="f860a157-b40f-46d6-9340-32f1e4e01bc2"
             name="Decision2"
@@ -4049,11 +3963,11 @@
             isLeaf="false">
             <flowNodeTargets>
               <controlFlow
-                Id="9c9ba52f-3013-49a0-9d43-d6523d619290"
+                Id="ea811334-d36e-4007-a3dc-4c2a46a3e074"
                 isLeaf="false">
                 <opaqueActionMoniker
-                  Id="feb0c866-a497-4da2-9053-70fff9eda28a"
-                  LastKnownName="Sélection du nombre de tour"
+                  Id="c1348d86-ca05-40f2-80e4-6d895ced1440"
+                  LastKnownName="Choix nom du joueur"
                   LastKnownLocation="smallworld.uml" />
               </controlFlow>
             </flowNodeTargets>
@@ -4073,21 +3987,6 @@
                 <decisionNodeMoniker
                   Id="f860a157-b40f-46d6-9340-32f1e4e01bc2"
                   LastKnownName="Decision2"
-                  LastKnownLocation="smallworld.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
-          <opaqueAction
-            Id="feb0c866-a497-4da2-9053-70fff9eda28a"
-            name="Sélection du nombre de tour"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="df1e25bb-ff41-417c-9c9b-cd2273c6c8ec"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="c1348d86-ca05-40f2-80e4-6d895ced1440"
-                  LastKnownName="Choix nom du joueur"
                   LastKnownLocation="smallworld.uml" />
               </controlFlow>
             </flowNodeTargets>
@@ -4161,7 +4060,7 @@
                 isLeaf="false">
                 <opaqueActionMoniker
                   Id="54695349-1a4e-4e3f-a5a8-85c07019a69a"
-                  LastKnownName="Fin du tour : Calcul des points du tour, Incrément du nombre de tour"
+                  LastKnownName="Fin du tour"
                   LastKnownLocation="smallworld.uml" />
               </controlFlow>
             </flowNodeTargets>
@@ -4272,7 +4171,7 @@
           </opaqueAction>
           <opaqueAction
             Id="54695349-1a4e-4e3f-a5a8-85c07019a69a"
-            name="Fin du tour : Calcul des points du tour, Incrément du nombre de tour"
+            name="Fin du tour"
             isLeaf="false">
             <flowNodeTargets>
               <controlFlow
@@ -4542,21 +4441,21 @@
             isLeaf="false">
             <flowNodeTargets>
               <controlFlow
-                Id="c03d04ed-6a69-4ccb-99f1-4ecd5a925c89"
-                guard="déplacement impossible"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="f6fcf779-972d-4bc5-a0eb-63c113c7e0e0"
-                  LastKnownName="Déselection de l'unité"
-                  LastKnownLocation="smallworld.uml" />
-              </controlFlow>
-              <controlFlow
                 Id="af46df89-5aa6-4e70-a4e4-08a9fd2efc8c"
                 guard="déplacement possible"
                 isLeaf="false">
                 <opaqueActionMoniker
                   Id="e5237322-c677-4f77-82db-752a8da38de1"
                   LastKnownName="Sélection de la case d'arrivée"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
+              <controlFlow
+                Id="1297c68f-9c61-4266-93b0-50f758ea21c5"
+                guard="déplacement interdit"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="2a08c0dd-94c0-4c79-8366-e51c3999e430"
+                  LastKnownName="Sélection de l'unité"
                   LastKnownLocation="smallworld.uml" />
               </controlFlow>
             </flowNodeTargets>
@@ -4586,21 +4485,6 @@
               </controlFlow>
             </flowNodeTargets>
           </decisionNode>
-          <opaqueAction
-            Id="f6fcf779-972d-4bc5-a0eb-63c113c7e0e0"
-            name="Déselection de l'unité"
-            isLeaf="false">
-            <flowNodeTargets>
-              <controlFlow
-                Id="99c6ef42-1eed-4b6d-a581-30fc94f6ac33"
-                isLeaf="false">
-                <opaqueActionMoniker
-                  Id="83241863-5110-4d0e-aae0-f089c818e4e7"
-                  LastKnownName="Tour en cours"
-                  LastKnownLocation="smallworld.uml" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
           <opaqueAction
             Id="d35ac3d3-9374-447f-8a7f-43332168e7df"
             name="Combat de l'unité sélectionnée contre une unité de la case"
@@ -6296,45 +6180,6 @@
         isLeaf="false">
         <targetEnds>
           <association
-            Id="e425c14c-3575-467d-a6be-92796b7e4297"
-            isDerived="false"
-            sourceEndRoleName="Joueur1"
-            targetEndRoleName="Annuler dernier coup"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="b58b5bdd-eb4d-4482-8bb5-92de9dcd17fc"
-              LastKnownName="Annuler dernier coup"
-              LastKnownLocation="smallworld.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="8563bdad-e2ef-4e48-ac7f-a1ba1618cd7b"
-                  name="Joueur1"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="3383beea-f33c-43fe-bf5c-789320d1b1a6"
-                  name="Annuler dernier coup"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
-          <association
             Id="d89714e1-2b91-4361-b31e-a87945e335cf"
             isDerived="false"
             sourceEndRoleName="Joueur1"
@@ -6412,52 +6257,12 @@
               </associationHasOwnedEnds>
             </relationshipOwnedElementsInternal>
           </association>
-          <association
-            Id="d46404ab-0667-474c-9ea7-44d6680da349"
-            isDerived="false"
-            sourceEndRoleName="Joueur1"
-            targetEndRoleName="Sauvegarder"
-            isLeaf="false"
-            isAbstract="false">
-            <useCaseMoniker
-              Id="cd6ddf9c-7b2e-4ba9-a528-ef2b90185bb5"
-              LastKnownName="Sauvegarder"
-              LastKnownLocation="smallworld.uml" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="fdcc93dd-7a4a-4103-b64e-0569e24cc2d0"
-                  name="Joueur1"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false"
-                  isNavigableOwned="false" />
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd
-                  Id="2ccc71c2-3c7b-46d5-9c7a-d6945d5a0d0e"
-                  name="Sauvegarder"
-                  isLeaf="false"
-                  isStatic="false"
-                  isReadOnly="false"
-                  isDerived="false"
-                  isDerivedUnion="false"
-                  aggregation="None"
-                  isComposite="false" />
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-          </association>
         </targetEnds>
       </actor>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <subsystem
         Id="6de75cd9-44c7-4160-8515-9cad150c9b12"
-        name="Subsystem1"
         isAbstract="false"
         isLeaf="false"
         isActiveClass="false" />
@@ -6494,7 +6299,6 @@
         <subjects>
           <subsystemMoniker
             Id="6de75cd9-44c7-4160-8515-9cad150c9b12"
-            LastKnownName="Subsystem1"
             LastKnownLocation="smallworld.uml" />
         </subjects>
       </useCase>
@@ -6508,7 +6312,6 @@
         <subjects>
           <subsystemMoniker
             Id="6de75cd9-44c7-4160-8515-9cad150c9b12"
-            LastKnownName="Subsystem1"
             LastKnownLocation="smallworld.uml" />
         </subjects>
       </useCase>
@@ -6522,7 +6325,6 @@
         <subjects>
           <subsystemMoniker
             Id="6de75cd9-44c7-4160-8515-9cad150c9b12"
-            LastKnownName="Subsystem1"
             LastKnownLocation="smallworld.uml" />
         </subjects>
       </useCase>
@@ -6536,21 +6338,6 @@
         <subjects>
           <subsystemMoniker
             Id="6de75cd9-44c7-4160-8515-9cad150c9b12"
-            LastKnownName="Subsystem1"
-            LastKnownLocation="smallworld.uml" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="b58b5bdd-eb4d-4482-8bb5-92de9dcd17fc"
-        name="Annuler dernier coup"
-        isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="6de75cd9-44c7-4160-8515-9cad150c9b12"
-            LastKnownName="Subsystem1"
             LastKnownLocation="smallworld.uml" />
         </subjects>
       </useCase>
@@ -6564,21 +6351,6 @@
         <subjects>
           <subsystemMoniker
             Id="6de75cd9-44c7-4160-8515-9cad150c9b12"
-            LastKnownName="Subsystem1"
-            LastKnownLocation="smallworld.uml" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="cd6ddf9c-7b2e-4ba9-a528-ef2b90185bb5"
-        name="Sauvegarder"
-        isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="6de75cd9-44c7-4160-8515-9cad150c9b12"
-            LastKnownName="Subsystem1"
             LastKnownLocation="smallworld.uml" />
         </subjects>
       </useCase>
@@ -6618,54 +6390,6 @@
           </generalization>
         </generalsInternal>
       </actor>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="53167354-1561-40d7-be8d-01722d86bdee"
-        name="Charger une partie"
-        isAbstract="false"
-        isLeaf="false">
-        <additions>
-          <include
-            Id="92f18174-0cb4-45c8-ad71-f35a63396280">
-            <useCaseMoniker
-              Id="2f5e5270-25db-4620-a970-a063870fb170"
-              LastKnownName="Sélectionner la partie à charger"
-              LastKnownLocation="smallworld.uml" />
-          </include>
-        </additions>
-        <subjects>
-          <subsystemMoniker
-            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
-            LastKnownLocation="smallworld.uml" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="2f5e5270-25db-4620-a970-a063870fb170"
-        name="Sélectionner la partie à charger"
-        isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
-            LastKnownLocation="smallworld.uml" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase
-        Id="dec3be01-1c97-4d24-83ec-921761919441"
-        name="Choisir nombre de tours"
-        isAbstract="false"
-        isLeaf="false">
-        <subjects>
-          <subsystemMoniker
-            Id="48b645ff-03d3-48a7-bb38-53cd22bf2172"
-            LastKnownLocation="smallworld.uml" />
-        </subjects>
-      </useCase>
     </packageHasNamedElement>
     <packageHasNamedElement>
       <useCase

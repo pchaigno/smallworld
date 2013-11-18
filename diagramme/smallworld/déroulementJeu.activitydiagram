@@ -53,7 +53,7 @@
             <elementDefinition Id="8bd9183d-55b7-408f-8f16-51d6fbda48e5" />
             <flowNodeTargets>
               <controlFlow Id="56a82058-2499-49bd-8292-3f164844ef78" isLeaf="false">
-                <opaqueActionMoniker Id="b1ed0a54-faf8-4301-b671-aabd48be59f0" LastKnownName="Fin du tour : Calcul des points du tour, Incrément du nombre de tour" />
+                <opaqueActionMoniker Id="b1ed0a54-faf8-4301-b671-aabd48be59f0" LastKnownName="Fin du tour" />
                 <elementDefinition Id="3d588c21-f95c-4f5c-9439-8c0f6061a914" />
               </controlFlow>
             </flowNodeTargets>
@@ -115,7 +115,7 @@
               </controlFlow>
             </flowNodeTargets>
           </opaqueAction>
-          <opaqueAction Id="b1ed0a54-faf8-4301-b671-aabd48be59f0" name="Fin du tour : Calcul des points du tour, Incrément du nombre de tour" isLeaf="false">
+          <opaqueAction Id="b1ed0a54-faf8-4301-b671-aabd48be59f0" name="Fin du tour" isLeaf="false">
             <elementDefinition Id="54695349-1a4e-4e3f-a5a8-85c07019a69a" />
             <flowNodeTargets>
               <controlFlow Id="9459e56a-b4f4-4f9e-bf90-6cea9aea99e8" isLeaf="false">

@@ -1,19 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="a47ffd88-d851-4b45-9453-bdb9a94df9a4" name="deroulementTour" linkedPackageId="91164ced-163f-4dc6-9030-1b41bef91c3f" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
-  <profileInstances>
-    <packageHasProfileInstances Id="0f9c4712-a8f0-4adc-9469-359b9518e17e">
-      <profileInstance Id="fe83e161-1e05-43d3-9d8f-03001d071b9a" name="StandardProfileL2">
-        <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
-      </profileInstance>
-      <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
-    </packageHasProfileInstances>
-    <packageHasProfileInstances Id="556db892-26d0-409a-8647-b89c062926fb">
-      <profileInstance Id="0fce672e-7f4f-4873-89f8-5666ecf7fe6d" name="StandardProfileL3">
-        <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
-      </profileInstance>
-      <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
-    </packageHasProfileInstances>
-  </profileInstances>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner" dslVersion="1.0.0.0" Id="a47ffd88-d851-4b45-9453-bdb9a94df9a4" name="deroulementTour" linkedPackageId="91164ced-163f-4dc6-9030-1b41bef91c3f" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
   <packagedElements>
     <activityRootModelHasActivity>
       <activity Id="0075e955-f163-42ec-85c4-a40a5d3101ef" name="deroulementTour" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
@@ -79,13 +65,13 @@
           <decisionNode Id="c2b27029-2f32-4ae2-8f74-57e35023f47d" name="Decision3" isLeaf="false">
             <elementDefinition Id="b8b7c1a5-6d6f-42af-9fd8-9ee31fd8586f" />
             <flowNodeTargets>
-              <controlFlow Id="4749fec1-3d55-49eb-949d-235da2125abc" guard="déplacement impossible" isLeaf="false">
-                <opaqueActionMoniker Id="897928b0-7bda-4d7a-ae92-a64776f8e1b0" LastKnownName="Déselection de l'unité" />
-                <elementDefinition Id="c03d04ed-6a69-4ccb-99f1-4ecd5a925c89" />
-              </controlFlow>
               <controlFlow Id="224f6023-2684-4715-a901-5a7a0145a2ec" guard="déplacement possible" isLeaf="false">
                 <opaqueActionMoniker Id="6c49b20b-87ff-4e9f-81d7-ff6deb5305d0" LastKnownName="Sélection de la case d'arrivée" />
                 <elementDefinition Id="af46df89-5aa6-4e70-a4e4-08a9fd2efc8c" />
+              </controlFlow>
+              <controlFlow Id="02052c3c-dbff-4624-9cd5-b8a0f8111cba" guard="déplacement interdit" isLeaf="false">
+                <opaqueActionMoniker Id="a11f33a0-44d4-45b9-aee2-c8d53a04acd1" LastKnownName="Sélection de l'unité" />
+                <elementDefinition Id="1297c68f-9c61-4266-93b0-50f758ea21c5" />
               </controlFlow>
             </flowNodeTargets>
           </decisionNode>
@@ -102,15 +88,6 @@
               </controlFlow>
             </flowNodeTargets>
           </decisionNode>
-          <opaqueAction Id="897928b0-7bda-4d7a-ae92-a64776f8e1b0" name="Déselection de l'unité" isLeaf="false">
-            <elementDefinition Id="f6fcf779-972d-4bc5-a0eb-63c113c7e0e0" />
-            <flowNodeTargets>
-              <controlFlow Id="2d6770cd-6275-4cd7-9f9b-f395b85d2c7e" isLeaf="false">
-                <opaqueActionMoniker Id="1d6c8f3c-cb17-441c-a4ec-917ffe57bdc6" LastKnownName="Tour en cours" />
-                <elementDefinition Id="99c6ef42-1eed-4b6d-a581-30fc94f6ac33" />
-              </controlFlow>
-            </flowNodeTargets>
-          </opaqueAction>
           <opaqueAction Id="287ca251-f155-454a-ac9a-9f646a677b54" name="Combat de l'unité sélectionnée contre une unité de la case" isLeaf="false">
             <elementDefinition Id="d35ac3d3-9374-447f-8a7f-43332168e7df" />
             <flowNodeTargets>
@@ -176,5 +153,19 @@
   </packagedElements>
   <package Id="91164ced-163f-4dc6-9030-1b41bef91c3f" name="smallworld">
     <elementDefinition Id="43f692c9-e08b-43ba-99a7-2d3912a13b0b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="0f9c4712-a8f0-4adc-9469-359b9518e17e">
+        <profileInstance Id="fe83e161-1e05-43d3-9d8f-03001d071b9a" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="556db892-26d0-409a-8647-b89c062926fb">
+        <profileInstance Id="0fce672e-7f4f-4873-89f8-5666ecf7fe6d" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
   </package>
 </activityRootModel>

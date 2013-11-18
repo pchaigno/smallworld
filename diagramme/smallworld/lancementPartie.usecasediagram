@@ -21,22 +21,6 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="661d4e55-c69d-4197-b06d-5152d7227fa4" />
           </association>
-          <association Id="b9b50e17-3237-4655-924d-c4f9fb0c068c" isDerived="false" sourceEndRoleName="Joueur" targetEndRoleName="Charger une partie" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="8c69802c-86eb-440c-970d-8bdee4b78538" LastKnownName="Charger une partie" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="3e0edbe9-513e-4aad-8dd0-6a8f69865b51" name="Joueur" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="a128039f-e65a-47b9-aaac-778411b7f4be" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="0a0f6c83-c332-4f87-9d5c-4d527f2cbe77" name="Charger une partie" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="3f9d6c5e-0521-4d02-baad-1b6b1a06ae0d" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="adb66648-4c32-4008-9f2e-e3c3e89ab60a" />
-          </association>
         </targetEnds>
       </actor>
     </useCaseModelRootHasTypes>
@@ -56,10 +40,6 @@
           <include Id="742e9014-7c88-4fef-acdd-0569d877d0cf">
             <useCaseMoniker Id="6ecdf890-8e85-4dec-9960-19a3b8963f3e" LastKnownName="Créer Joueurs" />
             <elementDefinition Id="1f1e2800-0e33-46d6-b24d-91addcf69068" />
-          </include>
-          <include Id="581fd432-3ede-46ed-a23a-0ecae401d443">
-            <useCaseMoniker Id="d4bdda0f-8e68-4e6e-88f6-69cdf2cd5475" LastKnownName="Choisir nombre de tours" />
-            <elementDefinition Id="85cd6372-44e9-4e26-9bba-7d29bc85adef" />
           </include>
         </additions>
         <subjects>
@@ -88,36 +68,6 @@
     <packageHasNamedElement>
       <useCase Id="3112d269-12bb-4724-afd8-f7b3a5fe765f" name="Choisir type carte" isAbstract="false" isLeaf="false">
         <elementDefinition Id="dca9d69c-7d7a-480d-9831-d316945def43" />
-        <subjects>
-          <subsystemMoniker Id="c285374a-5430-4ac6-ba5b-c6811ab357b1" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase Id="8c69802c-86eb-440c-970d-8bdee4b78538" name="Charger une partie" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="53167354-1561-40d7-be8d-01722d86bdee" />
-        <additions>
-          <include Id="1148f572-8059-4e34-bb34-e74636082b7f">
-            <useCaseMoniker Id="9d46146d-9382-4cb2-95c1-904fce4ce70a" LastKnownName="Sélectionner la partie à charger" />
-            <elementDefinition Id="92f18174-0cb4-45c8-ad71-f35a63396280" />
-          </include>
-        </additions>
-        <subjects>
-          <subsystemMoniker Id="c285374a-5430-4ac6-ba5b-c6811ab357b1" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase Id="9d46146d-9382-4cb2-95c1-904fce4ce70a" name="Sélectionner la partie à charger" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="2f5e5270-25db-4620-a970-a063870fb170" />
-        <subjects>
-          <subsystemMoniker Id="c285374a-5430-4ac6-ba5b-c6811ab357b1" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
-    <packageHasNamedElement>
-      <useCase Id="d4bdda0f-8e68-4e6e-88f6-69cdf2cd5475" name="Choisir nombre de tours" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="dec3be01-1c97-4d24-83ec-921761919441" />
         <subjects>
           <subsystemMoniker Id="c285374a-5430-4ac6-ba5b-c6811ab357b1" />
         </subjects>

@@ -5,22 +5,6 @@
       <actor Id="cae0a64d-8ec5-4163-85db-9d4c6c225a67" name="Joueur1" isAbstract="false" isLeaf="false">
         <elementDefinition Id="c83e375b-a3eb-42cb-960a-5d8edb2f4517" />
         <targetEnds>
-          <association Id="eb6b12a5-eb6d-4cbb-8308-fabb24cdd390" isDerived="false" sourceEndRoleName="Joueur1" targetEndRoleName="Annuler dernier coup" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="019af604-45e0-4927-bdc8-0c097c9f8edb" LastKnownName="Annuler dernier coup" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="3af8c86f-463e-405c-99c0-864456e8c9d0" name="Joueur1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="8563bdad-e2ef-4e48-ac7f-a1ba1618cd7b" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="60356375-ae04-4f3d-ac32-58a1b91b1f8b" name="Annuler dernier coup" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="3383beea-f33c-43fe-bf5c-789320d1b1a6" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="e425c14c-3575-467d-a6be-92796b7e4297" />
-          </association>
           <association Id="2fb69a33-b485-4cb7-ae1e-cf44e2c418e3" isDerived="false" sourceEndRoleName="Joueur1" targetEndRoleName="Déplacer  unité1" isLeaf="false" isAbstract="false">
             <useCaseMoniker Id="ff389461-7fee-475a-b35a-6ed4c0ea328f" LastKnownName="Déplacer  unité/attaquer" />
             <relationshipOwnedElementsInternal>
@@ -53,27 +37,11 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="eb276a60-74c0-4c27-9dc7-d26a2ca1d46b" />
           </association>
-          <association Id="64a871ef-a65d-45d9-9915-a708c10459ad" isDerived="false" sourceEndRoleName="Joueur1" targetEndRoleName="Sauvegarder" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="e963322d-7cb5-4fc8-9532-9984014484b8" LastKnownName="Sauvegarder" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="782977b0-7523-4a5e-9f29-1b71f50c80be" name="Joueur1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="fdcc93dd-7a4a-4103-b64e-0569e24cc2d0" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="50a8ac04-4abd-479d-b5e0-5ee11794de94" name="Sauvegarder" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="2ccc71c2-3c7b-46d5-9c7a-d6945d5a0d0e" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="d46404ab-0667-474c-9ea7-44d6680da349" />
-          </association>
         </targetEnds>
       </actor>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
-      <subsystem Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" name="Subsystem1" isAbstract="false" isLeaf="false" isActiveClass="false">
+      <subsystem Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="6de75cd9-44c7-4160-8515-9cad150c9b12" />
       </subsystem>
     </useCaseModelRootHasTypes>
@@ -95,7 +63,7 @@
           </include>
         </additions>
         <subjects>
-          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />
+          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" />
         </subjects>
       </useCase>
     </useCaseModelRootHasTypes>
@@ -103,7 +71,7 @@
       <useCase Id="ac21b19a-3621-42fa-a3af-88d360761f76" name="Choisir unité dans la case" isAbstract="false" isLeaf="false">
         <elementDefinition Id="4873b980-0bd4-4fae-aa3f-f744d4175fc1" />
         <subjects>
-          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />
+          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" />
         </subjects>
       </useCase>
     </useCaseModelRootHasTypes>
@@ -111,7 +79,7 @@
       <useCase Id="90603377-4aa5-449b-8edb-63e8af3e5e88" name="Choisir case  d'arrivée" isAbstract="false" isLeaf="false">
         <elementDefinition Id="2fc569b8-f306-4356-ae7a-ff3fbcc1727f" />
         <subjects>
-          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />
+          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" />
         </subjects>
       </useCase>
     </useCaseModelRootHasTypes>
@@ -119,15 +87,7 @@
       <useCase Id="acba4253-c961-4ec5-b17c-881043ee7b12" name="Finir le tour" isAbstract="false" isLeaf="false">
         <elementDefinition Id="90f92186-c7eb-45bd-b64d-43157c8a2908" />
         <subjects>
-          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />
-        </subjects>
-      </useCase>
-    </useCaseModelRootHasTypes>
-    <useCaseModelRootHasTypes>
-      <useCase Id="019af604-45e0-4927-bdc8-0c097c9f8edb" name="Annuler dernier coup" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="b58b5bdd-eb4d-4482-8bb5-92de9dcd17fc" />
-        <subjects>
-          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />
+          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" />
         </subjects>
       </useCase>
     </useCaseModelRootHasTypes>
@@ -135,18 +95,10 @@
       <useCase Id="c20eb480-0e00-4b18-8171-917442d847c8" name="Choisir case de départ" isAbstract="false" isLeaf="false">
         <elementDefinition Id="8ef96f5e-c891-4e28-a70a-9275372aeec2" />
         <subjects>
-          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />
+          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" />
         </subjects>
       </useCase>
     </useCaseModelRootHasTypes>
-    <packageHasNamedElement>
-      <useCase Id="e963322d-7cb5-4fc8-9532-9984014484b8" name="Sauvegarder" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="cd6ddf9c-7b2e-4ba9-a528-ef2b90185bb5" />
-        <subjects>
-          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" LastKnownName="Subsystem1" />
-        </subjects>
-      </useCase>
-    </packageHasNamedElement>
     <useCaseModelRootHasTypes>
       <actor Id="59d5b9d8-c25d-42f8-b603-9b5ed70edf17" name="Joueur 1" isAbstract="false" isLeaf="false">
         <elementDefinition Id="99fdf5de-d3ab-4405-a7a5-5a0631d4bcf2" />
