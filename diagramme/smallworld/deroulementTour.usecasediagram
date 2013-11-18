@@ -5,22 +5,6 @@
       <actor Id="cae0a64d-8ec5-4163-85db-9d4c6c225a67" name="Joueur1" isAbstract="false" isLeaf="false">
         <elementDefinition Id="c83e375b-a3eb-42cb-960a-5d8edb2f4517" />
         <targetEnds>
-          <association Id="2fb69a33-b485-4cb7-ae1e-cf44e2c418e3" isDerived="false" sourceEndRoleName="Joueur1" targetEndRoleName="Déplacer  unité1" isLeaf="false" isAbstract="false">
-            <useCaseMoniker Id="ff389461-7fee-475a-b35a-6ed4c0ea328f" LastKnownName="Déplacer  unité/attaquer" />
-            <relationshipOwnedElementsInternal>
-              <associationHasOwnedEnds>
-                <memberEnd Id="56601297-4251-4b1b-a715-c2907d1b3cfb" name="Joueur1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
-                  <elementDefinition Id="e795d8ec-ec78-4799-8325-084111e01060" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-              <associationHasOwnedEnds>
-                <memberEnd Id="d367858f-b46a-4d22-a5cf-a6f9124bac6a" name="Déplacer  unité1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
-                  <elementDefinition Id="d6aaa297-6580-41ff-a760-fac29b943066" />
-                </memberEnd>
-              </associationHasOwnedEnds>
-            </relationshipOwnedElementsInternal>
-            <elementDefinition Id="d89714e1-2b91-4361-b31e-a87945e335cf" />
-          </association>
           <association Id="4b678b76-a361-45e9-b288-dec8f95911e2" isDerived="false" sourceEndRoleName="Joueur1" targetEndRoleName="Finir le tour" isLeaf="false" isAbstract="false">
             <useCaseMoniker Id="acba4253-c961-4ec5-b17c-881043ee7b12" LastKnownName="Finir le tour" />
             <relationshipOwnedElementsInternal>
@@ -44,28 +28,6 @@
       <subsystem Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" isAbstract="false" isLeaf="false" isActiveClass="false">
         <elementDefinition Id="6de75cd9-44c7-4160-8515-9cad150c9b12" />
       </subsystem>
-    </useCaseModelRootHasTypes>
-    <useCaseModelRootHasTypes>
-      <useCase Id="ff389461-7fee-475a-b35a-6ed4c0ea328f" name="Déplacer  unité/attaquer" isAbstract="false" isLeaf="false">
-        <elementDefinition Id="9105db57-9bae-4ee1-b3cd-65a8914d9887" />
-        <additions>
-          <include Id="e3f0f50e-4494-4274-aca5-c58a3df196f9">
-            <useCaseMoniker Id="ac21b19a-3621-42fa-a3af-88d360761f76" LastKnownName="Choisir unité dans la case" />
-            <elementDefinition Id="c8229d58-601e-499d-b17c-30275e246b35" />
-          </include>
-          <include Id="510928c7-a9e4-4ca8-bdc9-2b32f20fe6fb">
-            <useCaseMoniker Id="90603377-4aa5-449b-8edb-63e8af3e5e88" LastKnownName="Choisir case  d'arrivée" />
-            <elementDefinition Id="d56c1077-5fa7-44f4-aea2-f1d6542bd705" />
-          </include>
-          <include Id="b9483cb9-e958-4c30-b8f2-4fc7f1001a51">
-            <useCaseMoniker Id="c20eb480-0e00-4b18-8171-917442d847c8" LastKnownName="Choisir case de départ" />
-            <elementDefinition Id="4eef5bf5-f6f8-4539-8f36-dd4e16e793f6" />
-          </include>
-        </additions>
-        <subjects>
-          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" />
-        </subjects>
-      </useCase>
     </useCaseModelRootHasTypes>
     <useCaseModelRootHasTypes>
       <useCase Id="ac21b19a-3621-42fa-a3af-88d360761f76" name="Choisir unité dans la case" isAbstract="false" isLeaf="false">
@@ -121,6 +83,50 @@
         </generalsInternal>
       </actor>
     </useCaseModelRootHasTypes>
+    <packageHasNamedElement>
+      <useCase Id="369b9e5d-be62-4297-bfa2-6f9c18e91d1b" name="Attaquer" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7c9d5e17-6328-40a1-9368-82b23504522e" />
+        <additions>
+          <include Id="905e0768-5aad-4e6c-abc2-2a574f1f6e57">
+            <useCaseMoniker Id="c20eb480-0e00-4b18-8171-917442d847c8" LastKnownName="Choisir case de départ" />
+            <elementDefinition Id="e638367c-f0e8-4f2f-80a3-d0218ddf8ffe" />
+          </include>
+          <include Id="02f13d5c-0918-41bf-b0e9-cc24f6a04556">
+            <useCaseMoniker Id="ac21b19a-3621-42fa-a3af-88d360761f76" LastKnownName="Choisir unité dans la case" />
+            <elementDefinition Id="15c8aa6f-fb65-4069-be6a-e5af8bbbe9d1" />
+          </include>
+          <include Id="a18f0eb2-6ca8-464b-8e4d-0ec20c917b98">
+            <useCaseMoniker Id="90603377-4aa5-449b-8edb-63e8af3e5e88" LastKnownName="Choisir case  d'arrivée" />
+            <elementDefinition Id="7bc4aedc-0823-46e6-a811-656c45b1c877" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
+    <packageHasNamedElement>
+      <useCase Id="9de6658f-b011-4aec-a30a-7bae5d61ce56" name="Déplacer" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b586353d-ac47-443f-9415-501bf9351f3f" />
+        <additions>
+          <include Id="85e48a13-c9d5-4ef3-8544-7148451b5da7">
+            <useCaseMoniker Id="c20eb480-0e00-4b18-8171-917442d847c8" LastKnownName="Choisir case de départ" />
+            <elementDefinition Id="aa2fa34d-9171-4282-a1bb-669eb24ada9a" />
+          </include>
+          <include Id="409323fa-1e53-4e1c-80b6-e432890c2877">
+            <useCaseMoniker Id="ac21b19a-3621-42fa-a3af-88d360761f76" LastKnownName="Choisir unité dans la case" />
+            <elementDefinition Id="8c7c3dd4-e549-4684-b555-7d4625405615" />
+          </include>
+          <include Id="fd51b708-c27f-4652-86d0-01264d9becbb">
+            <useCaseMoniker Id="90603377-4aa5-449b-8edb-63e8af3e5e88" LastKnownName="Choisir case  d'arrivée" />
+            <elementDefinition Id="c3918cba-e0a6-43a0-b8dd-a02f05ac6f4a" />
+          </include>
+        </additions>
+        <subjects>
+          <subsystemMoniker Id="175bfbc6-eefd-4c7f-aafc-09b431a78698" />
+        </subjects>
+      </useCase>
+    </packageHasNamedElement>
   </packagedElements>
   <package Id="e6d42c93-66f0-4fb9-b1c8-aa9df17a2cce" name="smallworld">
     <elementDefinition Id="43f692c9-e08b-43ba-99a7-2d3912a13b0b" />
