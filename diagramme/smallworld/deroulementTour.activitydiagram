@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="a47ffd88-d851-4b45-9453-bdb9a94df9a4" name="deroulementTour" linkedPackageId="91164ced-163f-4dc6-9030-1b41bef91c3f" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="a47ffd88-d851-4b45-9453-bdb9a94df9a4" name="deroulementTour" linkedPackageId="91164ced-163f-4dc6-9030-1b41bef91c3f" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
   <packagedElements>
     <activityRootModelHasActivity>
       <activity Id="0075e955-f163-42ec-85c4-a40a5d3101ef" name="deroulementTour" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
@@ -122,6 +122,10 @@
               <controlFlow Id="d92e7f7d-8777-4536-af7e-3d19575b8101" guard="Défaite" isLeaf="false">
                 <opaqueActionMoniker Id="1d6c8f3c-cb17-441c-a4ec-917ffe57bdc6" LastKnownName="Tour en cours" />
                 <elementDefinition Id="c3d2b1fe-d479-4469-bfe0-b8269c55d746" />
+              </controlFlow>
+              <controlFlow Id="4cc6f46b-34cb-4b93-94b4-ef7621eb7b38" guard="match nul" isLeaf="false">
+                <opaqueActionMoniker Id="a11f33a0-44d4-45b9-aee2-c8d53a04acd1" LastKnownName="Sélection de l'unité" />
+                <elementDefinition Id="9a6541ac-8b04-44b5-9b30-675b2c50cc1c" />
               </controlFlow>
             </flowNodeTargets>
           </decisionNode>

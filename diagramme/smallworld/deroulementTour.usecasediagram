@@ -21,6 +21,38 @@
             </relationshipOwnedElementsInternal>
             <elementDefinition Id="eb276a60-74c0-4c27-9dc7-d26a2ca1d46b" />
           </association>
+          <association Id="1e29cfbf-7372-4aeb-b48e-69cda2d95f8b" isDerived="false" sourceEndRoleName="Joueur1" targetEndRoleName="Déplacer" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="9de6658f-b011-4aec-a30a-7bae5d61ce56" LastKnownName="Déplacer" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d836765a-22a2-4237-a481-2643a0c144e3" name="Joueur1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="413370ca-70d3-4330-a825-6b5bde3222d1" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="3f28e001-6a08-49ef-8f93-1ebc5bbab69c" name="Déplacer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="71dab0a6-718b-468f-bfa2-016461bf10fd" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="edcc6e54-d126-4059-a7ef-51b8f4db5a4f" />
+          </association>
+          <association Id="79d56569-f903-4827-a188-f49a21e01fe5" isDerived="false" sourceEndRoleName="Joueur1" targetEndRoleName="Attaquer" isLeaf="false" isAbstract="false">
+            <useCaseMoniker Id="369b9e5d-be62-4297-bfa2-6f9c18e91d1b" LastKnownName="Attaquer" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd Id="34b032da-e22c-411c-9792-77aa4ed11905" name="Joueur1" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false" isNavigableOwned="false">
+                  <elementDefinition Id="d656dc2b-f5d0-4ee9-ab3d-e638635c1346" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd Id="d6003e66-03d1-4df7-9d86-535b513a19ce" name="Attaquer" isLeaf="false" isStatic="false" isReadOnly="false" isDerived="false" isDerivedUnion="false" aggregation="None" isComposite="false">
+                  <elementDefinition Id="fab02711-091e-466d-9e23-0894e15e8db5" />
+                </memberEnd>
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+            <elementDefinition Id="90bde6a4-d6cd-4bdf-a49e-23c12391315f" />
+          </association>
         </targetEnds>
       </actor>
     </useCaseModelRootHasTypes>

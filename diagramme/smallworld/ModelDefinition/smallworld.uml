@@ -4546,6 +4546,15 @@
                   LastKnownName="Tour en cours"
                   LastKnownLocation="smallworld.uml" />
               </controlFlow>
+              <controlFlow
+                Id="9a6541ac-8b04-44b5-9b30-675b2c50cc1c"
+                guard="match nul"
+                isLeaf="false">
+                <opaqueActionMoniker
+                  Id="2a08c0dd-94c0-4c79-8366-e51c3999e430"
+                  LastKnownName="Sélection de l'unité"
+                  LastKnownLocation="smallworld.uml" />
+              </controlFlow>
             </flowNodeTargets>
           </decisionNode>
           <decisionNode
@@ -6208,6 +6217,84 @@
                 <memberEnd
                   Id="65a80b51-2fda-4c67-9e73-c812ce7597b5"
                   name="Finir le tour"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="edcc6e54-d126-4059-a7ef-51b8f4db5a4f"
+            isDerived="false"
+            sourceEndRoleName="Joueur1"
+            targetEndRoleName="Déplacer"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="b586353d-ac47-443f-9415-501bf9351f3f"
+              LastKnownName="Déplacer"
+              LastKnownLocation="smallworld.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="413370ca-70d3-4330-a825-6b5bde3222d1"
+                  name="Joueur1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="71dab0a6-718b-468f-bfa2-016461bf10fd"
+                  name="Déplacer"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false" />
+              </associationHasOwnedEnds>
+            </relationshipOwnedElementsInternal>
+          </association>
+          <association
+            Id="90bde6a4-d6cd-4bdf-a49e-23c12391315f"
+            isDerived="false"
+            sourceEndRoleName="Joueur1"
+            targetEndRoleName="Attaquer"
+            isLeaf="false"
+            isAbstract="false">
+            <useCaseMoniker
+              Id="7c9d5e17-6328-40a1-9368-82b23504522e"
+              LastKnownName="Attaquer"
+              LastKnownLocation="smallworld.uml" />
+            <relationshipOwnedElementsInternal>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="d656dc2b-f5d0-4ee9-ab3d-e638635c1346"
+                  name="Joueur1"
+                  isLeaf="false"
+                  isStatic="false"
+                  isReadOnly="false"
+                  isDerived="false"
+                  isDerivedUnion="false"
+                  aggregation="None"
+                  isComposite="false"
+                  isNavigableOwned="false" />
+              </associationHasOwnedEnds>
+              <associationHasOwnedEnds>
+                <memberEnd
+                  Id="fab02711-091e-466d-9e23-0894e15e8db5"
+                  name="Attaquer"
                   isLeaf="false"
                   isStatic="false"
                   isReadOnly="false"
