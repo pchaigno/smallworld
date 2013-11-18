@@ -209,5 +209,9 @@
         </interactionOperandShape>
       </nestedChildShapes>
     </combinedFragmentShape>
+    <commentShape Id="5181a1d1-54d4-4307-9149-90be0a77605c" absoluteBounds="5.625, 7, 1.25, 0.375" customColor="251, 247, 200">
+      <commentMoniker Id="45752229-7595-48ec-bb64-b2c71731e865" />
+      <relativeChildShapes />
+    </commentShape>
   </nestedChildShapes>
 </sequenceDesignerDiagram>

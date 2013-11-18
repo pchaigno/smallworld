@@ -3,14 +3,14 @@
   <SequenceDesignerModelMoniker Id="66b85aca-459f-49d7-ad9a-dadca9eeaf64" />
   <nestedChildShapes>
     <lifelineShape Id="05fae780-e4d1-43fe-b4c0-d29e9828f3d4" absoluteBounds="3.1979166269302373, 1, 0.15, 8.8360069181770111" visible="true" visualStyleMode="Modified">
-      <lifelineMoniker Id="2010ff6b-93e1-4a6c-94de-2b11230d8395" LastKnownName="Game" />
+      <lifelineMoniker Id="2010ff6b-93e1-4a6c-94de-2b11230d8395" LastKnownName="Round" />
       <relativeChildShapes>
         <umlLifelineHeadShape Id="3b2ee6e2-e8be-4c94-910e-fd47d007a8e0" absoluteBounds="2.7729166269302374, 0.6, 1, 0.4" customColor="White" visualStyleMode="Modified">
-          <lifelineMoniker Id="2010ff6b-93e1-4a6c-94de-2b11230d8395" LastKnownName="Game" />
+          <lifelineMoniker Id="2010ff6b-93e1-4a6c-94de-2b11230d8395" LastKnownName="Round" />
           <relativeChildShapes />
         </umlLifelineHeadShape>
         <lifelineHoverShape Id="e9db1072-42a9-4b31-9372-5aa6d5b6401f" absoluteBounds="3.1979166269302373, 1, 0, 8.875">
-          <lifelineMoniker Id="2010ff6b-93e1-4a6c-94de-2b11230d8395" LastKnownName="Game" />
+          <lifelineMoniker Id="2010ff6b-93e1-4a6c-94de-2b11230d8395" LastKnownName="Round" />
         </lifelineHoverShape>
         <umlExecutionSpecificationShape Id="97c1531a-fb1c-4fb8-8ee4-802cd21fe9f7" absoluteBounds="3.1979166269302373, 1.3541666666666665, 0.15, 1.15" customColor="184, 204, 215" visualStyleMode="Modified">
           <behaviorExecutionSpecificationMoniker Id="5c5d2d20-4545-4271-816a-683ba745a549" LastKnownName="BehaviorExecutionSpecification2" />
@@ -173,5 +173,17 @@
         <umlExecutionSpecificationShapeMoniker Id="56c5dfba-50c2-4c94-97a2-8a009e648fc0" />
       </nodes>
     </syncSelfMessageConnector>
+    <commentShape Id="865efeff-d028-4af2-8a34-e10d19ed9bd1" absoluteBounds="3.5, 3.75, 1.25, 0.75" customColor="251, 247, 200">
+      <commentMoniker Id="028e4015-bc8a-47af-b9ab-2ccf95bfdec9" />
+      <relativeChildShapes />
+    </commentShape>
+    <commentShape Id="4d4b56c4-cd6e-4890-bb4c-2fadb8eaa4cb" absoluteBounds="3.5, 2.875, 1.25, 0.75" customColor="251, 247, 200">
+      <commentMoniker Id="476d95f8-af7d-4e97-8e40-d52ee83cf4ad" />
+      <relativeChildShapes />
+    </commentShape>
+    <commentShape Id="a4bcd19b-49da-4e38-87e3-a19da9b99b78" absoluteBounds="5.5, 1.625, 1.25, 0.5" customColor="251, 247, 200">
+      <commentMoniker Id="c860a7a7-2fa5-4bb2-a4af-903fe9eb6de7" />
+      <relativeChildShapes />
+    </commentShape>
   </nestedChildShapes>
 </sequenceDesignerDiagram>

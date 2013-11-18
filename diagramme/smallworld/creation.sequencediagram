@@ -1,8 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" dslVersion="1.0.0.0" Id="e3c9c105-e056-4bdf-9bdd-694321212099" name="creation" linkedPackageId="cffe95c1-0002-4e37-9e06-1089306ebe13" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
+<SequenceDesignerModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm11="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="e3c9c105-e056-4bdf-9bdd-694321212099" name="creation" linkedPackageId="cffe95c1-0002-4e37-9e06-1089306ebe13" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner">
   <packagedElements>
     <packageHasNamedElement>
       <interaction Id="73ef3285-32bf-442a-acb7-aced87ad40ee" name="creation" collapseFragmentsFlag="false" isActiveClass="false" isAbstract="false" isLeaf="false" isReentrant="false">
+        <ownedCommentsInternal>
+          <comment Id="45752229-7595-48ec-bb64-b2c71731e865">
+            <elementDefinition Id="556f29d1-e209-4afc-83a7-09b4f8b2b528" />
+            <body>Positionne les unités sur la carte.</body>
+          </comment>
+        </ownedCommentsInternal>
         <elementDefinition Id="03f07725-eb6d-433c-8ec8-0afdde6cc612" />
         <fragments>
           <behaviorExecutionSpecification Id="294fa394-2771-4bcc-bc86-8647eb9f02a2" name="BehaviorExecutionSpecification12">
@@ -411,15 +417,15 @@
           <combinedFragment Id="e2531dde-0628-45ef-a965-a09d98bf9385" name="CombinedFragment2" interactionOperator="Loop">
             <elementDefinition Id="197401c5-d594-4969-bbdd-93b00b641536" />
             <coveredLifelines>
-              <lifelineMoniker Id="ef5c0aca-a772-4db1-8840-07252c213aaa" LastKnownName="Map" />
               <lifelineMoniker Id="10b5b04f-5824-42dc-8b68-49bf2fd039de" LastKnownName="GameBuilder" />
+              <lifelineMoniker Id="ef5c0aca-a772-4db1-8840-07252c213aaa" LastKnownName="Map" />
             </coveredLifelines>
             <operands>
               <interactionOperand Id="5540c770-1877-4e5d-8597-4a566e1cffc7" name="InteractionOperand1">
                 <elementDefinition Id="7cf14469-e8ba-485c-bc11-a3e029230279" />
                 <coveredLifelines>
-                  <lifelineMoniker Id="ef5c0aca-a772-4db1-8840-07252c213aaa" LastKnownName="Map" />
                   <lifelineMoniker Id="10b5b04f-5824-42dc-8b68-49bf2fd039de" LastKnownName="GameBuilder" />
+                  <lifelineMoniker Id="ef5c0aca-a772-4db1-8840-07252c213aaa" LastKnownName="Map" />
                 </coveredLifelines>
                 <guard>
                   <interactionConstraint Id="8718b277-1600-4717-ad58-51aeaa21beb2">

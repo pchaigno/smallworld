@@ -7,7 +7,7 @@
     <Position X="8.178" Y="9.267" Height="0.75" Width="1.7" />
   </Comment>
   <Comment CommentText="Toutes les informations nécessaires à la construction du Jeu sont passées directement en arguments de la méthode buildGame.">
-    <Position X="16.529" Y="6.677" Height="0.823" Width="2.231" />
+    <Position X="16.497" Y="7.304" Height="0.823" Width="2.231" />
   </Comment>
   <Comment CommentText="Game est l'élément central. L'interface utilisateur devra y faire appel.">
     <Position X="6.051" Y="9.342" Height="0.75" Width="1.7" />
@@ -61,28 +61,28 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.IDemoGameBuilder">
-    <Position X="13" Y="8.25" Width="1.5" />
+    <Position X="13" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IDemoGameBuilder.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.ISmallGameBuilder">
-    <Position X="16.5" Y="8.25" Width="1.5" />
+    <Position X="16.5" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ISmallGameBuilder.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.INormalGameBuilder">
-    <Position X="14.75" Y="8.25" Width="1.5" />
+    <Position X="14.75" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>INormalGameBuilder.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.ISquareFactory">
-    <Position X="12.5" Y="1.5" Width="1.5" />
+    <Position X="12.25" Y="1.75" Width="1.5" />
     <Compartments>
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
@@ -104,21 +104,21 @@
     </ShowAsAssociation>
   </Interface>
   <Interface Name="diagramme.IForest">
-    <Position X="14.25" Y="3.25" Width="1.5" />
+    <Position X="14" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IForest.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.ISea">
-    <Position X="9" Y="3.25" Width="1.5" />
+    <Position X="8.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ISea.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.ILowland">
-    <Position X="16" Y="3.25" Width="1.5" />
+    <Position X="15.75" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ILowland.cs</FileName>
@@ -126,14 +126,14 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.IMoutain">
-    <Position X="12.5" Y="3.25" Width="1.5" />
+    <Position X="12.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IMoutain.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.IDesert">
-    <Position X="10.75" Y="3.25" Width="1.5" />
+    <Position X="10.5" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IDesert.cs</FileName>
@@ -183,14 +183,14 @@
     </ShowAsAssociation>
   </Interface>
   <Interface Name="diagramme.IGameBuilder">
-    <Position X="14.75" Y="6.5" Width="1.5" />
+    <Position X="14.75" Y="7.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IGameBuilder.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.ISquare">
-    <Position X="12.5" Y="5" Width="1.5" />
+    <Position X="12.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ISquare.cs</FileName>
@@ -210,7 +210,7 @@
   <Interface Name="diagramme.IRound">
     <Position X="10.25" Y="7.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AABAAAAAAAAANAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AARAAAAAAAAAMAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IRound.cs</FileName>
     </TypeIdentifier>
   </Interface>

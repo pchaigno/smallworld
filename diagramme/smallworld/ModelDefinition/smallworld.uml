@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel"
+<modelStoreModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm9="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" xmlns:dm11="http://schemas.microsoft.com/VisualStudio/TeamArchitect/SequenceDesigner"
   dslVersion="1.0.0.0"
   Id="43f692c9-e08b-43ba-99a7-2d3912a13b0b"
   name="smallworld" xmlns="http://schemas.microsoft.com/dsltools/ModelStore">
@@ -277,6 +277,12 @@
         isAbstract="false"
         isLeaf="false"
         isReentrant="false">
+        <ownedCommentsInternal>
+          <comment
+            Id="556f29d1-e209-4afc-83a7-09b4f8b2b528">
+            <body>Positionne les unités sur la carte.</body>
+          </comment>
+        </ownedCommentsInternal>
         <fragments>
           <behaviorExecutionSpecification
             Id="c508366c-6b5e-4663-b5ff-4dfca756dfb7"
@@ -1786,6 +1792,20 @@
         isAbstract="false"
         isLeaf="false"
         isReentrant="false">
+        <ownedCommentsInternal>
+          <comment
+            Id="1cc40f47-b765-4905-9f0c-cc031420a3a1">
+            <body>getAdvisedDestinations est seulement utilisée pour l'affiche des cases.</body>
+          </comment>
+          <comment
+            Id="dbcbff45-c68f-4f9f-a86d-94461f2b8029">
+            <body>selectUnit établit l'unité courante qui sera ensuite déplacée.</body>
+          </comment>
+          <comment
+            Id="ec05ca82-f4b5-4fe4-919f-e29b920561ac">
+            <body>Renvoie toutes les unités positionnées sur une certaine case.</body>
+          </comment>
+        </ownedCommentsInternal>
         <fragments>
           <behaviorExecutionSpecification
             Id="a49e7332-da62-4792-8c53-2da45a2c0e14"
@@ -1793,7 +1813,7 @@
             <coveredLifelines>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </coveredLifelines>
             <finish>
@@ -1841,7 +1861,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -1861,7 +1881,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -1921,7 +1941,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -1951,7 +1971,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -1979,7 +1999,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -2007,7 +2027,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -2017,7 +2037,7 @@
             <coveredLifelines>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </coveredLifelines>
             <finish>
@@ -2057,7 +2077,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -2077,7 +2097,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -2087,7 +2107,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -2115,7 +2135,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -2125,7 +2145,7 @@
             <coveredLifelines>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </coveredLifelines>
             <finish>
@@ -2165,7 +2185,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -2185,7 +2205,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -2205,7 +2225,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -2223,7 +2243,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -2233,7 +2253,7 @@
             <coveredLifelines>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </coveredLifelines>
             <finish>
@@ -2321,7 +2341,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -2341,7 +2361,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -2411,7 +2431,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -2431,7 +2451,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -2460,7 +2480,7 @@
             <coveredLifelines>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </coveredLifelines>
             <operands>
@@ -2470,7 +2490,7 @@
                 <coveredLifelines>
                   <lifelineMoniker
                     Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                    LastKnownName="Game"
+                    LastKnownName="Round"
                     LastKnownLocation="smallworld.uml" />
                 </coveredLifelines>
                 <guard>
@@ -2495,7 +2515,7 @@
                 <coveredLifelines>
                   <lifelineMoniker
                     Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                    LastKnownName="Game"
+                    LastKnownName="Round"
                     LastKnownLocation="smallworld.uml" />
                 </coveredLifelines>
                 <guard>
@@ -2522,7 +2542,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </operandOccurrenceSpecification>
@@ -2532,7 +2552,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -2542,7 +2562,7 @@
             <coveredLifelines>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </coveredLifelines>
             <finish>
@@ -2578,7 +2598,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -2588,7 +2608,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -2606,7 +2626,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -2616,7 +2636,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </operandOccurrenceSpecification>
@@ -2626,7 +2646,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </operandOccurrenceSpecification>
@@ -2636,7 +2656,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -2646,7 +2666,7 @@
             <coveredLifelines>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </coveredLifelines>
             <finish>
@@ -2682,7 +2702,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -2692,7 +2712,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -2710,7 +2730,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -2720,7 +2740,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </operandOccurrenceSpecification>
@@ -2730,7 +2750,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -2758,7 +2778,7 @@
             <covered>
               <lifelineMoniker
                 Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-                LastKnownName="Game"
+                LastKnownName="Round"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </executionOccurrenceSpecification>
@@ -2806,9 +2826,9 @@
           </lifeline>
           <lifeline
             Id="a2bff58d-f99a-4039-89e6-7bea29ffc61a"
-            name="Game"
+            name="Round"
             isActor="false"
-            lifelineDisplayName="Game">
+            lifelineDisplayName="Round">
             <topLevelOccurrences>
               <executionOccurrenceSpecificationMoniker
                 Id="a53e0532-a133-49c0-8890-39baf801b241"
@@ -2948,7 +2968,7 @@
           </message>
           <message
             Id="f4fa8fae-06de-4a4c-bae7-3edd68a30e69"
-            name="setCurrentUnit(Unit)"
+            name="selectUnit(Unit)"
             messageKind="Complete"
             messageSort="SynchCall"
             createSelfMessage="false">
@@ -2986,7 +3006,7 @@
           </message>
           <message
             Id="7b77397e-c029-4cda-af36-b1932f714894"
-            name="getAvailableDestinations()"
+            name="getAdvisedDestinations()"
             messageKind="Complete"
             messageSort="SynchCall"
             createSelfMessage="false">
