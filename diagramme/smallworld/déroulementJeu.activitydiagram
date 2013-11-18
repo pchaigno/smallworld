@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="b5c8928a-080d-4b39-bd38-073d6bb40e8c" name="déroulementJeu" linkedPackageId="574f5a87-1b7d-4a68-96f8-d9b5c3652291" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="b5c8928a-080d-4b39-bd38-073d6bb40e8c" name="déroulementJeu" linkedPackageId="574f5a87-1b7d-4a68-96f8-d9b5c3652291" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
   <ownedCommentsInternal>
     <comment Id="26a2c011-0919-454a-930c-f50a547066bf">
       <elementDefinition Id="696b04af-58a7-4d6c-a9e7-8af901ea70c5" />
@@ -91,7 +91,7 @@
                 <opaqueActionMoniker Id="78b05f9f-48fa-4c05-8f9a-bffe8a7e8382" LastKnownName="Début du tour" />
                 <elementDefinition Id="8d321ec5-9cf7-4aa5-a2c7-9d3158f66ab8" />
               </controlFlow>
-              <controlFlow Id="1df0fb44-d7ad-49da-a557-183ebb2524aa" guard="fin du jeu" isLeaf="false">
+              <controlFlow Id="1df0fb44-d7ad-49da-a557-183ebb2524aa" guard="fin des tours" isLeaf="false">
                 <opaqueActionMoniker Id="915212ce-e4fd-435b-9d17-8e69b2c885c2" LastKnownName="Calcul des points" />
                 <elementDefinition Id="34191f6b-ed1a-4594-9ec2-3a88229aa8d9" />
               </controlFlow>

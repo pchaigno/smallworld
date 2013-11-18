@@ -51,7 +51,7 @@
         <decisionNodeShapeMoniker Id="dd95b844-32ba-4cbe-9102-35f8f93e10e0" />
       </nodes>
     </controlFlowConnector>
-    <controlFlowConnector edgePoints="[(3.39663461538462 : 3.83413461538462); (2.625 : 3.83413461538462); (2.625 : 2.92142857142857); (3 : 2.92142857142857)]" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black">
+    <controlFlowConnector edgePoints="[(3.39663461538462 : 3.83413461538462); (2.625 : 3.83413461538462); (2.625 : 2.92142857142857); (3 : 2.92142857142857)]" fixedFrom="Algorithm" fixedTo="NotFixed" customColor="Black">
       <controlFlowMoniker Id="2dc8ff1d-d9e0-43a2-b39b-9dd564c917b2" />
       <relativeChildShapes />
       <moveableDecoratorHostShapes>
@@ -166,7 +166,7 @@
         <decisionNodeShapeMoniker Id="2989c1db-9ae4-4e1c-90ed-eac8fe231a8a" />
       </nodes>
     </controlFlowConnector>
-    <controlFlowConnector edgePoints="[(2.15625 : 7.53125); (0.59375 : 7.53125); (0.59375 : 1.3125); (3 : 1.3125)]" manuallyRouted="true" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black">
+    <controlFlowConnector edgePoints="[(2.15625 : 7.53125); (0.59375 : 7.53125); (0.59375 : 1.3125); (3 : 1.3125)]" manuallyRouted="true" fixedFrom="Algorithm" fixedTo="Algorithm" customColor="Black">
       <controlFlowMoniker Id="d92e7f7d-8777-4536-af7e-3d19575b8101" />
       <relativeChildShapes />
       <nodes>
@@ -212,7 +212,7 @@
         <actionShapeMoniker Id="d07c361f-329a-4dd6-9e53-8ce7c9bebea2" />
       </nodes>
     </controlFlowConnector>
-    <controlFlowConnector edgePoints="[(3.38793103448276 : 4.70043103448276); (1.92708333333333 : 4.70043103448276); (1.92708333333333 : 2.84868421052632); (3 : 2.84868421052632)]" manuallyRouted="true" fixedFrom="Caller" fixedTo="Caller" customColor="Black">
+    <controlFlowConnector edgePoints="[(3.38793103448276 : 4.70043103448276); (1.92708333333333 : 4.70043103448276); (1.92708333333333 : 2.84868421052632); (3 : 2.84868421052632)]" manuallyRouted="true" fixedFrom="NotFixed" fixedTo="NotFixed" customColor="Black">
       <controlFlowMoniker Id="02052c3c-dbff-4624-9cd5-b8a0f8111cba" />
       <relativeChildShapes />
       <nodes>
