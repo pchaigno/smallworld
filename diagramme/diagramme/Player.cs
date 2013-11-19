@@ -8,6 +8,11 @@ namespace diagramme
     public class Player : IPlayer
     {
         public IUnitFactory factory;
+
+        public Player(string name)
+        {
+            throw new System.NotImplementedException();
+        }
     
         public List<IUnit> createUnits(int nbUnits)
         {

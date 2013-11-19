@@ -10,6 +10,11 @@ namespace diagramme
         public IPlayer player2;
 
         public IPlayer player1;
+
+        public Game(IPlayer player1, IPlayer player2)
+        {
+            throw new System.NotImplementedException();
+        }
     
         public bool isDefeated(IPlayer player)
         {
@@ -27,6 +32,16 @@ namespace diagramme
         }
 
         public int computePoints()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IPlayer getPlayer1()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IPlayer getPlayer2()
         {
             throw new NotImplementedException();
         }

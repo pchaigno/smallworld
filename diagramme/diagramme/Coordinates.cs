@@ -7,7 +7,12 @@ namespace diagramme
 {
     public class Coordinates : ICoordinates
     {
-        private int x;
-        private int y;
+        public int x;
+        public int y;
+
+        public Coordinates(int x, int y)
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

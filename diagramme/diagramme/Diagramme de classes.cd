@@ -1,22 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Comment CommentText="Il n'y a qu'une unité par peuple donc pas besoin d'interface peuple.">
-    <Position X="2.515" Y="1.239" Height="0.75" Width="1.7" />
+    <Position X="2.546" Y="1.354" Height="0.646" Width="1.7" />
   </Comment>
   <Comment CommentText="La disposition de la carte et la position des unités sont contenus dans Map.">
-    <Position X="8.873" Y="14.285" Height="0.75" Width="1.773" />
+    <Position X="8.873" Y="14.816" Height="0.625" Width="1.773" />
   </Comment>
   <Comment CommentText="Toutes les informations nécessaires à la construction du Jeu sont passées directement en arguments de la méthode buildGame.">
-    <Position X="17.442" Y="8.2" Height="0.823" Width="2.231" />
+    <Position X="17.442" Y="8.2" Height="0.823" Width="2.294" />
   </Comment>
   <Comment CommentText="Game est l'élément central. L'interface utilisateur devra y faire appel.">
-    <Position X="7.008" Y="13.348" Height="0.75" Width="1.7" />
+    <Position X="7.008" Y="14.358" Height="0.75" Width="1.7" />
   </Comment>
   <Comment CommentText="Une fabrique est associé au joueur quand celui-ci choisit son peuple.">
-    <Position X="2.189" Y="9.933" Height="0.75" Width="1.7" />
+    <Position X="2.429" Y="10.735" Height="0.635" Width="1.7" />
   </Comment>
   <Comment CommentText="Round contient les méthodes pour s'occuper de la gestion d'un tour.">
-    <Position X="10.851" Y="13.288" Height="0.75" Width="1.7" />
+    <Position X="10.851" Y="13.288" Height="0.635" Width="1.7" />
   </Comment>
   <Class Name="diagramme.Lowland">
     <Position X="16.5" Y="6" Width="1.5" />
@@ -83,20 +83,20 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="diagramme.Player">
-    <Position X="2.5" Y="12.75" Width="1.5" />
+    <Position X="2.5" Y="13.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAQAAA=</HashCode>
+      <HashCode>EAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>Player.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Field Name="IUnitFactory" />
+      <Field Name="factory" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="diagramme.Game">
-    <Position X="7" Y="11.5" Width="1.75" />
+    <Position X="7" Y="12" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>wAAAAAAABAAAAAAAAACAAAAAAAABAAAAAAAAAIAAAAA=</HashCode>
+      <HashCode>wAAAAAAABADAAAAAAACAAAAAAAABAAAAAAAAAIAAAAA=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -106,15 +106,18 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="diagramme.Map">
-    <Position X="9" Y="12" Width="1.5" />
+    <Position X="9" Y="12.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAEAAAAIAAAAAAAAAUAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAAAAAAAAAEACAAIAAAAAAAAAUAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>Map.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="diagramme.Coordinates">
     <Position X="9" Y="8.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABgAAAAAAA=</HashCode>
       <FileName>Coordinates.cs</FileName>
@@ -131,6 +134,9 @@
   </Class>
   <Class Name="diagramme.Dwarf">
     <Position X="6.5" Y="3.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAhAAAAAAAAAAAAGAAAAAAAAAAAAACAAAAAAAAAAAI=</HashCode>
       <FileName>Dwarf.cs</FileName>
@@ -139,6 +145,9 @@
   </Class>
   <Class Name="diagramme.Gaulois">
     <Position X="2.5" Y="3.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAhAAAAAAAAAAAAGAAAAAAAAAAAAACAAAAAAAAAAAI=</HashCode>
       <FileName>Gaulois.cs</FileName>
@@ -147,6 +156,9 @@
   </Class>
   <Class Name="diagramme.Viking">
     <Position X="4.5" Y="3.75" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
       <HashCode>AAAhAAAAAAAAAAAAGAAAAAAAAAAAAACAAAAAAAAAAAI=</HashCode>
       <FileName>Viking.cs</FileName>
@@ -154,31 +166,40 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="diagramme.GauloisFactory">
-    <Position X="2.5" Y="6.5" Width="1.5" />
+    <Position X="2.5" Y="6.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAABAEAAAAAAAAAAI=</HashCode>
       <FileName>GauloisFactory.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="diagramme.VikingFactory">
-    <Position X="4.5" Y="6.5" Width="1.5" />
+    <Position X="4.5" Y="6.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAABAEAAAAAAAAAAI=</HashCode>
       <FileName>VikingFactory.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="diagramme.DwarfFactory">
-    <Position X="6.5" Y="6.5" Width="1.5" />
+    <Position X="6.5" Y="6.25" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAAAAABAEAAAAAAAAAAI=</HashCode>
       <FileName>DwarfFactory.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="diagramme.SquareFactory">
-    <Position X="14" Y="2" Width="1.5" />
+    <Position X="14" Y="1.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAgQAAAABAAAAEABAAAAAAAAECiA=</HashCode>
       <FileName>SquareFactory.cs</FileName>
@@ -325,12 +346,12 @@
   <Interface Name="diagramme.IMap">
     <Position X="9" Y="10.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAEAAAAIAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAAAAAAAAAEACAAIAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>IMap.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.IPlayer">
-    <Position X="2.5" Y="11" Width="1.5" />
+    <Position X="2.5" Y="11.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAA=</HashCode>
       <FileName>IPlayer.cs</FileName>
@@ -353,7 +374,7 @@
   <Interface Name="diagramme.IGame">
     <Position X="7" Y="9.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAABAAAAAAAAACAAAAAAAABAAAAAAAAAIAAAAA=</HashCode>
+      <HashCode>AAAAAAAABADAAAAAAACAAAAAAAABAAAAAAAAAIAAAAA=</HashCode>
       <FileName>IGame.cs</FileName>
     </TypeIdentifier>
   </Interface>

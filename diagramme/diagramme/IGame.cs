@@ -15,5 +15,9 @@ namespace diagramme
         IPlayer getWinner();
 
         int computePoints();
+
+        IPlayer getPlayer1();
+
+        IPlayer getPlayer2();
     }
 }

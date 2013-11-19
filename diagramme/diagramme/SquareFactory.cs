@@ -16,6 +16,11 @@ namespace diagramme
         public ISea sea;
 
         public IDesert desert;
+
+        private SquareFactory()
+        {
+            throw new System.NotImplementedException();
+        }
     
         public IDesert getDesert()
         {

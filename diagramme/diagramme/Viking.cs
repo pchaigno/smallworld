@@ -10,6 +10,11 @@ namespace diagramme
         private int attack;
         private int defense;
         private int lifePoints;
+
+        public Viking(int defense, int attack, int lifePoints)
+        {
+            throw new System.NotImplementedException();
+        }
     
         public int getDefense()
         {

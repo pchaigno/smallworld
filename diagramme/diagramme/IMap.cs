@@ -12,5 +12,7 @@ namespace diagramme
         bool isEnemyPosition(ICoordinates position, IUnit unit);
 
         void placeUnit(IUnit unit, ICoordinates position);
+
+        ISquare getSquare(ICoordinates position);
     }
 }

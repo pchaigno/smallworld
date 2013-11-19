@@ -1,22 +1,19 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Comment CommentText="Il n'y a qu'une unité par peuple donc pas besoin d'interface peuple.">
-    <Position X="2.552" Y="1.312" Height="0.75" Width="1.7" />
+    <Position X="2.552" Y="1.312" Height="0.667" Width="1.7" />
   </Comment>
   <Comment CommentText="La disposition de la carte et la position des unités sont contenus dans Map.">
-    <Position X="8.178" Y="9.267" Height="0.75" Width="1.7" />
+    <Position X="8.178" Y="9.267" Height="0.646" Width="1.7" />
   </Comment>
   <Comment CommentText="Toutes les informations nécessaires à la construction du Jeu sont passées directement en arguments de la méthode buildGame.">
     <Position X="16.497" Y="7.304" Height="0.823" Width="2.231" />
   </Comment>
   <Comment CommentText="Game est l'élément central. L'interface utilisateur devra y faire appel.">
-    <Position X="6.051" Y="9.342" Height="0.75" Width="1.7" />
-  </Comment>
-  <Comment CommentText="Une fabrique est associé au joueur quand celui-ci choisit son peuple.">
-    <Position X="2.646" Y="6.281" Height="0.75" Width="1.7" />
+    <Position X="6.03" Y="9.457" Height="0.75" Width="1.7" />
   </Comment>
   <Comment CommentText="Round contient les méthodes pour s'occuper de la gestion d'un tour.">
-    <Position X="10.296" Y="9.276" Height="0.75" Width="1.7" />
+    <Position X="10.296" Y="9.276" Height="0.656" Width="1.7" />
   </Comment>
   <Interface Name="diagramme.IDwarfFactory">
     <Position X="6.5" Y="4.25" Width="1.5" />
@@ -151,7 +148,7 @@
   <Interface Name="diagramme.IMap">
     <Position X="8.25" Y="7.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAEAAAAIAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAAAAAAAAAEACAAIAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>IMap.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -177,9 +174,9 @@
     </TypeIdentifier>
   </Interface>
   <Interface Name="diagramme.IGame">
-    <Position X="6" Y="7.5" Width="1.75" />
+    <Position X="6" Y="7.25" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAABAAAAAAAAACAAAAAAAABAAAAAAAAAIAAAAA=</HashCode>
+      <HashCode>AAAAAAAABADAAAAAAACAAAAAAAABAAAAAAAAAIAAAAA=</HashCode>
       <FileName>IGame.cs</FileName>
     </TypeIdentifier>
   </Interface>
