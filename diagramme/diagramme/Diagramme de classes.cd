@@ -3,16 +3,16 @@
   <Comment CommentText="Il n'y a qu'une unité par peuple donc pas besoin d'interface peuple.">
     <Position X="6.567" Y="1.489" Height="0.646" Width="1.7" />
   </Comment>
-  <Comment CommentText="La disposition de la carte et la position des unités sont contenus dans Map.">
+  <Comment CommentText="La composition de la carte et la position des unités sont contenues dans Map.">
     <Position X="9.539" Y="16.071" Height="0.625" Width="1.773" />
   </Comment>
   <Comment CommentText="Toutes les informations nécessaires à la construction du Jeu sont passées directement en arguments de la méthode buildGame.">
     <Position X="17.692" Y="8.2" Height="0.823" Width="2.294" />
   </Comment>
-  <Comment CommentText="Game est l'élément central. L'interface utilisateur devra y faire appel.">
+  <Comment CommentText="Game est l'élément central. L'interface utilisateur devra y faire appel pour gérer la partie.">
     <Position X="7.032" Y="15.623" Height="0.75" Width="1.7" />
   </Comment>
-  <Comment CommentText="Une fabrique est associé au joueur quand celui-ci choisit son peuple.">
+  <Comment CommentText="Une fabrique est associée au joueur quand celui-ci choisit son peuple.">
     <Position X="2.429" Y="11.235" Height="0.635" Width="1.7" />
   </Comment>
   <Comment CommentText="Round contient les méthodes pour s'occuper de la gestion d'un tour.">

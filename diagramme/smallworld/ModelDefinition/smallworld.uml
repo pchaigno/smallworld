@@ -1023,22 +1023,22 @@
             </covered>
           </messageOccurrenceSpecification>
           <operandOccurrenceSpecification
-            Id="fa857933-1652-41f8-be8c-23d38f88f228"
-            name="OperandOccurrenceSpecification19">
-            <covered>
-              <lifelineMoniker
-                Id="49d9dc2f-9c72-4cc3-8382-cf0875104cc0"
-                LastKnownName="UnitFactory"
-                LastKnownLocation="smallworld.uml" />
-            </covered>
-          </operandOccurrenceSpecification>
-          <operandOccurrenceSpecification
             Id="8cb61cff-b403-4c66-a214-02b9395f4c2f"
             name="OperandOccurrenceSpecification21">
             <covered>
               <lifelineMoniker
                 Id="6b25423b-2e35-4ec0-a693-38fd5ad396a4"
                 LastKnownName="Player"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="fa857933-1652-41f8-be8c-23d38f88f228"
+            name="OperandOccurrenceSpecification19">
+            <covered>
+              <lifelineMoniker
+                Id="49d9dc2f-9c72-4cc3-8382-cf0875104cc0"
+                LastKnownName="UnitFactory"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </operandOccurrenceSpecification>
@@ -1209,16 +1209,6 @@
             </covered>
           </executionOccurrenceSpecification>
           <operandOccurrenceSpecification
-            Id="4dffa22e-5387-464e-95c9-4f80948a9c28"
-            name="OperandOccurrenceSpecification32">
-            <covered>
-              <lifelineMoniker
-                Id="e7ab9503-62a1-4d86-a0ed-0b0e3cecd2cf"
-                LastKnownName="GameBuilder"
-                LastKnownLocation="smallworld.uml" />
-            </covered>
-          </operandOccurrenceSpecification>
-          <operandOccurrenceSpecification
             Id="c1763d51-13ff-4967-a26d-449b569fad1f"
             name="OperandOccurrenceSpecification34">
             <covered>
@@ -1235,6 +1225,16 @@
               <lifelineMoniker
                 Id="6b25423b-2e35-4ec0-a693-38fd5ad396a4"
                 LastKnownName="Player"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </operandOccurrenceSpecification>
+          <operandOccurrenceSpecification
+            Id="4dffa22e-5387-464e-95c9-4f80948a9c28"
+            name="OperandOccurrenceSpecification32">
+            <covered>
+              <lifelineMoniker
+                Id="e7ab9503-62a1-4d86-a0ed-0b0e3cecd2cf"
+                LastKnownName="GameBuilder"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </operandOccurrenceSpecification>
@@ -1451,22 +1451,22 @@
             </covered>
           </operandOccurrenceSpecification>
           <messageOccurrenceSpecification
-            Id="6d65732d-3d8c-4694-855f-5a156bdb21e0"
-            name="MessageOccurrenceSpecification4">
-            <covered>
-              <lifelineMoniker
-                Id="09113bba-591e-4f47-b1d5-5aee358bd2da"
-                LastKnownName="User"
-                LastKnownLocation="smallworld.uml" />
-            </covered>
-          </messageOccurrenceSpecification>
-          <messageOccurrenceSpecification
             Id="2631f674-031b-4ba3-887d-ab34f1fb19cd"
             name="MessageOccurrenceSpecification3">
             <covered>
               <lifelineMoniker
                 Id="e7ab9503-62a1-4d86-a0ed-0b0e3cecd2cf"
                 LastKnownName="GameBuilder"
+                LastKnownLocation="smallworld.uml" />
+            </covered>
+          </messageOccurrenceSpecification>
+          <messageOccurrenceSpecification
+            Id="6d65732d-3d8c-4694-855f-5a156bdb21e0"
+            name="MessageOccurrenceSpecification4">
+            <covered>
+              <lifelineMoniker
+                Id="09113bba-591e-4f47-b1d5-5aee358bd2da"
+                LastKnownName="User"
                 LastKnownLocation="smallworld.uml" />
             </covered>
           </messageOccurrenceSpecification>
@@ -1871,7 +1871,7 @@
         <ownedCommentsInternal>
           <comment
             Id="1cc40f47-b765-4905-9f0c-cc031420a3a1">
-            <body>getAdvisedDestinations est seulement utilisée pour l'affiche des cases.</body>
+            <body>getAdvisedDestinations est seulement utilisée pour l'affichage des cases suggérées.</body>
             <annotatedElements>
               <behaviorExecutionSpecificationMoniker
                 Id="6f1f2315-340c-4b5b-b217-fb957405bbc1"
