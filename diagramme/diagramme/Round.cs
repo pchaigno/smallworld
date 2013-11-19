@@ -17,12 +17,12 @@ namespace diagramme
             throw new NotImplementedException();
         }
 
-        public boolean setDestination(ICoordinates destination)
+        public bool setDestination(ICoordinates destination)
         {
             throw new NotImplementedException();
         }
 
-        public boolean unselectUnit(IUnit unit)
+        public bool unselectUnit(IUnit unit)
         {
             throw new NotImplementedException();
         }

@@ -10,6 +10,9 @@ namespace diagramme
         private int attack;
         private int defense;
         private int lifePoints;
+        private int movementPoints;
+        private int remainingMovementPoints;
+        private IPlayer owner;
 
         public Gaulois(int defense, int attack, int lifePoints)
         {
@@ -27,6 +30,23 @@ namespace diagramme
         }
 
         public int getAttack()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public int getRemainingMovementPoints()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void resetMovementPoints()
+        {
+            throw new NotImplementedException();
+        }
+
+
+        public IPlayer getOwner()
         {
             throw new NotImplementedException();
         }

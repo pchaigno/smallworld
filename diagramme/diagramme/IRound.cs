@@ -12,9 +12,9 @@ namespace diagramme
 
         void selectUnit(IUnit unit);
 
-        boolean setDestination(ICoordinates destination);
+        bool setDestination(ICoordinates destination);
 
-        boolean unselectUnit(IUnit unit);
+        bool unselectUnit(IUnit unit);
 
         List<IUnit> getUnits(ICoordinates position);
     }

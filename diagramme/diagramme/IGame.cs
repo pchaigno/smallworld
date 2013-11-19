@@ -19,5 +19,7 @@ namespace diagramme
         IPlayer getPlayer1();
 
         IPlayer getPlayer2();
+
+        IMap getMap();
     }
 }

@@ -15,6 +15,8 @@ namespace diagramme
         {
             throw new System.NotImplementedException();
         }
+
+        public IMap map;
     
         public bool isDefeated(IPlayer player)
         {
@@ -42,6 +44,11 @@ namespace diagramme
         }
 
         public IPlayer getPlayer2()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IMap getMap()
         {
             throw new NotImplementedException();
         }

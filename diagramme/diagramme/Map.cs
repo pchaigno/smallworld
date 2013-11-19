@@ -35,5 +35,11 @@ namespace diagramme
         {
             throw new NotImplementedException();
         }
+
+
+        public void moveUnit(IUnit unit, ICoordinates oldPosition, ICoordinates newPosition)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

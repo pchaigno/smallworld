@@ -46,5 +46,11 @@ namespace diagramme
         {
             throw new NotImplementedException();
         }
+
+
+        public ISquareFactory getInstance()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

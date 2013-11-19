@@ -13,5 +13,11 @@ namespace diagramme
         int getLifePoints();
 
         int getAttack();
+
+        int getRemainingMovementPoints();
+
+        void resetMovementPoints();
+
+        IPlayer getOwner();
     }
 }

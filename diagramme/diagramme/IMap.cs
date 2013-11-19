@@ -14,5 +14,7 @@ namespace diagramme
         void placeUnit(IUnit unit, ICoordinates position);
 
         ISquare getSquare(ICoordinates position);
+
+        void moveUnit(IUnit unit, ICoordinates oldPosition, ICoordinates newPosition);
     }
 }

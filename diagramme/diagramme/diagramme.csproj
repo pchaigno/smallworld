@@ -82,7 +82,6 @@
     <Compile Include="Sea.cs" />
     <Compile Include="SmallGameBuilder.cs" />
     <Compile Include="SquareFactory.cs" />
-    <Compile Include="TestConstructor.cs" />
     <Compile Include="Viking.cs" />
     <Compile Include="VikingFactory.cs" />
   </ItemGroup>

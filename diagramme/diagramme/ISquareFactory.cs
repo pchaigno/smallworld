@@ -17,5 +17,7 @@ namespace diagramme
         IForest getForest();
 
         ILowland getLowland();
+
+        ISquareFactory getInstance();
     }
 }
