@@ -1,0 +1,196 @@
+\documentclass[a4paper]{article}
+
+\usepackage[french]{babel}
+\usepackage[utf8x]{inputenc}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{placeins}
+\usepackage[colorinlistoftodos]{todonotes}
+
+\title{INSA de Rennes \\ Quatrième année Informatique \\ \bigskip \hrule \bigskip Projet d'Analyse, Conception et POO \\ \bigskip Rapport de conception : Small World \bigskip \hrule}
+
+\author{Paul \bsc{Chaignon} - Xavier \bsc{Fraboulet}}
+\date{Novembre 2013}
+
+
+\begin{document}
+
+\listoftodos
+\todo{Ajouter les references dans le texte.}
+
+
+\maketitle
+\thispagestyle{empty}
+\newpage
+
+~~
+\thispagestyle{empty}
+\newpage
+
+ 
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+Dans le cadre des cours de Modélisation et Conception de Logiciels et de Programmation Orientée Objet, nous sommes amenés à réaliser un jeu se basant sur Small World. Ce projet est divisé en deux étapes : tout d'abord la modélisation du problème grâce à des diagrammes UML puis l'implémentation.
+
+Small World est un jeu tour-par-tour où le but est de gérer des unités sur une carte afin d'obtenir le plus de points possible à l'issue de la partie. Plus le joueur contrôle de cases de la carte plus il gagne de points. De plus, il est possible d'attaquer les unités du joueur adverse afin de contrôler plus de cases. Dans notre implémentation du jeu, deux joueurs s'opposeront et pourront jouer trois peuples différents : les nains, les gaulois ou les vikings.
+
+Ce rapport présente le travail réalisé au cours de la phase de modélisation. Plusieurs diagrammes ont été réalisés afin de décrire les différents aspects du jeu.
+
+Nous avons commencé par réaliser un diagramme de classes des interfaces de notre projet. Nous nous sommes ensuite attaqué aux diagrammes de cas d'utilisation et d'activités. Ces derniers nous ont permis d'y voir plus clair pour réaliser les diagrammes de séquence. Ce faisant, nous avons été amené à revoir plusieurs interface de notre premier diagramme de classe. Nous avons fini par réaliser le diagramme de classes complet, incluant à la fois les interfaces et leurs implémentations.
+	
+    
+    
+    
+\section{Diagrammes de cas d'utilisation}
+Dans le jeu Small World, le joueur peut effectuer deux types d'actions majeures : lancer une partie ou jouer un tour. C'est pourquoi nous avons créé deux diagrammes d'utilisations : figure \ref{fig:casCreation} et figure \ref{fig:casJouer}.
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{casCreer.png}
+\caption{\label{fig:casCreation}Diagramme de cas d'utilisation : Création d'un jeu}
+\end{figure}
+
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{casJouer.png}
+\caption{\label{fig:casJouer}Diagramme de cas d'utilisation : Jouer}
+\end{figure}
+
+
+
+
+\FloatBarrier 
+%---------------
+
+
+\section{Diagrammes d'activités}
+
+Nous avons créés plusieurs diagrammes d'activité afin de mieux représenter le déroulement du jeu et de compléter les diagrammes de classes. Chaque aspect d'une partie est décrit : le lancement, le déroulement d'un tour et le déroulement du jeu.
+
+\subsection{Déroulement du jeu}
+Le diagramme de la figure \ref{fig:lancementJeu} décrit le fonctionnement du processus de création d'une partie.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.7\textwidth]{actCreer.png}
+\caption{\label{fig:lancementJeu}Diagramme d'activité : lancement d'une partie}
+\end{figure}
+
+
+Le diagramme de la figure \ref{fig:deroulementTour} décrit le fonctionnement d'un tour pour un joueur. Le joueur va pouvoir déplacer ses unités en les sélectionnant sur la carte puis en choisissant la case de destination. Si celle-ci est inoccupée ou occupée par ses unités, l'unité se déplace sinon un combat se déroule. Le combat n'est pas décrit dans ce diagramme.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{actTour.png}
+\caption{\label{fig:deroulementTour}Diagramme d'activité : Déroulement d'un tour}
+\end{figure}
+
+Enfin le diagramme de la figure \ref{fig:deroulementJeu} combine les deux diagrammes précédents et présente le déroulement global du jeu. Les joueurs jouent chacun leur tour. Il présente aussi les deux cas de fins du jeu : le nombre prédéfini de tours est atteint ou un joueur n'a plus d'unité.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{actJeu.png}
+\caption{\label{fig:deroulementJeu}Diagramme d'activité : Déroulement du jeu}
+\end{figure}
+
+
+\FloatBarrier 
+
+\subsection{Déroulement d'un combat}
+Le diagramme suivant (figure \ref{fig:actCombat}) explique le déroulement d'un combat entre une unité attaquante et une unité en défense. La résolution du combat, c'est à dire le calcul des probabilités de victoire et le choix du vainqueur, n'est pas détaillé afin de ne pas surcharger le diagramme.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{actCombat.png}
+\caption{\label{fig:actCombat}Diagramme d'activité : Déroulement d'un combat entre deux unités}
+\end{figure}
+
+
+
+\FloatBarrier 
+
+
+%---------------
+
+
+\section{Diagrammes états-transitions}
+
+Le diagramme d'états-transition suivant (figure \ref{fig:etat}) décrit le cycle de vie d'une unité. Ce cycle commence lorsque celle-ci est positionnée sur la carte. En suite, elle peut être utilisée par le joueur (Sélectionnée, Attaque) ou être attaquée par le joueur adverse (En défense). La vie d'une unité prend fin lorsque sa vie atteind 0.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1.2\textwidth]{Etat_Transition.png}
+\caption{\label{fig:etat}Diagrammes états-transitions : Unité}
+\end{figure}
+
+
+
+%---------------
+
+\section{Diagrammes de séquence}
+
+Nous avons réalisé deux diagrammes de séquence afin de mieux voir les associations entre les différents objets et les méthodes appelées. Le premier décrit les interactions entre les objets qui interviennent dans la création de la partie (TODO référence vers pièce jointe). Le second représente cette fois les interactions lors du déplacement d'une unité (TODO référence vers pièce jointe).
+
+Lors de la création d'une partie, nous avons décidé d'appeler les différents algorithmes de la librairie C++ à partir du constructeur de parties. Les cases et les unités seront donc ensuite positionné sur la carte. L'objet Map ne gère donc que les accès aux ressources. De plus, les unités seront créées en appelant une méthode du joueur. Ce dernier appelera le constructeur d'unité adéquat.
+
+L'objet Round se charge des différentes opérations à réaliser lors d'un tour. Pour sélectionner une unité, l'utilisateur devra d'abord cliquer sur la case où se situe l'unité, puis sélectionner l'unité parmi celles présentes sur la case. Le cahier des charges demande aussi qu'un ensemble de destinations soient proposées à l'utilisateur. L'algorithme C++ se chargeant d'établir ces suggestions sera appelé par l'objet Round.
+
+
+%---------------
+
+
+
+\section{Diagrammes de classes}
+
+Nous avons réalisé deux diagrammes de classes montrant l'organisation globale du jeu (vue de l'extérieur) et les patrons de conception utilisés. Les méthodes des interfaces sont issues des diagrammes de séquence.
+
+\todo{Ajouter stereotype utility a Round.}
+\todo{Passer les methodes de Round en statique.}
+
+\subsection{Diagramme d'interfaces}
+
+Le diagramme d'interfaces présente l'organisation globale de notre jeu, comment nous avons séparé les différents modules. Il permet à une personne extérieure de modifier les implémentations rapidement.
+
+\subsubsection{La Fabrique d'unités}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{fabrique-unites.png}
+\caption{\label{fig:fabrique-unites}Patron de conception Fabrique pour la création des unités.}
+\end{figure}
+
+
+\subsubsection{Les cases Poids-mouche}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{cases-poids-mouche.png}
+\caption{\label{fig:cases-poids-mouche}Patron de conception Poids mouche pour la modélisation de la carte.}
+\end{figure}
+
+
+\subsubsection{Les Stratégies pour la création de parties}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=1\textwidth]{strategies-creation-parties.png}
+\caption{\label{fig:strategies-creation-parties}Patron de conception Stratégie pour la création de la partie.}
+\end{figure}
+
+
+
+\subsection{Diagramme de classes}
+
+Le diagramme de classes détaille d'ensemble des implémentations et les associations entre les différents objets. Comme expliqué précédemment, nous avons choisi de stocker la composition de la carte et les positions des unités dans Map. De plus, chaque joueur possède sa propre fabrique d'unités. Enfin, le diagramme de classe permet de voir que notre fabrique de case SquareFactory est un singleton.
+
+
+
+\section{Conclusion}
+La phase de modélisation du jeu est maintenant terminée. Cette phase a été très importante. D'une part, elle nous a permis de mieux appréhender le jeu, d'autre part, elle va permettre de débuter la phase d'implémentation sur de bonnes bases. En effet, les diagrammes de classes vont permettre de générer le squelette du jeu, le développement du jeu en sera donc facilité. Ceci étant, suivant les problèmes que nous rencontrerons dans cette prochaine phase, ces diagrammes sont susceptibles de changer.
+
+\end{document}
