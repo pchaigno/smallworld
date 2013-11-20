@@ -8,9 +8,9 @@ namespace diagramme
     public interface IGame
     {
 
-        boolean isDefeated(IPlayer player);
+        bool isDefeated(IPlayer player);
 
-        boolean isEndOfGame();
+        bool isEndOfGame();
 
         IPlayer getWinner();
 
