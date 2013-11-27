@@ -1,20 +1,21 @@
 #pragma once
 
-#include "test.h"
+#include "MapGenerator.h"
+#include <list>
 #pragma comment (lib, "LibCpp.lib")
-using namespace System;
+using namespace System::Collections::Generic;
 
 namespace mWrapper {
-	public ref class WrapperTest {
-	private:
-		test* tDCw;
+	public ref class Wrapper {
 	public:
-		WrapperTest(){ tDCw = new test(); }
-		~WrapperTest(){ delete(tDCw); }
-		int run(int a) {
-			return tDCw->run(a);
+		static List<int>^ generateMapList(int a) {
+			int* tab = generateMap(a); 
+			int length = a * a;
+			List<int>^ result = gcnew List<int>(); 
+			for (int i = 0; i < length; i++) {
+				result->Add(tab[i]);
+			}
+			return result;
 		}
-	protected:
-		!WrapperTest(){ delete(tDCw); }
 	};
 }
