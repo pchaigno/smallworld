@@ -1,6 +1,5 @@
 #pragma once
 
-
 #ifdef WANTDLLEXP
 #define DLL __declspec( dllexport )
 #define EXTERNC extern "C"
@@ -9,17 +8,9 @@
 #define EXTERNC extern "C"
 #endif
 
-
-
 class MapGenerator
 {
-private:
-	int size;
-
 public:
-	MapGenerator(int);
-	int* generateMap(void);
+	DLL static int** generateMap(int size);
+	DLL static int randBounds(int a, int b);
 };
-
-
-EXTERNC DLL int* generateMap(int size);

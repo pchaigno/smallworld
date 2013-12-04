@@ -2,20 +2,22 @@
 
 #include "MapGenerator.h"
 #include <list>
-#pragma comment (lib, "LibCpp.lib")
+//#pragma comment (lib, "LibCpp.lib")
 using namespace System::Collections::Generic;
 
 namespace mWrapper {
 	public ref class Wrapper {
 	public:
-		static List<int>^ generateMapList(int a) {
-			int* tab = generateMap(a); 
-			int length = a * a;
-			List<int>^ result = gcnew List<int>(); 
-			for (int i = 0; i < length; i++) {
-				result->Add(tab[i]);
+		static array<array<int>^>^ generateMapList(int size) {
+			array<array<int>^>^ map = gcnew array<array<int>^>(size);
+			int** result = MapGenerator::generateMap(size);
+			for(int i=0; i<size; i++) {
+				map[i] = gcnew array<int>(size);
+				for(int j=0; j<size; j++) {
+					//map[i][j] = result[i][j];
+				}
 			}
-			return result;
+			return map;
 		}
 	};
 }

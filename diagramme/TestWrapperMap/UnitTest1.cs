@@ -12,9 +12,14 @@ namespace TestWrapperMap
         [TestMethod]
         public void TestMethodGenerate()
         {
-            int valeur = 5;
-            List<int> numbers = Wrapper.generateMapList(valeur);
-            Assert.AreEqual(valeur * valeur, numbers.Count);
+            int size = 5;
+            int[][] map = Wrapper.generateMapList(size);
+            for(int i=0; i<size; i++) {
+                for(int j=0; j<size; j++) {
+                    Console.WriteLine("{0} ", map[i][j]);
+                }
+                Console.WriteLine("\n");
+            }
         }
     }
 }

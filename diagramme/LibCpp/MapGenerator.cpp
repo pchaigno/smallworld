@@ -2,24 +2,24 @@
 #include <stdlib.h>
 #include <stdio.h> 
 
-MapGenerator::MapGenerator(int size) {
-	this->size = size;
-}
-
-
-int* MapGenerator::generateMap(void) {
+int** MapGenerator::generateMap(int size) {
+	int i;
 	int length = size * size;
-	int * result = (int*) malloc(length * sizeof(int)); //Allocation de 20 octets
-	if(result == NULL) {
+	int** map = (int**) malloc(size * sizeof(int));
+	for(i=0; i<size; i++) {
+        map[i] = (int*)malloc(size * sizeof(int));
+	}
+	if(map == NULL) {
 		printf("L'allocation n'a pu être réalisée\n");
 	}
-	for (int i = 0; i <length; i++) {
-		result[i] = i;
+	for(i=0; i<length; i++) {
+		for(int j=0; j<size; j++) {
+			map[i][j] = MapGenerator::randBounds(1, 6);
+		}
 	}
-	return result;
+	return map;
 }
 
-int* generateMap(int size) {
-	MapGenerator mapGen = MapGenerator(size);
-	return mapGen.generateMap();
+int MapGenerator::randBounds(int a, int b) {
+    return rand() % (b-a) + a;
 }
