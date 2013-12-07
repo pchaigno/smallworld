@@ -1,43 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows;
 using System.Linq;
 using System.Text;
+using System.Drawing;
+
 
 namespace SmallWorld
 {
     public class Map : IMap
     {
-        Dictionary<ICoordinates, IUnit> units;
-        Dictionary<ICoordinates, ISquare> squares;
 
-        public Map(Dictionary<ICoordinates, ISquare> squares)
+        Dictionary<Point, IUnit> units;
+        Dictionary<Point, ISquare> squares;
+
+        public Map(Dictionary<Point, ISquare> squares)
         {
-            throw new System.NotImplementedException();
+            this.squares = squares;
         }
 
-        public List<IUnit> getUnits(ICoordinates coordinates)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool isEnemyPosition(ICoordinates position, IUnit unit)
+        public List<IUnit> getUnits(Point coordinates)
         {
             throw new NotImplementedException();
         }
 
-        public void placeUnit(IUnit unit, ICoordinates position)
+        public bool isEnemyPosition(Point position, IUnit unit)
         {
             throw new NotImplementedException();
         }
 
-
-        public ISquare getSquare(ICoordinates position)
+        public void placeUnit(IUnit unit, Point position)
         {
             throw new NotImplementedException();
         }
 
 
-        public void moveUnit(IUnit unit, ICoordinates oldPosition, ICoordinates newPosition)
+        public ISquare getSquare(Point position)
+        {
+            return squares[position];
+        }
+
+
+        public void moveUnit(IUnit unit, Point oldPosition, Point newPosition)
         {
             throw new NotImplementedException();
         }

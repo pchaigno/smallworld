@@ -118,13 +118,6 @@
       <FileName>IDesert.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="SmallWorld.ICoordinates">
-    <Position X="5.75" Y="6.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ICoordinates.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
   <Interface Name="SmallWorld.IUnitFactory">
     <Position X="3.75" Y="6" Width="1.5" />
     <TypeIdentifier>

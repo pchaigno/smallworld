@@ -1,20 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
+
 
 namespace SmallWorld
 {
     public interface IMap
     {
-        List<IUnit> getUnits(ICoordinates coordinates);
+        List<IUnit> getUnits(Point coordinates);
 
-        bool isEnemyPosition(ICoordinates position, IUnit unit);
+        bool isEnemyPosition(Point position, IUnit unit);
 
-        void placeUnit(IUnit unit, ICoordinates position);
+        void placeUnit(IUnit unit, Point position);
 
-        ISquare getSquare(ICoordinates position);
+        ISquare getSquare(Point position);
 
-        void moveUnit(IUnit unit, ICoordinates oldPosition, ICoordinates newPosition);
+        void moveUnit(IUnit unit, Point oldPosition, Point newPosition);
     }
 }

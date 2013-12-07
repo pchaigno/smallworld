@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Point = System.Drawing.Point;
 using SmallWorld;
 
 namespace WpfMap
@@ -21,9 +22,7 @@ namespace WpfMap
     /// </summary>
     public partial class MainWindow : Window
     {
-        List<int> map;
-        Dictionary<ICoordinates, ISquare> squares;
-        IMap map2 = new Map();
+        
 
         public MainWindow()
         {
@@ -32,13 +31,18 @@ namespace WpfMap
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            map = new List<int>();
+            Dictionary<Point, ISquare> squares = new Dictionary<Point, ISquare>();
+            for (int i = 0; i < 5; i++)
+            {
+                for (int j = 0; j < 5; j++)
+                {
+                    squares.Add(new Point(i, j), new Lowland());
+                }
+            }
+            IMap map = new Map(squares);
+
             int width = 5;
             int height = 5;
-            for (int i = 0; i < 25; i++)
-            {
-                map.Add(i % 6);
-            }
 
             for (int c = 0; c < width; c++)
             {
@@ -51,15 +55,15 @@ namespace WpfMap
 
                 for (int c = 0; c < width; c++)
                 {
-                    int type = map[l * width + c];
-                    var rect = createRectangle(type, c, l);
+                    ISquare type = map.getSquare(new Point(l, c));
+                    var rect = createRectangle(new Sea(), c, l);
                     mapGrid.Children.Add(rect);
 
                 }
             }
         }
 
-        private Rectangle createRectangle(int type, int c, int l)
+        private Rectangle createRectangle(ISquare type, int c, int l)
         {
             var rectangle = new Rectangle();
             rectangle.Fill = Brushes.Beige;
@@ -68,10 +72,7 @@ namespace WpfMap
             rectangle.Tag = c * 4 + l;
             rectangle.Stroke = Brushes.Red;
             rectangle.StrokeThickness = 1;
-
-
-
-
+            
             return rectangle;
         }
     }
