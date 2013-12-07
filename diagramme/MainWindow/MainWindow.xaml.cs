@@ -13,6 +13,10 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Point = System.Drawing.Point;
+using Bitmap = System.Drawing.Bitmap;
+using Image = System.Drawing.Image;
+using TextureBrush = System.Drawing.TextureBrush;
+using Graphics = System.Drawing.Graphics;
 using SmallWorld;
 
 namespace WpfMap
@@ -65,8 +69,33 @@ namespace WpfMap
 
         private Rectangle createRectangle(ISquare type, int c, int l)
         {
+            ImageBrush image = new ImageBrush();
+            image.ImageSource =
+                new BitmapImage(
+                    new Uri(@"Ressources\terrains\eau.png", UriKind.Relative)
+                );
+            //Image image = new Bitmap("Ressources/terrains/eau.png");
+            if (type is ISea)
+            {
+                //Image image = new Bitmap("Ressources/terrains/eau.png");
+
+            } else if (type is IMountain)
+            {
+
+            } else if (type is ILowland)
+            {
+
+            } else if (type is IDesert)
+            {
+
+            } else if (type is IForest)
+            {
+
+            }
+
             var rectangle = new Rectangle();
-            rectangle.Fill = Brushes.Beige;
+
+            rectangle.Fill = image;
             Grid.SetColumn(rectangle, c);
             Grid.SetRow(rectangle, l);
             rectangle.Tag = c * 4 + l;

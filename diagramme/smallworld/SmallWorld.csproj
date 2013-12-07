@@ -40,7 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Coordinates.cs" />
     <Compile Include="DemoGameBuilder.cs" />
     <Compile Include="Desert.cs" />
     <Compile Include="Dwarf.cs" />
@@ -49,7 +48,6 @@
     <Compile Include="Game.cs" />
     <Compile Include="Gaulois.cs" />
     <Compile Include="GauloisFactory.cs" />
-    <Compile Include="ICoordinates.cs" />
     <Compile Include="IDemoGameBuilder.cs" />
     <Compile Include="IDesert.cs" />
     <Compile Include="IDwarf.cs" />
