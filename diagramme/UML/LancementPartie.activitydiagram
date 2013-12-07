@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<activityRootModel xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm4="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm5="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/SimpleShapesModel" xmlns:dm10="http://schemas.microsoft.com/dsltools/UseCaseModel" dslVersion="1.0.0.0" Id="6b576585-6193-4c79-bb8f-5042709a0ecb" name="LancementPartie" linkedPackageId="2598ccfb-1039-42ec-abd2-fa077796fec0" xmlns="http://schemas.microsoft.com/VisualStudio/TeamArchitect/ActivityDesigner">
+  <packagedElements>
+    <activityRootModelHasActivity>
+      <activity Id="21165ec6-a9c9-4942-a197-8bcb144037fb" name="LancementPartie" isAbstract="false" isLeaf="false" isActiveClass="false" isReentrant="false" isReadOnly="false" isSingleExecution="false">
+        <elementDefinition Id="c2a7a2f2-eec5-4f67-9115-1750bf78a040" />
+        <nodes>
+          <initialNode Id="2d0738be-1c5b-4bf3-b89b-ef5ecb353d7b" name="Initial1" isLeaf="false">
+            <elementDefinition Id="a2012809-9e27-455d-aa77-9e6acd5962bd" />
+            <flowNodeTargets>
+              <controlFlow Id="504b271b-aa61-466a-baff-19409da1b047" isLeaf="false">
+                <opaqueActionMoniker Id="a0fb7b08-c12a-45a1-8495-fedc17718468" LastKnownName="Sélection de la taille de la carte" />
+                <elementDefinition Id="8a614471-c190-4495-a785-8adaee0d2ef0" />
+              </controlFlow>
+            </flowNodeTargets>
+          </initialNode>
+          <opaqueAction Id="775063f2-475f-46ad-b383-022fcada0521" name="Choix nom du joueur" isLeaf="false">
+            <elementDefinition Id="c1348d86-ca05-40f2-80e4-6d895ced1440" />
+            <flowNodeTargets>
+              <controlFlow Id="66c8925f-430e-469f-8fa3-476f03981938" isLeaf="false">
+                <opaqueActionMoniker Id="e4e46b3f-d583-482e-9f52-e62d0e6fc6b6" LastKnownName="Sélection du peuple" />
+                <elementDefinition Id="122a6410-a5a0-40eb-86c4-18a5cd99eff3" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="e4e46b3f-d583-482e-9f52-e62d0e6fc6b6" name="Sélection du peuple" isLeaf="false">
+            <elementDefinition Id="0b6309e5-a4d4-4a3f-8e04-c80509b6d69f" />
+            <flowNodeTargets>
+              <controlFlow Id="d58d9bb2-a1fb-4541-8959-69e5c0e7ff46" isLeaf="false">
+                <opaqueActionMoniker Id="5131abe3-eb2e-4de7-9fe9-60a0f8153422" LastKnownName="Création du joueur" />
+                <elementDefinition Id="08cdf62f-f0cf-4fbf-a067-3e93f5e9af79" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="5131abe3-eb2e-4de7-9fe9-60a0f8153422" name="Création du joueur" isLeaf="false">
+            <elementDefinition Id="2ac2a506-e334-44e4-92a7-40ae6ec53ec5" />
+            <flowNodeTargets>
+              <controlFlow Id="92a3b7fa-1b97-4ad2-9f47-455a8a5e33ca" isLeaf="false">
+                <opaqueActionMoniker Id="c5bcf41d-1f07-46d3-9c50-7bc21689e1ce" LastKnownName="Création des unités et placement sur la carte" />
+                <elementDefinition Id="3ba27ccd-0b9b-47f3-ae1b-4c80cf1b95d5" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <opaqueAction Id="09377be1-660a-4d34-9fb0-78e404556ca4" name="Lancement de la partie" isLeaf="false">
+            <elementDefinition Id="de08407f-21cc-4078-aeea-b5226b2ee8c6" />
+            <flowNodeTargets>
+              <controlFlow Id="2eb200e9-cd25-4d3d-baaa-d248d0e23fd6" isLeaf="false">
+                <activityFinalNodeMoniker Id="c792dcda-3d44-4f07-be05-48c71bbaa7e1" LastKnownName="ActivityFinal1" />
+                <elementDefinition Id="30affa5a-5326-459d-926c-28f733573337" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <decisionNode Id="ee4d6a63-60a6-4802-9a13-a78789183e5e" name="Decision2" isLeaf="false">
+            <elementDefinition Id="f860a157-b40f-46d6-9340-32f1e4e01bc2" />
+            <flowNodeTargets>
+              <controlFlow Id="1e82d494-3a31-436e-8830-393cdf36dff9" guard="1 joueur créé" isLeaf="false">
+                <opaqueActionMoniker Id="775063f2-475f-46ad-b383-022fcada0521" LastKnownName="Choix nom du joueur" />
+                <elementDefinition Id="9c510f5a-12cf-46a3-af29-1a133c1b46f7" />
+              </controlFlow>
+              <controlFlow Id="4cc11210-a49f-49b0-a9ad-1ff91a8e91b2" guard="2 joueurs créés" isLeaf="false">
+                <opaqueActionMoniker Id="09377be1-660a-4d34-9fb0-78e404556ca4" LastKnownName="Lancement de la partie" />
+                <elementDefinition Id="4d10db6b-95c9-40e0-bf3b-222027001760" />
+              </controlFlow>
+            </flowNodeTargets>
+          </decisionNode>
+          <opaqueAction Id="a0fb7b08-c12a-45a1-8495-fedc17718468" name="Sélection de la taille de la carte" isLeaf="false">
+            <elementDefinition Id="b1d21c71-9a73-4464-a51b-2f4cb16381c0" />
+            <flowNodeTargets>
+              <controlFlow Id="34e6d41f-466f-42c8-ba12-ca3b0edf7151" isLeaf="false">
+                <opaqueActionMoniker Id="775063f2-475f-46ad-b383-022fcada0521" LastKnownName="Choix nom du joueur" />
+                <elementDefinition Id="ea811334-d36e-4007-a3dc-4c2a46a3e074" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+          <activityFinalNode Id="c792dcda-3d44-4f07-be05-48c71bbaa7e1" name="ActivityFinal1" isLeaf="false">
+            <elementDefinition Id="7ca0ba69-7d99-4607-8976-b126fc5d3eee" />
+          </activityFinalNode>
+          <opaqueAction Id="c5bcf41d-1f07-46d3-9c50-7bc21689e1ce" name="Création des unités et placement sur la carte" isLeaf="false">
+            <elementDefinition Id="fecdaf45-46f7-42e9-97a9-3af5f05bba80" />
+            <flowNodeTargets>
+              <controlFlow Id="fd2c386e-fac0-46db-b35e-a9bbce957643" isLeaf="false">
+                <decisionNodeMoniker Id="ee4d6a63-60a6-4802-9a13-a78789183e5e" LastKnownName="Decision2" />
+                <elementDefinition Id="86721a3e-c6a7-4b56-bde3-276334419d9d" />
+              </controlFlow>
+            </flowNodeTargets>
+          </opaqueAction>
+        </nodes>
+      </activity>
+    </activityRootModelHasActivity>
+  </packagedElements>
+  <package Id="2598ccfb-1039-42ec-abd2-fa077796fec0" name="smallworld">
+    <elementDefinition Id="43f692c9-e08b-43ba-99a7-2d3912a13b0b" />
+    <profileInstances>
+      <packageHasProfileInstances Id="0c84483d-589a-4e15-95cd-ac2f5acb0c43">
+        <profileInstance Id="eb70fa0b-9c92-4047-8a29-72730ab33e31" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="32d62689-1457-482d-80f6-c98988009a72">
+        <profileInstance Id="dc6309c2-f449-4b5c-9fb8-c78ec2b0b2fe" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</activityRootModel>

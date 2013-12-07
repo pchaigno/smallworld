@@ -9,10 +9,12 @@
             </StackPanel>
             <Button HorizontalAlignment="Right" Content="Fin du tour" />
         </Grid>
+        <Grid Background="Azure">
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Name="mapGrid">
 
-        <Grid Name="mapGrid" Background="Azure">
-
+            </Grid>
         </Grid>
+        
 
     </DockPanel>
 </Window>

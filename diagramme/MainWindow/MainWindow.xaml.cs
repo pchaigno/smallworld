@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using SmallWorld;
 
 namespace WpfMap
 {
@@ -21,6 +22,8 @@ namespace WpfMap
     public partial class MainWindow : Window
     {
         List<int> map;
+        Dictionary<ICoordinates, ISquare> squares;
+        IMap map2 = new Map();
 
         public MainWindow()
         {
@@ -30,11 +33,11 @@ namespace WpfMap
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             map = new List<int>();
-            int width = 4;
-            int height = 4;
-            for (int i = 0; i < 16; i++)
+            int width = 5;
+            int height = 5;
+            for (int i = 0; i < 25; i++)
             {
-                map.Add(i % 5);
+                map.Add(i % 6);
             }
 
             for (int c = 0; c < width; c++)
