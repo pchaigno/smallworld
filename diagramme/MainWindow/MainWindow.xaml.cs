@@ -44,20 +44,20 @@ namespace WpfMap
                 }
             }
             IMap map = new Map(squares);
+            map.setSize(5);
 
-            int width = 5;
-            int height = 5;
+            int size = map.getSize();
 
-            for (int c = 0; c < width; c++)
+            for (int c = 0; c < size; c++)
             {
                 mapGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(50, GridUnitType.Pixel) });
             }
 
-            for (int l = 0; l < height; l++)
+            for (int l = 0; l < size; l++)
             {
                 mapGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50, GridUnitType.Pixel) });
 
-                for (int c = 0; c < width; c++)
+                for (int c = 0; c < size; c++)
                 {
                     ISquare type = map.getSquare(new Point(l, c));
                     var rect = createRectangle(type, c, l);

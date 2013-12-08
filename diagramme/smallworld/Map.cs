@@ -11,8 +11,21 @@ namespace SmallWorld
     public class Map : IMap
     {
 
-        Dictionary<Point, IUnit> units;
-        Dictionary<Point, ISquare> squares;
+        private Dictionary<Point, IUnit> units;
+        private Dictionary<Point, ISquare> squares;
+
+        private int size;
+        
+        public int getSize()
+        {
+            return size;
+        }
+
+        public void setSize(int i)
+        {
+            this.size = i;
+        }
+
 
         public Map(Dictionary<Point, ISquare> squares)
         {
