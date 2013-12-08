@@ -40,7 +40,7 @@ namespace WpfMap
             {
                 for (int j = 0; j < 5; j++)
                 {
-                    squares.Add(new Point(i, j), new Lowland());
+                    squares.Add(new Point(i, j), new Desert());
                 }
             }
             IMap map = new Map(squares);
@@ -60,7 +60,7 @@ namespace WpfMap
                 for (int c = 0; c < width; c++)
                 {
                     ISquare type = map.getSquare(new Point(l, c));
-                    var rect = createRectangle(new Sea(), c, l);
+                    var rect = createRectangle(type, c, l);
                     mapGrid.Children.Add(rect);
 
                 }
@@ -69,29 +69,46 @@ namespace WpfMap
 
         private Rectangle createRectangle(ISquare type, int c, int l)
         {
-            ImageBrush image = new ImageBrush();
-            image.ImageSource =
-                new BitmapImage(
-                    new Uri(@"Ressources\terrains\eau.png", UriKind.Relative)
-                );
-            //Image image = new Bitmap("Ressources/terrains/eau.png");
+
+            BitmapImage bitmap = null;
             if (type is ISea)
             {
-                //Image image = new Bitmap("Ressources/terrains/eau.png");
+                bitmap = new BitmapImage(
+                    new Uri(@"..\..\Ressources\terrains\sea.png", UriKind.Relative)
+                );
 
-            } else if (type is IMountain)
+            } 
+            else if (type is IMountain)
             {
-
-            } else if (type is ILowland)
+                bitmap = new BitmapImage(
+                    new Uri(@"..\..\Ressources\terrains\mountain.png", UriKind.Relative)
+                );
+            } 
+            else if (type is ILowland)
             {
-
-            } else if (type is IDesert)
+                bitmap = new BitmapImage(
+                    new Uri(@"..\..\Ressources\terrains\lowland.png", UriKind.Relative)
+                );
+            } 
+            else if (type is IDesert)
             {
-
-            } else if (type is IForest)
-            {
-
+                bitmap = new BitmapImage(
+                    new Uri(@"..\..\Ressources\terrains\desert.png", UriKind.Relative)
+                );
             }
+            else if (type is IForest)
+            {
+                bitmap = new BitmapImage(
+                    new Uri(@"..\..\Ressources\terrains\forest.png", UriKind.Relative)
+                );
+            }
+            else
+            { 
+                //throw Exception?
+            }
+
+            ImageBrush image = new ImageBrush();
+            image.ImageSource = bitmap;
 
             var rectangle = new Rectangle();
 
@@ -99,7 +116,7 @@ namespace WpfMap
             Grid.SetColumn(rectangle, c);
             Grid.SetRow(rectangle, l);
             rectangle.Tag = c * 4 + l;
-            rectangle.Stroke = Brushes.Red;
+            //rectangle.Stroke = Brushes.Red;
             rectangle.StrokeThickness = 1;
             
             return rectangle;
