@@ -7,50 +7,64 @@ namespace SmallWorld
 {
     public class SquareFactory : ISquareFactory
     {
-        public IMountain mountain;
+        private IMountain mountain;
 
-        public ILowland lowland;
+        private ILowland lowland;
 
-        public IForest forest;
+        private IForest forest;
 
-        public ISea sea;
+        private ISea sea;
 
-        public IDesert desert;
+        private IDesert desert;
+
+        private static SquareFactory INSTANCE = new SquareFactory();
 
         private SquareFactory()
         {
-            throw new System.NotImplementedException();
-        }
-    
-        public IDesert getDesert()
-        {
-            throw new NotImplementedException();
-        }
-
-        public ISea getSea()
-        {
-            throw new NotImplementedException();
+            mountain = null;
+            lowland = null;
+            forest = null;
+            sea = null;
+            desert = null;
         }
 
-        public IMountain getMountain()
+        public static ISquareFactory getInstance()
         {
-            throw new NotImplementedException();
+            return INSTANCE;
         }
 
-        public IForest getForest()
+        public ISquare getSquare(int type)
         {
-            throw new NotImplementedException();
-        }
+            switch (type)
+            {
+                case 0:
+                    if (sea == null)
+                        sea = new Sea();
+                    return sea;
+                case 1:
+                    if (forest == null)
+                        forest = new Forest();
+                    return forest;
 
-        public ILowland getLowland()
-        {
-            throw new NotImplementedException();
-        }
+                case 2:
+                    if (desert == null)
+                        desert = new Desert();
+                    return desert;
 
+                case 3:
+                    if (lowland == null)
+                        lowland = new Lowland();
+                    return lowland;
 
-        public ISquareFactory getInstance()
-        {
-            throw new NotImplementedException();
+                case 4:
+                    if (mountain == null)
+                        mountain = new Mountain();
+                    return mountain;
+                default:
+                    return null;
+                    //throw Excetion ???
+
+            }
         }
     }
 }

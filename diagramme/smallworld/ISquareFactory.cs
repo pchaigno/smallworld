@@ -8,16 +8,8 @@ namespace SmallWorld
     public interface ISquareFactory
     {
 
-        IDesert getDesert();
+        ISquare getSquare(int i);
 
-        ISea getSea();
-
-        IMountain getMountain();
-
-        IForest getForest();
-
-        ILowland getLowland();
-
-        ISquareFactory getInstance();
+        static ISquareFactory getInstance();
     }
 }
