@@ -36,8 +36,11 @@ namespace WpfMap
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            IMapBuilder builder = new MapBuilder();
-            IMap map = builder.buildMap(5);
+            IPlayer player1 = new Player("john", new VikingFactory());
+            IPlayer player2 = new Player("john", new DwarfFactory());
+            IGameBuilder gameBuilder = new SmallGameBuilder();
+            IGame game = gameBuilder.buildGame(player1, player2);
+            IMap map = game.getMap();
 
             int size = map.getSize();
 

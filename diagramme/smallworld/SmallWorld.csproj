@@ -46,6 +46,7 @@
     <Compile Include="DwarfFactory.cs" />
     <Compile Include="Forest.cs" />
     <Compile Include="Game.cs" />
+    <Compile Include="GameBuilder.cs" />
     <Compile Include="Gaulois.cs" />
     <Compile Include="GauloisFactory.cs" />
     <Compile Include="IDemoGameBuilder.cs" />

@@ -7,16 +7,20 @@ namespace SmallWorld
 {
     public class Game : IGame
     {
-        public IPlayer player2;
+        private IPlayer player2;
+        private IPlayer player1;
+        private IMap map;
+        private int max_rounds;
 
-        public IPlayer player1;
-
-        public Game(IPlayer player1, IPlayer player2)
+        public Game(IPlayer player1, IPlayer player2, IMap map, int max_rounds)
         {
-            throw new System.NotImplementedException();
+            this.player1 = player1;
+            this.player2 = player2;
+            this.map = map;
+            this.max_rounds = max_rounds;
         }
 
-        public IMap map;
+       
     
         public bool isDefeated(IPlayer player)
         {
@@ -40,17 +44,17 @@ namespace SmallWorld
 
         public IPlayer getPlayer1()
         {
-            throw new NotImplementedException();
+            return player1;
         }
 
         public IPlayer getPlayer2()
         {
-            throw new NotImplementedException();
+            return player2;
         }
 
         public IMap getMap()
         {
-            throw new NotImplementedException();
+            return map;
         }
     }
 }

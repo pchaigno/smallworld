@@ -19,7 +19,7 @@ namespace SmallWorld
             {
                 for (int j = 0; j < size; j++)
                 {
-                    squares[i, j] = j;
+                    squares[i, j] = j%5;
                 }
             }
 

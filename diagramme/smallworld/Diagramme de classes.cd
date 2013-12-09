@@ -7,7 +7,7 @@
     <Position X="9.539" Y="16.071" Height="0.625" Width="1.773" />
   </Comment>
   <Comment CommentText="Toutes les informations nécessaires à la construction du Jeu sont passées directement en arguments de la méthode buildGame.">
-    <Position X="17.692" Y="8.2" Height="0.823" Width="2.294" />
+    <Position X="17.713" Y="7.158" Height="0.823" Width="2.294" />
   </Comment>
   <Comment CommentText="Game est l'élément central. L'interface utilisateur devra y faire appel pour gérer la partie.">
     <Position X="7.032" Y="15.623" Height="0.75" Width="1.7" />
@@ -59,7 +59,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SmallWorld.DemoGameBuilder">
-    <Position X="14.25" Y="10.75" Width="1.5" />
+    <Position X="14.25" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>DemoGameBuilder.cs</FileName>
@@ -67,7 +67,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SmallWorld.NormalGameBuilder">
-    <Position X="16" Y="10.75" Width="1.5" />
+    <Position X="16" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>NormalGameBuilder.cs</FileName>
@@ -75,7 +75,7 @@
     <Lollipop Position="0.2" />
   </Class>
   <Class Name="SmallWorld.SmallGameBuilder">
-    <Position X="17.75" Y="10.75" Width="1.5" />
+    <Position X="17.75" Y="12.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SmallGameBuilder.cs</FileName>
@@ -105,7 +105,7 @@
       </Path>
     </AssociationLine>
     <TypeIdentifier>
-      <HashCode>wAAAEAAQBADAAAAAAACAAAAAAAABAAAAAAAAAIAAAAA=</HashCode>
+      <HashCode>wAAAEAAQBADAAAAAAACAAAAAAAABAAAAAACAAIAAAAA=</HashCode>
       <FileName>Game.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -200,7 +200,7 @@
   <Class Name="SmallWorld.SquareFactory">
     <Position X="14" Y="1.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAgQAAAABAAAAEARAAAAAAAAECiA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAACAAgQAAAABAAQAAABAAAAAAAAAACA=</HashCode>
       <FileName>SquareFactory.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -212,11 +212,19 @@
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="diagramme.MapBuilder">
+  <Class Name="SmallWorld.MapBuilder">
     <Position X="12" Y="16.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
       <FileName>MapBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="SmallWorld.GameBuilder">
+    <Position X="16" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAIAAIAAAAAAACAAAAAAAI=</HashCode>
+      <FileName>GameBuilder.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
@@ -282,7 +290,7 @@
       <Compartment Name="Fields" Collapsed="true" />
     </Compartments>
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAAAAAAEAQAAAAAAAAECgA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>ISquareFactory.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -385,7 +393,7 @@
       <FileName>IDemoGameBuilder.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="diagramme.IMapBuilder">
+  <Interface Name="SmallWorld.IMapBuilder">
     <Position X="12" Y="15" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>

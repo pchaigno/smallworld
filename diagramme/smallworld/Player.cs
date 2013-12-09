@@ -7,11 +7,13 @@ namespace SmallWorld
 {
     public class Player : IPlayer
     {
-        public IUnitFactory factory;
+        private IUnitFactory factory;
+        private string name;
 
-        public Player(string name)
+        public Player(string name, IUnitFactory factory)
         {
-            throw new System.NotImplementedException();
+            this.name = name;
+            this.factory = factory;
         }
     
         public List<IUnit> createUnits(int nbUnits)
@@ -21,7 +23,7 @@ namespace SmallWorld
 
         public string getName()
         {
-            throw new NotImplementedException();
+            return name;
         }
     }
 }

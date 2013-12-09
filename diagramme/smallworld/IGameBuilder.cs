@@ -7,6 +7,6 @@ namespace SmallWorld
 {
     public interface IGameBuilder
     {
-        IGame buildGame();
+        IGame buildGame(IPlayer p1, IPlayer p2);
     }
 }

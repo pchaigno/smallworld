@@ -5,11 +5,13 @@ using System.Text;
 
 namespace SmallWorld
 {
-    public class DemoGameBuilder : IDemoGameBuilder
+    public class DemoGameBuilder : GameBuilder, IDemoGameBuilder
     {
-        public IGame buildGame()
+        public DemoGameBuilder()
         {
-            throw new NotImplementedException();
+            max_rounds = 30;
+            nb_units = 8;
+            map_size = 15;
         }
     }
 }
