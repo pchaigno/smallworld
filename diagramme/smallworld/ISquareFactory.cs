@@ -10,6 +10,5 @@ namespace SmallWorld
 
         ISquare getSquare(int i);
 
-        static ISquareFactory getInstance();
     }
 }

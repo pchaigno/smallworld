@@ -36,19 +36,10 @@ namespace WpfMap
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            Dictionary<Point, ISquare> squares = new Dictionary<Point, ISquare>();
-            int size = 15;
-            for (int i = 0; i < size; i++)
-            {
-                for (int j = 0; j < size; j++)
-                {
-                    squares.Add(new Point(i, j), new Desert());
-                }
-            }
-            IMap map = new Map(squares);
-            map.setSize(15);
+            IMapBuilder builder = new MapBuilder();
+            IMap map = builder.buildMap(5);
 
-            size = map.getSize();
+            int size = map.getSize();
 
             for (int c = 0; c < size; c++)
             {

@@ -59,6 +59,7 @@
     <Compile Include="IGauloisFactory.cs" />
     <Compile Include="ILowland.cs" />
     <Compile Include="IMap.cs" />
+    <Compile Include="IMapBuilder.cs" />
     <Compile Include="IMountain.cs" />
     <Compile Include="INormalGameBuilder.cs" />
     <Compile Include="IPlayer.cs" />
@@ -73,6 +74,7 @@
     <Compile Include="IVikingFactory.cs" />
     <Compile Include="Lowland.cs" />
     <Compile Include="Map.cs" />
+    <Compile Include="MapBuilder.cs" />
     <Compile Include="Mountain.cs" />
     <Compile Include="NormalGameBuilder.cs" />
     <Compile Include="Player.cs" />

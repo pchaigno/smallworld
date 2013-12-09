@@ -17,7 +17,7 @@ namespace SmallWorld
 
         private IDesert desert;
 
-        private static SquareFactory INSTANCE = new SquareFactory();
+        public static SquareFactory INSTANCE = new SquareFactory();
 
         private SquareFactory()
         {
@@ -26,11 +26,6 @@ namespace SmallWorld
             forest = null;
             sea = null;
             desert = null;
-        }
-
-        public static ISquareFactory getInstance()
-        {
-            return INSTANCE;
         }
 
         public ISquare getSquare(int type)

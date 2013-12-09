@@ -5,7 +5,7 @@ using System.Text;
 using SmallWorld;
 using System.Drawing;
 
-namespace diagramme
+namespace SmallWorld
 {
     public class MapBuilder : IMapBuilder
     {
@@ -28,7 +28,7 @@ namespace diagramme
             {
                 for (int j = 0; j < size; j++)
                 {
-                    squaresDictionnary.Add(new Point(i, j), new Desert());
+                    squaresDictionnary.Add(new Point(i, j), SquareFactory.INSTANCE.getSquare(squares[i,j]));
                 }
             }
 
