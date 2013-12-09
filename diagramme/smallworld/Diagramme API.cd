@@ -135,7 +135,7 @@
   <Interface Name="SmallWorld.IMap">
     <Position X="5.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgEACAAIAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAAAAAAIAgEAiAAIAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>IMap.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -172,6 +172,13 @@
     <TypeIdentifier>
       <HashCode>AARAAAAAAAAAMAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IRound.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="diagramme.IMapBuilder">
+    <Position X="5.75" Y="10.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>IMapBuilder.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

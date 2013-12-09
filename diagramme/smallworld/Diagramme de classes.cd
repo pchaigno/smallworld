@@ -118,7 +118,7 @@
   <Class Name="SmallWorld.Map">
     <Position X="9.75" Y="13.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgEACAAIAAAAAAAAAUAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAAAAAAIAgEAiAAIAAAAAAAAAUAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>Map.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
@@ -212,6 +212,14 @@
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
   </Class>
+  <Class Name="diagramme.MapBuilder">
+    <Position X="12" Y="16.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>MapBuilder.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
   <Interface Name="SmallWorld.IDwarfFactory">
     <Position X="6.75" Y="8.75" Width="1.5" />
     <TypeIdentifier>
@@ -252,13 +260,6 @@
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IViking.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Interface Name="SmallWorld.IDemoGameBuilder">
-    <Position X="14.25" Y="9.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>IDemoGameBuilder.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Interface Name="SmallWorld.ISmallGameBuilder">
@@ -338,7 +339,7 @@
   <Interface Name="SmallWorld.IMap">
     <Position X="9.75" Y="11" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAgEACAAIAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <HashCode>AAAAAAAAAIAgEAiAAIAAAAAAAAAAAAAAAAAAAAAAAAQ=</HashCode>
       <FileName>IMap.cs</FileName>
     </TypeIdentifier>
   </Interface>
@@ -375,6 +376,20 @@
     <TypeIdentifier>
       <HashCode>AARAAAAAAAAAMAAAQAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>IRound.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="SmallWorld.IDemoGameBuilder">
+    <Position X="14.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IDemoGameBuilder.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="diagramme.IMapBuilder">
+    <Position X="12" Y="15" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>IMapBuilder.cs</FileName>
     </TypeIdentifier>
   </Interface>
   <Font Name="Segoe UI" Size="9" />

@@ -7,5 +7,6 @@ namespace SmallWorld
 {
     public interface IDemoGameBuilder : IGameBuilder
     {
+        
     }
 }
