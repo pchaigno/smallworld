@@ -9,11 +9,13 @@
             </StackPanel>
             <Button HorizontalAlignment="Right" Content="Fin du tour" />
         </Grid>
-        <Grid Background="Azure">
-            <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Name="mapGrid">
+        <ScrollViewer HorizontalScrollBarVisibility="Auto">
+            <Grid Background="Azure">
+                <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Name="mapGrid">
 
+                </Grid>
             </Grid>
-        </Grid>
+        </ScrollViewer >
         
 
     </DockPanel>
