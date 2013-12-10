@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace SmallWorld
 {
-    public abstract class Unit : IUnit
+    public class Unit : IUnit
     {
         protected int attack;
         protected int defense;
@@ -54,27 +54,28 @@ namespace SmallWorld
             return owner;
         }
 
-        public int getPoint()
+        public void resetMovementPoints()
+        {
+            remainingMovementPoints = movementPoints;
+        }
+
+        public virtual int getPoint()
         {
             if (square is ISea)
                 return 0;
             else
                 return 1;
         }
+        
 
-        public void resetMovementPoints()
-        {
-            remainingMovementPoints = movementPoints;
-        }
-
-        public void move(ISquare destinationSquare, Point destination)
+        public virtual void move(ISquare destinationSquare, Point destination)
         {
             this.square = destinationSquare;
             this.position = destination;
             remainingMovementPoints -= 2;
         }
 
-        public Boolean canMove(Point destination, ISquare destinationSquare)
+        public virtual Boolean canMove(Point destination, ISquare destinationSquare)
         {
             return isNext(destination, position) && remainingMovementPoints > 0 && !(destinationSquare is ISea);
         }

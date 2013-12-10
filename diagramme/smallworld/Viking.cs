@@ -9,7 +9,11 @@ namespace SmallWorld
 {
     public class Viking : Unit, IViking
     {
-        public int getPoint()
+        public Viking(IPlayer owner) : base(owner)
+        {
+        }
+
+        public override int getPoint()
         {
             if (square is ILowland) // TODO: only near sea
                 return 2;
@@ -19,7 +23,7 @@ namespace SmallWorld
                 return 1;
         }
 
-        public Boolean canMove(Point destination, ISquare destinationSquare)
+        public override Boolean canMove(Point destination, ISquare destinationSquare)
         {
             return isNext(destination, position) && remainingMovementPoints > 0;
         }

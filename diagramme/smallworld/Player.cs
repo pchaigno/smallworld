@@ -16,7 +16,7 @@ namespace SmallWorld
             this.factory = factory;
         }
     
-        public List<IUnit> createUnits(int nbUnits, IMap map)
+        public List<IUnit> createUnits(int nbUnits)
         {
             List<IUnit> units = new List<IUnit>();
             for (int i = 0; i < nbUnits; i++)

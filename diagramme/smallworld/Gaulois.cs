@@ -9,7 +9,11 @@ namespace SmallWorld
 {
     public class Gaulois : Unit, IGaulois
     {
-        public int getPoint()
+        public Gaulois(IPlayer owner) : base(owner)
+        {
+        }
+        
+        public override int getPoint()
         {
             if (square is ILowland)
                 return 2;
@@ -19,7 +23,7 @@ namespace SmallWorld
                 return 1;
         }
 
-        public void move(ISquare destinationSquare, Point destination)
+        public override void move(ISquare destinationSquare, Point destination)
         {
             this.square = destinationSquare;
             this.position = destination;
