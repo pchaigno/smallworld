@@ -13,6 +13,5 @@ namespace SmallWorld
             nb_units = 6;
             map_size = 10;
         }
-
     }
 }

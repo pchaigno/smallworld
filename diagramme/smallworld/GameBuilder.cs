@@ -6,7 +6,7 @@ using SmallWorld;
 
 namespace SmallWorld
 {
-    public class GameBuilder : IGameBuilder
+    public abstract class GameBuilder : IGameBuilder
     {
         protected int max_rounds;
         protected int map_size;

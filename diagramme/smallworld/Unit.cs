@@ -6,7 +6,7 @@ using System.Drawing;
 
 namespace SmallWorld
 {
-    public class Unit : IUnit
+    public abstract class Unit : IUnit
     {
         protected int attack;
         protected int defense;
@@ -18,7 +18,7 @@ namespace SmallWorld
         protected ISquare square;
 
 
-        public Unit(IPlayer owner)
+        protected Unit(IPlayer owner)
         {
             this.owner = owner;
             attack = 2;
@@ -80,7 +80,7 @@ namespace SmallWorld
             return isNext(destination, position) && remainingMovementPoints > 0 && !(destinationSquare is ISea);
         }
 
-        public Boolean isNext(Point a, Point b)
+        protected Boolean isNext(Point a, Point b)
         {
             return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y) == 1;
         }

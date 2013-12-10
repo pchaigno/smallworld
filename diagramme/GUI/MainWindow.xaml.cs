@@ -38,7 +38,7 @@ namespace WpfMap
         {
             IPlayer player1 = new Player("john", new VikingFactory());
             IPlayer player2 = new Player("john", new DwarfFactory());
-            IGameBuilder gameBuilder = new NormalGameBuilder();
+            IGameBuilder gameBuilder = new SmallGameBuilder();
             IGame game = gameBuilder.buildGame(player1, player2);
             IMap map = game.getMap();
 
