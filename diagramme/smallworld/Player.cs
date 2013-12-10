@@ -16,9 +16,14 @@ namespace SmallWorld
             this.factory = factory;
         }
     
-        public List<IUnit> createUnits(int nbUnits)
+        public List<IUnit> createUnits(int nbUnits, IMap map)
         {
-            throw new NotImplementedException();
+            List<IUnit> units = new List<IUnit>();
+            for (int i = 0; i < nbUnits; i++)
+            {
+                units.Add(factory.createUnit());
+            }
+            return units;
         }
 
         public string getName()

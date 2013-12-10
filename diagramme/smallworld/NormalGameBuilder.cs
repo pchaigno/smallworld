@@ -9,9 +9,9 @@ namespace SmallWorld
     {
         public NormalGameBuilder()
         {
-            max_rounds = 10;
-            nb_units = 4;
-            map_size = 5;
+            max_rounds = 30;
+            nb_units = 8;
+            map_size = 15;
         }
     }
 }

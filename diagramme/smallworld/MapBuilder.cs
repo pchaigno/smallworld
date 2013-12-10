@@ -14,6 +14,7 @@ namespace SmallWorld
             
             int[,] squares = new int[size,size];
 
+            //TODO
             // Must be replaced by a call to wrapper
             for (int i = 0; i < size; i++)
             {

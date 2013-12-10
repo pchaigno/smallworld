@@ -2,53 +2,33 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
+
 
 namespace SmallWorld
 {
-    public class Gaulois : IGaulois
+    public class Gaulois : Unit, IGaulois
     {
-        private int attack;
-        private int defense;
-        private int lifePoints;
-        private int movementPoints;
-        private int remainingMovementPoints;
-        private IPlayer owner;
-
-        public Gaulois(int defense, int attack, int lifePoints)
+        public int getPoint()
         {
-            throw new System.NotImplementedException();
-        }
-    
-        public int getDefense()
-        {
-            throw new NotImplementedException();
+            if (square is ILowland)
+                return 2;
+            else if (square is ISea || square is IMountain)
+                return 0;
+            else
+                return 1;
         }
 
-        public int getLifePoints()
+        public void move(ISquare destinationSquare, Point destination)
         {
-            throw new NotImplementedException();
+            this.square = destinationSquare;
+            this.position = destination;
+            if(destinationSquare is ILowland)
+                remainingMovementPoints -= 1;
+            else
+                remainingMovementPoints -= 2;
         }
 
-        public int getAttack()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public int getRemainingMovementPoints()
-        {
-            throw new NotImplementedException();
-        }
-
-        public void resetMovementPoints()
-        {
-            throw new NotImplementedException();
-        }
-
-
-        public IPlayer getOwner()
-        {
-            throw new NotImplementedException();
-        }
+        
     }
 }
