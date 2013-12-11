@@ -16,7 +16,4 @@ namespace SmallWorld
             throw new NotImplementedException();
         }
     }
-
-    
-
 }
