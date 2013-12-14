@@ -1,9 +1,9 @@
 ﻿<Window x:Class="MainWindow.CreateGame"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Creator" Height="500" Width="500" Loaded="Window_Loaded">
-    <Grid>
-        <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Name="mapGrid">
+        Title="Creator" Height="600" Width="500">
+    <StackPanel>
+        <Grid Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" Name="mapGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -20,22 +20,30 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="0">Map size:</TextBlock>
-            <ComboBox Width="200" Height="20px" Grid.Column="1" Grid.Row="0" Name="cbox" />
+            <ComboBox Width="200" Height="20px" SelectionChanged="onChangeMap" Grid.Column="1" Grid.Row="0" Name="mapBox" ItemsSource="{Binding}" />
 
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="1"></TextBlock>
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="2">Player1</TextBlock>
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="3">Name:</TextBlock>
             <TextBox Margin="10" FontSize="20" Grid.Column="1" Grid.Row="3" Name="name1"/>
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="4">People:</TextBlock>
-            <ComboBox Width="200" Height="20px" SelectionChanged="onChangePeople1" ItemsSource="{Binding}" Grid.Column="1" Grid.Row="4" Name="people1" />
+            <ComboBox Width="200" Height="20px" SelectionChanged="onChangePeople1" ItemsSource="{Binding}" Grid.Column="1" Grid.Row="4" Name="people1Box" />
 
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="5"></TextBlock>
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="6">Player2</TextBlock>
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="7">Name:</TextBlock>
             <TextBox Margin="10" FontSize="20" Grid.Column="1" Grid.Row="7" Name="name2"/>
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="8">People:</TextBlock>
-            <ComboBox Width="200" Height="20px" SelectionChanged="onChangePeople2" Grid.Column="1" Grid.Row="8" ItemsSource="{Binding}" Name="people2" />
+            <ComboBox Width="200" Height="20px" SelectionChanged="onChangePeople2" Grid.Column="1" Grid.Row="8" ItemsSource="{Binding}" Name="people2Box" />
+
+            
 
         </Grid>
-    </Grid>
+
+        <Button Margin="20" Width="200" Name="launcher" BorderBrush="Black" BorderThickness="1" 
+            Click="onClickLauncher" ClickMode="Hover">
+            Launch The Game!
+        </Button>
+
+    </StackPanel>
 </Window>

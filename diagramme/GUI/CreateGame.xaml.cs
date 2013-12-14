@@ -21,63 +21,57 @@ namespace MainWindow
     /// </summary>
     public partial class CreateGame : Window
     {
+        PeopleCollection people1Collec;
+        PeopleCollection people2Collec;
+        MapCollection mapCollection;
 
-        List<String> mapSize;
-        People people1Collec;
-        People people2Collec;
 
         public CreateGame()
         {
             InitializeComponent();
-            mapSize = new List<string>();
-            mapSize.Add("Small");
-            mapSize.Add("Normal");
-            mapSize.Add("Demo");
-        }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            if (mapSize == null)
-            {
 
-            }
+            mapCollection = new MapCollection();
+            mapBox.DataContext = mapCollection;
 
-            foreach (string st in mapSize)
-            {
-                ComboBoxItem cboxitem = new ComboBoxItem();
-                cboxitem.Content = st;
-                cbox.Items.Add(cboxitem);
-            }
+            people1Collec = new PeopleCollection();
+            people1Box.DataContext = people1Collec;
 
-            people1Collec = new People();
-            people1.DataContext = people1Collec;
-
-            people2Collec = new People();
-            people2.DataContext = people2Collec;
-
+            people2Collec = new PeopleCollection();
+            people2Box.DataContext = people2Collec;
         }
 
         public void onChangePeople1(object sender, SelectionChangedEventArgs e)
         {
-            string value = (String)people1.SelectedItem;
-            people1Collec.setSelected(value);
+            string value = (String)people1Box.SelectedItem;
+            people1Collec.selected = value;
             people2Collec.remove(value);
         }
 
         public void onChangePeople2(object sender, SelectionChangedEventArgs e)
         {
-            string value = (String)people2.SelectedItem;
-            people2Collec.setSelected(value);
+            string value = (String)people2Box.SelectedItem;
+            people2Collec.selected = value;
             people1Collec.remove(value);
+        }
+
+        public void onChangeMap(object sender, SelectionChangedEventArgs e)
+        {
+            mapCollection.selected = (String)mapBox.SelectedItem;
+        }
+
+        public void onClickLauncher(object sender, RoutedEventArgs e)
+        {
+
         }
 
     }
 
-    class People : ObservableCollection<String>
+    class PeopleCollection : ObservableCollection<String>
     {
-        private String selected;
+        public String selected { get; set; }
         private String removed;
-        public People()
+        public PeopleCollection()
         {
             Add("Gaulois");
             Add("Dwarves");
@@ -86,13 +80,7 @@ namespace MainWindow
             removed = null;
         }
 
-
-        public void setSelected(String st) 
-        {
-            this.selected = st;
-        }
-
-        public void remove(String st) 
+        public void remove(String st)
         {
             Remove(st);
             if (removed != null)
@@ -101,7 +89,17 @@ namespace MainWindow
             }
             removed = st;
         }
+    }
 
-
+    class MapCollection : ObservableCollection<String>
+    {
+        public String selected { get; set; }
+        public MapCollection()
+        {
+            Add("Small");
+            Add("Normal");
+            Add("Demo");
+            selected = null;
+        }
     }
 }
