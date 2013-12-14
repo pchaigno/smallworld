@@ -13,10 +13,12 @@ namespace SmallWorld
         protected int nb_units;
 
 
-        public IGame buildGame(IPlayer player1, IPlayer player2)
+        public IGame buildGame(String name1, IUnitFactory factory1, String name2, IUnitFactory factory2)
         {
             IMapBuilder mapBuilder = new MapBuilder();
             IMap map = mapBuilder.buildMap(map_size);
+            IPlayer player1 = new Player(name1, factory1);
+            IPlayer player2 = new Player(name2, factory2);
 
             //Create & place unit
 

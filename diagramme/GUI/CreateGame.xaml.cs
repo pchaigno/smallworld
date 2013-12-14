@@ -13,8 +13,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SmallWorld;
+using MainWindow;
 
-namespace MainWindow
+namespace GUI
 {
     /// <summary>
     /// Logique d'interaction pour Creator.xaml
@@ -62,7 +63,17 @@ namespace MainWindow
 
         public void onClickLauncher(object sender, RoutedEventArgs e)
         {
+            String name1 = name1Box.SelectedText;
+            String name2 = name2Box.SelectedText;
+            IUnitFactory factory1 = people1Collec.getFactory();
+            IUnitFactory factory2 = people2Collec.getFactory();
+            String mapType = mapCollection.selected;
 
+            IGameBuilder gameBuilder = mapCollection.getBuilder();
+            IGame game = gameBuilder.buildGame(name1, factory1, name2, factory2);
+            MapWindow window = new MapWindow(game);
+            window.Show();
+            this.Close();
         }
 
     }
@@ -89,6 +100,24 @@ namespace MainWindow
             }
             removed = st;
         }
+
+        public IUnitFactory getFactory()
+        {
+            IUnitFactory factory = null;
+            if (selected.Equals("Dwarves"))
+            {
+                factory = new DwarfFactory();
+            }
+            else if (selected.Equals("Vikings"))
+            {
+                factory = new VikingFactory();
+            }
+            else if (selected.Equals("Gaulois"))
+            {
+                factory = new GauloisFactory();
+            }
+            return factory;
+        }
     }
 
     class MapCollection : ObservableCollection<String>
@@ -100,6 +129,24 @@ namespace MainWindow
             Add("Normal");
             Add("Demo");
             selected = null;
+        }
+
+        public IGameBuilder getBuilder()
+        {
+            IGameBuilder builder = null;
+            if (selected.Equals("Small"))
+            {
+                builder = new SmallGameBuilder();
+            }
+            else if (selected.Equals("Normal"))
+            {
+                builder = new NormalGameBuilder();
+            }
+            else if (selected.Equals("Demo"))
+            {
+                builder = new DemoGameBuilder();
+            }
+            return builder;
         }
     }
 }

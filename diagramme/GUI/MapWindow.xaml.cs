@@ -20,26 +20,23 @@ using Graphics = System.Drawing.Graphics;
 using SmallWorld;
 using GUI;
 
-namespace WpfMap
+namespace GUI
 {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class MapWindow : Window
     {
-        
+        IGame game;
 
-        public MainWindow()
+        public MapWindow(IGame game)
         {
             InitializeComponent();
+            this.game = game;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            IPlayer player1 = new Player("john", new VikingFactory());
-            IPlayer player2 = new Player("john", new DwarfFactory());
-            IGameBuilder gameBuilder = new SmallGameBuilder();
-            IGame game = gameBuilder.buildGame(player1, player2);
             IMap map = game.getMap();
 
             int size = map.getSize();
