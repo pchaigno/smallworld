@@ -63,19 +63,28 @@ namespace GUI
 
         public void onClickLauncher(object sender, RoutedEventArgs e)
         {
-            String name1 = name1Box.SelectedText;
-            String name2 = name2Box.SelectedText;
+            String name1 = name1Box.Text;
+            String name2 = name2Box.Text;
             IUnitFactory factory1 = people1Collec.getFactory();
             IUnitFactory factory2 = people2Collec.getFactory();
-            String mapType = mapCollection.selected;
-
             IGameBuilder gameBuilder = mapCollection.getBuilder();
-            IGame game = gameBuilder.buildGame(name1, factory1, name2, factory2);
-            MapWindow window = new MapWindow(game);
-            window.Show();
-            this.Close();
-        }
 
+            if (name1 != "" && name2 != "" && factory1 != null && factory2 != null && gameBuilder != null)
+            {
+                IGame game = gameBuilder.buildGame(name1, factory1, name2, factory2);
+                MapWindow window = new MapWindow(game);
+                window.Show();
+                this.Close();
+            }
+            else
+            {
+                string messageBoxText = "You forgot to enter all the parameters!";
+                string caption = "Oups!";
+                MessageBoxButton button = MessageBoxButton.YesNoCancel;
+                MessageBoxImage icon = MessageBoxImage.Warning;
+                MessageBox.Show(messageBoxText, caption, button, icon);
+            }
+        }
     }
 
     class PeopleCollection : ObservableCollection<String>
@@ -87,8 +96,8 @@ namespace GUI
             Add("Gaulois");
             Add("Dwarves");
             Add("Vikings");
-            selected = null;
-            removed = null;
+            selected = "";
+            removed = "";
         }
 
         public void remove(String st)
@@ -128,7 +137,7 @@ namespace GUI
             Add("Small");
             Add("Normal");
             Add("Demo");
-            selected = null;
+            selected = "";
         }
 
         public IGameBuilder getBuilder()
