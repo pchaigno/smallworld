@@ -58,6 +58,20 @@ namespace GUI
 
                 }
             }
+
+            var rectangle = new Rectangle();
+
+            ImageBrush brush = new ImageBrush();
+            BitmapImage tileDesert = new BitmapImage(new Uri(@"..\..\Ressources\gaulois.png", UriKind.Relative));
+            brush.ImageSource = tileDesert;
+
+            rectangle.Fill = brush;
+            Grid.SetColumn(rectangle, 4);
+            Grid.SetRow(rectangle, 4);
+            //rectangle.Stroke = Brushes.Red;
+            rectangle.StrokeThickness = 1;
+            mapGrid.Children.Add(rectangle);
+
         }
 
         private Rectangle createRectangle(ISquare type, int c, int l)
