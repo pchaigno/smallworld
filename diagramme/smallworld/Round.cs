@@ -75,7 +75,7 @@ namespace SmallWorld
             game.getMap().moveUnit(selectedUnit, destination);
 
             selectedUnit = null;
-            destination = null;
+            //destination = null; TODO find alternative or check
         }
 
         private Boolean combat()

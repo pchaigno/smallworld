@@ -15,6 +15,10 @@ using System.Windows.Shapes;
 using SmallWorld;
 using MainWindow;
 
+/*
+ * TODO correct bug empty combobox
+ */ 
+
 namespace GUI
 {
     /// <summary>

@@ -19,5 +19,7 @@ namespace SmallWorld
         IMap getMap();
 
         void endRound();
+
+        IRound getRound();
     }
 }

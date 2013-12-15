@@ -74,14 +74,13 @@ namespace GUI
         {
             var rectangle = new Rectangle();
 
-
-
             rectangle.Fill = ImageFactory.getBrushSquare(type);
             Grid.SetColumn(rectangle, c);
             Grid.SetRow(rectangle, l);
             rectangle.Tag = c * 4 + l;
-            //rectangle.Stroke = Brushes.Red;
             rectangle.StrokeThickness = 1;
+
+            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLeftHandler);
             
             return rectangle;
         }
@@ -96,18 +95,38 @@ namespace GUI
                 {
                     var rectangle = new Rectangle();
 
-
                     rectangle.Fill = ImageFactory.getBrushUnit(units[key][0], nb);
                     Grid.SetColumn(rectangle, key.Y);
                     Grid.SetRow(rectangle, key.X);
                     rectangle.StrokeThickness = 1;
+                    rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLeftHandler);
                     mapGrid.Children.Add(rectangle);
 
                     unitRectangles.Add(key, rectangle);
                     Console.WriteLine(key.X + "/" + key.Y);
-
                 }
             }
+        }
+
+        public void rectangleMouseLeftHandler(object sender, MouseEventArgs e)
+        {
+            Console.WriteLine("hello");
+            var rectangle = sender as Rectangle;
+            int column = Grid.GetColumn(rectangle);
+            int row = Grid.GetRow(rectangle);
+            Point position = new Point(row, column);
+
+            IRound round = game.getRound();
+            if (round.isCurrentPlayerPosition(position))
+            {
+                List<IUnit> units = round.getUnits(position);
+                round.selectUnit(units[0]);
+                rectangle.StrokeThickness = 3;
+                rectangle.Stroke = Brushes.Red;
+            }
+
+
+            e.Handled = true;
         }
 
         private void updateUnitDisplay(Point p)
@@ -129,6 +148,7 @@ namespace GUI
                 Grid.SetColumn(rectangle, p.Y);
                 Grid.SetRow(rectangle, p.X);
                 rectangle.StrokeThickness = 1;
+                rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLeftHandler);
                 mapGrid.Children.Add(rectangle);
 
                 unitRectangles.Add(p, rectangle);
