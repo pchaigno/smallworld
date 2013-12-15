@@ -17,5 +17,7 @@ namespace SmallWorld
         IPlayer getPlayer2();
 
         IMap getMap();
+
+        void endRound();
     }
 }

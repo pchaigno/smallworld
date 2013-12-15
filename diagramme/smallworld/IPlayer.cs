@@ -16,6 +16,6 @@ namespace SmallWorld
 
         int getPoints();
 
-        void addPoints(int n);
+        void computePoints();
     }
 }

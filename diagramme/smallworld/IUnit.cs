@@ -24,5 +24,7 @@ namespace SmallWorld
         void move(Point p);
 
         IPlayer getOwner();
+
+        int getPoint();
     }
 }

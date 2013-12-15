@@ -12,14 +12,16 @@ namespace SmallWorld
         private IMap map;
         private int maxRounds;
         private int currentRound;
+        private IPlayer currentPlayer;
 
-        public Game(IPlayer player1, IPlayer player2, IMap map, int max_rounds)
+        public Game(IPlayer player1, IPlayer player2, IMap map, int maxRounds)
         {
             this.player1 = player1;
             this.player2 = player2;
             this.map = map;
-            this.maxRounds = max_rounds;
+            this.maxRounds = maxRounds;
             this.currentRound = 1;
+            this.currentPlayer = player1;
         }
     
         private bool isDefeated(IPlayer player)
@@ -52,6 +54,21 @@ namespace SmallWorld
                 {
                     return player1; ;
                 }
+            }
+        }
+
+        public void endRound()
+        {
+            currentPlayer.computePoints();
+
+            if (currentPlayer == player1)
+            {
+                currentPlayer = player2;
+            }
+            else
+            {
+                currentPlayer = player2;
+                currentRound++;
             }
         }
 
