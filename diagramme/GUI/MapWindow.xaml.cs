@@ -210,6 +210,19 @@ namespace GUI
             
             displayUnits();
             displayInfoPlayer();
+
+            if (game.isEndOfGame())
+            {
+                IPlayer player = game.getWinner();
+                string messageBoxText = "Congratulation " + player.getName() + "\n You have defeated your enemy !";
+                string caption = "Victory!";
+                MessageBoxButton button = MessageBoxButton.OK;
+                MessageBoxImage icon = MessageBoxImage.Exclamation;
+                // Display message box
+                MessageBox.Show(messageBoxText, caption, button, icon);
+
+                this.Close();
+            }
         }
     }
 }
