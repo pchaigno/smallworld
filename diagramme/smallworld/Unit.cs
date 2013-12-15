@@ -8,9 +8,11 @@ namespace SmallWorld
 {
     public abstract class Unit : IUnit
     {
-        protected int attack;
-        protected int defense;
-        protected int lifePoints;
+        public int attack { get; set; }
+        public int defense { get; set; }
+        public int lifePoints { get; set; }
+        public int maxLifePoints { get; set; }
+
         protected IPlayer owner;
         protected int movementPoints;
         protected int remainingMovementPoints;
@@ -24,23 +26,9 @@ namespace SmallWorld
             attack = 2;
             defense = 1;
             lifePoints = 5;
+            maxLifePoints = 5;
             movementPoints = 2;
             remainingMovementPoints = movementPoints;
-        }
-
-        public int getDefense()
-        {
-            return defense;
-        }
-
-        public int getLifePoints()
-        {
-            return lifePoints;
-        }
-
-        public int getAttack()
-        { 
-            return attack;
         }
 
         public int getRemainingMovementPoints()
@@ -97,6 +85,11 @@ namespace SmallWorld
         public Point getPosition()
         {
             return position; ;
+        }
+
+        public Boolean isAlive()
+        {
+            return lifePoints > 0;
         }
     }
 }

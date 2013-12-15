@@ -9,11 +9,10 @@ namespace SmallWorld
     public interface IUnit
     {
 
-        int getDefense();
-
-        int getLifePoints();
-
-        int getAttack();
+        int attack { get; set; }
+        int defense { get; set; }
+        int lifePoints { get; set; }
+        int maxLifePoints { get; set; }
 
         int getRemainingMovementPoints();
 
@@ -32,5 +31,7 @@ namespace SmallWorld
         void terminate();
 
         Point getPosition();
+
+        Boolean isAlive();
     }
 }

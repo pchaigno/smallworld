@@ -102,11 +102,66 @@ namespace SmallWorld
             IUnit enemy = getBestUnit();
             //TODO combat
 
-            game.getMap().removeUnit(enemy, destination);
-            enemy.terminate();
-            lastMoveInfo = player.getName() + " won the fight.";
+            Random randCombat = new Random();
+            Random rand = new Random();
 
-            return true;
+            int nbRound = 3 + randCombat.Next((Math.Max(selectedUnit.lifePoints, enemy.lifePoints)) + 2);
+            int n = 0;
+
+            while (nbRound > n && selectedUnit.isAlive() && enemy.isAlive())
+            {
+                double ratioLife = (double)selectedUnit.lifePoints / (double)selectedUnit.maxLifePoints;
+                double ratioLifeDef = (double)enemy.lifePoints / (double)enemy.maxLifePoints;
+                double attaUnit = (double)selectedUnit.attack * (double)ratioLife;
+                double defUnitdef = (double)enemy.defense * (double)ratioLifeDef;
+                double ratioAttDef = (double)(attaUnit / defUnitdef);
+                double ratioChanceDef = 0;
+                if (ratioAttDef > 1) // avantage attaquant
+                {
+                    ratioChanceDef = (1 / ratioAttDef) / 2;
+                    ratioChanceDef = (0.5 - ratioChanceDef) + 0.5;
+                }
+                else if (ratioAttDef == 1) //égalité, aucun n'a l'avantage
+                {
+                    ratioChanceDef = 0.5; // 50% de chnce de gagner
+                }
+                else // avantage défense
+                {
+                    ratioChanceDef = ratioAttDef / 2;
+                }
+                double ratioCombat = (double)((double)rand.Next(100) / 100);
+
+                if (ratioCombat <= ratioChanceDef)
+                {
+                    enemy.lifePoints--;
+                }
+                else
+                {
+                    selectedUnit.lifePoints--;
+                }
+                n++;
+            }
+
+            if (!selectedUnit.isAlive())
+            {
+                game.getMap().removeUnit(selectedUnit, selectedUnit.getPosition());
+                selectedUnit.terminate();
+                lastMoveInfo = player.getName() + " lost the fight.";
+                return false;
+            }
+            else if (!enemy.isAlive())
+            {
+                game.getMap().removeUnit(enemy, destination);
+                enemy.terminate();
+                lastMoveInfo = player.getName() + " won the fight.";
+                return true;
+            }
+            else
+            {
+                lastMoveInfo = "The fight ended with a draw (Grammar ??)";
+                return false;
+            }
+
         }
 
         private IUnit getBestUnit()
@@ -118,7 +173,7 @@ namespace SmallWorld
                 result = units[0];
                 for (int i = 1; i < units.Count; i++)
                 {
-                    if (result.getLifePoints() < units[i].getLifePoints())
+                    if (result.lifePoints < units[i].lifePoints)
                     {
                         result = units[i];
                     }
