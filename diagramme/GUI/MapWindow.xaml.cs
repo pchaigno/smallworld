@@ -29,24 +29,29 @@ namespace GUI
     {
         IGame game;
         Dictionary<Point, Rectangle> unitRectangles;
-        Rectangle originPos;
+        Rectangle selectedSquare;
+        Dictionary<Border, IUnit> unitSelecterCollec;
+        Border selectedUnit;
 
         public MapWindow(IGame game)
         {
             InitializeComponent();
 
-            /*IGameBuilder gameBuilder = new DemoGameBuilder();
+            /*IGameBuilder gameBuilder = new NormalGameBuilder();
             IGame game = gameBuilder.buildGame("Lord Breizh", new GauloisFactory(), "Paule", new DwarfFactory());*/
             this.game = game;
-            this.originPos = null;
+            
 
             unitRectangles = new Dictionary<Point,Rectangle>();
+            this.selectedSquare = null;
+
+            unitSelecterCollec = new Dictionary<Border, IUnit>();
+            this.selectedUnit = null;
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             IMap map = game.getMap();
-
             int size = map.getSize();
 
             for (int c = 0; c < size; c++)
@@ -61,14 +66,70 @@ namespace GUI
                 for (int c = 0; c < size; c++)
                 {
                     ISquare type = map.getSquare(new Point(l, c));
-                    var rect = createRectangle(type, c, l);
+                    var rect = createSquares(type, c, l);
                     mapGrid.Children.Add(rect);
 
                 }
             }
 
-            displayUnits();
+            displayUnitsOnMap();
             displayInfoPlayer();
+        }
+
+        private Rectangle createSquares(ISquare type, int c, int l)
+        {
+            Rectangle rectangle = new Rectangle();
+
+            rectangle.Fill = ImageFactory.getBrushSquare(type);
+            Grid.SetColumn(rectangle, c);
+            Grid.SetRow(rectangle, l);
+            rectangle.StrokeThickness = 1;
+            rectangle.Stroke = Brushes.Black;
+
+            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLeftMapHandler);
+            rectangle.MouseRightButtonDown += new MouseButtonEventHandler(rectangleMouseRightHandler);
+            rectangle.MouseEnter += new MouseEventHandler(mouseEnterHandler);
+            rectangle.MouseLeave += new MouseEventHandler(mouseLeaveHandler);
+            
+            return rectangle;
+        }
+
+        public void displayUnitSelecter(List<IUnit> units)
+        {
+            unitSelecterCollec = new Dictionary<Border, IUnit>();
+            int i = 0;
+            foreach (IUnit unit in units) 
+            {
+                Border border = new Border();
+                border.Background = ImageFactory.getBrushUnitFace(unit);
+                
+                TextBlock unitText = new TextBlock();
+                unitText.Text = unit.getRemainingMovementPoints() + " MvPt \n" + unit.lifePoints + " lifePt";
+                unitText.FontSize = 14;
+                unitText.Foreground = Brushes.Red;
+                unitText.FontWeight = FontWeights.Bold;
+                border.Child = unitText;
+                border.Width = 100;
+                border.Height = 100;
+                border.BorderThickness = new Thickness(3);
+                if (i == 0)
+                {
+                    border.BorderBrush = Brushes.Red;
+                    i++;
+                    selectedUnit = border;
+                }
+                else
+                {
+                    border.BorderBrush = Brushes.Black;
+                }
+
+                border.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLefUnitSelectertHandler);
+
+                unitSelecter.Children.Add(border);
+
+                unitSelecterCollec.Add(border, unit);
+            }
+            
         }
 
         private void displayInfoPlayer()
@@ -85,29 +146,7 @@ namespace GUI
             lastMove.Text = game.getRound().getLastMoveInfo();
         }
 
-
-        private Rectangle createRectangle(ISquare type, int c, int l)
-        {
-            var rectangle = new Rectangle();
-
-            rectangle.Fill = ImageFactory.getBrushSquare(type);
-            Grid.SetColumn(rectangle, c);
-            Grid.SetRow(rectangle, l);
-            rectangle.Tag = c * 4 + l;
-            rectangle.StrokeThickness = 1;
-            rectangle.Stroke = Brushes.Black;
-
-            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLeftHandler);
-
-            rectangle.MouseRightButtonDown += new MouseButtonEventHandler(rectangleMouseRightHandler);
-
-            rectangle.MouseEnter += new MouseEventHandler(mouseEnterHandler);
-            rectangle.MouseLeave += new MouseEventHandler(mouseLeaveHandler);
-            
-            return rectangle;
-        }
-
-        private void displayUnits()
+        private void displayUnitsOnMap()
         {
             Dictionary<Point, List<IUnit>> units = game.getMap().getUnits();
 
@@ -129,7 +168,7 @@ namespace GUI
                     Grid.SetRow(rectangle, key.X);
                     rectangle.StrokeThickness = 1;
                     rectangle.Stroke = Brushes.Black;
-                    rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLeftHandler);
+                    rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLeftMapHandler);
                     rectangle.MouseRightButtonDown += new MouseButtonEventHandler(rectangleMouseRightHandler);
                     rectangle.MouseEnter += new MouseEventHandler(mouseEnterHandler);
                     rectangle.MouseLeave += new MouseEventHandler(mouseLeaveHandler);
@@ -141,6 +180,9 @@ namespace GUI
             }
         }
 
+
+        /********* Listeners *********/
+
         public void mouseEnterHandler(object sender, MouseEventArgs e)
         {
             var rectangle = sender as Rectangle;
@@ -151,7 +193,7 @@ namespace GUI
         public void mouseLeaveHandler(object sender, MouseEventArgs e)
         {
             var rectangle = sender as Rectangle;
-            if (rectangle == originPos)
+            if (rectangle == selectedSquare)
             {
                 rectangle.StrokeThickness = 1;
                 rectangle.Stroke = Brushes.Red;
@@ -163,29 +205,47 @@ namespace GUI
             }
         }
 
-        public void rectangleMouseLeftHandler(object sender, MouseEventArgs e)
+        public void rectangleMouseLeftMapHandler(object sender, MouseEventArgs e)
         {
             var rectangle = sender as Rectangle;
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
             Point position = new Point(row, column);
 
+            // Clear old selection
+            unitSelecterCollec.Clear();
+            unitSelecter.Children.Clear();
+            if (selectedSquare != null)
+            {
+                selectedSquare.Stroke = Brushes.Black;
+            }
+
             IRound round = game.getRound();
             if (round.isCurrentPlayerPosition(position))
             {
                 List<IUnit> units = round.getUnits(position);
                 round.selectUnit(units[0]);
+                displayUnitSelecter(units);
+
                 rectangle.StrokeThickness = 1;
                 rectangle.Stroke = Brushes.Red;
 
-                if (originPos != null)
-                {
-                    originPos.Stroke = Brushes.Black;
-                }
-                originPos = rectangle;
+                
+                selectedSquare = rectangle;
             }
 
 
+            e.Handled = true;
+        }
+
+        public void rectangleMouseLefUnitSelectertHandler(object sender, MouseEventArgs e)
+        {
+            selectedUnit.BorderBrush = Brushes.Black;
+
+            Border border = sender as Border;
+            border.BorderBrush = Brushes.Red;
+            game.getRound().selectUnit(unitSelecterCollec[border]);
+            selectedUnit = border;
             e.Handled = true;
         }
 
@@ -200,12 +260,14 @@ namespace GUI
             if (round.setDestination(position))
             {
                 round.executeMove();
-                originPos.Stroke = Brushes.Black;
+                selectedSquare.Stroke = Brushes.Black;
 
-                displayUnits();
+                displayUnitsOnMap();
             }
 
             displayInfoPlayer();
+            unitSelecterCollec.Clear();
+            unitSelecter.Children.Clear();
 
             e.Handled = true;
         }
@@ -213,8 +275,10 @@ namespace GUI
         public void onClickEndRound(object sender, RoutedEventArgs e)
         {
             game.endRound();
-            
-            displayUnits();
+
+            unitSelecterCollec.Clear();
+            unitSelecter.Children.Clear();
+            displayUnitsOnMap();
             displayInfoPlayer();
 
             if (game.isEndOfGame())

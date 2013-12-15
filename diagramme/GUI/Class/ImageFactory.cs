@@ -26,6 +26,10 @@ namespace GUI
         private static BitmapImage viking = null;
         private static BitmapImage vikingM = null;
 
+        private static BitmapImage gauloisUnit = null;
+        private static BitmapImage vikingUnit = null;
+        private static BitmapImage dwarfUnit = null;
+
 
 
         public static Brush getBrushSquare(ISquare square)
@@ -115,6 +119,31 @@ namespace GUI
                         viking = new BitmapImage(new Uri(@"..\..\Ressources\viking.png", UriKind.Relative));
                     brush.ImageSource = viking;
                 }
+            }
+            return brush;
+        }
+
+        public static Brush getBrushUnitFace(IUnit unit)
+        {
+            ImageBrush brush = new ImageBrush();
+
+            if (unit is IDwarf)
+            {
+                if (dwarfUnit == null)
+                    dwarfUnit = new BitmapImage(new Uri(@"..\..\Ressources\dwarfUnit.png", UriKind.Relative));
+                brush.ImageSource = dwarfUnit;
+            }
+            else if (unit is IGaulois)
+            {
+                if (gauloisUnit == null)
+                    gauloisUnit = new BitmapImage(new Uri(@"..\..\Ressources\gauloisUnit.png", UriKind.Relative));
+                brush.ImageSource = gauloisUnit;
+            }
+            else if (unit is IViking)
+            {
+                if (vikingUnit == null)
+                    vikingUnit = new BitmapImage(new Uri(@"..\..\Ressources\vikingUnit.png", UriKind.Relative));
+                brush.ImageSource = vikingUnit;
             }
             return brush;
         }
