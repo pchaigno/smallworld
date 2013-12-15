@@ -15,9 +15,9 @@ namespace SmallWorld
 
         public override int getPoint()
         {
-            if (square is IForest)
+            if (squares[position] is IForest)
                 return 2;
-            else if (square is ISea || square is ILowland)
+            else if (squares[position] is ISea || squares[position] is ILowland)
                 return 0;
             else
                 return 1;

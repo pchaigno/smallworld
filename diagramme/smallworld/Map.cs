@@ -11,14 +11,28 @@ namespace SmallWorld
     public class Map : IMap
     {
 
-        private Dictionary<Point, IUnit> units;
+        private Dictionary<Point, List<IUnit>> units;
         private Dictionary<Point, ISquare> squares;
-
         private int size;
+
+        public Map(Dictionary<Point, ISquare> squares)
+        {
+            this.squares = squares;
+            foreach (Point key in squares.Keys)
+            {
+                units.Add(key, new List<IUnit>());
+            }
+
+        }
         
         public int getSize()
         {
             return size;
+        }
+
+        public Dictionary<Point, ISquare> getSquares()
+        {
+            return squares;
         }
 
         public void setSize(int i)
@@ -26,25 +40,26 @@ namespace SmallWorld
             this.size = i;
         }
 
-
-        public Map(Dictionary<Point, ISquare> squares)
+        public List<IUnit> getUnits(Point position)
         {
-            this.squares = squares;
-        }
-
-        public List<IUnit> getUnits(Point coordinates)
-        {
-            throw new NotImplementedException();
+            return units[position];
         }
 
         public bool isEnemyPosition(Point position, IUnit unit)
         {
-            throw new NotImplementedException();
+            if (units[position].Count == 0)
+            {
+                return false;
+            }
+            else
+            {
+                return !units[position][0].getOwner().Equals(unit.getOwner()); 
+            }
         }
 
         public void placeUnit(IUnit unit, Point position)
         {
-            throw new NotImplementedException();
+            units[position].Add(unit);
         }
 
 
@@ -56,7 +71,11 @@ namespace SmallWorld
 
         public void moveUnit(IUnit unit, Point oldPosition, Point newPosition)
         {
-            throw new NotImplementedException();
+            units[oldPosition].Remove(unit);
+            if (this.isEnemyPosition(newPosition, unit))
+                throw new Exception("Erreur dans le deplacement");
+            units[newPosition].Add(unit);
+            unit.move(newPosition);
         }
     }
 }

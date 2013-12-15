@@ -15,9 +15,9 @@ namespace SmallWorld
 
         public override int getPoint()
         {
-            if (square is ILowland) // TODO: only near sea
+            if (squares[position] is ILowland) // TODO: only near sea
                 return 2;
-            else if (square is ISea || square is IDesert)
+            else if (squares[position] is ISea || squares[position] is IDesert)
                 return 0;
             else
                 return 1;

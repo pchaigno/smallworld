@@ -15,7 +15,7 @@ namespace SmallWorld
         protected int movementPoints;
         protected int remainingMovementPoints;
         protected Point position;
-        protected ISquare square;
+        protected Dictionary<Point, ISquare> squares;
 
 
         protected Unit(IPlayer owner)
@@ -26,7 +26,6 @@ namespace SmallWorld
             lifePoints = 5;
             movementPoints = 2;
             remainingMovementPoints = movementPoints;
-            this.square = null;
         }
 
         public int getDefense()
@@ -59,18 +58,27 @@ namespace SmallWorld
             remainingMovementPoints = movementPoints;
         }
 
+        public void setPosition(Point p, Dictionary<Point, ISquare> squares)
+        {
+            this.position = p;
+            this.squares = squares;
+        }
+
+        protected Boolean isNext(Point a, Point b)
+        {
+            return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y) == 1;
+        }
+
         public virtual int getPoint()
         {
-            if (square is ISea)
+            if (squares[position] is ISea)
                 return 0;
             else
                 return 1;
         }
-        
 
-        public virtual void move(ISquare destinationSquare, Point destination)
+        public virtual void move(Point destination)
         {
-            this.square = destinationSquare;
             this.position = destination;
             remainingMovementPoints -= 2;
         }
@@ -78,11 +86,6 @@ namespace SmallWorld
         public virtual Boolean canMove(Point destination, ISquare destinationSquare)
         {
             return isNext(destination, position) && remainingMovementPoints > 0 && !(destinationSquare is ISea);
-        }
-
-        protected Boolean isNext(Point a, Point b)
-        {
-            return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y) == 1;
         }
     }
 }

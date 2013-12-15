@@ -15,19 +15,18 @@ namespace SmallWorld
         
         public override int getPoint()
         {
-            if (square is ILowland)
+            if (squares[position] is ILowland)
                 return 2;
-            else if (square is ISea || square is IMountain)
+            else if (squares[position] is ISea || squares[position] is IMountain)
                 return 0;
             else
                 return 1;
         }
 
-        public override void move(ISquare destinationSquare, Point destination)
+        public override void move(Point destination)
         {
-            this.square = destinationSquare;
             this.position = destination;
-            if(destinationSquare is ILowland)
+            if (squares[position] is ILowland)
                 remainingMovementPoints -= 1;
             else
                 remainingMovementPoints -= 2;

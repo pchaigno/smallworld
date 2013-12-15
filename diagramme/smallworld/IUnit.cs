@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 
@@ -17,6 +18,10 @@ namespace SmallWorld
         int getRemainingMovementPoints();
 
         void resetMovementPoints();
+
+        void setPosition(Point pt, Dictionary<Point, ISquare> squares);
+
+        void move(Point p);
 
         IPlayer getOwner();
     }
