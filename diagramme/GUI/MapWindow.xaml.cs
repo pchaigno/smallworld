@@ -31,12 +31,12 @@ namespace GUI
         Dictionary<Point, Rectangle> unitRectangles;
         Rectangle origin;
 
-        public MapWindow(/*IGame game*/)
+        public MapWindow(IGame game)
         {
             InitializeComponent();
 
-            IGameBuilder gameBuilder = new DemoGameBuilder(); ;
-            IGame game = gameBuilder.buildGame("Lord Breizh", new GauloisFactory(), "Paule", new DwarfFactory());
+            /*IGameBuilder gameBuilder = new DemoGameBuilder();
+            IGame game = gameBuilder.buildGame("Lord Breizh", new GauloisFactory(), "Paule", new DwarfFactory());*/
             this.game = game;
 
             unitRectangles = new Dictionary<Point,Rectangle>();
