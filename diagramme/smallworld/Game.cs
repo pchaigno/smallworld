@@ -13,6 +13,7 @@ namespace SmallWorld
         private int maxRounds;
         private int currentRound;
         private IPlayer currentPlayer;
+        private IRound round;
 
         public Game(IPlayer player1, IPlayer player2, IMap map, int maxRounds)
         {
@@ -22,6 +23,7 @@ namespace SmallWorld
             this.maxRounds = maxRounds;
             this.currentRound = 1;
             this.currentPlayer = player1;
+            this.round = new Round(this, currentPlayer);
         }
     
         private bool isDefeated(IPlayer player)
@@ -60,7 +62,6 @@ namespace SmallWorld
         public void endRound()
         {
             currentPlayer.computePoints();
-            //RAZ Round
 
             if (currentPlayer == player1)
             {
@@ -71,6 +72,7 @@ namespace SmallWorld
                 currentPlayer = player2;
                 currentRound++;
             }
+            round = new Round(this, currentPlayer);
         }
 
         public IPlayer getPlayer1()
@@ -86,6 +88,11 @@ namespace SmallWorld
         public IMap getMap()
         {
             return map;
+        }
+
+        public IRound getRound() 
+        {
+            return round;
         }
     }
 }

@@ -8,14 +8,16 @@ namespace SmallWorld
 {
     public class Round : IRound
     {
-        IGame game;
+        private IGame game;
+        private IPlayer player;
 
-        IUnit selectedUnit;
-        Point destination;
+        private IUnit selectedUnit;
+        private Point destination;
 
-        public Round(IGame game)
+        public Round(IGame game, IPlayer player)
         {
             this.game = game;
+            this.player = player;
         }
 
         public List<Point> getAdvisedDestinations(IUnit unit, Point position)
@@ -29,15 +31,20 @@ namespace SmallWorld
             this.selectedUnit = unit;
         }
 
-        public bool unselectUnit(IUnit unit)
+        public void unselectUnit()
         {
-            // TODO : WHAT ???
-            throw new NotImplementedException();
+            selectedUnit = null;
         }
 
         public List<IUnit> getUnits(Point position)
         {
             return game.getMap().getUnits(position);
+        }
+
+        public Boolean isCurrentPlayerPosition(Point position)
+        {
+            List<IUnit> units = game.getMap().getUnits(position);
+            return units.Count == 0 || units[0].getOwner() == player;
         }
 
         public bool setDestination(Point destination)
@@ -66,6 +73,9 @@ namespace SmallWorld
                 }
             }
             game.getMap().moveUnit(selectedUnit, destination);
+
+            selectedUnit = null;
+            destination = null;
         }
 
         private Boolean combat()

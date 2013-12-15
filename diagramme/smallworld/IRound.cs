@@ -15,8 +15,12 @@ namespace SmallWorld
 
         bool setDestination(Point destination);
 
-        bool unselectUnit(IUnit unit);
+        void unselectUnit();
 
         List<IUnit> getUnits(Point position);
+
+        Boolean isCurrentPlayerPosition(Point position);
+
+        void executeMove();
     }
 }
