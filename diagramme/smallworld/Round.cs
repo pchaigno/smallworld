@@ -14,10 +14,13 @@ namespace SmallWorld
         private IUnit selectedUnit;
         private Point destination;
 
+        private String lastMoveInfo;
+
         public Round(IGame game, IPlayer player)
         {
             this.game = game;
             this.player = player;
+            lastMoveInfo = "";
         }
 
         public List<Point> getAdvisedDestinations(IUnit unit, Point position)
@@ -51,13 +54,19 @@ namespace SmallWorld
         {
             if (this.selectedUnit == null)
             {
+                lastMoveInfo = "You have to select a unit first.";
                 return false;
+
             }
 
             Boolean result = selectedUnit.canMove(destination);
             if (result)
             {
                 this.destination = destination;
+            }
+            else
+            {
+                lastMoveInfo = "You cannot move here.";
             }
 
             Console.WriteLine(result);
@@ -81,6 +90,7 @@ namespace SmallWorld
             else
             {
                 game.getMap().moveUnit(selectedUnit, destination);
+                lastMoveInfo = player.getName() + " moved a unit.";
             }
 
             selectedUnit = null;
@@ -94,6 +104,7 @@ namespace SmallWorld
 
             game.getMap().removeUnit(enemy, destination);
             enemy.terminate();
+            lastMoveInfo = player.getName() + " won the fight.";
 
             return true;
         }
@@ -118,6 +129,11 @@ namespace SmallWorld
                 //Throw exception
             }
             return result;
+        }
+
+        public String getLastMoveInfo()
+        {
+            return lastMoveInfo;
         }
     }
 }

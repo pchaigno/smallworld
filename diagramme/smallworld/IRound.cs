@@ -22,5 +22,7 @@ namespace SmallWorld
         Boolean isCurrentPlayerPosition(Point position);
 
         void executeMove();
+
+        String getLastMoveInfo();
     }
 }

@@ -6,10 +6,12 @@
         <Grid DockPanel.Dock="Bottom">
             <StackPanel>
                 <Label Name="infoLabel"/>
-                <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="8" Name="roundD"></TextBlock>
-                <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="8" Name="currentD"></TextBlock>
-                <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="8" Name="playerD1"></TextBlock>
-                <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="8" Name="playerD2"></TextBlock>
+
+                <TextBlock Margin="10" FontSize="16" Foreground="Red" Name="lastMove" HorizontalAlignment="Center"></TextBlock>
+                <TextBlock Margin="10" FontSize="14" Name="roundD"></TextBlock>
+                <TextBlock Margin="10" FontSize="14" Name="currentD"></TextBlock>
+                <TextBlock Margin="10" FontSize="14" Name="playerD1"></TextBlock>
+                <TextBlock Margin="10" FontSize="14" Name="playerD2"></TextBlock>
                 <Button HorizontalAlignment="Right" Click="onClickEndRound" Content="End Round" />
             </StackPanel>
         </Grid>

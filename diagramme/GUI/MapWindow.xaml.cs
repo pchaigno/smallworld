@@ -80,6 +80,8 @@ namespace GUI
 
             roundD.Text = "Round number: " + game.getCurrentRound();
             currentD.Text = "Current PLayer: " + game.getCurrentPlayer().getName();
+
+            lastMove.Text = game.getRound().getLastMoveInfo();
         }
 
 
@@ -195,9 +197,9 @@ namespace GUI
                 origin.Stroke = Brushes.Black;
 
                 displayUnits();
-                displayInfoPlayer();
             }
 
+            displayInfoPlayer();
 
             e.Handled = true;
         }
