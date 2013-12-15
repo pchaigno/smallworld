@@ -65,6 +65,7 @@ namespace SmallWorld
                     game.getMap().moveUnit(selectedUnit, destination);
                 }
             }
+            game.getMap().moveUnit(selectedUnit, destination);
         }
 
         private Boolean combat()
