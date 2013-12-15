@@ -75,13 +75,19 @@ namespace SmallWorld
         }
 
 
-        public void moveUnit(IUnit unit, Point oldPosition, Point newPosition)
+        public void moveUnit(IUnit unit, Point newPosition)
         {
-            units[oldPosition].Remove(unit);
+            units[unit.getPosition()].Remove(unit);
             if (this.isEnemyPosition(newPosition, unit))
                 throw new Exception("Erreur dans le deplacement");
             units[newPosition].Add(unit);
             unit.move(newPosition);
         }
+
+        public void removeUnit(IUnit unit, Point position)
+        {
+            units[position].Remove(unit);
+        }
+
     }
 }

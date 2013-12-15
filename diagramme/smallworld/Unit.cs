@@ -87,5 +87,16 @@ namespace SmallWorld
         {
             return isNext(destination, position) && remainingMovementPoints > 0 && !(squares[destination] is ISea);
         }
+
+        public void terminate()
+        {
+            owner.terminateUnit(this);
+            // TODO destructeur
+        }
+
+        public Point getPosition()
+        {
+            return position; ;
+        }
     }
 }

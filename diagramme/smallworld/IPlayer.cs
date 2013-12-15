@@ -17,5 +17,7 @@ namespace SmallWorld
         int getPoints();
 
         void computePoints();
+
+        void terminateUnit(IUnit unit);
     }
 }

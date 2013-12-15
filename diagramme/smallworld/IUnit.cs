@@ -28,5 +28,9 @@ namespace SmallWorld
         IPlayer getOwner();
 
         int getPoint();
+
+        void terminate();
+
+        Point getPosition();
     }
 }

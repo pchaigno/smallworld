@@ -21,7 +21,9 @@ namespace SmallWorld
 
         Dictionary<Point, List<IUnit>> getUnits();
 
-        void moveUnit(IUnit unit, Point oldPosition, Point newPosition);
+        void moveUnit(IUnit unit, Point newPosition);
+
+        void removeUnit(IUnit unit, Point position);
 
         int getSize();
 

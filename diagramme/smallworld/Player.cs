@@ -51,5 +51,10 @@ namespace SmallWorld
                 points += unit.getPoint();
             }
         }
+
+        public void terminateUnit(IUnit unit)
+        {
+            units.Remove(unit);
+        }
     }
 }
