@@ -29,6 +29,7 @@ namespace GUI
     {
         IGame game;
         Dictionary<Point, Rectangle> unitRectangles;
+        Rectangle origin;
 
         public MapWindow(/*IGame game*/)
         {
@@ -79,8 +80,12 @@ namespace GUI
             Grid.SetRow(rectangle, l);
             rectangle.Tag = c * 4 + l;
             rectangle.StrokeThickness = 1;
+            rectangle.Stroke = Brushes.Black;
 
             rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLeftHandler);
+
+            rectangle.MouseEnter += new MouseEventHandler(mouseEnterHandler);
+            rectangle.MouseLeave += new MouseEventHandler(mouseLeaveHandler);
             
             return rectangle;
         }
@@ -99,12 +104,37 @@ namespace GUI
                     Grid.SetColumn(rectangle, key.Y);
                     Grid.SetRow(rectangle, key.X);
                     rectangle.StrokeThickness = 1;
+                    rectangle.Stroke = Brushes.Black;
                     rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLeftHandler);
+                    rectangle.MouseEnter += new MouseEventHandler(mouseEnterHandler);
+                    rectangle.MouseLeave += new MouseEventHandler(mouseLeaveHandler);
                     mapGrid.Children.Add(rectangle);
 
                     unitRectangles.Add(key, rectangle);
                     Console.WriteLine(key.X + "/" + key.Y);
                 }
+            }
+        }
+
+        public void mouseEnterHandler(object sender, MouseEventArgs e)
+        {
+            var rectangle = sender as Rectangle;
+            rectangle.StrokeThickness = 1;
+            rectangle.Stroke = Brushes.Blue;
+        }
+
+        public void mouseLeaveHandler(object sender, MouseEventArgs e)
+        {
+            var rectangle = sender as Rectangle;
+            if (rectangle == origin)
+            {
+                rectangle.StrokeThickness = 1;
+                rectangle.Stroke = Brushes.Red;
+            }
+            else
+            {
+                rectangle.StrokeThickness = 1;
+                rectangle.Stroke = Brushes.Black;
             }
         }
 
@@ -121,40 +151,13 @@ namespace GUI
             {
                 List<IUnit> units = round.getUnits(position);
                 round.selectUnit(units[0]);
-                rectangle.StrokeThickness = 3;
+                rectangle.StrokeThickness = 1;
                 rectangle.Stroke = Brushes.Red;
+                origin = rectangle;
             }
 
 
             e.Handled = true;
-        }
-
-        private void updateUnitDisplay(Point p)
-        {
-            //TODO Improve
-            Rectangle rectangleR = unitRectangles[p];
-            if (rectangleR != null)
-            {
-                mapGrid.Children.Remove(rectangleR);
-            }
-            Dictionary<Point, List<IUnit>> units = game.getMap().getUnits();
-            int nb = units[p].Count;
-            if (nb > 0)
-            {
-                var rectangle = new Rectangle();
-
-
-                rectangle.Fill = ImageFactory.getBrushUnit(units[p][0], nb);
-                Grid.SetColumn(rectangle, p.Y);
-                Grid.SetRow(rectangle, p.X);
-                rectangle.StrokeThickness = 1;
-                rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLeftHandler);
-                mapGrid.Children.Add(rectangle);
-
-                unitRectangles.Add(p, rectangle);
-                Console.WriteLine(p.X + "/" + p.Y);
-
-            }
         }
     }
 }

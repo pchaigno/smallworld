@@ -44,7 +44,7 @@ namespace SmallWorld
         public Boolean isCurrentPlayerPosition(Point position)
         {
             List<IUnit> units = game.getMap().getUnits(position);
-            return units.Count == 0 || units[0].getOwner() == player;
+            return units.Count > 0 && units[0].getOwner() == player;
         }
 
         public bool setDestination(Point destination)
