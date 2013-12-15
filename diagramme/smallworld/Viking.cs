@@ -23,7 +23,7 @@ namespace SmallWorld
                 return 1;
         }
 
-        public override Boolean canMove(Point destination, ISquare destinationSquare)
+        public override Boolean canMove(Point destination)
         {
             return isNext(destination, position) && remainingMovementPoints > 0;
         }
