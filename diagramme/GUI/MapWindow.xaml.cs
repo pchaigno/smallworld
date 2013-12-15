@@ -29,7 +29,7 @@ namespace GUI
     {
         IGame game;
         Dictionary<Point, Rectangle> unitRectangles;
-        Rectangle origin;
+        Rectangle originPos;
 
         public MapWindow(IGame game)
         {
@@ -38,6 +38,7 @@ namespace GUI
             /*IGameBuilder gameBuilder = new DemoGameBuilder();
             IGame game = gameBuilder.buildGame("Lord Breizh", new GauloisFactory(), "Paule", new DwarfFactory());*/
             this.game = game;
+            this.originPos = null;
 
             unitRectangles = new Dictionary<Point,Rectangle>();
         }
@@ -150,7 +151,7 @@ namespace GUI
         public void mouseLeaveHandler(object sender, MouseEventArgs e)
         {
             var rectangle = sender as Rectangle;
-            if (rectangle == origin)
+            if (rectangle == originPos)
             {
                 rectangle.StrokeThickness = 1;
                 rectangle.Stroke = Brushes.Red;
@@ -176,7 +177,12 @@ namespace GUI
                 round.selectUnit(units[0]);
                 rectangle.StrokeThickness = 1;
                 rectangle.Stroke = Brushes.Red;
-                origin = rectangle;
+
+                if (originPos != null)
+                {
+                    originPos.Stroke = Brushes.Black;
+                }
+                originPos = rectangle;
             }
 
 
@@ -194,7 +200,7 @@ namespace GUI
             if (round.setDestination(position))
             {
                 round.executeMove();
-                origin.Stroke = Brushes.Black;
+                originPos.Stroke = Brushes.Black;
 
                 displayUnits();
             }
