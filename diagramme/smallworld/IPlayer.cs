@@ -16,7 +16,7 @@ namespace SmallWorld
 
         int getPoints();
 
-        void computePoints();
+        void endRound();
 
         void terminateUnit(IUnit unit);
     }

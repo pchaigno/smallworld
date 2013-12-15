@@ -61,7 +61,7 @@ namespace SmallWorld
 
         public void endRound()
         {
-            currentPlayer.computePoints();
+            currentPlayer.endRound();
 
             if (currentPlayer == player1)
             {
@@ -69,7 +69,7 @@ namespace SmallWorld
             }
             else
             {
-                currentPlayer = player2;
+                currentPlayer = player1;
                 currentRound++;
             }
             round = new Round(this, currentPlayer);
@@ -93,6 +93,16 @@ namespace SmallWorld
         public IRound getRound() 
         {
             return round;
+        }
+
+        public int getCurrentRound()
+        {
+            return currentRound;
+        }
+
+        public IPlayer getCurrentPlayer()
+        {
+            return currentPlayer;
         }
     }
 }

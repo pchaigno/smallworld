@@ -44,12 +44,15 @@ namespace SmallWorld
             return points;
         }
 
-        public void computePoints()
+        public void endRound()
         {
             foreach (IUnit unit in units)
             {
                 points += unit.getPoint();
+                unit.resetMovementPoints();
             }
+
+
         }
 
         public void terminateUnit(IUnit unit)

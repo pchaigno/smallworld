@@ -21,5 +21,9 @@ namespace SmallWorld
         void endRound();
 
         IRound getRound();
+
+        int getCurrentRound();
+
+        IPlayer getCurrentPlayer();
     }
 }

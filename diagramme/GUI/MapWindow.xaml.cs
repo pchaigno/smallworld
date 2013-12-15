@@ -67,13 +67,21 @@ namespace GUI
             }
 
             displayUnits();
+            displayInfoPlayer();
+        }
+
+        private void displayInfoPlayer()
+        {
             IPlayer player1 = game.getPlayer1();
             playerD1.Text = player1.getName() + " - Units: " + player1.getNbUnits() + " - Points :" + player1.getPoints();
 
             IPlayer player2 = game.getPlayer2();
             playerD2.Text = player2.getName() + " - Units: " + player2.getNbUnits() + " - Points :" + player2.getPoints();
 
+            roundD.Text = "Round number: " + game.getCurrentRound();
+            currentD.Text = "Current PLayer: " + game.getCurrentPlayer().getName();
         }
+
 
         private Rectangle createRectangle(ISquare type, int c, int l)
         {
@@ -99,6 +107,13 @@ namespace GUI
         private void displayUnits()
         {
             Dictionary<Point, List<IUnit>> units = game.getMap().getUnits();
+
+            foreach (Rectangle rect in unitRectangles.Values)
+            {
+                mapGrid.Children.Remove(rect);
+            }
+            unitRectangles.Clear();
+
             foreach (Point key in units.Keys)
             {
                 int nb = units[key].Count;
@@ -179,16 +194,20 @@ namespace GUI
                 round.executeMove();
                 origin.Stroke = Brushes.Black;
 
-                foreach (Rectangle rect in unitRectangles.Values)
-                {
-                    mapGrid.Children.Remove(rect);
-                }
-                unitRectangles.Clear();
                 displayUnits();
+                displayInfoPlayer();
             }
 
 
             e.Handled = true;
+        }
+
+        public void onClickEndRound(object sender, RoutedEventArgs e)
+        {
+            game.endRound();
+            
+            displayUnits();
+            displayInfoPlayer();
         }
     }
 }
