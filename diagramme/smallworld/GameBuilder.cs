@@ -33,7 +33,9 @@ namespace SmallWorld
             }
 
             //TODO GET start from Wrapper
-            Point start2 = new Point(map_size - 1, map_size - 1);
+            //Point start2 = new Point(map_size - 1, map_size - 1);
+            Point start2 = new Point(0, 1);
+
             List<IUnit> units2 = player2.createUnits(nb_units);
             for (int i = 0; i < nb_units; i++)
             {

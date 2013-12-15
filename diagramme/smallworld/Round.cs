@@ -49,13 +49,10 @@ namespace SmallWorld
 
         public bool setDestination(Point destination)
         {
-            Console.WriteLine("OK3");
             if (this.selectedUnit == null)
             {
                 return false;
             }
-
-            Console.WriteLine("OK4");
 
             Boolean result = selectedUnit.canMove(destination);
             if (result)
@@ -74,10 +71,17 @@ namespace SmallWorld
             {
                 if (combat())
                 {
-                    game.getMap().moveUnit(selectedUnit, destination);
+                    Console.WriteLine(game.getMap().getUnits(destination).Count);
+                    if (game.getMap().getUnits(destination).Count == 0)
+                    {
+                        game.getMap().moveUnit(selectedUnit, destination);
+                    }
                 }
             }
-            game.getMap().moveUnit(selectedUnit, destination);
+            else
+            {
+                game.getMap().moveUnit(selectedUnit, destination);
+            }
 
             selectedUnit = null;
             //destination = null; TODO find alternative or check
