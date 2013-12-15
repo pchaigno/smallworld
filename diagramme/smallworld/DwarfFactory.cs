@@ -7,13 +7,9 @@ namespace SmallWorld
 {
     public class DwarfFactory : IDwarfFactory
     {
-        public const int DEFAULT_ATTACK = 1;
-        public const int DEFAULT_DEFENSE = 1;
-        public const int DEFAULT_LIFEPOINTS = 1;
-    
-        public IUnit createUnit()
+        public IUnit createUnit(IPlayer player)
         {
-            throw new NotImplementedException();
+            return new Dwarf(player);
         }
     }
 }

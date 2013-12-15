@@ -7,6 +7,6 @@ namespace SmallWorld
 {
     public interface IUnitFactory
     {
-        IUnit createUnit();
+        IUnit createUnit(IPlayer player);
     }
 }

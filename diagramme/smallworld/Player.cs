@@ -21,7 +21,7 @@ namespace SmallWorld
             List<IUnit> units = new List<IUnit>();
             for (int i = 0; i < nbUnits; i++)
             {
-                units.Add(factory.createUnit());
+                units.Add(factory.createUnit(this));
             }
             return units;
         }
