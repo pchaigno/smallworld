@@ -6,8 +6,10 @@
         <Grid DockPanel.Dock="Bottom">
             <StackPanel>
                 <Label Name="infoLabel"/>
+                <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="8" Name="playerD1"></TextBlock>
+                <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="8" Name="playerD2"></TextBlock>
+                <Button HorizontalAlignment="Right" Content="Fin du tour" />
             </StackPanel>
-            <Button HorizontalAlignment="Right" Content="Fin du tour" />
         </Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto">
             <Grid Background="Azure">

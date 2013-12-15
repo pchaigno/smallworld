@@ -36,7 +36,7 @@ namespace GUI
             InitializeComponent();
 
             IGameBuilder gameBuilder = new DemoGameBuilder(); ;
-            IGame game = gameBuilder.buildGame("Lord", new GauloisFactory(), "Pierre", new DwarfFactory());
+            IGame game = gameBuilder.buildGame("Lord Breizh", new GauloisFactory(), "Paule", new DwarfFactory());
             this.game = game;
 
             unitRectangles = new Dictionary<Point,Rectangle>();
@@ -67,7 +67,11 @@ namespace GUI
             }
 
             displayUnits();
-            
+            IPlayer player1 = game.getPlayer1();
+            playerD1.Text = player1.getName() + " - Units: " + player1.getNbUnits() + " - Points :" + player1.getPoints();
+
+            IPlayer player2 = game.getPlayer2();
+            playerD2.Text = player2.getName() + " - Units: " + player2.getNbUnits() + " - Points :" + player2.getPoints();
 
         }
 
@@ -83,6 +87,8 @@ namespace GUI
             rectangle.Stroke = Brushes.Black;
 
             rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLeftHandler);
+
+            rectangle.MouseRightButtonDown += new MouseButtonEventHandler(rectangleMouseRightHandler);
 
             rectangle.MouseEnter += new MouseEventHandler(mouseEnterHandler);
             rectangle.MouseLeave += new MouseEventHandler(mouseLeaveHandler);
@@ -106,6 +112,7 @@ namespace GUI
                     rectangle.StrokeThickness = 1;
                     rectangle.Stroke = Brushes.Black;
                     rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLeftHandler);
+                    rectangle.MouseRightButtonDown += new MouseButtonEventHandler(rectangleMouseRightHandler);
                     rectangle.MouseEnter += new MouseEventHandler(mouseEnterHandler);
                     rectangle.MouseLeave += new MouseEventHandler(mouseLeaveHandler);
                     mapGrid.Children.Add(rectangle);
@@ -140,7 +147,6 @@ namespace GUI
 
         public void rectangleMouseLeftHandler(object sender, MouseEventArgs e)
         {
-            Console.WriteLine("hello");
             var rectangle = sender as Rectangle;
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
@@ -154,6 +160,31 @@ namespace GUI
                 rectangle.StrokeThickness = 1;
                 rectangle.Stroke = Brushes.Red;
                 origin = rectangle;
+            }
+
+
+            e.Handled = true;
+        }
+
+        public void rectangleMouseRightHandler(object sender, MouseEventArgs e)
+        {
+            var rectangle = sender as Rectangle;
+            int column = Grid.GetColumn(rectangle);
+            int row = Grid.GetRow(rectangle);
+            Point position = new Point(row, column);
+
+            IRound round = game.getRound();
+            if (round.setDestination(position))
+            {
+                round.executeMove();
+                origin.Stroke = Brushes.Black;
+
+                foreach (Rectangle rect in unitRectangles.Values)
+                {
+                    mapGrid.Children.Remove(rect);
+                }
+                unitRectangles.Clear();
+                displayUnits();
             }
 
 

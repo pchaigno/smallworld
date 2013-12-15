@@ -49,16 +49,21 @@ namespace SmallWorld
 
         public bool setDestination(Point destination)
         {
+            Console.WriteLine("OK3");
             if (this.selectedUnit == null)
             {
                 return false;
             }
+
+            Console.WriteLine("OK4");
 
             Boolean result = selectedUnit.canMove(destination);
             if (result)
             {
                 this.destination = destination;
             }
+
+            Console.WriteLine(result);
 
             return result;
         }
