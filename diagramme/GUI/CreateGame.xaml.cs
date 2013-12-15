@@ -71,10 +71,10 @@ namespace GUI
 
             if (name1 != "" && name2 != "" && factory1 != null && factory2 != null && gameBuilder != null)
             {
-                IGame game = gameBuilder.buildGame(name1, factory1, name2, factory2);
+                /*IGame game = gameBuilder.buildGame(name1, factory1, name2, factory2);
                 MapWindow window = new MapWindow(game);
                 window.Show();
-                this.Close();
+                this.Close();*/
             }
             else
             {

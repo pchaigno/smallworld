@@ -8,13 +8,9 @@ namespace SmallWorld
     public interface IGame
     {
 
-        bool isDefeated(IPlayer player);
-
         bool isEndOfGame();
 
         IPlayer getWinner();
-
-        int computePoints();
 
         IPlayer getPlayer1();
 

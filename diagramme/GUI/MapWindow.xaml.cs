@@ -28,11 +28,17 @@ namespace GUI
     public partial class MapWindow : Window
     {
         IGame game;
+        Dictionary<Point, Rectangle> unitRectangles;
 
-        public MapWindow(IGame game)
+        public MapWindow(/*IGame game*/)
         {
             InitializeComponent();
+
+            IGameBuilder gameBuilder = new DemoGameBuilder(); ;
+            IGame game = gameBuilder.buildGame("Lord", new GauloisFactory(), "Pierre", new DwarfFactory());
             this.game = game;
+
+            unitRectangles = new Dictionary<Point,Rectangle>();
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
@@ -59,18 +65,8 @@ namespace GUI
                 }
             }
 
-            var rectangle = new Rectangle();
-
-            ImageBrush brush = new ImageBrush();
-            BitmapImage tileDesert = new BitmapImage(new Uri(@"..\..\Ressources\gaulois.png", UriKind.Relative));
-            brush.ImageSource = tileDesert;
-
-            rectangle.Fill = brush;
-            Grid.SetColumn(rectangle, 4);
-            Grid.SetRow(rectangle, 4);
-            //rectangle.Stroke = Brushes.Red;
-            rectangle.StrokeThickness = 1;
-            mapGrid.Children.Add(rectangle);
+            displayUnits();
+            
 
         }
 
@@ -80,7 +76,7 @@ namespace GUI
 
 
 
-            rectangle.Fill = ImageFactory.getBrush(type);
+            rectangle.Fill = ImageFactory.getBrushSquare(type);
             Grid.SetColumn(rectangle, c);
             Grid.SetRow(rectangle, l);
             rectangle.Tag = c * 4 + l;
@@ -88,6 +84,57 @@ namespace GUI
             rectangle.StrokeThickness = 1;
             
             return rectangle;
+        }
+
+        private void displayUnits()
+        {
+            Dictionary<Point, List<IUnit>> units = game.getMap().getUnits();
+            foreach (Point key in units.Keys)
+            {
+                int nb = units[key].Count;
+                if (nb > 0)
+                {
+                    var rectangle = new Rectangle();
+
+
+                    rectangle.Fill = ImageFactory.getBrushUnit(units[key][0], nb);
+                    Grid.SetColumn(rectangle, key.Y);
+                    Grid.SetRow(rectangle, key.X);
+                    rectangle.StrokeThickness = 1;
+                    mapGrid.Children.Add(rectangle);
+
+                    unitRectangles.Add(key, rectangle);
+                    Console.WriteLine(key.X + "/" + key.Y);
+
+                }
+            }
+        }
+
+        private void updateUnitDisplay(Point p)
+        {
+            //TODO Improve
+            Rectangle rectangleR = unitRectangles[p];
+            if (rectangleR != null)
+            {
+                mapGrid.Children.Remove(rectangleR);
+            }
+            Dictionary<Point, List<IUnit>> units = game.getMap().getUnits();
+            int nb = units[p].Count;
+            if (nb > 0)
+            {
+                var rectangle = new Rectangle();
+
+
+                rectangle.Fill = ImageFactory.getBrushUnit(units[p][0], nb);
+                Grid.SetColumn(rectangle, p.Y);
+                Grid.SetRow(rectangle, p.X);
+                rectangle.StrokeThickness = 1;
+                mapGrid.Children.Add(rectangle);
+
+                unitRectangles.Add(p, rectangle);
+                Console.WriteLine(p.X + "/" + p.Y);
+
+            }
         }
     }
 }

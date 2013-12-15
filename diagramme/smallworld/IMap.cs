@@ -19,6 +19,8 @@ namespace SmallWorld
 
         Dictionary<Point, ISquare> getSquares();
 
+        Dictionary<Point, List<IUnit>> getUnits();
+
         void moveUnit(IUnit unit, Point oldPosition, Point newPosition);
 
         int getSize();

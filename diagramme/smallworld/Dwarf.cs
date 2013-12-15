@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace SmallWorld
 {
-    public class Dwarf : Unit
+    public class Dwarf : Unit, IDwarf
     {
         public Dwarf(IPlayer owner) : base(owner)
         {

@@ -19,8 +19,16 @@ namespace GUI
         private static BitmapImage tilePlaine = null;
 
 
+        private static BitmapImage dwarf = null;
+        private static BitmapImage dwarfM = null;
+        private static BitmapImage gauloisM = null;
+        private static BitmapImage gaulois = null;
+        private static BitmapImage viking = null;
+        private static BitmapImage vikingM = null;
 
-        public static Brush getBrush(ISquare square)
+
+
+        public static Brush getBrushSquare(ISquare square)
         {
             ImageBrush brush = new ImageBrush();
 
@@ -56,5 +64,61 @@ namespace GUI
             }
             return brush;
         }
+
+        public static Brush getBrushUnit(IUnit unit, int nb)
+        {
+            ImageBrush brush = new ImageBrush();
+
+            if (unit is IDwarf)
+            {
+                Console.WriteLine("Hello");
+                if (nb > 1)
+                {
+                    if (dwarfM == null)
+                        dwarfM = new BitmapImage(new Uri(@"..\..\Ressources\dwarfM.png", UriKind.Relative));
+                    brush.ImageSource = dwarfM;
+                }
+                else
+                {
+                    if (dwarf == null)
+                        dwarf = new BitmapImage(new Uri(@"..\..\Ressources\dwarf.png", UriKind.Relative));
+                    brush.ImageSource = dwarf;
+                }
+                
+            }
+            else if (unit is IGaulois)
+            {
+                if (nb > 1)
+                {
+                    if (gauloisM == null)
+                        gauloisM = new BitmapImage(new Uri(@"..\..\Ressources\gauloisM.png", UriKind.Relative));
+                    brush.ImageSource = gauloisM;
+                }
+                else
+                {
+                    if (gaulois == null)
+                        gaulois = new BitmapImage(new Uri(@"..\..\Ressources\gaulois.png", UriKind.Relative));
+                    brush.ImageSource = gaulois;
+                }
+            }
+            else if (unit is IViking)
+            {
+                if (nb > 1)
+                {
+                    if (vikingM == null)
+                        vikingM = new BitmapImage(new Uri(@"..\..\Ressources\vikingM.png", UriKind.Relative));
+                    brush.ImageSource = vikingM;
+                }
+                else
+                {
+                    if (viking == null)
+                        viking = new BitmapImage(new Uri(@"..\..\Ressources\viking.png", UriKind.Relative));
+                    brush.ImageSource = viking;
+                }
+            }
+            return brush;
+        }
+
+
     }
 }

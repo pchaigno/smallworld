@@ -11,5 +11,11 @@ namespace SmallWorld
         List<IUnit> createUnits(int nbUnits);
 
         String getName();
+
+        int getNbUnits();
+
+        int getPoints();
+
+        void addPoints(int n);
     }
 }

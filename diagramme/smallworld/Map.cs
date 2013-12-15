@@ -18,6 +18,7 @@ namespace SmallWorld
         public Map(Dictionary<Point, ISquare> squares)
         {
             this.squares = squares;
+            units = new Dictionary<Point, List<IUnit>>();
             foreach (Point key in squares.Keys)
             {
                 units.Add(key, new List<IUnit>());
@@ -33,6 +34,11 @@ namespace SmallWorld
         public Dictionary<Point, ISquare> getSquares()
         {
             return squares;
+        }
+
+        public Dictionary<Point, List<IUnit>> getUnits()
+        {
+            return units;
         }
 
         public void setSize(int i)

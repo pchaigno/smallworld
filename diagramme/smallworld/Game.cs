@@ -10,36 +10,49 @@ namespace SmallWorld
         private IPlayer player2;
         private IPlayer player1;
         private IMap map;
-        private int max_rounds;
+        private int maxRounds;
+        private int currentRound;
 
         public Game(IPlayer player1, IPlayer player2, IMap map, int max_rounds)
         {
             this.player1 = player1;
             this.player2 = player2;
             this.map = map;
-            this.max_rounds = max_rounds;
+            this.maxRounds = max_rounds;
+            this.currentRound = 1;
         }
-
-       
     
-        public bool isDefeated(IPlayer player)
+        private bool isDefeated(IPlayer player)
         {
-            throw new NotImplementedException();
+            return player.getNbUnits() == 0;
         }
 
         public bool isEndOfGame()
         {
-            throw new NotImplementedException();
+            return isDefeated(player1) || isDefeated(player2) || currentRound > maxRounds ;
         }
 
         public IPlayer getWinner()
         {
-            throw new NotImplementedException();
-        }
-
-        public int computePoints()
-        {
-            throw new NotImplementedException();
+            if (isDefeated(player1))
+            {
+                return player2;
+            }
+            else if (isDefeated(player2))
+            {
+                return player1;
+            }
+            else
+            {
+                if (player1.getPoints() < player2.getPoints())
+                {
+                    return player2;
+                }
+                else
+                {
+                    return player1; ;
+                }
+            }
         }
 
         public IPlayer getPlayer1()

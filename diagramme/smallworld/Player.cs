@@ -9,6 +9,8 @@ namespace SmallWorld
     {
         private IUnitFactory factory;
         private string name;
+        private int nbUnits;
+        private int points;
 
         public Player(string name, IUnitFactory factory)
         {
@@ -18,6 +20,7 @@ namespace SmallWorld
     
         public List<IUnit> createUnits(int nbUnits)
         {
+            this.nbUnits = nbUnits;
             List<IUnit> units = new List<IUnit>();
             for (int i = 0; i < nbUnits; i++)
             {
@@ -29,6 +32,21 @@ namespace SmallWorld
         public string getName()
         {
             return name;
+        }
+
+        public int getNbUnits()
+        {
+            return nbUnits;
+        }
+
+        public int getPoints()
+        {
+            return points;
+        }
+
+        public void addPoints(int n)
+        {
+            this.addPoints += n;
         }
     }
 }
