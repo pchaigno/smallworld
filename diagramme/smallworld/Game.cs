@@ -60,6 +60,7 @@ namespace SmallWorld
         public void endRound()
         {
             currentPlayer.computePoints();
+            //RAZ Round
 
             if (currentPlayer == player1)
             {

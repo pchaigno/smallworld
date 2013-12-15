@@ -83,9 +83,9 @@ namespace SmallWorld
             remainingMovementPoints -= 2;
         }
 
-        public virtual Boolean canMove(Point destination, ISquare destinationSquare)
+        public virtual Boolean canMove(Point destination)
         {
-            return isNext(destination, position) && remainingMovementPoints > 0 && !(destinationSquare is ISea);
+            return isNext(destination, position) && remainingMovementPoints > 0 && !(squares[destination] is ISea);
         }
     }
 }

@@ -23,10 +23,10 @@ namespace SmallWorld
                 return 1;
         }
 
-        public override Boolean canMove(Point destination, ISquare destinationSquare)
+        public override Boolean canMove(Point destination)
         {
-            return (remainingMovementPoints > 0) 
-                && ((isNext(destination, position) && !(destinationSquare is ISea)) || (destinationSquare is IMountain));
+            return (remainingMovementPoints > 0)
+                && ((isNext(destination, position) && !(squares[destination] is ISea)) || (squares[destination] is IMountain));
         }
 
     }

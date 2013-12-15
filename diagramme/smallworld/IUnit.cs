@@ -23,6 +23,8 @@ namespace SmallWorld
 
         void move(Point p);
 
+        Boolean canMove(Point destination);
+
         IPlayer getOwner();
 
         int getPoint();
