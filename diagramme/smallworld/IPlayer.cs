@@ -12,12 +12,8 @@ namespace SmallWorld
 
         String getName();
 
-        int getNbUnits();
-
         int getPoints();
 
-        void endRound();
-
-        void terminateUnit(IUnit unit);
+        void addPoints(int n);
     }
 }

@@ -25,10 +25,16 @@ namespace SmallWorld
             this.currentPlayer = player1;
             this.round = new Round(this, currentPlayer);
         }
+
+        public int getNbUnits(IPlayer player)
+        {
+
+            return map.getUnits(player).Count;
+        }
     
         private bool isDefeated(IPlayer player)
         {
-            return player.getNbUnits() == 0;
+            return getNbUnits(player) == 0;
         }
 
         public bool isEndOfGame()
@@ -61,8 +67,12 @@ namespace SmallWorld
 
         public void endRound()
         {
-            currentPlayer.endRound();
-
+            List<IUnit> units = map.getUnits(currentPlayer);
+            foreach (IUnit unit in units)
+            {
+                currentPlayer.addPoints(unit.getPoint());
+                unit.resetMovementPoints();
+            }
             if (currentPlayer == player1)
             {
                 currentPlayer = player2;

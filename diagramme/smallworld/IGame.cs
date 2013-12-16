@@ -25,5 +25,7 @@ namespace SmallWorld
         int getCurrentRound();
 
         IPlayer getCurrentPlayer();
+
+        int getNbUnits(IPlayer p);
     }
 }

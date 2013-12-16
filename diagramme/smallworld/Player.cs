@@ -10,12 +10,21 @@ namespace SmallWorld
         private IUnitFactory factory;
         private string name;
         private int points;
-        private List<IUnit> units;
 
         public Player(string name, IUnitFactory factory)
         {
             this.name = name;
             this.factory = factory;
+        }
+
+        public string getName()
+        {
+            return name;
+        }
+
+        public int getPoints()
+        {
+            return points;
         }
     
         public List<IUnit> createUnits(int nbUnits)
@@ -25,39 +34,12 @@ namespace SmallWorld
             {
                 units.Add(factory.createUnit(this));
             }
-            this.units = units;
             return units;
         }
 
-        public string getName()
+        public void addPoints(int n)
         {
-            return name;
-        }
-
-        public int getNbUnits()
-        {
-            return units.Count;
-        }
-
-        public int getPoints()
-        {
-            return points;
-        }
-
-        public void endRound()
-        {
-            foreach (IUnit unit in units)
-            {
-                points += unit.getPoint();
-                unit.resetMovementPoints();
-            }
-
-
-        }
-
-        public void terminateUnit(IUnit unit)
-        {
-            units.Remove(unit);
+            points += n;
         }
     }
 }

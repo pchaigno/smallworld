@@ -89,5 +89,23 @@ namespace SmallWorld
             units[position].Remove(unit);
         }
 
+        public List<IUnit> getUnits(IPlayer player)
+        {
+            List<IUnit> result = new List<IUnit>();
+            foreach (List<IUnit> unitsL in units.Values)
+            {
+                if (unitsL.Count > 0 && unitsL[0].getOwner() == player)
+                {
+                    foreach (IUnit unit in unitsL)
+                    {
+                        result.Add(unit);
+                    }
+                }
+            }
+            Console.WriteLine(result);
+
+            return result;
+        }
+
     }
 }

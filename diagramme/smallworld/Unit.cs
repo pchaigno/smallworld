@@ -52,6 +52,21 @@ namespace SmallWorld
             this.squares = squares;
         }
 
+        public void terminate()
+        {
+            // TODO destructeur
+        }
+
+        public Point getPosition()
+        {
+            return position; ;
+        }
+
+        public Boolean isAlive()
+        {
+            return lifePoints > 0;
+        }
+
         protected Boolean isNext(Point a, Point b)
         {
             return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y) == 1;
@@ -74,22 +89,6 @@ namespace SmallWorld
         public virtual Boolean canMove(Point destination)
         {
             return isNext(destination, position) && remainingMovementPoints > 0 && !(squares[destination] is ISea);
-        }
-
-        public void terminate()
-        {
-            owner.terminateUnit(this);
-            // TODO destructeur
-        }
-
-        public Point getPosition()
-        {
-            return position; ;
-        }
-
-        public Boolean isAlive()
-        {
-            return lifePoints > 0;
         }
     }
 }
