@@ -25,14 +25,14 @@
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="1"></TextBlock>
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="2">Player1</TextBlock>
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="3">Name:</TextBlock>
-            <TextBox Margin="10" FontSize="20" Grid.Column="1" Grid.Row="3" Name="name1Box"/>
+            <TextBox Margin="10" FontSize="20" Grid.Column="1" Grid.Row="3" Name="name1Box">Obelix</TextBox>
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="4">People:</TextBlock>
             <ComboBox Width="200" Height="20px" SelectionChanged="onChangePeople1" ItemsSource="{Binding}" Grid.Column="1" Grid.Row="4" Name="people1Box" />
 
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="5"></TextBlock>
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="6">Player2</TextBlock>
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="7">Name:</TextBlock>
-            <TextBox Margin="10" FontSize="20" Grid.Column="1" Grid.Row="7" Name="name2Box"/>
+            <TextBox Margin="10" FontSize="20" Grid.Column="1" Grid.Row="7" Name="name2Box">Thor</TextBox>
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="8">People:</TextBlock>
             <ComboBox Width="200" Height="20px" SelectionChanged="onChangePeople2" Grid.Column="1" Grid.Row="8" ItemsSource="{Binding}" Name="people2Box" />
 
