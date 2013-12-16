@@ -1,6 +1,7 @@
 #include "MapGenerator.h"
 #include <stdlib.h>
-#include <stdio.h> 
+#include <stdio.h>
+#include <time.h>
 
 int** MapGenerator::generateMap(int size) {
 	int i, j;
@@ -16,6 +17,7 @@ int** MapGenerator::generateMap(int size) {
 			map[i][j] = 0;
 		}
 	}
+	MapGenerator::initiateRand();
 	for(i=0; i<size; i++) {
 		for(j=0; j<size; j++) {
 			map[i][j] = MapGenerator::pseudoRandSquare(map, size, i, j);
@@ -50,6 +52,10 @@ int MapGenerator::pseudoRandSquare(int** map, int size, int x, int y) {
 		return randBounds(1, 6);
 	}
 	return neighbors[randIndex];
+}
+
+void MapGenerator::initiateRand() {
+	srand(time(NULL));
 }
 
 int MapGenerator::randBounds(int a, int b) {
