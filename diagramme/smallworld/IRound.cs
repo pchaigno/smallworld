@@ -15,8 +15,6 @@ namespace SmallWorld
 
         bool setDestination(Point destination);
 
-        void unselectUnit();
-
         List<IUnit> getUnits(Point position);
 
         Boolean isCurrentPlayerPosition(Point position);

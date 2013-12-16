@@ -23,6 +23,11 @@ namespace SmallWorld
             lastMoveInfo = "";
         }
 
+        public String getLastMoveInfo()
+        {
+            return lastMoveInfo;
+        }
+
         public List<Point> getAdvisedDestinations(IUnit unit, Point position)
         {
             //TODO from wrapper
@@ -32,11 +37,6 @@ namespace SmallWorld
         public void selectUnit(IUnit unit)
         {
             this.selectedUnit = unit;
-        }
-
-        public void unselectUnit()
-        {
-            selectedUnit = null;
         }
 
         public List<IUnit> getUnits(Point position)
@@ -56,7 +56,6 @@ namespace SmallWorld
             {
                 lastMoveInfo = "You have to select a unit first.";
                 return false;
-
             }
 
             Boolean result = selectedUnit.canMove(destination);
@@ -68,8 +67,6 @@ namespace SmallWorld
             {
                 lastMoveInfo = "You cannot move here.";
             }
-
-            Console.WriteLine(result);
 
             return result;
         }
@@ -94,7 +91,6 @@ namespace SmallWorld
             }
 
             selectedUnit = null;
-            //destination = null; TODO find alternative or check
         }
 
         private Boolean combat()
@@ -184,11 +180,6 @@ namespace SmallWorld
                 //Throw exception
             }
             return result;
-        }
-
-        public String getLastMoveInfo()
-        {
-            return lastMoveInfo;
         }
     }
 }

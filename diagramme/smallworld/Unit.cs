@@ -46,6 +46,16 @@ namespace SmallWorld
             remainingMovementPoints = movementPoints;
         }
 
+        public Point getPosition()
+        {
+            return position; ;
+        }
+
+        public Boolean isAlive()
+        {
+            return lifePoints > 0;
+        }
+
         public void setPosition(Point p, Dictionary<Point, ISquare> squares)
         {
             this.position = p;
@@ -55,16 +65,6 @@ namespace SmallWorld
         public void terminate()
         {
             // TODO destructeur
-        }
-
-        public Point getPosition()
-        {
-            return position; ;
-        }
-
-        public Boolean isAlive()
-        {
-            return lifePoints > 0;
         }
 
         protected Boolean isNext(Point a, Point b)

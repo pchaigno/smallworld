@@ -11,12 +11,8 @@ namespace SmallWorld
     {
         public IMap buildMap(int size)
         {
-            
             int[][] squares = Wrapper.generateMapList(size);
-            
             Dictionary<Point, ISquare> squaresDictionnary = new Dictionary<Point, ISquare>();
-
-            Random rnd = new Random();
 
             for (int i = 0; i < size; i++)
             {
@@ -25,10 +21,7 @@ namespace SmallWorld
                     squaresDictionnary.Add(new Point(i, j), SquareFactory.INSTANCE.getSquare(squares[i][j]));
                 }
             }
-
-            IMap map = new Map(squaresDictionnary);
-
-            return map;
+            return new Map(squaresDictionnary);
         }
     }
 }

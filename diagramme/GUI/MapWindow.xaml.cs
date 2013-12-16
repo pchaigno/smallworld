@@ -230,8 +230,12 @@ namespace GUI
                 rectangle.StrokeThickness = 1;
                 rectangle.Stroke = Brushes.Red;
 
-                
+
                 selectedSquare = rectangle;
+            }
+            else
+            {
+                round.selectUnit(null);
             }
 
 
