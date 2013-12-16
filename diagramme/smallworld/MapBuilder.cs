@@ -27,7 +27,6 @@ namespace SmallWorld
             }
 
             IMap map = new Map(squaresDictionnary);
-            map.setSize(size);
 
             return map;
         }

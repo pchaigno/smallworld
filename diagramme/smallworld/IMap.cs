@@ -27,8 +27,6 @@ namespace SmallWorld
 
         int getSize();
 
-        void setSize(int i);
-
         List<IUnit> getUnits(IPlayer player);
     }
 }

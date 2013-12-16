@@ -23,6 +23,7 @@ namespace SmallWorld
             {
                 units.Add(key, new List<IUnit>());
             }
+            size = (int) Math.Sqrt(squares.Count);
 
         }
         
@@ -39,11 +40,6 @@ namespace SmallWorld
         public Dictionary<Point, List<IUnit>> getUnits()
         {
             return units;
-        }
-
-        public void setSize(int i)
-        {
-            this.size = i;
         }
 
         public List<IUnit> getUnits(Point position)
