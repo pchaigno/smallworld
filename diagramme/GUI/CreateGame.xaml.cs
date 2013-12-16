@@ -38,12 +38,16 @@ namespace GUI
 
             mapCollection = new MapCollection();
             mapBox.DataContext = mapCollection;
+            mapBox.SelectedItem = "Small";
 
             people1Collec = new PeopleCollection();
             people1Box.DataContext = people1Collec;
+            people1Box.SelectedItem = "Gaulois";
 
             people2Collec = new PeopleCollection();
             people2Box.DataContext = people2Collec;
+            people2Box.SelectedItem = "Vikings";
+
         }
 
         public void onChangePeople1(object sender, SelectionChangedEventArgs e)
@@ -97,11 +101,12 @@ namespace GUI
         private String removed;
         public PeopleCollection()
         {
-            Add("Gaulois");
-            Add("Dwarves");
-            Add("Vikings");
-            selected = "";
-            removed = "";
+
+                Add("Gaulois");
+
+                Add("Dwarves");
+
+                Add("Vikings");
         }
 
         public void remove(String st)
