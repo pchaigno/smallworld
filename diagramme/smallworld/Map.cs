@@ -6,94 +6,74 @@ using System.Text;
 using System.Drawing;
 
 
-namespace SmallWorld
-{
-    public class Map : IMap
-    {
+namespace SmallWorld {
+    public class Map: IMap {
 
         private Dictionary<Point, List<IUnit>> units;
         private Dictionary<Point, ISquare> squares;
         private int size;
 
-        public Map(Dictionary<Point, ISquare> squares)
-        {
+        public Map(Dictionary<Point, ISquare> squares) {
             this.squares = squares;
             units = new Dictionary<Point, List<IUnit>>();
-            foreach (Point key in squares.Keys)
-            {
+            foreach(Point key in squares.Keys) {
                 units.Add(key, new List<IUnit>());
             }
-            size = (int) Math.Sqrt(squares.Count);
+            size = (int)Math.Sqrt(squares.Count);
 
         }
-        
-        public int getSize()
-        {
+
+        public int getSize() {
             return size;
         }
 
-        public Dictionary<Point, ISquare> getSquares()
-        {
+        public Dictionary<Point, ISquare> getSquares() {
             return squares;
         }
 
-        public Dictionary<Point, List<IUnit>> getUnits()
-        {
+        public Dictionary<Point, List<IUnit>> getUnits() {
             return units;
         }
 
-        public List<IUnit> getUnits(Point position)
-        {
+        public List<IUnit> getUnits(Point position) {
             return units[position];
         }
 
-        public bool isEnemyPosition(Point position, IUnit unit)
-        {
-            if (units[position].Count == 0)
-            {
+        public bool isEnemyPosition(Point position, IUnit unit) {
+            if(units[position].Count == 0) {
                 return false;
-            }
-            else
-            {
-                return !units[position][0].getOwner().Equals(unit.getOwner()); 
+            } else {
+                return !units[position][0].getOwner().Equals(unit.getOwner());
             }
         }
 
-        public void placeUnit(IUnit unit, Point position)
-        {
+        public void placeUnit(IUnit unit, Point position) {
             units[position].Add(unit);
         }
 
 
-        public ISquare getSquare(Point position)
-        {
+        public ISquare getSquare(Point position) {
             return squares[position];
         }
 
 
-        public void moveUnit(IUnit unit, Point newPosition)
-        {
+        public void moveUnit(IUnit unit, Point newPosition) {
             units[unit.getPosition()].Remove(unit);
-            if (this.isEnemyPosition(newPosition, unit))
+            if(this.isEnemyPosition(newPosition, unit))
                 throw new Exception("Erreur dans le deplacement");
             units[newPosition].Add(unit);
             unit.move(newPosition);
         }
 
-        public void removeUnit(IUnit unit, Point position)
-        {
+        public void removeUnit(IUnit unit, Point position) {
             units[position].Remove(unit);
         }
 
-        public List<IUnit> getUnits(IPlayer player)
-        {
+        public List<IUnit> getUnits(IPlayer player) {
             List<IUnit> result = new List<IUnit>();
-            foreach (List<IUnit> unitsL in units.Values)
-            {
-                if (unitsL.Count > 0 && unitsL[0].getOwner() == player)
-                {
-                    foreach (IUnit unit in unitsL)
-                    {
+            foreach(List<IUnit> unitsL in units.Values) {
+                if(unitsL.Count > 0 && unitsL[0].getOwner() == player) {
+                    foreach(IUnit unit in unitsL) {
                         result.Add(unit);
                     }
                 }

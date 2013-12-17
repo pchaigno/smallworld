@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace SmallWorld
-{
-    public class Round : IRound
-    {
+namespace SmallWorld {
+    public class Round: IRound {
         private IGame game;
         private IPlayer player;
 
@@ -16,76 +14,59 @@ namespace SmallWorld
 
         private String lastMoveInfo;
 
-        public Round(IGame game, IPlayer player)
-        {
+        public Round(IGame game, IPlayer player) {
             this.game = game;
             this.player = player;
             lastMoveInfo = "";
         }
 
-        public String getLastMoveInfo()
-        {
+        public String getLastMoveInfo() {
             return lastMoveInfo;
         }
 
-        public List<Point> getAdvisedDestinations(IUnit unit, Point position)
-        {
+        public List<Point> getAdvisedDestinations(IUnit unit, Point position) {
             //TODO from wrapper
             return new List<Point>();
         }
 
-        public void selectUnit(IUnit unit)
-        {
+        public void selectUnit(IUnit unit) {
             this.selectedUnit = unit;
         }
 
-        public List<IUnit> getUnits(Point position)
-        {
+        public List<IUnit> getUnits(Point position) {
             return game.getMap().getUnits(position);
         }
 
-        public Boolean isCurrentPlayerPosition(Point position)
-        {
+        public Boolean isCurrentPlayerPosition(Point position) {
             List<IUnit> units = game.getMap().getUnits(position);
             return units.Count > 0 && units[0].getOwner() == player;
         }
 
-        public bool setDestination(Point destination)
-        {
-            if (this.selectedUnit == null)
-            {
+        public bool setDestination(Point destination) {
+            if(this.selectedUnit == null) {
                 lastMoveInfo = "You have to select a unit first.";
                 return false;
             }
 
             Boolean result = selectedUnit.canMove(destination);
-            if (result)
-            {
+            if(result) {
                 this.destination = destination;
-            }
-            else
-            {
+            } else {
                 lastMoveInfo = "You cannot move here.";
             }
 
             return result;
         }
 
-        public void executeMove() 
-        {
-            if (game.getMap().isEnemyPosition(destination, selectedUnit))
-            {
-                if (combat())
-                {
+        public void executeMove() {
+            if(game.getMap().isEnemyPosition(destination, selectedUnit)) {
+                if(combat()) {
                     Console.WriteLine(game.getMap().getUnits(destination).Count);
-                    if (game.getMap().getUnits(destination).Count == 0)
-                    {
+                    if(game.getMap().getUnits(destination).Count == 0) {
                         game.getMap().moveUnit(selectedUnit, destination);
                     }
                 }
-            }
-            else
-            {
+            } else {
                 game.getMap().moveUnit(selectedUnit, destination);
                 lastMoveInfo = player.getName() + " moved a unit.";
             }
@@ -93,8 +74,7 @@ namespace SmallWorld
             selectedUnit = null;
         }
 
-        private Boolean combat()
-        {
+        private Boolean combat() {
             IUnit enemy = getBestUnit();
             //TODO combat
 
@@ -104,79 +84,62 @@ namespace SmallWorld
             int nbRound = 3 + randCombat.Next((Math.Max(selectedUnit.lifePoints, enemy.lifePoints)) + 2);
             int n = 0;
 
-            while (nbRound > n && selectedUnit.isAlive() && enemy.isAlive())
-            {
+            while(nbRound > n && selectedUnit.isAlive() && enemy.isAlive()) {
                 double ratioLife = (double)selectedUnit.lifePoints / (double)selectedUnit.maxLifePoints;
                 double ratioLifeDef = (double)enemy.lifePoints / (double)enemy.maxLifePoints;
                 double attaUnit = (double)selectedUnit.attack * (double)ratioLife;
                 double defUnitdef = (double)enemy.defense * (double)ratioLifeDef;
                 double ratioAttDef = (double)(attaUnit / defUnitdef);
                 double ratioChanceDef = 0;
-                if (ratioAttDef > 1) // avantage attaquant
+                if(ratioAttDef > 1) // avantage attaquant
                 {
                     ratioChanceDef = (1 / ratioAttDef) / 2;
                     ratioChanceDef = (0.5 - ratioChanceDef) + 0.5;
-                }
-                else if (ratioAttDef == 1) //égalité, aucun n'a l'avantage
+                } else if(ratioAttDef == 1) //égalité, aucun n'a l'avantage
                 {
                     ratioChanceDef = 0.5; // 50% de chnce de gagner
-                }
-                else // avantage défense
+                } else // avantage défense
                 {
                     ratioChanceDef = ratioAttDef / 2;
                 }
                 double ratioCombat = (double)((double)rand.Next(100) / 100);
 
-                if (ratioCombat <= ratioChanceDef)
-                {
+                if(ratioCombat <= ratioChanceDef) {
                     enemy.lifePoints--;
-                }
-                else
-                {
+                } else {
                     selectedUnit.lifePoints--;
                 }
                 n++;
             }
 
-            if (!selectedUnit.isAlive())
-            {
+            if(!selectedUnit.isAlive()) {
                 game.getMap().removeUnit(selectedUnit, selectedUnit.getPosition());
                 selectedUnit.terminate();
                 lastMoveInfo = player.getName() + " lost the fight.";
                 return false;
-            }
-            else if (!enemy.isAlive())
-            {
+            } else if(!enemy.isAlive()) {
                 game.getMap().removeUnit(enemy, destination);
                 enemy.terminate();
                 lastMoveInfo = player.getName() + " won the fight.";
                 return true;
-            }
-            else
-            {
+            } else {
                 lastMoveInfo = "The fight ended with a draw (Grammar ??)";
                 return false;
             }
 
         }
 
-        private IUnit getBestUnit()
-        {
+        private IUnit getBestUnit() {
             IUnit result = null;
             List<IUnit> units = game.getMap().getUnits(destination);
-            if (units.Count > 0)
-            {
+            if(units.Count > 0) {
                 result = units[0];
-                for (int i = 1; i < units.Count; i++)
-                {
-                    if (result.lifePoints < units[i].lifePoints)
-                    {
+                for(int i = 1; i < units.Count; i++) {
+                    if(result.lifePoints < units[i].lifePoints) {
                         result = units[i];
                     }
                 }
-            }
-            else
-            {
+            } else {
                 //Throw exception
             }
             return result;

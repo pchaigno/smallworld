@@ -4,14 +4,24 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace SmallWorld
-{
-    public abstract class Unit : IUnit
-    {
-        public int attack { get; set; }
-        public int defense { get; set; }
-        public int lifePoints { get; set; }
-        public int maxLifePoints { get; set; }
+namespace SmallWorld {
+    public abstract class Unit: IUnit {
+        public int attack {
+            get;
+            set;
+        }
+        public int defense {
+            get;
+            set;
+        }
+        public int lifePoints {
+            get;
+            set;
+        }
+        public int maxLifePoints {
+            get;
+            set;
+        }
 
         protected IPlayer owner;
         protected int movementPoints;
@@ -20,8 +30,7 @@ namespace SmallWorld
         protected Dictionary<Point, ISquare> squares;
 
 
-        protected Unit(IPlayer owner)
-        {
+        protected Unit(IPlayer owner) {
             this.owner = owner;
             attack = 2;
             defense = 1;
@@ -31,63 +40,53 @@ namespace SmallWorld
             remainingMovementPoints = movementPoints;
         }
 
-        public int getRemainingMovementPoints()
-        {
+        public int getRemainingMovementPoints() {
             return remainingMovementPoints;
         }
 
-        public IPlayer getOwner()
-        {
+        public IPlayer getOwner() {
             return owner;
         }
 
-        public void resetMovementPoints()
-        {
+        public void resetMovementPoints() {
             remainingMovementPoints = movementPoints;
         }
 
-        public Point getPosition()
-        {
-            return position; ;
+        public Point getPosition() {
+            return position;
+            ;
         }
 
-        public Boolean isAlive()
-        {
+        public Boolean isAlive() {
             return lifePoints > 0;
         }
 
-        public void setPosition(Point p, Dictionary<Point, ISquare> squares)
-        {
+        public void setPosition(Point p, Dictionary<Point, ISquare> squares) {
             this.position = p;
             this.squares = squares;
         }
 
-        public void terminate()
-        {
+        public void terminate() {
             // TODO destructeur
         }
 
-        protected Boolean isNext(Point a, Point b)
-        {
+        protected Boolean isNext(Point a, Point b) {
             return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y) == 1;
         }
 
-        public virtual int getPoint()
-        {
-            if (squares[position] is ISea)
+        public virtual int getPoint() {
+            if(squares[position] is ISea)
                 return 0;
             else
                 return 1;
         }
 
-        public virtual void move(Point destination)
-        {
+        public virtual void move(Point destination) {
             this.position = destination;
             remainingMovementPoints -= 2;
         }
 
-        public virtual Boolean canMove(Point destination)
-        {
+        public virtual Boolean canMove(Point destination) {
             return isNext(destination, position) && remainingMovementPoints > 0 && !(squares[destination] is ISea);
         }
     }

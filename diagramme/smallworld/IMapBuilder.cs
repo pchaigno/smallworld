@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using SmallWorld;
 
-namespace SmallWorld
-{
-    public interface IMapBuilder
-    {
+namespace SmallWorld {
+    public interface IMapBuilder {
         IMap buildMap(int size);
     }
 }

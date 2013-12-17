@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SmallWorld
-{
-    public interface IVikingFactory : IUnitFactory
-    {
+namespace SmallWorld {
+    public interface IVikingFactory: IUnitFactory {
     }
 }

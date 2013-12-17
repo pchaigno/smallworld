@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SmallWorld
-{
-    public class SquareFactory : ISquareFactory
-    {
+namespace SmallWorld {
+    public class SquareFactory: ISquareFactory {
         private IMountain mountain;
         private ILowland lowland;
         private IForest forest;
@@ -15,8 +13,7 @@ namespace SmallWorld
 
         public static SquareFactory INSTANCE = new SquareFactory();
 
-        private SquareFactory()
-        {
+        private SquareFactory() {
             mountain = new Mountain();
             lowland = new Lowland();
             forest = new Forest();
@@ -24,10 +21,8 @@ namespace SmallWorld
             desert = new Desert();
         }
 
-        public ISquare getSquare(int type)
-        {
-            switch (type)
-            {
+        public ISquare getSquare(int type) {
+            switch(type) {
                 case 1:
                     return sea;
                 case 2:
@@ -40,7 +35,7 @@ namespace SmallWorld
                     return mountain;
                 default:
                     return null;
-                    // TODO throw Excetion ???
+                // TODO throw Excetion ???
             }
         }
     }

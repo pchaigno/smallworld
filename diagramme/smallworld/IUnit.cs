@@ -4,15 +4,25 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 
-namespace SmallWorld
-{
-    public interface IUnit
-    {
+namespace SmallWorld {
+    public interface IUnit {
 
-        int attack { get; set; }
-        int defense { get; set; }
-        int lifePoints { get; set; }
-        int maxLifePoints { get; set; }
+        int attack {
+            get;
+            set;
+        }
+        int defense {
+            get;
+            set;
+        }
+        int lifePoints {
+            get;
+            set;
+        }
+        int maxLifePoints {
+            get;
+            set;
+        }
 
         int getRemainingMovementPoints();
 

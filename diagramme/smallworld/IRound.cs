@@ -4,10 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-namespace SmallWorld
-{
-    public interface IRound
-    {
+namespace SmallWorld {
+    public interface IRound {
 
         List<Point> getAdvisedDestinations(IUnit unit, Point position);
 

@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SmallWorld
-{
-    public class Forest : IForest
-    {
+namespace SmallWorld {
+    public class Forest: IForest {
     }
 }

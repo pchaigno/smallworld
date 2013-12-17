@@ -5,10 +5,8 @@ using System.Linq;
 using System.Text;
 
 
-namespace SmallWorld
-{
-    public interface IMap
-    {
+namespace SmallWorld {
+    public interface IMap {
         List<IUnit> getUnits(Point coordinates);
 
         bool isEnemyPosition(Point position, IUnit unit);
