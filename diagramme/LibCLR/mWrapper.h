@@ -6,10 +6,11 @@
 using namespace System::Collections::Generic;
 
 namespace mWrapper {
+
 	public ref class Wrapper {
+
 	public:
 		static array<array<int>^>^ generateMapList(int size) {
-			printf("ok");
 			array<array<int>^>^ map = gcnew array<array<int>^>(size);
 			int** result = MapGenerator::generateMap(size);
 			for(int i=0; i<size; i++) {

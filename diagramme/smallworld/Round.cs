@@ -5,13 +5,12 @@ using System.Text;
 using System.Drawing;
 
 namespace SmallWorld {
+
     public class Round: IRound {
         private IGame game;
         private IPlayer player;
-
         private IUnit selectedUnit;
         private Point destination;
-
         private String lastMoveInfo;
 
         public Round(IGame game, IPlayer player) {
@@ -84,22 +83,22 @@ namespace SmallWorld {
             int nbRound = 3 + randCombat.Next((Math.Max(selectedUnit.lifePoints, enemy.lifePoints)) + 2);
             int n = 0;
 
-            while(nbRound > n && selectedUnit.isAlive() && enemy.isAlive()) {
+            while(nbRound>n && selectedUnit.isAlive() && enemy.isAlive()) {
                 double ratioLife = (double)selectedUnit.lifePoints / (double)selectedUnit.maxLifePoints;
                 double ratioLifeDef = (double)enemy.lifePoints / (double)enemy.maxLifePoints;
                 double attaUnit = (double)selectedUnit.attack * (double)ratioLife;
                 double defUnitdef = (double)enemy.defense * (double)ratioLifeDef;
                 double ratioAttDef = (double)(attaUnit / defUnitdef);
                 double ratioChanceDef = 0;
-                if(ratioAttDef > 1) // avantage attaquant
-                {
+                if(ratioAttDef > 1) {
+                    // avantage attaquant
                     ratioChanceDef = (1 / ratioAttDef) / 2;
                     ratioChanceDef = (0.5 - ratioChanceDef) + 0.5;
-                } else if(ratioAttDef == 1) //égalité, aucun n'a l'avantage
-                {
+                } else if(ratioAttDef == 1) {
+                    //égalité, aucun n'a l'avantage
                     ratioChanceDef = 0.5; // 50% de chnce de gagner
-                } else // avantage défense
-                {
+                } else {
+                    // avantage défense
                     ratioChanceDef = ratioAttDef / 2;
                 }
                 double ratioCombat = (double)((double)rand.Next(100) / 100);
@@ -134,7 +133,7 @@ namespace SmallWorld {
             List<IUnit> units = game.getMap().getUnits(destination);
             if(units.Count > 0) {
                 result = units[0];
-                for(int i = 1; i < units.Count; i++) {
+                for(int i=1; i<units.Count; i++) {
                     if(result.lifePoints < units[i].lifePoints) {
                         result = units[i];
                     }

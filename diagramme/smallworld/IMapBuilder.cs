@@ -5,7 +5,9 @@ using System.Text;
 using SmallWorld;
 
 namespace SmallWorld {
+
     public interface IMapBuilder {
+
         IMap buildMap(int size);
     }
 }

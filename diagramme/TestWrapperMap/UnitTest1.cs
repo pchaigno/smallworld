@@ -6,8 +6,10 @@ using System.Diagnostics;
 
 
 namespace TestWrapperMap {
+
     [TestClass]
     public class UnitTest1 {
+
         [TestMethod]
         public void TestMethodGenerate() {
             int size = 5;
@@ -21,7 +23,7 @@ namespace TestWrapperMap {
                 log += "\n";
             }
             Debug.WriteLine(log);
-            Assert.AreEqual(0,0);
+            Assert.AreEqual(0, 0);
         }
     }
 }

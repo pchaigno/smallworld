@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 
 namespace SmallWorld {
+
     public interface ISquareFactory {
 
         ISquare getSquare(int i);
-
     }
 }

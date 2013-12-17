@@ -6,11 +6,11 @@ using SmallWorld;
 using System.Drawing;
 
 namespace SmallWorld {
+
     public abstract class GameBuilder: IGameBuilder {
         protected int max_rounds;
         protected int map_size;
         protected int nb_units;
-
 
         public IGame buildGame(String name1, IUnitFactory factory1, String name2, IUnitFactory factory2) {
             IMapBuilder mapBuilder = new MapBuilder();
@@ -40,7 +40,5 @@ namespace SmallWorld {
 
             return new Game(player1, player2, map, max_rounds);
         }
-
-
     }
 }

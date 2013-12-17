@@ -5,6 +5,7 @@ using System.Text;
 using System.Drawing;
 
 namespace SmallWorld {
+
     public abstract class Unit: IUnit {
         public int attack {
             get;
@@ -22,13 +23,11 @@ namespace SmallWorld {
             get;
             set;
         }
-
         protected IPlayer owner;
         protected int movementPoints;
         protected int remainingMovementPoints;
         protected Point position;
         protected Dictionary<Point, ISquare> squares;
-
 
         protected Unit(IPlayer owner) {
             this.owner = owner;
@@ -54,7 +53,6 @@ namespace SmallWorld {
 
         public Point getPosition() {
             return position;
-            ;
         }
 
         public Boolean isAlive() {
@@ -75,10 +73,11 @@ namespace SmallWorld {
         }
 
         public virtual int getPoint() {
-            if(squares[position] is ISea)
+            if(squares[position] is ISea) {
                 return 0;
-            else
+            } else {
                 return 1;
+            }
         }
 
         public virtual void move(Point destination) {
@@ -87,7 +86,9 @@ namespace SmallWorld {
         }
 
         public virtual Boolean canMove(Point destination) {
-            return isNext(destination, position) && remainingMovementPoints > 0 && !(squares[destination] is ISea);
+            return isNext(destination, position) 
+                && remainingMovementPoints > 0 
+                && !(squares[destination] is ISea);
         }
     }
 }

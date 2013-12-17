@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace SmallWorld {
+
     public class Player: IPlayer {
         private IUnitFactory factory;
         private string name;
@@ -24,7 +25,7 @@ namespace SmallWorld {
 
         public List<IUnit> createUnits(int nbUnits) {
             List<IUnit> units = new List<IUnit>();
-            for(int i = 0; i < nbUnits; i++) {
+            for(int i=0; i<nbUnits; i++) {
                 units.Add(factory.createUnit(this));
             }
             return units;

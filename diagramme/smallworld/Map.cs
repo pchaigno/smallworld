@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 
-
 namespace SmallWorld {
-    public class Map: IMap {
 
+    public class Map: IMap {
         private Dictionary<Point, List<IUnit>> units;
         private Dictionary<Point, ISquare> squares;
         private int size;
@@ -51,11 +50,9 @@ namespace SmallWorld {
             units[position].Add(unit);
         }
 
-
         public ISquare getSquare(Point position) {
             return squares[position];
         }
-
 
         public void moveUnit(IUnit unit, Point newPosition) {
             units[unit.getPosition()].Remove(unit);
@@ -82,6 +79,5 @@ namespace SmallWorld {
 
             return result;
         }
-
     }
 }

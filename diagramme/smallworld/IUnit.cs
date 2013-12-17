@@ -5,8 +5,8 @@ using System.Linq;
 using System.Text;
 
 namespace SmallWorld {
-    public interface IUnit {
 
+    public interface IUnit {
         int attack {
             get;
             set;

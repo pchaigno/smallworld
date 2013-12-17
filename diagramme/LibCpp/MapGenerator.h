@@ -8,8 +8,8 @@
 #define EXTERNC extern "C"
 #endif
 
-class MapGenerator
-{
+class MapGenerator {
+
 public:
 	DLL static int** generateMap(int size);
 	DLL static int pseudoRandSquare(int** map, int size, int x, int y);

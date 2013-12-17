@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 
 namespace SmallWorld {
+
     public class SquareFactory: ISquareFactory {
         private IMountain mountain;
         private ILowland lowland;
         private IForest forest;
         private ISea sea;
         private IDesert desert;
-
         public static SquareFactory INSTANCE = new SquareFactory();
 
         private SquareFactory() {
@@ -35,7 +35,7 @@ namespace SmallWorld {
                     return mountain;
                 default:
                     return null;
-                // TODO throw Excetion ???
+                    // TODO throw Excetion ???
             }
         }
     }

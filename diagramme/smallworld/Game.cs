@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace SmallWorld {
+
     public class Game: IGame {
         private IPlayer player2;
         private IPlayer player1;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace SmallWorld {
+
     public interface IGame {
 
         bool isEndOfGame();
