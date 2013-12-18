@@ -7,25 +7,14 @@ using System.Drawing;
 namespace SmallWorld {
 
     public abstract class Unit: IUnit {
-        public int attack {
-            get;
-            set;
-        }
-        public int defense {
-            get;
-            set;
-        }
-        public int lifePoints {
-            get;
-            set;
-        }
-        public int maxLifePoints {
-            get;
-            set;
-        }
-        protected IPlayer owner;
-        protected int movementPoints;
+        protected const int ATTACK = 2;
+        protected const int DEFENSE = 1;
+        protected const int DEFAULT_LIFE_POINTS = 5;
+        protected const int MAXIMUM_LIFE_POINTS = 5;
+        protected const int DEFAULT_MOVEMENT_POINTS = 2;
+        protected int lifePoints;
         protected int remainingMovementPoints;
+        protected IPlayer owner;
         protected Point position;
         protected Dictionary<Point, ISquare> squares;
 
@@ -34,15 +23,10 @@ namespace SmallWorld {
          * @param owner The player owner of the unit.
          */
         // TODO Why is it protected?
-        // TODO Shouldn't default parameters by defined as constants?
         protected Unit(IPlayer owner) {
             this.owner = owner;
-            attack = 2;
-            defense = 1;
-            lifePoints = 5;
-            maxLifePoints = 5;
-            movementPoints = 2;
-            remainingMovementPoints = movementPoints;
+            lifePoints = DEFAULT_LIFE_POINTS;
+            remainingMovementPoints = DEFAULT_MOVEMENT_POINTS;
         }
 
         /**
@@ -63,7 +47,7 @@ namespace SmallWorld {
          * Reset the remaining movement points to the default number.
          */
         public void resetMovementPoints() {
-            remainingMovementPoints = movementPoints;
+            remainingMovementPoints = DEFAULT_MOVEMENT_POINTS;
         }
 
         /**
@@ -102,8 +86,7 @@ namespace SmallWorld {
          * @param b The second position.
          * @returns True if the two positions are adjacent.
          */
-        // TODO Shouldn't it be static?
-        protected Boolean isNext(Point a, Point b) {
+        protected static bool isNext(Point a, Point b) {
             return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y) == 1;
         }
 
@@ -133,7 +116,7 @@ namespace SmallWorld {
          * @param destination The destination to reach.
          * @returns True if the unit can move to the destination.
          */
-        public virtual Boolean canMove(Point destination) {
+        public virtual bool canMove(Point destination) {
             return isNext(destination, position) 
                 && remainingMovementPoints > 0 
                 && !(squares[destination] is ISea);

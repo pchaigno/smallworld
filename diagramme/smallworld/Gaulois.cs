@@ -30,15 +30,13 @@ namespace SmallWorld {
 
         /**
          * Move the unit to its destination point and update the number of remaining points.
+         * Gaulois use one point less than others to move on lowland.
          * @param destination The destination for the unit.
          */
-        // TODO Can't we use the super-method?
         public override void move(Point destination) {
-            this.position = destination;
+            base.move(destination);
             if(squares[position] is ILowland) {
-                remainingMovementPoints -= 1;
-            } else {
-                remainingMovementPoints -= 2;
+                remainingMovementPoints++;
             }
         }
     }

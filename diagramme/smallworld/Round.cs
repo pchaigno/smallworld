@@ -38,7 +38,7 @@ namespace SmallWorld {
          * @returns The list of advised desinations.
          */
         public List<Point> getAdvisedDestinations(IUnit unit, Point position) {
-            //TODO from wrapper
+            // TODO Retrieve from wrapper.
             return new List<Point>();
         }
 
@@ -135,14 +135,14 @@ namespace SmallWorld {
                 double ratioAttDef = (double)(attaUnit / defUnitdef);
                 double ratioChanceDef = 0;
                 if(ratioAttDef > 1) {
-                    // avantage attaquant
+                    // Advantage for the attacker.
                     ratioChanceDef = (1 / ratioAttDef) / 2;
                     ratioChanceDef = (0.5 - ratioChanceDef) + 0.5;
                 } else if(ratioAttDef == 1) {
-                    //égalité, aucun n'a l'avantage
-                    ratioChanceDef = 0.5; // 50% de chnce de gagner
+                    // Draw: 50% chances to win.
+                    ratioChanceDef = 0.5;
                 } else {
-                    // avantage défense
+                    // Advantage for the defender.
                     ratioChanceDef = ratioAttDef / 2;
                 }
                 double ratioCombat = (double)((double)rand.Next(100) / 100);

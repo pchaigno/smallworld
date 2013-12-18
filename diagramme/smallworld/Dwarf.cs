@@ -29,17 +29,12 @@ namespace SmallWorld {
 
         /**
          * Checks if the unit can move during this round to a certain destination.
-         * The destination must be next to the current position,
-         * the unit must have some movement points left,
-         * the square can't be a mountain or a sea.
+         * Dwarfs have the particularity that they can't move on mountains.
          * @param destination The destination to reach.
          * @returns True if the unit can move to the destination.
          */
-        // TODO Can't we reused the super-method?
         public override Boolean canMove(Point destination) {
-            return (remainingMovementPoints > 0)
-                && isNext(destination, position)
-                && !(squares[destination] is ISea) 
+            return base.canMove(destination)
                 && !(squares[destination] is IMountain);
         }
     }

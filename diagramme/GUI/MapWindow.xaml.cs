@@ -288,6 +288,7 @@ namespace GUI
             if (game.isEndOfGame())
             {
                 IPlayer player = game.getWinner();
+                // TODO Handle draw situations.
                 string messageBoxText = "Congratulation " + player.getName() + "\n You have defeated your enemy !";
                 string caption = "Victory!";
                 MessageBoxButton button = MessageBoxButton.OK;

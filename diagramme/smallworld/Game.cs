@@ -59,7 +59,7 @@ namespace SmallWorld {
         }
 
         /**
-         * @returns The winner.
+         * @returns The winner, null if there is none.
          */
         public IPlayer getWinner() {
             if(isDefeated(player1)) {
@@ -67,13 +67,13 @@ namespace SmallWorld {
             } else if(isDefeated(player2)) {
                 return player1;
             } else {
-                // TODO Handle draw situation.
                 if(player1.getPoints() < player2.getPoints()) {
                     return player2;
-                } else {
+                } else if(player1.getPoints() > player2.getPoints()) {
                     return player1;
                 }
             }
+            return null;
         }
 
         /**

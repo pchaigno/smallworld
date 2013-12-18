@@ -36,9 +36,9 @@ namespace SmallWorld {
          * @param destination The destination to reach.
          * @returns True if the unit can move to the destination.
          */
-        // TODO Can't we reused the super-method?
-        public override Boolean canMove(Point destination) {
-            return isNext(destination, position) && remainingMovementPoints>0;
+        public override bool canMove(Point destination) {
+            return isNext(destination, position) 
+                && remainingMovementPoints>0;
         }
     }
 }
