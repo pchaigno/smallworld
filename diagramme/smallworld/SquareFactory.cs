@@ -13,6 +13,10 @@ namespace SmallWorld {
         private IDesert desert;
         public static SquareFactory INSTANCE = new SquareFactory();
 
+        /**
+         * Constructor
+         * It is private because the class is a singleton.
+         */
         private SquareFactory() {
             mountain = new Mountain();
             lowland = new Lowland();
@@ -21,6 +25,11 @@ namespace SmallWorld {
             desert = new Desert();
         }
 
+        /**
+         * Gets the square corresponding to the number from the C++ library.
+         * @param type The number from the C++ library.
+         * @returns The square.
+         */
         public ISquare getSquare(int type) {
             switch(type) {
                 case 1:
@@ -35,7 +44,7 @@ namespace SmallWorld {
                     return mountain;
                 default:
                     return null;
-                    // TODO throw Excetion ???
+                    // TODO throw Excetion?
             }
         }
     }

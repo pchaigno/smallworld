@@ -10,6 +10,7 @@ using SmallWorld;
 
 namespace GUI {
 
+    // TODO Shouln't it be a singleton?
     class ImageFactory {
         private static BitmapImage tileDesert = null;
         private static BitmapImage tileEau = null;
@@ -26,6 +27,11 @@ namespace GUI {
         private static BitmapImage vikingUnit = null;
         private static BitmapImage dwarfUnit = null;
 
+        /**
+         * Gets the image corresponding to a certain type of square.
+         * @param square The square to draw.
+         * @returns The image corresponding to the square.
+         */
         public static Brush getBrushSquare(ISquare square) {
             ImageBrush brush = new ImageBrush();
 
@@ -58,6 +64,13 @@ namespace GUI {
             return brush;
         }
 
+        /**
+         * Gets the image corresponding to a certain type of unit.
+         * This image in going to be placed on a square, on the map.
+         * @param unit The unit to draw.
+         * @param nb The number of units to draw (on the same square).
+         * @returns The image corresponding to the unit.
+         */
         public static Brush getBrushUnit(IUnit unit, int nb) {
             ImageBrush brush = new ImageBrush();
 
@@ -103,6 +116,12 @@ namespace GUI {
             return brush;
         }
 
+        /**
+         * Gets the image corresponding to a certain type of unit.
+         * This image is going to be place in the board area, as the unit's face.
+         * @param unit The unit to draw.
+         * @returns The image corresponding to the unit's face.
+         */
         public static Brush getBrushUnitFace(IUnit unit) {
             ImageBrush brush = new ImageBrush();
 

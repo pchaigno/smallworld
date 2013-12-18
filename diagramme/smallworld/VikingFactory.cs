@@ -7,6 +7,11 @@ namespace SmallWorld {
 
     public class VikingFactory: IVikingFactory {
 
+        /**
+         * Creates a viking unit.
+         * @param player The player owner of the unit.
+         * @returns The viking unit.
+         */
         public IUnit createUnit(IPlayer player) {
             return new Viking(player);
         }

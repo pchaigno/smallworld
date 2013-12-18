@@ -13,34 +13,68 @@ namespace SmallWorld {
         private Point destination;
         private String lastMoveInfo;
 
+        /**
+         * Constructor
+         * @param game The game the round is part of.
+         * @param player The player for this round.
+         */
         public Round(IGame game, IPlayer player) {
             this.game = game;
             this.player = player;
             lastMoveInfo = "";
         }
 
+        /**
+         * @returns The information about the last move.
+         */
         public String getLastMoveInfo() {
             return lastMoveInfo;
         }
 
+        /**
+         * Retrieves advised destinations from the C++ library.
+         * @param unit The unit for which we want advise.
+         * @param position The unit's position.
+         * @returns The list of advised desinations.
+         */
         public List<Point> getAdvisedDestinations(IUnit unit, Point position) {
             //TODO from wrapper
             return new List<Point>();
         }
 
+        /**
+         * Set the new selected unit.
+         * @param unit The unit to select.
+         */
         public void selectUnit(IUnit unit) {
             this.selectedUnit = unit;
         }
 
+        /**
+         * Retrieve all units from a position.
+         * @param position The position
+         * @returns The units on this position.
+         */
         public List<IUnit> getUnits(Point position) {
             return game.getMap().getUnits(position);
         }
 
+        /**
+         * Checks if a position is under the control of the current player.
+         * @param position The position.
+         * @returns True if the position is under the control of the current player.
+         */
         public Boolean isCurrentPlayerPosition(Point position) {
             List<IUnit> units = game.getMap().getUnits(position);
-            return units.Count > 0 && units[0].getOwner() == player;
+            return units.Count>0 && units[0].getOwner()==player;
         }
 
+        /**
+         * Checks if the unit currently selected can move to a desination.
+         * Save the destination if the move is possible.
+         * @param destination The desination.
+         * @param True if the current unit can move to the destination.
+         */
         public bool setDestination(Point destination) {
             if(this.selectedUnit == null) {
                 lastMoveInfo = "You have to select a unit first.";
@@ -57,6 +91,11 @@ namespace SmallWorld {
             return result;
         }
 
+        /**
+         * Execute the move of the current unit to the destination selected previously.
+         * Unselect the unit.
+         * @see setDestination
+         */
         public void executeMove() {
             if(game.getMap().isEnemyPosition(destination, selectedUnit)) {
                 if(combat()) {
@@ -73,9 +112,14 @@ namespace SmallWorld {
             selectedUnit = null;
         }
 
+        /**
+         * Compute a fight between the currently selected unit
+         * and the best one from the selected destination.
+         * @returns True if the selected unit won the fight.
+         */
         private Boolean combat() {
             IUnit enemy = getBestUnit();
-            //TODO combat
+            // TODO combat
 
             Random randCombat = new Random();
             Random rand = new Random();
@@ -128,6 +172,11 @@ namespace SmallWorld {
 
         }
 
+        /**
+         * Retrieves the best unit from the square currently selected.
+         * The best unit is the one with the most life points.
+         * @returns The best unit on the square currently selected.
+         */
         private IUnit getBestUnit() {
             IUnit result = null;
             List<IUnit> units = game.getMap().getUnits(destination);
@@ -139,7 +188,7 @@ namespace SmallWorld {
                     }
                 }
             } else {
-                //Throw exception
+                // TODO Throw exception
             }
             return result;
         }

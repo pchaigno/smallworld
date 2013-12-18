@@ -9,6 +9,12 @@ namespace SmallWorld {
 
     public class MapBuilder: IMapBuilder {
 
+        /**
+         * Builds a map.
+         * The composition of the map is computed by in the C++ library.
+         * @param size The size of the map to build.
+         * @returns The map.
+         */
         public IMap buildMap(int size) {
             int[][] squares = Wrapper.generateMapList(size);
             Dictionary<Point, ISquare> squaresDictionnary = new Dictionary<Point, ISquare>();
