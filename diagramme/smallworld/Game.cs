@@ -36,7 +36,7 @@ namespace SmallWorld {
          * @returns The number of units owned by the player.
          */
         public int getNbUnits(IPlayer player) {
-            return map.getUnits(player).Count;
+            return this.map.getUnits(player).Count;
         }
 
         /**
@@ -46,7 +46,7 @@ namespace SmallWorld {
          * @returns True if the player lost.
          */
         private bool isDefeated(IPlayer player) {
-            return getNbUnits(player) == 0;
+            return this.getNbUnits(player) == 0;
         }
 
         /**
@@ -55,22 +55,24 @@ namespace SmallWorld {
          * @returns True if the game is ended.
          */
         public bool isEndOfGame() {
-            return isDefeated(player1) || isDefeated(player2) || currentRound>maxRounds;
+            return this.isDefeated(this.player1) 
+                || this.isDefeated(this.player2) 
+                || this.currentRound > this.maxRounds;
         }
 
         /**
          * @returns The winner, null if there is none.
          */
         public IPlayer getWinner() {
-            if(isDefeated(player1)) {
-                return player2;
-            } else if(isDefeated(player2)) {
-                return player1;
+            if(this.isDefeated(this.player1)) {
+                return this.player2;
+            } else if(this.isDefeated(this.player2)) {
+                return this.player1;
             } else {
-                if(player1.getPoints() < player2.getPoints()) {
-                    return player2;
-                } else if(player1.getPoints() > player2.getPoints()) {
-                    return player1;
+                if(this.player1.getPoints() < this.player2.getPoints()) {
+                    return this.player2;
+                } else if(this.player1.getPoints() > this.player2.getPoints()) {
+                    return this.player1;
                 }
             }
             return null;
@@ -80,60 +82,60 @@ namespace SmallWorld {
          * End the current round and start the next one.
          */
         public void endRound() {
-            List<IUnit> units = map.getUnits(currentPlayer);
+            List<IUnit> units = map.getUnits(this.currentPlayer);
             foreach(IUnit unit in units) {
-                currentPlayer.addPoints(unit.getPoint());
+                this.currentPlayer.addPoints(unit.getPoint());
                 unit.resetMovementPoints();
             }
-            if(currentPlayer == player1) {
-                currentPlayer = player2;
+            if(this.currentPlayer == this.player1) {
+                this.currentPlayer = this.player2;
             } else {
-                currentPlayer = player1;
-                currentRound++;
+                this.currentPlayer = player1;
+                this.currentRound++;
             }
-            round = new Round(this, currentPlayer);
+            this.round = new Round(this, this.currentPlayer);
         }
 
         /**
          * @returns The first player.
          */
         public IPlayer getPlayer1() {
-            return player1;
+            return this.player1;
         }
 
         /**
          * @returns The second player.
          */
         public IPlayer getPlayer2() {
-            return player2;
+            return this.player2;
         }
 
         /**
          * @returns The map for this game.
          */
         public IMap getMap() {
-            return map;
+            return this.map;
         }
 
         /**
          * @returns The manager for the current round.
          */
         public IRound getRound() {
-            return round;
+            return this.round;
         }
 
         /**
          * @returns The number of the current round.
          */
         public int getCurrentRound() {
-            return currentRound;
+            return this.currentRound;
         }
 
         /**
          * @returns The player currently playing.
          */
         public IPlayer getCurrentPlayer() {
-            return currentPlayer;
+            return this.currentPlayer;
         }
     }
 }

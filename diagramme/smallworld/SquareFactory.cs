@@ -11,18 +11,25 @@ namespace SmallWorld {
         private IForest forest;
         private ISea sea;
         private IDesert desert;
-        public static SquareFactory INSTANCE = new SquareFactory();
+        private static SquareFactory INSTANCE = new SquareFactory();
 
         /**
          * Constructor
          * It is private because the class is a singleton.
          */
         private SquareFactory() {
-            mountain = new Mountain();
-            lowland = new Lowland();
-            forest = new Forest();
-            sea = new Sea();
-            desert = new Desert();
+            this.mountain = new Mountain();
+            this.lowland = new Lowland();
+            this.forest = new Forest();
+            this.sea = new Sea();
+            this.desert = new Desert();
+        }
+
+        /**
+         * @returns The instance of the square factory.
+         */
+        public static SquareFactory getInstance() {
+            return INSTANCE;
         }
 
         /**
@@ -33,15 +40,15 @@ namespace SmallWorld {
         public ISquare getSquare(int type) {
             switch(type) {
                 case 1:
-                    return sea;
+                    return this.sea;
                 case 2:
-                    return forest;
+                    return this.forest;
                 case 3:
-                    return desert;
+                    return this.desert;
                 case 4:
-                    return lowland;
+                    return this.lowland;
                 case 5:
-                    return mountain;
+                    return this.mountain;
                 default:
                     return null;
                     // TODO throw Excetion?

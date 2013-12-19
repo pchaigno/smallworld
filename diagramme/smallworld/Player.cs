@@ -24,14 +24,14 @@ namespace SmallWorld {
          * @returns The player's name.
          */
         public string getName() {
-            return name;
+            return this.name;
         }
 
         /**
          * @returns The number of points collected by the player.
          */
         public int getPoints() {
-            return points;
+            return this.points;
         }
 
         /**
@@ -52,7 +52,7 @@ namespace SmallWorld {
          * @param n The number of points to add.
          */
         public void addPoints(int n) {
-            points += n;
+            this.points += n;
         }
     }
 }

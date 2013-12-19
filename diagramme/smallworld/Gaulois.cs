@@ -19,9 +19,9 @@ namespace SmallWorld {
          * @returns The number of points won by the unit depending on the square she's on.
          */
         public override int getPoint() {
-            if(squares[position] is ILowland) {
+            if(this.squares[position] is ILowland) {
                 return 2;
-            } else if(squares[position] is ISea || squares[position] is IMountain) {
+            } else if(this.squares[position] is ISea || this.squares[position] is IMountain) {
                 return 0;
             } else {
                 return 1;
@@ -35,8 +35,8 @@ namespace SmallWorld {
          */
         public override void move(Point destination) {
             base.move(destination);
-            if(squares[position] is ILowland) {
-                remainingMovementPoints++;
+            if(this.squares[position] is ILowland) {
+                this.remainingMovementPoints++;
             }
         }
     }

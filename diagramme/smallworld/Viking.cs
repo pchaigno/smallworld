@@ -19,10 +19,10 @@ namespace SmallWorld {
          */
         // TODO See Unit: Is 'override' needed?
         public override int getPoint() {
-            if(squares[position] is ILowland) {
+            if(this.squares[position] is ILowland) {
                 // TODO Near sea instead of lowlands.
                 return 2;
-            } else if(squares[position] is ISea || squares[position] is IDesert) {
+            } else if(this.squares[position] is ISea || this.squares[position] is IDesert) {
                 return 0;
             } else {
                 return 1;

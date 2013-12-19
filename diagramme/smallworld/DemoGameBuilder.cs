@@ -16,9 +16,9 @@ namespace SmallWorld {
          * Number of rounds, size of the map and number of units.
          */
         public DemoGameBuilder() {
-            maxRounds = MAXIMUM_ROUNDS;
-            nbUnits = NUMBER_UNITS;
-            mapSize = MAP_SIZE;
+            this.maxRounds = MAXIMUM_ROUNDS;
+            this.nbUnits = NUMBER_UNITS;
+            this.mapSize = MAP_SIZE;
         }
     }
 }

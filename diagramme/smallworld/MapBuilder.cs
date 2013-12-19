@@ -21,7 +21,7 @@ namespace SmallWorld {
 
             for(int i=0; i<size; i++) {
                 for(int j=0; j<size; j++) {
-                    squaresDictionnary.Add(new Point(i, j), SquareFactory.INSTANCE.getSquare(squares[i][j]));
+                    squaresDictionnary.Add(new Point(i, j), SquareFactory.getInstance().getSquare(squares[i][j]));
                 }
             }
             return new Map(squaresDictionnary);

@@ -23,8 +23,8 @@ namespace SmallWorld {
          */
         public Unit(IPlayer owner) {
             this.owner = owner;
-            lifePoints = DEFAULT_LIFE_POINTS;
-            remainingMovementPoints = DEFAULT_MOVEMENT_POINTS;
+            this.lifePoints = DEFAULT_LIFE_POINTS;
+            this.remainingMovementPoints = DEFAULT_MOVEMENT_POINTS;
         }
 
         /**
@@ -66,28 +66,28 @@ namespace SmallWorld {
          * @returns The number of remaining movement points for this round.
          */
         public int getRemainingMovementPoints() {
-            return remainingMovementPoints;
+            return this.remainingMovementPoints;
         }
 
         /**
          * @returns The player owner of the unit.
          */
         public IPlayer getOwner() {
-            return owner;
+            return this.owner;
         }
 
         /**
          * Reset the remaining movement points to the default number.
          */
         public void resetMovementPoints() {
-            remainingMovementPoints = DEFAULT_MOVEMENT_POINTS;
+            this.remainingMovementPoints = DEFAULT_MOVEMENT_POINTS;
         }
 
         /**
          * @returns The unit's position.
          */
         public Point getPosition() {
-            return position;
+            return this.position;
         }
 
         /**
@@ -95,14 +95,18 @@ namespace SmallWorld {
          * @returns True if the unit is alive.
          */
         public Boolean isAlive() {
-            return lifePoints > 0;
+            return this.lifePoints > 0;
         }
 
         /**
-         * 
+         * Sets the position of the unit and
+         * its copy of the composition of the map.
+         * @param position The unit's position.
+         * @param squares The copy of the map's composition.
          */
-        public void setPosition(Point p, Dictionary<Point, ISquare> squares) {
-            this.position = p;
+        // TODO Can't it be in the constructor?
+        public void setPosition(Point position, Dictionary<Point, ISquare> squares) {
+            this.position = position;
             this.squares = squares;
         }
 
@@ -116,7 +120,9 @@ namespace SmallWorld {
             return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y) == 1;
         }
 
-        // TODO See units: Is 'virtual' needed?
+        /**
+         * @returns The points won by the unit for this round.
+         */
         public abstract int getPoint();
 
         /**
@@ -125,7 +131,7 @@ namespace SmallWorld {
          */
         public virtual void move(Point destination) {
             this.position = destination;
-            remainingMovementPoints -= 2;
+            this.remainingMovementPoints -= 2;
         }
 
         /**
@@ -137,9 +143,9 @@ namespace SmallWorld {
          * @returns True if the unit can move to the destination.
          */
         public virtual bool canMove(Point destination) {
-            return isNext(destination, position) 
-                && remainingMovementPoints > 0 
-                && !(squares[destination] is ISea);
+            return isNext(destination, this.position) 
+                && remainingMovementPoints > 0
+                && !(this.squares[destination] is ISea);
         }
     }
 }
