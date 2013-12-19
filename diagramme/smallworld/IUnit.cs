@@ -7,22 +7,16 @@ using System.Text;
 namespace SmallWorld {
 
     public interface IUnit {
-        int attack {
-            get;
-            set;
-        }
-        int defense {
-            get;
-            set;
-        }
-        int lifePoints {
-            get;
-            set;
-        }
-        int maxLifePoints {
-            get;
-            set;
-        }
+
+        int getLifePoints();
+
+        void decreaseLifePoints();
+
+        int getDefaultLifePoints();
+
+        int getAttack();
+
+        int getDefense();
 
         int getRemainingMovementPoints();
 
@@ -37,8 +31,6 @@ namespace SmallWorld {
         IPlayer getOwner();
 
         int getPoint();
-
-        void terminate();
 
         Point getPosition();
 

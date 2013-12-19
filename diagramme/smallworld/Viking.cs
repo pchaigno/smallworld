@@ -17,9 +17,10 @@ namespace SmallWorld {
          * they don't win any if they are on the sea or in the desert.
          * @returns The number of points won by the unit depending on the square she's on.
          */
+        // TODO See Unit: Is 'override' needed?
         public override int getPoint() {
             if(squares[position] is ILowland) {
-                // TODO: only near sea
+                // TODO Near sea instead of lowlands.
                 return 2;
             } else if(squares[position] is ISea || squares[position] is IDesert) {
                 return 0;

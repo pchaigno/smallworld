@@ -8,7 +8,7 @@ using System.Drawing;
 namespace SmallWorld {
 
     public class Map: IMap {
-        // TODO Can't we use arrays?
+        // TODO Can't we use matrices?
         private Dictionary<Point, List<IUnit>> units;
         private Dictionary<Point, ISquare> squares;
         private int size;
@@ -127,8 +127,6 @@ namespace SmallWorld {
                     }
                 }
             }
-            // TODO Is that just for debug?
-            Console.WriteLine(result);
 
             return result;
         }

@@ -20,51 +20,48 @@ using Graphics = System.Drawing.Graphics;
 using SmallWorld;
 using GUI;
 
-namespace GUI
-{
+namespace GUI {
     /// <summary>
     /// Logique d'interaction pour MainWindow.xaml
     /// </summary>
-    public partial class MapWindow : Window
-    {
+    public partial class MapWindow: Window {
         IGame game;
         Dictionary<Point, Rectangle> unitRectangles;
         Rectangle selectedSquare;
         Dictionary<Border, IUnit> unitSelecterCollec;
         Border selectedUnit;
 
-        public MapWindow(IGame game)
-        {
+        public MapWindow(IGame game) {
             InitializeComponent();
 
             /*IGameBuilder gameBuilder = new NormalGameBuilder();
             IGame game = gameBuilder.buildGame("Lord Breizh", new GauloisFactory(), "Paule", new DwarfFactory());*/
             this.game = game;
-            
 
-            unitRectangles = new Dictionary<Point,Rectangle>();
+
+            unitRectangles = new Dictionary<Point, Rectangle>();
             this.selectedSquare = null;
 
             unitSelecterCollec = new Dictionary<Border, IUnit>();
             this.selectedUnit = null;
         }
 
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
+        private void Window_Loaded(object sender, RoutedEventArgs e) {
             IMap map = game.getMap();
             int size = map.getSize();
 
-            for (int c = 0; c < size; c++)
-            {
-                mapGrid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(50, GridUnitType.Pixel) });
+            for(int c = 0; c < size; c++) {
+                mapGrid.ColumnDefinitions.Add(new ColumnDefinition() {
+                    Width = new GridLength(50, GridUnitType.Pixel)
+                });
             }
 
-            for (int l = 0; l < size; l++)
-            {
-                mapGrid.RowDefinitions.Add(new RowDefinition() { Height = new GridLength(50, GridUnitType.Pixel) });
+            for(int l = 0; l < size; l++) {
+                mapGrid.RowDefinitions.Add(new RowDefinition() {
+                    Height = new GridLength(50, GridUnitType.Pixel)
+                });
 
-                for (int c = 0; c < size; c++)
-                {
+                for(int c = 0; c < size; c++) {
                     ISquare type = map.getSquare(new Point(l, c));
                     var rect = createSquares(type, c, l);
                     mapGrid.Children.Add(rect);
@@ -76,8 +73,7 @@ namespace GUI
             displayInfoPlayer();
         }
 
-        private Rectangle createSquares(ISquare type, int c, int l)
-        {
+        private Rectangle createSquares(ISquare type, int c, int l) {
             Rectangle rectangle = new Rectangle();
 
             rectangle.Fill = ImageFactory.getBrushSquare(type);
@@ -90,21 +86,19 @@ namespace GUI
             rectangle.MouseRightButtonDown += new MouseButtonEventHandler(rectangleMouseRightHandler);
             rectangle.MouseEnter += new MouseEventHandler(mouseEnterHandler);
             rectangle.MouseLeave += new MouseEventHandler(mouseLeaveHandler);
-            
+
             return rectangle;
         }
 
-        public void displayUnitSelecter(List<IUnit> units)
-        {
+        public void displayUnitSelecter(List<IUnit> units) {
             unitSelecterCollec = new Dictionary<Border, IUnit>();
             int i = 0;
-            foreach (IUnit unit in units) 
-            {
+            foreach(IUnit unit in units) {
                 Border border = new Border();
                 border.Background = ImageFactory.getBrushUnitFace(unit);
-                
+
                 TextBlock unitText = new TextBlock();
-                unitText.Text = unit.getRemainingMovementPoints() + " MvPt \n" + unit.lifePoints + " lifePt";
+                unitText.Text = unit.getRemainingMovementPoints() + " MvPt \n" + unit.getLifePoints() + " lifePt";
                 unitText.FontSize = 14;
                 unitText.Foreground = Brushes.Red;
                 unitText.FontWeight = FontWeights.Bold;
@@ -112,14 +106,11 @@ namespace GUI
                 border.Width = 100;
                 border.Height = 100;
                 border.BorderThickness = new Thickness(3);
-                if (i == 0)
-                {
+                if(i == 0) {
                     border.BorderBrush = Brushes.Red;
                     i++;
                     selectedUnit = border;
-                }
-                else
-                {
+                } else {
                     border.BorderBrush = Brushes.Black;
                 }
 
@@ -129,11 +120,10 @@ namespace GUI
 
                 unitSelecterCollec.Add(border, unit);
             }
-            
+
         }
 
-        private void displayInfoPlayer()
-        {
+        private void displayInfoPlayer() {
             IPlayer player1 = game.getPlayer1();
             playerD1.Text = player1.getName() + " - Units: " + game.getNbUnits(player1) + " - Points :" + player1.getPoints();
 
@@ -146,21 +136,17 @@ namespace GUI
             lastMove.Text = game.getRound().getLastMoveInfo();
         }
 
-        private void displayUnitsOnMap()
-        {
+        private void displayUnitsOnMap() {
             Dictionary<Point, List<IUnit>> units = game.getMap().getUnits();
 
-            foreach (Rectangle rect in unitRectangles.Values)
-            {
+            foreach(Rectangle rect in unitRectangles.Values) {
                 mapGrid.Children.Remove(rect);
             }
             unitRectangles.Clear();
 
-            foreach (Point key in units.Keys)
-            {
+            foreach(Point key in units.Keys) {
                 int nb = units[key].Count;
-                if (nb > 0)
-                {
+                if(nb > 0) {
                     var rectangle = new Rectangle();
 
                     rectangle.Fill = ImageFactory.getBrushUnit(units[key][0], nb);
@@ -183,30 +169,24 @@ namespace GUI
 
         /********* Listeners *********/
 
-        public void mouseEnterHandler(object sender, MouseEventArgs e)
-        {
+        public void mouseEnterHandler(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             rectangle.StrokeThickness = 1;
             rectangle.Stroke = Brushes.Blue;
         }
 
-        public void mouseLeaveHandler(object sender, MouseEventArgs e)
-        {
+        public void mouseLeaveHandler(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
-            if (rectangle == selectedSquare)
-            {
+            if(rectangle == selectedSquare) {
                 rectangle.StrokeThickness = 1;
                 rectangle.Stroke = Brushes.Red;
-            }
-            else
-            {
+            } else {
                 rectangle.StrokeThickness = 1;
                 rectangle.Stroke = Brushes.Black;
             }
         }
 
-        public void rectangleMouseLeftMapHandler(object sender, MouseEventArgs e)
-        {
+        public void rectangleMouseLeftMapHandler(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
@@ -215,14 +195,12 @@ namespace GUI
             // Clear old selection
             unitSelecterCollec.Clear();
             unitSelecter.Children.Clear();
-            if (selectedSquare != null)
-            {
+            if(selectedSquare != null) {
                 selectedSquare.Stroke = Brushes.Black;
             }
 
             IRound round = game.getRound();
-            if (round.isCurrentPlayerPosition(position))
-            {
+            if(round.isCurrentPlayerPosition(position)) {
                 List<IUnit> units = round.getUnits(position);
                 round.selectUnit(units[0]);
                 displayUnitSelecter(units);
@@ -232,9 +210,7 @@ namespace GUI
 
 
                 selectedSquare = rectangle;
-            }
-            else
-            {
+            } else {
                 round.selectUnit(null);
             }
 
@@ -242,8 +218,7 @@ namespace GUI
             e.Handled = true;
         }
 
-        public void rectangleMouseLefUnitSelectertHandler(object sender, MouseEventArgs e)
-        {
+        public void rectangleMouseLefUnitSelectertHandler(object sender, MouseEventArgs e) {
             selectedUnit.BorderBrush = Brushes.Black;
 
             Border border = sender as Border;
@@ -253,16 +228,14 @@ namespace GUI
             e.Handled = true;
         }
 
-        public void rectangleMouseRightHandler(object sender, MouseEventArgs e)
-        {
+        public void rectangleMouseRightHandler(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
             Point position = new Point(row, column);
 
             IRound round = game.getRound();
-            if (round.setDestination(position))
-            {
+            if(round.setDestination(position)) {
                 round.executeMove();
                 selectedSquare.Stroke = Brushes.Black;
 
@@ -276,8 +249,7 @@ namespace GUI
             e.Handled = true;
         }
 
-        public void onClickEndRound(object sender, RoutedEventArgs e)
-        {
+        public void onClickEndRound(object sender, RoutedEventArgs e) {
             game.endRound();
 
             unitSelecterCollec.Clear();
@@ -285,8 +257,7 @@ namespace GUI
             displayUnitsOnMap();
             displayInfoPlayer();
 
-            if (game.isEndOfGame())
-            {
+            if(game.isEndOfGame()) {
                 IPlayer player = game.getWinner();
                 // TODO Handle draw situations.
                 string messageBoxText = "Congratulation " + player.getName() + "\n You have defeated your enemy !";

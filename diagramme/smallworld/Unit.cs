@@ -10,7 +10,6 @@ namespace SmallWorld {
         protected const int ATTACK = 2;
         protected const int DEFENSE = 1;
         protected const int DEFAULT_LIFE_POINTS = 5;
-        protected const int MAXIMUM_LIFE_POINTS = 5;
         protected const int DEFAULT_MOVEMENT_POINTS = 2;
         protected int lifePoints;
         protected int remainingMovementPoints;
@@ -22,11 +21,45 @@ namespace SmallWorld {
          * Constructor
          * @param owner The player owner of the unit.
          */
-        // TODO Why is it protected?
-        protected Unit(IPlayer owner) {
+        public Unit(IPlayer owner) {
             this.owner = owner;
             lifePoints = DEFAULT_LIFE_POINTS;
             remainingMovementPoints = DEFAULT_MOVEMENT_POINTS;
+        }
+
+        /**
+         * @returns The unit's life points.
+         */
+        public int getLifePoints() {
+            return this.lifePoints;
+        }
+
+        /**
+         * Remove one life point to the unit.
+         */
+        public void decreaseLifePoints() {
+            this.lifePoints--;
+        }
+
+        /**
+         * @returns The default number of life points for this unit.
+         */
+        public int getDefaultLifePoints() {
+            return DEFAULT_LIFE_POINTS;
+        }
+
+        /**
+         * @returns The unit's defense.
+         */
+        public int getAttack() {
+            return ATTACK;
+        }
+
+        /**
+         * @returns The unit's defense.
+         */
+        public int getDefense() {
+            return DEFENSE;
         }
 
         /**
@@ -74,13 +107,6 @@ namespace SmallWorld {
         }
 
         /**
-         * TODO
-         */
-        public void terminate() {
-            // TODO destructeur
-        }
-
-        /**
          * Checks if two positions are adjacent.
          * @param a The first position.
          * @param b The second position.
@@ -90,14 +116,8 @@ namespace SmallWorld {
             return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y) == 1;
         }
 
-        // TODO Is that usefull?
-        public virtual int getPoint() {
-            if(squares[position] is ISea) {
-                return 0;
-            } else {
-                return 1;
-            }
-        }
+        // TODO See units: Is 'virtual' needed?
+        public abstract int getPoint();
 
         /**
          * Move the unit to its destination point and update the number of remaining points.
