@@ -28,7 +28,7 @@ namespace SmallWorld {
             IPlayer player1 = new Player(name1, factory1);
             IPlayer player2 = new Player(name2, factory2);
 
-            Dictionary<Point, ISquare> squares = map.getSquares();
+            ISquare[,] squares = map.getSquares();
 
             //TODO GET start from Wrapper
             Point start1 = new Point(0, 0);

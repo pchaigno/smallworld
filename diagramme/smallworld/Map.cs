@@ -8,23 +8,24 @@ using System.Drawing;
 namespace SmallWorld {
 
     public class Map: IMap {
-        // TODO Can't we use matrices?
-        private Dictionary<Point, List<IUnit>> units;
-        private Dictionary<Point, ISquare> squares;
+        private List<IUnit>[,] units;
+        private ISquare[,] squares;
         private int size;
 
         /**
          * Constructor
-         * @param squares An associative array with the type of square for each position.
+         * @param squares A matrix with the type of square for each position.
          */
-        public Map(Dictionary<Point, ISquare> squares) {
+        public Map(ISquare[,] squares) {
             this.squares = squares;
-            this.size = (int)Math.Sqrt(this.squares.Count);
+            this.size = this.squares.GetLength(0);
 
             // Initialize the matrix of units:
-            units = new Dictionary<Point, List<IUnit>>();
-            foreach(Point key in this.squares.Keys) {
-                units.Add(key, new List<IUnit>());
+            units = new List<IUnit>[size, size];
+            for(int x=0; x<this.size; x++) {
+                for(int y=0; y<this.size; y++) {
+                    units[x, y] = new List<IUnit>();
+                }
             }
         }
 
@@ -36,16 +37,16 @@ namespace SmallWorld {
         }
 
         /**
-         * @returns The composition of the map as a dictionary of squares by coordinates.
+         * @returns The composition of the map as a matrix of squares by coordinates.
          */
-        public Dictionary<Point, ISquare> getSquares() {
+        public ISquare[,] getSquares() {
             return this.squares;
         }
 
         /**
-         * @returns The position of the units on the map as a dictionary of units by coordinates.
+         * @returns The position of the units on the map as a matrix of units by coordinates.
          */
-        public Dictionary<Point, List<IUnit>> getUnits() {
+        public List<IUnit>[,] getUnits() {
             return this.units;
         }
 
@@ -54,7 +55,7 @@ namespace SmallWorld {
          * @returns The units at the position given.
          */
         public List<IUnit> getUnits(Point position) {
-            return this.units[position];
+            return this.units[position.X, position.Y];
         }
 
         /**
@@ -63,10 +64,10 @@ namespace SmallWorld {
          * @param unit The unit.
          */
         public bool isEnemyPosition(Point position, IUnit unit) {
-            if(this.units[position].Count == 0) {
+            if(this.units[position.X, position.Y].Count == 0) {
                 return false;
             } else {
-                return !this.units[position][0].getOwner().Equals(unit.getOwner());
+                return !this.units[position.X, position.Y][0].getOwner().Equals(unit.getOwner());
             }
         }
 
@@ -76,7 +77,7 @@ namespace SmallWorld {
          * @param position The position for the unit.
          */
         public void placeUnit(IUnit unit, Point position) {
-            this.units[position].Add(unit);
+            this.units[position.X, position.Y].Add(unit);
         }
 
         /**
@@ -85,7 +86,7 @@ namespace SmallWorld {
          * @returns The square at this position.
          */
         public ISquare getSquare(Point position) {
-            return this.squares[position];
+            return this.squares[position.X, position.Y];
         }
 
         /**
@@ -95,11 +96,12 @@ namespace SmallWorld {
          * @throws An exception if it's an enemy position.
          */
         public void moveUnit(IUnit unit, Point newPosition) {
-            this.units[unit.getPosition()].Remove(unit);
+            Point currentPosition = unit.getPosition();
+            this.units[currentPosition.X, currentPosition.Y].Remove(unit);
             if(this.isEnemyPosition(newPosition, unit)) {
                 throw new Exception("Erreur dans le deplacement");
             }
-            this.units[newPosition].Add(unit);
+            this.units[newPosition.X, newPosition.Y].Add(unit);
             unit.move(newPosition, this.getSquare(newPosition));
         }
 
@@ -109,27 +111,8 @@ namespace SmallWorld {
          * @param position The position of the unit.
          */
         public void removeUnit(IUnit unit, Point position) {
-            this.units[position].Remove(unit);
+            this.units[position.X, position.Y].Remove(unit);
         }
-
-        /**
-         * Retrieves all units of a player.
-         * @param player The player.
-         * @returns All his units on the map.
-         */
-        // TODO Remove if useless.
-        /*public List<IUnit> getUnits(IPlayer player) {
-            List<IUnit> result = new List<IUnit>();
-            foreach(List<IUnit> unitsL in this.units.Values) {
-                if(unitsL.Count > 0 && unitsL[0].getOwner() == player) {
-                    foreach(IUnit unit in unitsL) {
-                        result.Add(unit);
-                    }
-                }
-            }
-
-            return result;
-        }*/
 
         /**
          * Retrieves all units of a player.
@@ -138,11 +121,13 @@ namespace SmallWorld {
          */
         public Dictionary<IUnit, ISquare> getUnits(IPlayer player) {
             Dictionary<IUnit, ISquare> result = new Dictionary<IUnit, ISquare>();
-            foreach(Point position in this.units.Keys) {
-                List<IUnit> unitsAtPosition = this.units[position];
-                if(unitsAtPosition.Count>0 && unitsAtPosition[0].getOwner()==player) {
-                    foreach(IUnit unit in unitsAtPosition) {
-                        result.Add(unit, this.getSquare(position));
+            for(int x=0; x<this.size; x++) {
+                for(int y=0; y<this.size; y++) {
+                    List<IUnit> unitsAtPosition = this.units[x, y];
+                    if(unitsAtPosition.Count > 0 && unitsAtPosition[0].getOwner() == player) {
+                        foreach(IUnit unit in unitsAtPosition) {
+                            result.Add(unit, this.squares[x, y]);
+                        }
                     }
                 }
             }

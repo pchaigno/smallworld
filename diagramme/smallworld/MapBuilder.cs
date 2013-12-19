@@ -16,15 +16,15 @@ namespace SmallWorld {
          * @returns The map.
          */
         public IMap buildMap(int size) {
-            int[][] squares = Wrapper.generateMapList(size);
-            Dictionary<Point, ISquare> squaresDictionnary = new Dictionary<Point, ISquare>();
+            int[][] composition = Wrapper.generateMapList(size);
+            ISquare[,] squares = new ISquare[size, size];
 
-            for(int i=0; i<size; i++) {
-                for(int j=0; j<size; j++) {
-                    squaresDictionnary.Add(new Point(i, j), SquareFactory.getInstance().getSquare(squares[i][j]));
+            for(int x=0; x<size; x++) {
+                for(int y=0; y<size; y++) {
+                    squares[x, y] = SquareFactory.getInstance().getSquare(composition[x][y]);
                 }
             }
-            return new Map(squaresDictionnary);
+            return new Map(squares);
         }
     }
 }

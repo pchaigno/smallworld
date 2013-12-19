@@ -26,6 +26,7 @@ namespace GUI {
     /// </summary>
     public partial class MapWindow: Window {
         IGame game;
+        // TODO Use a matrix.
         Dictionary<Point, Rectangle> unitRectangles;
         Rectangle selectedSquare;
         Dictionary<Border, IUnit> unitSelecterCollec;
@@ -137,31 +138,33 @@ namespace GUI {
         }
 
         private void displayUnitsOnMap() {
-            Dictionary<Point, List<IUnit>> units = game.getMap().getUnits();
+            List<IUnit>[,] units = game.getMap().getUnits();
 
             foreach(Rectangle rect in unitRectangles.Values) {
                 mapGrid.Children.Remove(rect);
             }
             unitRectangles.Clear();
 
-            foreach(Point key in units.Keys) {
-                int nb = units[key].Count;
-                if(nb > 0) {
-                    var rectangle = new Rectangle();
+            for(int x=0; x<units.GetLength(0); x++) {
+                for(int y=0; y<units.GetLength(1); y++) {
+                    int nb = units[x, y].Count;
+                    if(nb > 0) {
+                        var rectangle = new Rectangle();
 
-                    rectangle.Fill = ImageFactory.getBrushUnit(units[key][0], nb);
-                    Grid.SetColumn(rectangle, key.Y);
-                    Grid.SetRow(rectangle, key.X);
-                    rectangle.StrokeThickness = 1;
-                    rectangle.Stroke = Brushes.Black;
-                    rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLeftMapHandler);
-                    rectangle.MouseRightButtonDown += new MouseButtonEventHandler(rectangleMouseRightHandler);
-                    rectangle.MouseEnter += new MouseEventHandler(mouseEnterHandler);
-                    rectangle.MouseLeave += new MouseEventHandler(mouseLeaveHandler);
-                    mapGrid.Children.Add(rectangle);
+                        rectangle.Fill = ImageFactory.getBrushUnit(units[x, y][0], nb);
+                        Grid.SetColumn(rectangle, y);
+                        Grid.SetRow(rectangle, x);
+                        rectangle.StrokeThickness = 1;
+                        rectangle.Stroke = Brushes.Black;
+                        rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLeftMapHandler);
+                        rectangle.MouseRightButtonDown += new MouseButtonEventHandler(rectangleMouseRightHandler);
+                        rectangle.MouseEnter += new MouseEventHandler(mouseEnterHandler);
+                        rectangle.MouseLeave += new MouseEventHandler(mouseLeaveHandler);
+                        mapGrid.Children.Add(rectangle);
 
-                    unitRectangles.Add(key, rectangle);
-                    Console.WriteLine(key.X + "/" + key.Y);
+                        unitRectangles.Add(new Point(x, y), rectangle);
+                        Console.WriteLine(x + "/" + y);
+                    }
                 }
             }
         }

@@ -16,9 +16,9 @@ namespace SmallWorld {
 
         ISquare getSquare(Point position);
 
-        Dictionary<Point, ISquare> getSquares();
+        ISquare[,] getSquares();
 
-        Dictionary<Point, List<IUnit>> getUnits();
+        List<IUnit>[,] getUnits();
 
         void moveUnit(IUnit unit, Point newPosition);
 
