@@ -82,7 +82,7 @@ namespace SmallWorld {
                 return false;
             }
 
-            Boolean result = selectedUnit.canMove(destination);
+            Boolean result = selectedUnit.canMove(destination, game.getMap().getSquare(destination));
             if(result) {
                 this.destination = destination;
             } else {

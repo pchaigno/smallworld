@@ -26,6 +26,6 @@ namespace SmallWorld {
 
         int getSize();
 
-        List<IUnit> getUnits(IPlayer player);
+        Dictionary<IUnit, ISquare> getUnits(IPlayer player);
     }
 }

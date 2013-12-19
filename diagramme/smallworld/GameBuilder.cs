@@ -35,7 +35,7 @@ namespace SmallWorld {
             List<IUnit> units1 = player1.createUnits(this.nbUnits);
             for(int i = 0; i < this.nbUnits; i++) {
                 map.placeUnit(units1[i], start1);
-                units1[i].setPosition(start1, squares);
+                units1[i].setPosition(start1);
             }
 
             //TODO GET start from Wrapper
@@ -45,7 +45,7 @@ namespace SmallWorld {
             List<IUnit> units2 = player2.createUnits(this.nbUnits);
             for(int i = 0; i < this.nbUnits; i++) {
                 map.placeUnit(units2[i], start2);
-                units2[i].setPosition(start2, squares);
+                units2[i].setPosition(start2);
             }
 
             return new Game(player1, player2, map, this.maxRounds);

@@ -26,7 +26,6 @@ namespace SmallWorld {
             foreach(Point key in this.squares.Keys) {
                 units.Add(key, new List<IUnit>());
             }
-
         }
 
         /**
@@ -101,7 +100,7 @@ namespace SmallWorld {
                 throw new Exception("Erreur dans le deplacement");
             }
             this.units[newPosition].Add(unit);
-            unit.move(newPosition);
+            unit.move(newPosition, this.getSquare(newPosition));
         }
 
         /**
@@ -118,16 +117,35 @@ namespace SmallWorld {
          * @param player The player.
          * @returns All his units on the map.
          */
-        public List<IUnit> getUnits(IPlayer player) {
+        // TODO Remove if useless.
+        /*public List<IUnit> getUnits(IPlayer player) {
             List<IUnit> result = new List<IUnit>();
             foreach(List<IUnit> unitsL in this.units.Values) {
-                if(unitsL.Count>0 && unitsL[0].getOwner()==player) {
+                if(unitsL.Count > 0 && unitsL[0].getOwner() == player) {
                     foreach(IUnit unit in unitsL) {
                         result.Add(unit);
                     }
                 }
             }
 
+            return result;
+        }*/
+
+        /**
+         * Retrieves all units of a player.
+         * @param player The player.
+         * @returns A dictionary of the units with the type of square they're on.
+         */
+        public Dictionary<IUnit, ISquare> getUnits(IPlayer player) {
+            Dictionary<IUnit, ISquare> result = new Dictionary<IUnit, ISquare>();
+            foreach(Point position in this.units.Keys) {
+                List<IUnit> unitsAtPosition = this.units[position];
+                if(unitsAtPosition.Count>0 && unitsAtPosition[0].getOwner()==player) {
+                    foreach(IUnit unit in unitsAtPosition) {
+                        result.Add(unit, this.getSquare(position));
+                    }
+                }
+            }
             return result;
         }
     }

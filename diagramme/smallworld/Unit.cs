@@ -15,7 +15,6 @@ namespace SmallWorld {
         protected int remainingMovementPoints;
         protected IPlayer owner;
         protected Point position;
-        protected Dictionary<Point, ISquare> squares;
 
         /**
          * Constructor
@@ -105,9 +104,8 @@ namespace SmallWorld {
          * @param squares The copy of the map's composition.
          */
         // TODO Can't it be in the constructor?
-        public void setPosition(Point position, Dictionary<Point, ISquare> squares) {
+        public void setPosition(Point position) {
             this.position = position;
-            this.squares = squares;
         }
 
         /**
@@ -121,15 +119,17 @@ namespace SmallWorld {
         }
 
         /**
+         * @param position The type of square the unit is currently on.
          * @returns The points won by the unit for this round.
          */
-        public abstract int getPoint();
+        public abstract int getPoint(ISquare square);
 
         /**
          * Move the unit to its destination point and update the number of remaining points.
          * @param destination The destination for the unit.
+         * @param square The type of square the destination is.
          */
-        public virtual void move(Point destination) {
+        public virtual void move(Point destination, ISquare square) {
             this.position = destination;
             this.remainingMovementPoints -= 2;
         }
@@ -140,12 +140,13 @@ namespace SmallWorld {
          * the unit must have some movement points left,
          * the square can't be a sea.
          * @param destination The destination to reach.
+         * @param square The type of square the destination is.
          * @returns True if the unit can move to the destination.
          */
-        public virtual bool canMove(Point destination) {
+        public virtual bool canMove(Point destination, ISquare square) {
             return isNext(destination, this.position) 
                 && remainingMovementPoints > 0
-                && !(this.squares[destination] is ISea);
+                && !(square is ISea);
         }
     }
 }

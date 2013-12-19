@@ -15,14 +15,15 @@ namespace SmallWorld {
         /**
          * Vikings win twice the points when they are on lowland;
          * they don't win any if they are on the sea or in the desert.
+         * @param position The type of square the unit is currently on.
          * @returns The number of points won by the unit depending on the square she's on.
          */
         // TODO See Unit: Is 'override' needed?
-        public override int getPoint() {
-            if(this.squares[position] is ILowland) {
+        public override int getPoint(ISquare square) {
+            if(square is ILowland) {
                 // TODO Near sea instead of lowlands.
                 return 2;
-            } else if(this.squares[position] is ISea || this.squares[position] is IDesert) {
+            } else if(square is ISea || square is IDesert) {
                 return 0;
             } else {
                 return 1;
@@ -35,9 +36,10 @@ namespace SmallWorld {
          * the unit must have some movement points left.
          * Contrary to must units, viking can move on the sea.
          * @param destination The destination to reach.
+         * @param square The type of square the destination is.
          * @returns True if the unit can move to the destination.
          */
-        public override bool canMove(Point destination) {
+        public override bool canMove(Point destination, ISquare square) {
             return isNext(destination, position) 
                 && remainingMovementPoints>0;
         }

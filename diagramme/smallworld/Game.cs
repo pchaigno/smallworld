@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Drawing;
 
 namespace SmallWorld {
 
@@ -82,9 +83,9 @@ namespace SmallWorld {
          * End the current round and start the next one.
          */
         public void endRound() {
-            List<IUnit> units = map.getUnits(this.currentPlayer);
-            foreach(IUnit unit in units) {
-                this.currentPlayer.addPoints(unit.getPoint());
+            Dictionary<IUnit, ISquare> units = map.getUnits(this.currentPlayer);
+            foreach(IUnit unit in units.Keys) {
+                this.currentPlayer.addPoints(unit.getPoint(units[unit]));
                 unit.resetMovementPoints();
             }
             if(this.currentPlayer == this.player1) {
