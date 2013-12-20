@@ -6,12 +6,12 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 
-namespace GUI
-{
-    /// <summary>
-    /// Logique d'interaction pour App.xaml
-    /// </summary>
-    public partial class App : Application
-    {
+namespace GUI {
+
+    /**
+     * Logique d'interaction pour App.xaml
+     */
+    public partial class App: Application {
+
     }
 }

@@ -21,9 +21,10 @@ using SmallWorld;
 using GUI;
 
 namespace GUI {
-    /// <summary>
-    /// Logique d'interaction pour MainWindow.xaml
-    /// </summary>
+
+    /**
+     * Logique d'interaction pour MainWindow.xaml
+     */
     public partial class MapWindow: Window {
         IGame game;
         // TODO Use a matrix.
@@ -32,74 +33,89 @@ namespace GUI {
         Dictionary<Border, IUnit> unitSelecterCollec;
         Border selectedUnit;
 
+        /**
+         * Constructor
+         * @param game The game represented by the window.
+         */
         public MapWindow(IGame game) {
             InitializeComponent();
 
-            /*IGameBuilder gameBuilder = new NormalGameBuilder();
-            IGame game = gameBuilder.buildGame("Lord Breizh", new GauloisFactory(), "Paule", new DwarfFactory());*/
             this.game = game;
 
-
-            unitRectangles = new Dictionary<Point, Rectangle>();
+            this.unitRectangles = new Dictionary<Point, Rectangle>();
             this.selectedSquare = null;
 
-            unitSelecterCollec = new Dictionary<Border, IUnit>();
+            this.unitSelecterCollec = new Dictionary<Border, IUnit>();
             this.selectedUnit = null;
         }
 
+        /**
+         * Called when the window is fully loaded.
+         * @param sender The sender of the notification.
+         * @param e The event.
+         */
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            IMap map = game.getMap();
+            IMap map = this.game.getMap();
             int size = map.getSize();
 
-            for(int c = 0; c < size; c++) {
-                mapGrid.ColumnDefinitions.Add(new ColumnDefinition() {
+            for(int c=0; c<size; c++) {
+                this.mapGrid.ColumnDefinitions.Add(new ColumnDefinition() {
                     Width = new GridLength(50, GridUnitType.Pixel)
                 });
             }
 
-            for(int l = 0; l < size; l++) {
-                mapGrid.RowDefinitions.Add(new RowDefinition() {
+            for(int l=0; l<size; l++) {
+                this.mapGrid.RowDefinitions.Add(new RowDefinition() {
                     Height = new GridLength(50, GridUnitType.Pixel)
                 });
 
                 for(int c = 0; c < size; c++) {
                     ISquare type = map.getSquare(new Point(l, c));
                     var rect = createSquares(type, c, l);
-                    mapGrid.Children.Add(rect);
-
+                    this.mapGrid.Children.Add(rect);
                 }
             }
 
-            displayUnitsOnMap();
-            displayInfoPlayer();
+            this.displayUnitsOnMap();
+            this.displayInfoPlayer();
         }
 
-        private Rectangle createSquares(ISquare type, int c, int l) {
+        /**
+         * Creates a graphic square associated to an ISquare.
+         * @param type The type of square.
+         * @param col The abscissa of the square on the map.
+         * @param line The ordinate of the square on the map.
+         */
+        private Rectangle createSquares(ISquare type, int col, int line) {
             Rectangle rectangle = new Rectangle();
 
             rectangle.Fill = ImageFactory.getBrushSquare(type);
-            Grid.SetColumn(rectangle, c);
-            Grid.SetRow(rectangle, l);
+            Grid.SetColumn(rectangle, col);
+            Grid.SetRow(rectangle, line);
             rectangle.StrokeThickness = 1;
             rectangle.Stroke = Brushes.Black;
 
-            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLeftMapHandler);
-            rectangle.MouseRightButtonDown += new MouseButtonEventHandler(rectangleMouseRightHandler);
-            rectangle.MouseEnter += new MouseEventHandler(mouseEnterHandler);
-            rectangle.MouseLeave += new MouseEventHandler(mouseLeaveHandler);
+            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(this.rectangleMouseLeftMapHandler);
+            rectangle.MouseRightButtonDown += new MouseButtonEventHandler(this.rectangleMouseRightHandler);
+            rectangle.MouseEnter += new MouseEventHandler(this.mouseEnterHandler);
+            rectangle.MouseLeave += new MouseEventHandler(this.mouseLeaveHandler);
 
             return rectangle;
         }
 
+        /**
+         * Display the units selected at the left bottom of the window.
+         * @param units The units selected.
+         */
         public void displayUnitSelecter(List<IUnit> units) {
-            unitSelecterCollec = new Dictionary<Border, IUnit>();
+            this.unitSelecterCollec = new Dictionary<Border, IUnit>();
             int i = 0;
             foreach(IUnit unit in units) {
                 Border border = new Border();
                 border.Background = ImageFactory.getBrushUnitFace(unit);
 
                 TextBlock unitText = new TextBlock();
-                unitText.Text = unit.getRemainingMovementPoints() + " MvPt \n" + unit.getLifePoints() + " lifePt";
+                unitText.Text = unit.getRemainingMovementPoints()+" MvPt \n"+unit.getLifePoints()+" lifePt";
                 unitText.FontSize = 14;
                 unitText.Foreground = Brushes.Red;
                 unitText.FontWeight = FontWeights.Bold;
@@ -115,35 +131,41 @@ namespace GUI {
                     border.BorderBrush = Brushes.Black;
                 }
 
-                border.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLefUnitSelectertHandler);
+                border.MouseLeftButtonDown += new MouseButtonEventHandler(this.rectangleMouseLefUnitSelectertHandler);
 
-                unitSelecter.Children.Add(border);
+                this.unitSelecter.Children.Add(border);
 
-                unitSelecterCollec.Add(border, unit);
+                this.unitSelecterCollec.Add(border, unit);
             }
 
         }
 
+        /**
+         * Display information about the current player at the right bottom of the window.
+         */
         private void displayInfoPlayer() {
-            IPlayer player1 = game.getPlayer1();
-            playerD1.Text = player1.getName() + " - Units: " + game.getNbUnits(player1) + " - Points :" + player1.getPoints();
+            IPlayer player1 = this.game.getPlayer1();
+            this.playerD1.Text = player1.getName()+" - Units: "+this.game.getNbUnits(player1)+" - Points :"+player1.getPoints();
 
-            IPlayer player2 = game.getPlayer2();
-            playerD2.Text = player2.getName() + " - Units: " + game.getNbUnits(player2) + " - Points :" + player2.getPoints();
+            IPlayer player2 = this.game.getPlayer2();
+            this.playerD2.Text = player2.getName()+" - Units: "+this.game.getNbUnits(player2)+" - Points :"+player2.getPoints();
 
-            roundD.Text = "Round number: " + game.getCurrentRound();
-            currentD.Text = "Current PLayer: " + game.getCurrentPlayer().getName();
+            this.roundD.Text = "Round number: "+this.game.getCurrentRound();
+            this.currentD.Text = "Current PLayer: "+this.game.getCurrentPlayer().getName();
 
-            lastMove.Text = game.getRound().getLastMoveInfo();
+            this.lastMove.Text = this.game.getRound().getLastMoveInfo();
         }
 
+        /**
+         * Display all units on the map.
+         */
         private void displayUnitsOnMap() {
-            List<IUnit>[,] units = game.getMap().getUnits();
+            List<IUnit>[,] units = this.game.getMap().getUnits();
 
-            foreach(Rectangle rect in unitRectangles.Values) {
-                mapGrid.Children.Remove(rect);
+            foreach(Rectangle rect in this.unitRectangles.Values) {
+                this.mapGrid.Children.Remove(rect);
             }
-            unitRectangles.Clear();
+            this.unitRectangles.Clear();
 
             for(int x=0; x<units.GetLength(0); x++) {
                 for(int y=0; y<units.GetLength(1); y++) {
@@ -156,31 +178,40 @@ namespace GUI {
                         Grid.SetRow(rectangle, x);
                         rectangle.StrokeThickness = 1;
                         rectangle.Stroke = Brushes.Black;
-                        rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(rectangleMouseLeftMapHandler);
-                        rectangle.MouseRightButtonDown += new MouseButtonEventHandler(rectangleMouseRightHandler);
-                        rectangle.MouseEnter += new MouseEventHandler(mouseEnterHandler);
-                        rectangle.MouseLeave += new MouseEventHandler(mouseLeaveHandler);
-                        mapGrid.Children.Add(rectangle);
+                        rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(this.rectangleMouseLeftMapHandler);
+                        rectangle.MouseRightButtonDown += new MouseButtonEventHandler(this.rectangleMouseRightHandler);
+                        rectangle.MouseEnter += new MouseEventHandler(this.mouseEnterHandler);
+                        rectangle.MouseLeave += new MouseEventHandler(this.mouseLeaveHandler);
+                        this.mapGrid.Children.Add(rectangle);
 
-                        unitRectangles.Add(new Point(x, y), rectangle);
-                        Console.WriteLine(x + "/" + y);
+                        this.unitRectangles.Add(new Point(x, y), rectangle);
+                        Console.WriteLine(x+"/"+y);
                     }
                 }
             }
         }
 
-
-        /********* Listeners *********/
-
+        /**
+         * Listener for when the mouse enters a rectangle.
+         * Surround the rectangle with a blue halo.
+         * @param sender The rectangle sender of the notification.
+         * @param e The event.
+         */
         public void mouseEnterHandler(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             rectangle.StrokeThickness = 1;
             rectangle.Stroke = Brushes.Blue;
         }
 
+        /**
+         * Listener for when the mouse leaves a rectangle.
+         * Remove the blue halo that surround the rectangle left.
+         * @param sender The rectangle sender of the notification.
+         * @param e The event.
+         */
         public void mouseLeaveHandler(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
-            if(rectangle == selectedSquare) {
+            if(rectangle == this.selectedSquare) {
                 rectangle.StrokeThickness = 1;
                 rectangle.Stroke = Brushes.Red;
             } else {
@@ -189,6 +220,12 @@ namespace GUI {
             }
         }
 
+        /**
+         * Listener for left clicks on a rectangle.
+         * Updates the current selected square (and units).
+         * @param sender The rectangle sender of the notification.
+         * @param e The event.
+         */
         public void rectangleMouseLeftMapHandler(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             int column = Grid.GetColumn(rectangle);
@@ -196,74 +233,90 @@ namespace GUI {
             Point position = new Point(row, column);
 
             // Clear old selection
-            unitSelecterCollec.Clear();
-            unitSelecter.Children.Clear();
-            if(selectedSquare != null) {
-                selectedSquare.Stroke = Brushes.Black;
+            this.unitSelecterCollec.Clear();
+            this.unitSelecter.Children.Clear();
+            if(this.selectedSquare != null) {
+                this.selectedSquare.Stroke = Brushes.Black;
             }
 
             IRound round = game.getRound();
             if(round.isCurrentPlayerPosition(position)) {
                 List<IUnit> units = round.getUnits(position);
                 round.selectUnit(units[0]);
-                displayUnitSelecter(units);
+                this.displayUnitSelecter(units);
 
                 rectangle.StrokeThickness = 1;
                 rectangle.Stroke = Brushes.Red;
-
 
                 selectedSquare = rectangle;
             } else {
                 round.selectUnit(null);
             }
 
-
             e.Handled = true;
         }
 
+        /**
+         * Listener for left clicks on the list of units to select.
+         * Updates the current selected unit.
+         * @param sender The sender of the notification, the object clicked.
+         * @param e The event.
+         */
         public void rectangleMouseLefUnitSelectertHandler(object sender, MouseEventArgs e) {
-            selectedUnit.BorderBrush = Brushes.Black;
+            this.selectedUnit.BorderBrush = Brushes.Black;
 
             Border border = sender as Border;
             border.BorderBrush = Brushes.Red;
-            game.getRound().selectUnit(unitSelecterCollec[border]);
+            this.game.getRound().selectUnit(this.unitSelecterCollec[border]);
             selectedUnit = border;
             e.Handled = true;
         }
 
+        /**
+         * Listener for left clicks on a rectangle.
+         * Move the currently selected unit to the rectangle clicked if possible.
+         * @param sender The rectangle sender of the notification.
+         * @param e The event.
+         */
         public void rectangleMouseRightHandler(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
             Point position = new Point(row, column);
 
-            IRound round = game.getRound();
+            IRound round = this.game.getRound();
             if(round.setDestination(position)) {
                 round.executeMove();
-                selectedSquare.Stroke = Brushes.Black;
+                this.selectedSquare.Stroke = Brushes.Black;
 
-                displayUnitsOnMap();
+                this.displayUnitsOnMap();
             }
 
-            displayInfoPlayer();
-            unitSelecterCollec.Clear();
-            unitSelecter.Children.Clear();
+            this.displayInfoPlayer();
+            this.unitSelecterCollec.Clear();
+            this.unitSelecter.Children.Clear();
 
             e.Handled = true;
         }
 
+        /**
+         * Listener for clicks on the end round button.
+         * End the round.
+         * @param sender The sender of the notification.
+         * @param e The event.
+         */
         public void onClickEndRound(object sender, RoutedEventArgs e) {
-            game.endRound();
+            this.game.endRound();
 
-            unitSelecterCollec.Clear();
-            unitSelecter.Children.Clear();
-            displayUnitsOnMap();
-            displayInfoPlayer();
+            this.unitSelecterCollec.Clear();
+            this.unitSelecter.Children.Clear();
+            this.displayUnitsOnMap();
+            this.displayInfoPlayer();
 
-            if(game.isEndOfGame()) {
-                IPlayer player = game.getWinner();
+            if(this.game.isEndOfGame()) {
+                IPlayer player = this.game.getWinner();
                 // TODO Handle draw situations.
-                string messageBoxText = "Congratulation " + player.getName() + "\n You have defeated your enemy !";
+                string messageBoxText = "Congratulation "+player.getName()+"\n You have defeated your enemy !";
                 string caption = "Victory!";
                 MessageBoxButton button = MessageBoxButton.OK;
                 MessageBoxImage icon = MessageBoxImage.Exclamation;
