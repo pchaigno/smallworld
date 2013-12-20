@@ -27,8 +27,7 @@ namespace GUI {
      */
     public partial class MapWindow: Window {
         IGame game;
-        // TODO Use a matrix.
-        Dictionary<Point, Rectangle> unitRectangles;
+        Rectangle[,] unitRectangles;
         Rectangle selectedSquare;
         Dictionary<Border, IUnit> unitSelecterCollec;
         Border selectedUnit;
@@ -41,8 +40,9 @@ namespace GUI {
             InitializeComponent();
 
             this.game = game;
-
-            this.unitRectangles = new Dictionary<Point, Rectangle>();
+            
+            int size = this.game.getMap().getSize();
+            this.unitRectangles = new Rectangle[size, size];
             this.selectedSquare = null;
 
             this.unitSelecterCollec = new Dictionary<Border, IUnit>();
@@ -162,10 +162,11 @@ namespace GUI {
         private void displayUnitsOnMap() {
             List<IUnit>[,] units = this.game.getMap().getUnits();
 
-            foreach(Rectangle rect in this.unitRectangles.Values) {
-                this.mapGrid.Children.Remove(rect);
+            for(int x=0; x<this.unitRectangles.GetLength(0); x++) {
+                for(int y=0; y<this.unitRectangles.GetLength(1); y++) {
+                    this.mapGrid.Children.Remove(this.unitRectangles[x, y]);
+                }
             }
-            this.unitRectangles.Clear();
 
             for(int x=0; x<units.GetLength(0); x++) {
                 for(int y=0; y<units.GetLength(1); y++) {
@@ -184,7 +185,7 @@ namespace GUI {
                         rectangle.MouseLeave += new MouseEventHandler(this.mouseLeaveHandler);
                         this.mapGrid.Children.Add(rectangle);
 
-                        this.unitRectangles.Add(new Point(x, y), rectangle);
+                        this.unitRectangles[x, y] = rectangle;
                         Console.WriteLine(x+"/"+y);
                     }
                 }
