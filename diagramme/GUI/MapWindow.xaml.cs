@@ -89,7 +89,7 @@ namespace GUI {
         private Rectangle createSquares(ISquare type, int col, int line) {
             Rectangle rectangle = new Rectangle();
 
-            rectangle.Fill = ImageFactory.getBrushSquare(type);
+            rectangle.Fill = ImageFactory.getInstance().getBrushSquare(type);
             Grid.SetColumn(rectangle, col);
             Grid.SetRow(rectangle, line);
             rectangle.StrokeThickness = 1;
@@ -112,7 +112,7 @@ namespace GUI {
             int i = 0;
             foreach(IUnit unit in units) {
                 Border border = new Border();
-                border.Background = ImageFactory.getBrushUnitFace(unit);
+                border.Background = ImageFactory.getInstance().getBrushUnitFace(unit);
 
                 TextBlock unitText = new TextBlock();
                 unitText.Text = unit.getRemainingMovementPoints()+" MvPt \n"+unit.getLifePoints()+" lifePt";
@@ -174,7 +174,7 @@ namespace GUI {
                     if(nb > 0) {
                         var rectangle = new Rectangle();
 
-                        rectangle.Fill = ImageFactory.getBrushUnit(units[x, y][0], nb);
+                        rectangle.Fill = ImageFactory.getInstance().getBrushUnit(units[x, y][0], nb);
                         Grid.SetColumn(rectangle, y);
                         Grid.SetRow(rectangle, x);
                         rectangle.StrokeThickness = 1;

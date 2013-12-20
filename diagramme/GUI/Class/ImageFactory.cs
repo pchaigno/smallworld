@@ -10,56 +10,70 @@ using SmallWorld;
 
 namespace GUI {
 
-    // TODO Shouln't it be a singleton?
     class ImageFactory {
-        private static BitmapImage tileDesert = null;
-        private static BitmapImage tileEau = null;
-        private static BitmapImage tileForet = null;
-        private static BitmapImage tileMontagne = null;
-        private static BitmapImage tilePlaine = null;
-        private static BitmapImage dwarf = null;
-        private static BitmapImage dwarfM = null;
-        private static BitmapImage gauloisM = null;
-        private static BitmapImage gaulois = null;
-        private static BitmapImage viking = null;
-        private static BitmapImage vikingM = null;
-        private static BitmapImage gauloisUnit = null;
-        private static BitmapImage vikingUnit = null;
-        private static BitmapImage dwarfUnit = null;
+        private BitmapImage tileDesert = null;
+        private BitmapImage tileEau = null;
+        private BitmapImage tileForet = null;
+        private BitmapImage tileMontagne = null;
+        private BitmapImage tilePlaine = null;
+        private BitmapImage dwarf = null;
+        private BitmapImage dwarfM = null;
+        private BitmapImage gauloisM = null;
+        private BitmapImage gaulois = null;
+        private BitmapImage viking = null;
+        private BitmapImage vikingM = null;
+        private BitmapImage gauloisUnit = null;
+        private BitmapImage vikingUnit = null;
+        private BitmapImage dwarfUnit = null;
+        private static ImageFactory INSTANCE = new ImageFactory();
+
+        /**
+         * Constructor
+         * It is private because the class is a singleton.
+         */
+        private ImageFactory() {
+            this.tileDesert = new BitmapImage(new Uri(@"..\..\Ressources\terrains\desert.png", UriKind.Relative));
+            this.tileEau = new BitmapImage(new Uri(@"..\..\Ressources\terrains\sea.png", UriKind.Relative));
+            this.tileForet = new BitmapImage(new Uri(@"..\..\Ressources\terrains\forest.png", UriKind.Relative));
+            this.tileMontagne = new BitmapImage(new Uri(@"..\..\Ressources\terrains\mountain.png", UriKind.Relative));
+            this.tilePlaine = new BitmapImage(new Uri(@"..\..\Ressources\terrains\lowland.png", UriKind.Relative));
+
+            this.dwarfM = new BitmapImage(new Uri(@"..\..\Ressources\dwarfM.png", UriKind.Relative));
+            this.dwarf = new BitmapImage(new Uri(@"..\..\Ressources\dwarf.png", UriKind.Relative));
+            this.gauloisM = new BitmapImage(new Uri(@"..\..\Ressources\gauloisM.png", UriKind.Relative));
+            this.gaulois = new BitmapImage(new Uri(@"..\..\Ressources\gaulois.png", UriKind.Relative));
+            this.vikingM = new BitmapImage(new Uri(@"..\..\Ressources\vikingM.png", UriKind.Relative));
+            this.viking = new BitmapImage(new Uri(@"..\..\Ressources\viking.png", UriKind.Relative));
+
+            this.dwarfUnit = new BitmapImage(new Uri(@"..\..\Ressources\dwarfUnit.png", UriKind.Relative));
+            this.gauloisUnit = new BitmapImage(new Uri(@"..\..\Ressources\gauloisUnit.png", UriKind.Relative));
+            this.vikingUnit = new BitmapImage(new Uri(@"..\..\Ressources\vikingUnit.png", UriKind.Relative));
+        }
+
+        /**
+         * @returns The instance of ImageFactory.
+         */
+        public static ImageFactory getInstance() {
+            return INSTANCE;
+        }
 
         /**
          * Gets the image corresponding to a certain type of square.
          * @param square The square to draw.
          * @returns The image corresponding to the square.
          */
-        public static Brush getBrushSquare(ISquare square) {
+        public Brush getBrushSquare(ISquare square) {
             ImageBrush brush = new ImageBrush();
-
             if(square is IDesert) {
-                if(tileDesert == null) {
-                    tileDesert = new BitmapImage(new Uri(@"..\..\Ressources\terrains\desert.png", UriKind.Relative));
-                }
-                brush.ImageSource = tileDesert;
+                brush.ImageSource = this.tileDesert;
             } else if(square is ISea) {
-                if(tileEau == null) {
-                    tileEau = new BitmapImage(new Uri(@"..\..\Ressources\terrains\sea.png", UriKind.Relative));
-                }
-                brush.ImageSource = tileEau;
+                brush.ImageSource = this.tileEau;
             } else if(square is IForest) {
-                if(tileForet == null) {
-                    tileForet = new BitmapImage(new Uri(@"..\..\Ressources\terrains\forest.png", UriKind.Relative));
-                }
-                brush.ImageSource = tileForet;
+                brush.ImageSource = this.tileForet;
             } else if(square is IMountain) {
-                if(tileMontagne == null) {
-                    tileMontagne = new BitmapImage(new Uri(@"..\..\Ressources\terrains\mountain.png", UriKind.Relative));
-                }
-                brush.ImageSource = tileMontagne;
+                brush.ImageSource = this.tileMontagne;
             } else if(square is ILowland) {
-                if(tilePlaine == null) {
-                    tilePlaine = new BitmapImage(new Uri(@"..\..\Ressources\terrains\lowland.png", UriKind.Relative));
-                }
-                brush.ImageSource = tilePlaine;
+                brush.ImageSource = this.tilePlaine;
             }
             return brush;
         }
@@ -71,46 +85,25 @@ namespace GUI {
          * @param nb The number of units to draw (on the same square).
          * @returns The image corresponding to the unit.
          */
-        public static Brush getBrushUnit(IUnit unit, int nb) {
+        public Brush getBrushUnit(IUnit unit, int nb) {
             ImageBrush brush = new ImageBrush();
-
             if(unit is IDwarf) {
-                Console.WriteLine("Hello");
                 if(nb > 1) {
-                    if(dwarfM == null) {
-                        dwarfM = new BitmapImage(new Uri(@"..\..\Ressources\dwarfM.png", UriKind.Relative));
-                    }
-                    brush.ImageSource = dwarfM;
+                    brush.ImageSource = this.dwarfM;
                 } else {
-                    if(dwarf == null) {
-                        dwarf = new BitmapImage(new Uri(@"..\..\Ressources\dwarf.png", UriKind.Relative));
-                    }
-                    brush.ImageSource = dwarf;
+                    brush.ImageSource = this.dwarf;
                 }
-
             } else if(unit is IGaulois) {
                 if(nb > 1) {
-                    if(gauloisM == null) {
-                        gauloisM = new BitmapImage(new Uri(@"..\..\Ressources\gauloisM.png", UriKind.Relative));
-                    }
-                    brush.ImageSource = gauloisM;
+                    brush.ImageSource = this.gauloisM;
                 } else {
-                    if(gaulois == null) {
-                        gaulois = new BitmapImage(new Uri(@"..\..\Ressources\gaulois.png", UriKind.Relative));
-                    }
-                    brush.ImageSource = gaulois;
+                    brush.ImageSource = this.gaulois;
                 }
             } else if(unit is IViking) {
                 if(nb > 1) {
-                    if(vikingM == null) {
-                        vikingM = new BitmapImage(new Uri(@"..\..\Ressources\vikingM.png", UriKind.Relative));
-                    }
-                    brush.ImageSource = vikingM;
+                    brush.ImageSource = this.vikingM;
                 } else {
-                    if(viking == null) {
-                        viking = new BitmapImage(new Uri(@"..\..\Ressources\viking.png", UriKind.Relative));
-                    }
-                    brush.ImageSource = viking;
+                    brush.ImageSource = this.viking;
                 }
             }
             return brush;
@@ -122,24 +115,14 @@ namespace GUI {
          * @param unit The unit to draw.
          * @returns The image corresponding to the unit's face.
          */
-        public static Brush getBrushUnitFace(IUnit unit) {
+        public Brush getBrushUnitFace(IUnit unit) {
             ImageBrush brush = new ImageBrush();
-
             if(unit is IDwarf) {
-                if(dwarfUnit == null) {
-                    dwarfUnit = new BitmapImage(new Uri(@"..\..\Ressources\dwarfUnit.png", UriKind.Relative));
-                }
-                brush.ImageSource = dwarfUnit;
+                brush.ImageSource = this.dwarfUnit;
             } else if(unit is IGaulois) {
-                if(gauloisUnit == null) {
-                    gauloisUnit = new BitmapImage(new Uri(@"..\..\Ressources\gauloisUnit.png", UriKind.Relative));
-                }
-                brush.ImageSource = gauloisUnit;
+                brush.ImageSource = this.gauloisUnit;
             } else if(unit is IViking) {
-                if(vikingUnit == null) {
-                    vikingUnit = new BitmapImage(new Uri(@"..\..\Ressources\vikingUnit.png", UriKind.Relative));
-                }
-                brush.ImageSource = vikingUnit;
+                brush.ImageSource = this.vikingUnit;
             }
             return brush;
         }
