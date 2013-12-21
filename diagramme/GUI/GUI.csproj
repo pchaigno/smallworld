@@ -122,9 +122,9 @@
       <Project>{20709410-3e0f-48f4-a32a-8532a665bfc3}</Project>
       <Name>LibCLR</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SmallWorld\SmallWorld.csproj">
+    <ProjectReference Include="..\Core\Core.csproj">
       <Project>{66ed7790-8914-4075-909b-59edb4162a31}</Project>
-      <Name>SmallWorld</Name>
+      <Name>Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
