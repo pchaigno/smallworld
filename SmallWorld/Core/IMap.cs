@@ -20,7 +20,7 @@ namespace SmallWorld {
 
         List<IUnit>[,] getUnits();
 
-        void moveUnit(IUnit unit, Point newPosition);
+        void moveUnit(IUnit unit, Point currentPosition, Point newPosition);
 
         void removeUnit(IUnit unit, Point position);
 

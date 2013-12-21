@@ -95,14 +95,13 @@ namespace SmallWorld {
          * @param newPosition The new position.
          * @throws An exception if it's an enemy position.
          */
-        public void moveUnit(IUnit unit, Point newPosition) {
-            Point currentPosition = unit.getPosition();
+        public void moveUnit(IUnit unit, Point currentPosition, Point newPosition) {
             this.units[currentPosition.X, currentPosition.Y].Remove(unit);
             if(this.isEnemyPosition(newPosition, unit)) {
                 throw new Exception("Erreur dans le deplacement");
             }
             this.units[newPosition.X, newPosition.Y].Add(unit);
-            unit.move(newPosition, this.getSquare(newPosition));
+            unit.move(this.getSquare(newPosition));
         }
 
         /**

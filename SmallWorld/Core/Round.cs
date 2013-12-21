@@ -10,6 +10,7 @@ namespace SmallWorld {
         private IGame game;
         private IPlayer player;
         private IUnit selectedUnit;
+        private Point selectedPosition;
         private Point destination;
         private String lastMoveInfo;
 
@@ -44,10 +45,30 @@ namespace SmallWorld {
 
         /**
          * Set the new selected unit.
+         * The selected position stay the same.
          * @param unit The unit to select.
          */
         public void selectUnit(IUnit unit) {
             this.selectedUnit = unit;
+        }
+
+        /**
+         * Set the new selected unit.
+         * The selected position is also updated.
+         * @param unit The unit to select.
+         * @param position The unit's position.
+         */
+        public void selectUnit(IUnit unit, Point position) {
+            this.selectedUnit = unit;
+            this.selectedPosition = position;
+        }
+
+        /**
+         * Unselect the last selected unit.
+         * The last selected position isn't unselected.
+         */
+        public void unselectUnit() {
+            this.selectedUnit = null;
         }
 
         /**
@@ -82,7 +103,7 @@ namespace SmallWorld {
                 return false;
             }
 
-            Boolean result = selectedUnit.canMove(destination, game.getMap().getSquare(destination));
+            Boolean result = selectedUnit.canMove(this.selectedPosition, destination, game.getMap().getSquare(destination));
             if(result) {
                 this.destination = destination;
             } else {
@@ -102,11 +123,11 @@ namespace SmallWorld {
                 if(combat()) {
                     Console.WriteLine(game.getMap().getUnits(this.destination).Count);
                     if(this.game.getMap().getUnits(this.destination).Count == 0) {
-                        this.game.getMap().moveUnit(this.selectedUnit, this.destination);
+                        this.game.getMap().moveUnit(this.selectedUnit, this.selectedPosition, this.destination);
                     }
                 }
             } else {
-                this.game.getMap().moveUnit(this.selectedUnit, this.destination);
+                this.game.getMap().moveUnit(this.selectedUnit, this.selectedPosition, this.destination);
                 this.lastMoveInfo = this.player.getName() + " moved a unit.";
             }
 
@@ -156,7 +177,7 @@ namespace SmallWorld {
             }
 
             if(!this.selectedUnit.isAlive()) {
-                this.game.getMap().removeUnit(this.selectedUnit, this.selectedUnit.getPosition());
+                this.game.getMap().removeUnit(this.selectedUnit, this.selectedPosition);
                 this.lastMoveInfo = this.player.getName() + " lost the fight.";
                 return false;
             } else if(!enemy.isAlive()) {

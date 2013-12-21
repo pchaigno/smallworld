@@ -12,6 +12,10 @@ namespace SmallWorld {
 
         void selectUnit(IUnit unit);
 
+        void selectUnit(IUnit unit, Point position);
+
+        void unselectUnit();
+
         bool setDestination(Point destination);
 
         List<IUnit> getUnits(Point position);

@@ -35,12 +35,13 @@ namespace SmallWorld {
          * The destination must be next to the current position,
          * the unit must have some movement points left.
          * Contrary to must units, viking can move on the sea.
+         * @param currentPosition The current position.
          * @param destination The destination to reach.
          * @param square The type of square the destination is.
          * @returns True if the unit can move to the destination.
          */
-        public override bool canMove(Point destination, ISquare square) {
-            return isNext(destination, position) 
+        public override bool canMove(Point currentPosition, Point destination, ISquare square) {
+            return isNext(destination, currentPosition) 
                 && remainingMovementPoints>0;
         }
     }

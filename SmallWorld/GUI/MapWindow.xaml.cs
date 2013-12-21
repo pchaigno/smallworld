@@ -243,7 +243,7 @@ namespace GUI {
             IRound round = game.getRound();
             if(round.isCurrentPlayerPosition(position)) {
                 List<IUnit> units = round.getUnits(position);
-                round.selectUnit(units[0]);
+                round.selectUnit(units[0], position);
                 this.displayUnitSelecter(units);
 
                 rectangle.StrokeThickness = 1;
@@ -251,7 +251,7 @@ namespace GUI {
 
                 selectedSquare = rectangle;
             } else {
-                round.selectUnit(null);
+                round.unselectUnit();
             }
 
             e.Handled = true;

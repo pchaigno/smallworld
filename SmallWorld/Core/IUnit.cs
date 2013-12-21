@@ -22,17 +22,13 @@ namespace SmallWorld {
 
         void resetMovementPoints();
 
-        void setPosition(Point position);
+        void move(ISquare destination);
 
-        void move(Point p, ISquare square);
-
-        Boolean canMove(Point destination, ISquare square);
+        Boolean canMove(Point currentPosition, Point destination, ISquare square);
 
         IPlayer getOwner();
 
         int getPoint(ISquare square);
-
-        Point getPosition();
 
         Boolean isAlive();
     }

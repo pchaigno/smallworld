@@ -31,12 +31,13 @@ namespace SmallWorld {
         /**
          * Checks if the unit can move during this round to a certain destination.
          * Dwarfs have the particularity that they can't move on mountains.
+         * @param currentPosition The current position.
          * @param destination The destination to reach.
          * @param square The type of square the destination is.
          * @returns True if the unit can move to the destination.
          */
-        public override Boolean canMove(Point destination, ISquare square) {
-            return base.canMove(destination, square)
+        public override Boolean canMove(Point currentPosition, Point destination, ISquare square) {
+            return base.canMove(currentPosition, destination, square)
                 && !(square is IMountain);
         }
     }

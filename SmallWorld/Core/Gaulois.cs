@@ -32,12 +32,11 @@ namespace SmallWorld {
         /**
          * Move the unit to its destination point and update the number of remaining points.
          * Gaulois use one point less than others to move on lowland.
-         * @param destination The destination for the unit.
-         * @param square The type of square the destination is.
+         * @param destination The type of square the destination is.
          */
-        public override void move(Point destination, ISquare square) {
-            base.move(destination, square);
-            if(square is ILowland) {
+        public override void move(ISquare destination) {
+            base.move(destination);
+            if(destination is ILowland) {
                 this.remainingMovementPoints++;
             }
         }
