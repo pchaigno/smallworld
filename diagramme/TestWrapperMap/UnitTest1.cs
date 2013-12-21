@@ -15,10 +15,10 @@ namespace TestWrapperMap {
             int size = 5;
             String log = "";
             int[][] map = Wrapper.generateMapList(size);
-            for(int i=0; i<size; i++) {
-                for(int j=0; j<size; j++) {
-                    Assert.IsTrue(map[i][j]<=5 && map[i][j]>=1);
-                    log += map[i][j]+" ";
+            for(int i = 0; i < size; i++) {
+                for(int j = 0; j < size; j++) {
+                    Assert.IsTrue(map[i][j] <= 5 && map[i][j] >= 1);
+                    log += map[i][j] + " ";
                 }
                 log += "\n";
             }

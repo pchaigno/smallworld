@@ -63,10 +63,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Point.h" />
     <ClInclude Include="MapGenerator.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="MapGenerator.cpp" />
+    <ClCompile Include="Point.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
