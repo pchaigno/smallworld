@@ -63,10 +63,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Graph.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="MapGenerator.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="MapGenerator.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="Main.cpp" />
