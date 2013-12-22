@@ -54,5 +54,21 @@ namespace SmallWorld {
                     // TODO throw Excetion?
             }
         }
+
+        /**
+         * Convert a matrix of squares to a matrix of integers with the corresponding numbers.
+         * @param squares The map as a matrix of squares.
+         * @returns The map as a matrix of integers.
+         */
+        public static int[][] getNumbers(ISquare[,] squares) {
+            int[][] map = new int[squares.GetLength(0)][];
+            for(int i=0; i<squares.GetLength(0); i++) {
+                map[i] = new int[squares.GetLength(1)];
+                for(int j=0; j<squares.GetLength(1); j++) {
+                    map[i][j] = squares[i, j].getNumber();
+                }
+            }
+            return map;
+        }
     }
 }

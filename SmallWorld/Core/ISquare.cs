@@ -7,5 +7,6 @@ namespace SmallWorld {
 
     public interface ISquare {
 
+        int getNumber();
     }
 }

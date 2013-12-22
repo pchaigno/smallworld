@@ -1,7 +1,7 @@
 #include "MapGenerator.h"
 
 int main() {
-	int size = 10;
+	int size = 5;
     int** map = MapGenerator::generateMap(size);
 	for(int i=0; i<size; i++) {
 		for(int j=0; j<size; j++) {
@@ -11,7 +11,10 @@ int main() {
 	}
 	printf("\n\n");
 
-	std::map<Point, vector<Point>> graph = MapGenerator::convertToGraph(map, size);
+	/**
+	 * Test the generation of the map.
+	 */
+	//std::map<Point, vector<Point>> graph = MapGenerator::convertToGraph(map, size);
 	/*printf("Graph:\n");
 	for(std::map<Point, vector<Point>>::iterator it = graph.begin(); it!=graph.end(); ++it) {
 		printf("(%d, %d):\n", it->first.x, it->first.y);
@@ -34,6 +37,14 @@ int main() {
 	for(int i=0; i<remaining.size(); i++) {
 		printf("(%d, %d)\n", remaining[i].x, remaining[i].y);
 	}*/
+
+	/**
+	 * Test the placement of the units.
+	 */
+	int** pos = MapGenerator::placeUnits(map, size);
+	printf("(%d, %d)\n", pos[0][0], pos[0][1]);
+	printf("(%d, %d)\n", pos[1][0], pos[1][1]);
+	printf("\n");
 
 	system("pause");
     return 0;

@@ -7,5 +7,11 @@ namespace SmallWorld {
 
     public class Sea: ISea {
 
+        /**
+         * @returns The number corresponding to this square for the C++ library.
+         */
+        public int getNumber() {
+            return 1;
+        }
     }
 }

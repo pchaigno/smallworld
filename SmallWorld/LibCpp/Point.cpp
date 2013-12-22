@@ -11,11 +11,9 @@ Point::Point() {
 }
 
 bool Point::operator==(const Point& pt) const {
-	return this->x == pt.x 
-		&& this->y == pt.y;
+	return this->x == pt.x && this->y == pt.y;
 }
 
 bool Point::operator<(const Point& pt) const {
-	return this->x > pt.x 
-		|| (this->x==pt.x && this->y>pt.y);
+	return this->x > pt.x || (this->x==pt.x && this->y>pt.y);
 }

@@ -1,10 +1,50 @@
 #include "MapGenerator.h"
 
 /**
+ * Places the units for both players.
+ * @param map The map as a matrix of integers.
+ * @param size The size of the map.
+ */
+int** MapGenerator::placeUnits(int** map, int size) {
+	int** result = new int*[2];
+	result[0] = new int[2];
+	result[1] = new int[2];
+	result[0][0] = 0;
+	result[0][1] = 0;
+	result[1][0] = size - 1;
+	result[1][1] = size - 1;
+
+	std::map<Point, vector<Point>> graph = MapGenerator::convertToGraph(map, size);
+	Point* vertices = new Point[graph.size()];
+	int i=0;
+	for(std::map<Point, vector<Point>>::iterator it = graph.begin(); it!=graph.end(); ++it) {
+		vertices[i] = it->first;
+		i++;
+	}
+	int** costs = MapGenerator::getBestCostRouting(graph, vertices);
+	int maxCost = 0;
+	for(int i=0; i<graph.size(); i++) {
+		for(int j=0; j<graph.size(); j++) {
+			if(costs[i][j] > maxCost) {
+				maxCost = costs[i][j];
+				Point ptA = vertices[i];
+				result[0][0] = ptA.x;
+				result[0][1] = ptA.y;
+				Point ptB = vertices[j];
+				result[1][0] = ptB.x;
+				result[1][1] = ptB.y;
+			}
+		}
+	}
+
+	return result;
+}
+
+/**
  * Generates the map.
  * Returns a matrix of int; each int represent a certain type of square.
  * @param size The size of the map.
- * @returns The map as a matrix of int.
+ * @returns The map as a matrix of integers.
  */
 int** MapGenerator::generateMap(int size) {
 	// Initialisation:
@@ -188,4 +228,63 @@ vector<Point> MapGenerator::difference(vector<Point> set1, vector<Point> set2) {
 		}
 	}
 	return result;
+}
+
+/**
+ * Roy-Marshall algorithm to find the best cost routing in a graph.
+ * @param graph The graph.
+ * @param vertices The vertices as an array (to associate a Point to a number).
+ * @returns The matrix with the best cost for each origin-destination couple.
+ */
+int** MapGenerator::getBestCostRouting(map<Point, vector<Point>> graph, Point* vertices) {
+	// Initialization:
+	int** routes = new int*[graph.size()];
+	int** costs = new int*[graph.size()];
+	for(int i=0; i<graph.size(); i++) {
+		routes[i] = new int[graph.size()];
+		costs[i] = new int[graph.size()];
+		for(int j=0; j<graph.size(); j++) {
+			if(inArray(vertices[j], graph[vertices[i]])) {
+				routes[i][j] = j;
+				costs[i][j] = 1;
+			} else {
+				routes[i][j] = -1;
+				costs[i][j] = INT_MAX;
+			}
+		}
+	}
+
+	// Roy-Marshall's algorithm:
+	for(int i=0; i<graph.size(); i++) {
+		for(int x=0; x<graph.size(); x++) {
+			if(routes[x][i] != -1) {
+				for(int y=0; y<graph.size(); y++) {
+					if(routes[i][y] != -1) {
+						if(costs[x][y] > costs[x][i]+costs[i][y]) {
+							costs[x][y] = costs[x][i] + costs[i][y];
+							routes[x][y] = routes[x][i];
+						}
+					}
+				}
+			}
+		}
+	}
+
+	return costs;
+}
+
+/**
+ * Checks if a point if in a vector of points.
+ * @param pt The point.
+ * @param points The vector of points.
+ */
+// TODO Change vector of graph to array.
+// TODO Use inArray for the core of Tarjan algorithm.
+bool MapGenerator::inArray(Point pt, vector<Point> points) {
+	for(int i=0; i<points.size(); i++) {
+		if(pt == points[i]) {
+			return true;
+		}
+	}
+	return false;
 }
