@@ -5,14 +5,10 @@
  * @param map The map as a matrix of integers.
  * @param size The size of the map.
  */
-int** MapGenerator::placeUnits(int** map, int size) {
-	int** result = new int*[2];
-	result[0] = new int[2];
-	result[1] = new int[2];
-	result[0][0] = 0;
-	result[0][1] = 0;
-	result[1][0] = size - 1;
-	result[1][1] = size - 1;
+Point* MapGenerator::placeUnits(Square** map, int size) {
+	Point* result = new Point[2];
+	result[0] = Point(0, 0);
+	result[1] = Point(size-1, size-1);
 
 	std::map<Point, vector<Point>> graph = Graph::convertToGraph(map, size);
 	Point* vertices = new Point[graph.size()];
@@ -27,12 +23,8 @@ int** MapGenerator::placeUnits(int** map, int size) {
 		for(int j=0; j<graph.size(); j++) {
 			if(costs[i][j] > maxCost) {
 				maxCost = costs[i][j];
-				Point ptA = vertices[i];
-				result[0][0] = ptA.x;
-				result[0][1] = ptA.y;
-				Point ptB = vertices[j];
-				result[1][0] = ptB.x;
-				result[1][1] = ptB.y;
+				result[0] = vertices[i];
+				result[1] = vertices[j];
 			}
 		}
 	}
@@ -46,12 +38,12 @@ int** MapGenerator::placeUnits(int** map, int size) {
  * @param size The size of the map.
  * @returns The map as a matrix of integers.
  */
-int** MapGenerator::generateMap(int size) {
+Square** MapGenerator::generateMap(int size) {
 	// Initialisation:
 	int i, j;
-	int** map = new int*[size];
+	Square** map = new Square*[size];
 	for(i=0; i<size; i++) {
-        map[i] = new int[size];
+        map[i] = new Square[size];
 	}
 	if(map == NULL) {
 		printf("L'allocation n'a pu être réalisée\n");
@@ -62,7 +54,7 @@ int** MapGenerator::generateMap(int size) {
 		// Compute the map composition:
 		for(i=0; i<size; i++) {
 			for(j=0; j<size; j++) {
-				map[i][j] = MapGenerator::randBounds(1, 6);
+				map[i][j] = (Square)MapGenerator::randBounds(1, 6);
 			}
 		}
 	} while(!Graph::isConnectedGraph(map, size));

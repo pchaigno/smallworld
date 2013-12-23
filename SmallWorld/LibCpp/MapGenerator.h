@@ -15,8 +15,8 @@ using namespace std;
 class MapGenerator {
 
 public:
-	DLL static int** generateMap(int size);
-	DLL static int** placeUnits(int** map, int size);
+	DLL static Square** generateMap(int size);
+	DLL static Point* placeUnits(Square** map, int size);
 
 private:
 	// TODO Is DLL keyword mandatory?

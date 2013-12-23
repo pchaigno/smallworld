@@ -2,7 +2,7 @@
 
 int main() {
 	int size = 5;
-    int** map = MapGenerator::generateMap(size);
+    Square** map = MapGenerator::generateMap(size);
 	for(int i=0; i<size; i++) {
 		for(int j=0; j<size; j++) {
 			printf("%d ", map[j][i]);
@@ -41,9 +41,9 @@ int main() {
 	/**
 	 * Test the placement of the units.
 	 */
-	int** pos = MapGenerator::placeUnits(map, size);
-	printf("(%d, %d)\n", pos[0][0], pos[0][1]);
-	printf("(%d, %d)\n", pos[1][0], pos[1][1]);
+	Point* pos = MapGenerator::placeUnits(map, size);
+	printf("(%d, %d)\n", pos[0].x, pos[0].y);
+	printf("(%d, %d)\n", pos[1].x, pos[1].y);
 	printf("\n");
 
 	system("pause");

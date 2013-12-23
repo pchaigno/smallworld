@@ -6,7 +6,7 @@
  * @param size The size of the map.
  * @returns True if all squares of the map are accessible from one.
  */
-bool Graph::isConnectedGraph(int** map, int size) {
+bool Graph::isConnectedGraph(Square** map, int size) {
 	std::map<Point, vector<Point>> graph = Graph::convertToGraph(map, size);
 	vector<Point> composant = Graph::getConnectedComposant(graph, Graph::getKeys(graph)[0]);
 	return composant.size() == graph.size();
@@ -22,19 +22,19 @@ bool Graph::isConnectedGraph(int** map, int size) {
  * @param size The size of the map.
  * @returns The graph as a map of adjacent vertices by vertex.
  */
-map<Point, vector<Point>> Graph::convertToGraph(int** map, int size) {
+map<Point, vector<Point>> Graph::convertToGraph(Square** map, int size) {
 	std::map<Point, vector<Point>> graph;
 	for(int i=0; i<size; i++) {
 		for(int j=0; j<size; j++) {
-			if(map[i][j] != 1) {
+			if(map[i][j] != SEA) {
 				vector<Point> adjacents;
 				for(int x=i-1; x<=i+1; x+=2) {
-					if(x>=0 && x<size && map[x][j]!=1) {
+					if(x>=0 && x<size && map[x][j]!=SEA) {
 						adjacents.push_back(Point(x, j));
 					}
 				}
 				for(int y=j-1; y<=j+1; y+=2) {
-					if(y>=0 && y<size && map[i][y]!=1) {
+					if(y>=0 && y<size && map[i][y]!=SEA) {
 						adjacents.push_back(Point(i, y));
 					}
 				}

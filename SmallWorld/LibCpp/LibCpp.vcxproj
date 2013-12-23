@@ -63,11 +63,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AdviceGenerator.h" />
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="MapGenerator.h" />
+    <ClInclude Include="SmallWorld.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AdviceGenerator.cpp" />
     <ClCompile Include="Graph.cpp" />
     <ClCompile Include="MapGenerator.cpp" />
     <ClCompile Include="Point.cpp" />

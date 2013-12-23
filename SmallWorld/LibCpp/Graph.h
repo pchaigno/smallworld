@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Point.h"
+#include "SmallWorld.h"
 #include <map>
 #include <vector>
 #include <stdlib.h>
@@ -17,7 +18,7 @@ private:
 	static bool inArray(Point pt, vector<Point> points);
 
 public:
-	static bool isConnectedGraph(int** map, int size);
-	static map<Point, vector<Point>> convertToGraph(int** map, int size);
+	static bool isConnectedGraph(Square** map, int size);
 	static int** getBestCostRouting(map<Point, vector<Point>> graph, Point* vertices);
+	static map<Point, vector<Point>> convertToGraph(Square** map, int size);
 };
