@@ -77,9 +77,9 @@ array<array<int>^>^ mWrapper::Wrapper::getAdvice(array<array<int>^>^ map, int si
 	}
 	Point* advice = generator.getAdvice(x, y, unitsBis, (Player)player);
 
-	array<array<int>^>^ result = gcnew array<array<int>^>(size);
-	for(int i=0; i<size; i++) {
-		result[i] = gcnew array<int>(size);
+	array<array<int>^>^ result = gcnew array<array<int>^>(3);
+	for(int i=0; i<3; i++) {
+		result[i] = gcnew array<int>(3);
 		result[i][0] = advice[i].x;
 		result[i][1] = advice[i].y;
 	}
