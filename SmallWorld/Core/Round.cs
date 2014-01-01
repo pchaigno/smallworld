@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using mWrapper;
 
 namespace SmallWorld {
 
@@ -12,6 +13,7 @@ namespace SmallWorld {
         private IUnit selectedUnit;
         private Point selectedPosition;
         private Point destination;
+        // TODO We should use a code and code/messages correspondances for move information.
         private String lastMoveInfo;
 
         /**
@@ -35,12 +37,37 @@ namespace SmallWorld {
         /**
          * Retrieves advised destinations from the C++ library.
          * @param unit The unit for which we want advise.
-         * @param position The unit's position.
+         * @param pos The unit's position.
          * @returns The list of advised desinations.
          */
-        public List<Point> getAdvisedDestinations(IUnit unit, Point position) {
+        public List<Point> getAdvisedDestinations(IUnit unit, Point pos) {
             // TODO Retrieve from wrapper.
-            return new List<Point>();
+            IMap map = this.game.getMap();
+            ISquare[,] squares = map.getSquares();
+            int[][] mapBis = new int[map.getSize()][];
+            int[][] units = new int[map.getSize()][];
+            for(int i=0; i<map.getSize(); i++) {
+                mapBis[i] = new int[map.getSize()];
+                units[i] = new int[map.getSize()];
+                for(int j=0; j<map.getSize(); j++) {
+                    mapBis[i][j] = squares[i, j].getNumber();
+                    List<IUnit> unitsAtPos = map.getUnits(new Point(i, j));
+                    if(unitsAtPos.Count > 0) {
+                        units[i][j] = unitsAtPos[0].getOwner().getNumber();
+                    }
+                }
+            }
+            
+            int nationPlayer1 = this.game.getPlayer1().getNationNumber();
+            int nationPlayer2 = this.game.getPlayer2().getNationNumber();
+            int[][] result = Wrapper.getAdvice(mapBis, map.getSize(), nationPlayer1, nationPlayer2, pos.X, pos.Y, units, this.player.getNumber());
+            List<Point> advice = new List<Point>();
+            for(int i=0; i<3; i++) {
+                if(result[i][0]!=-1 && result[i][1]!=-1) {
+                    advice.Add(new Point(result[i][0], result[i][1]));
+                }
+            }
+            return advice;
         }
 
         /**
@@ -121,14 +148,13 @@ namespace SmallWorld {
         public void executeMove() {
             if(this.game.getMap().isEnemyPosition(this.destination, this.selectedUnit)) {
                 if(combat()) {
-                    Console.WriteLine(game.getMap().getUnits(this.destination).Count);
                     if(this.game.getMap().getUnits(this.destination).Count == 0) {
                         this.game.getMap().moveUnit(this.selectedUnit, this.selectedPosition, this.destination);
                     }
                 }
             } else {
                 this.game.getMap().moveUnit(this.selectedUnit, this.selectedPosition, this.destination);
-                this.lastMoveInfo = this.player.getName() + " moved a unit.";
+                this.lastMoveInfo = this.player.getName() + " moved an unit.";
             }
 
             this.selectedUnit = null;
