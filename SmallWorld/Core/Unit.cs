@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Drawing;
+using System.Diagnostics;
 
 namespace SmallWorld {
 
@@ -95,7 +96,8 @@ namespace SmallWorld {
          * @param b The second position.
          * @returns True if the two positions are adjacent.
          */
-        protected static bool isNext(Point a, Point b) {
+        // TODO Should be in Point (or the Coordinate class if we had one...).
+        public static bool isNext(Point a, Point b) {
             return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y) == 1;
         }
 

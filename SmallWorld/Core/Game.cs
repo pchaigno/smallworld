@@ -133,6 +133,13 @@ namespace SmallWorld {
         }
 
         /**
+         * @returns The maximum number of rounds allowed.
+         */
+        public int getMaxNbRound() {
+            return this.maxRounds;
+        }
+
+        /**
          * @returns The player currently playing.
          */
         public IPlayer getCurrentPlayer() {

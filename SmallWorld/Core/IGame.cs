@@ -8,23 +8,15 @@ namespace SmallWorld {
     public interface IGame {
 
         bool isEndOfGame();
-
         IPlayer getWinner();
-
         IPlayer getPlayer1();
-
         IPlayer getPlayer2();
-
         IMap getMap();
-
         void endRound();
-
         IRound getRound();
-
         int getCurrentRound();
-
+        int getMaxNbRound();
         IPlayer getCurrentPlayer();
-
         int getNbUnits(IPlayer p);
     }
 }

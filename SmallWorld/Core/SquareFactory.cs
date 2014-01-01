@@ -51,7 +51,7 @@ namespace SmallWorld {
                     return this.mountain;
                 default:
                     return null;
-                    // TODO throw Excetion?
+                    // TODO Throw exception.
             }
         }
 

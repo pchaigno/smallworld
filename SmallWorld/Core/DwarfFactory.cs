@@ -15,5 +15,13 @@ namespace SmallWorld {
         public IUnit createUnit(IPlayer player) {
             return new Dwarf(player);
         }
+
+        /**
+         * Used by the wrapper.
+         * @returns The number corresponding to this factory/nation.
+         */
+        public int getNumber() {
+            return 3;
+        }
     }
 }
