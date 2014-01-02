@@ -2,12 +2,59 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         Title="MapWindow" Loaded="Window_Loaded">
+    <Window.Resources>
+        <Style x:Key="textStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="FontFamily" Value="Harrington" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+        <Style x:Key="buttonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Harrington" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="Images/Button.png"></ImageBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Width" Value="140"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                            BorderThickness="1"
+                            Padding="4,2" 
+                            BorderBrush="Transparent"
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="Images/ButtonHover.png"></ImageBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Window.Resources>
+    
+    <Window.Background>
+        <ImageBrush ImageSource="Images/background.jpg"></ImageBrush>
+    </Window.Background>
+    
     <DockPanel>
         <StackPanel Orientation="Horizontal" Width="800" DockPanel.Dock="Bottom">
             <StackPanel Width="550">
                 <StackPanel Orientation="Horizontal"  DockPanel.Dock="Bottom">
-                    <TextBlock Margin="10" FontSize="20" FontFamily="Pristina" FontWeight="Bold" Name="currentD"></TextBlock>
-                    <TextBlock Margin="10" FontSize="20" FontFamily="Pristina" FontWeight="Bold" Name="lastMove" HorizontalAlignment="Center"></TextBlock>
+                    <TextBlock Style="{StaticResource textStyle}" Name="currentD"></TextBlock>
+                    <TextBlock Style="{StaticResource textStyle}" Name="lastMove" Foreground="Red"></TextBlock>
                 </StackPanel>
                 <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
                     <StackPanel Orientation="Horizontal" Name="unitSelecter"/>
@@ -16,10 +63,12 @@
 
 
             <StackPanel Width="250" FlowDirection="RightToLeft">
-                <Button HorizontalAlignment="left" Click="onClickEndRound" Content="End Round" />
-                <TextBlock Margin="10" FontSize="20"  FontFamily="Pristina" FontWeight="Bold" Name="roundD"></TextBlock>
-                <TextBlock Margin="10" FontSize="20" FontFamily="Pristina" FontWeight="Bold" Name="playerD1"></TextBlock>
-                <TextBlock Margin="10" FontSize="20" FontFamily="Pristina" FontWeight="Bold" Name="playerD2"></TextBlock>
+                <Button Name="endTour"  Style="{StaticResource buttonStyle}" Click="onClickEndRound" HorizontalAlignment="left">
+                    !End Tour
+                </Button>
+                <TextBlock Style="{StaticResource textStyle}" Name="roundD"></TextBlock>
+                <TextBlock Style="{StaticResource textStyle}" Name="playerD1"></TextBlock>
+                <TextBlock Style="{StaticResource textStyle}" Name="playerD2"></TextBlock>
             </StackPanel>
             
         </StackPanel>

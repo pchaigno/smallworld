@@ -14,7 +14,6 @@ class Graph {
 private:
 	static vector<Point> getConnectedComposant(map<Point, vector<Point>> graph, Point vertex);
 	static vector<Point> getKeys(map<Point, vector<Point>> graph);
-	static vector<Point> difference(vector<Point> set1, vector<Point> set2);
 	static bool inArray(Point pt, vector<Point> points);
 
 public:

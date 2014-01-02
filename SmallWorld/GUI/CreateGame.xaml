@@ -5,29 +5,69 @@
 
     <Window.Resources>
         <Style x:Key="textStyle" TargetType="TextBlock">
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="Pristina" />
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="FontFamily" Value="Harrington" />
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="Margin" Value="10"/>
         </Style>
         <Style x:Key="comboStyle" TargetType="ComboBox">
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="Pristina" />
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="FontFamily" Value="Harrington" />
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Width" Value="200"/>
         </Style>
         <Style x:Key="boxStyle" TargetType="TextBox">
-            <Setter Property="FontSize" Value="20" />
-            <Setter Property="FontFamily" Value="Pristina" />
+            <Setter Property="FontSize" Value="22" />
+            <Setter Property="FontFamily" Value="Harrington" />
             <Setter Property="FontWeight" Value="Bold" />
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Width" Value="200"/>
         </Style>
+        <Style x:Key="buttonStyle" TargetType="Button">
+            <Setter Property="FontSize" Value="30" />
+            <Setter Property="FontFamily" Value="Harrington" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Background">
+                <Setter.Value>
+                    <ImageBrush ImageSource="Images/Button.png"></ImageBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Width" Value="200"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Name="border" 
+                            BorderThickness="1"
+                            Padding="4,2" 
+                            BorderBrush="Transparent"
+                            Background="{TemplateBinding Background}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background">
+                                    <Setter.Value>
+                                        <ImageBrush ImageSource="Images/ButtonHover.png"></ImageBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </Window.Resources>
-
+    
+    <Window.Background>
+        <ImageBrush ImageSource="Images/background.jpg"></ImageBrush>
+    </Window.Background>
+    
+    
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-        <TextBlock Width="500" Height="155" HorizontalAlignment="Center" Margin="10" Name="title"></TextBlock>
+        
+        <TextBlock HorizontalAlignment="Center" Style="{StaticResource textStyle}" Margin="10" FontSize="80" Name="title">SmallWorld</TextBlock>
         <Grid Margin="20" Name="mapGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -65,9 +105,9 @@
 
         </Grid>
 
-        <Button Margin="20" Width="200" Name="launcher" BorderBrush="Black" BorderThickness="1" 
-            Click="onClickLauncher">
-            Launch The Game!
+        <Button Name="launcher" Click="onClickLauncher" Style="{StaticResource buttonStyle}"
+        Width="150" Height="50">
+            Launch!
         </Button>
 
     </StackPanel>

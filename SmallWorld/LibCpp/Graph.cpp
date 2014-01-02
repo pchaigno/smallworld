@@ -1,7 +1,7 @@
 #include "Graph.h"
 
 /**
- * Check if an unit can go from one point to all others of the map.
+ * Checks if an unit can go from one point to all others of the map.
  * @param map The map.
  * @param size The size of the map.
  * @returns True if all squares of the map are accessible from one.
@@ -127,21 +127,6 @@ vector<Point> Graph::getKeys(map<Point, vector<Point>> graph) {
 		keys.push_back(it->first);
 	}
 	return keys;
-}
-
-/**
- * @param set1 A first set of points.
- * @param set2 A second set of points.
- * @returns The first set of point minus the points from the second one.
- */
-vector<Point> Graph::difference(vector<Point> set1, vector<Point> set2) {
-	vector<Point> result;
-	for(int i=0; i<set1.size(); i++) {
-		if(std::find(set2.begin(), set2.end(), set1[i]) == set2.end()) {
-			result.push_back(set1[i]);
-		}
-	}
-	return result;
 }
 
 /**

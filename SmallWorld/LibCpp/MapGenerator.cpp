@@ -21,7 +21,7 @@ Point* MapGenerator::placeUnits(Square** map, int size) {
 	int maxCost = 0;
 	for(int i=0; i<graph.size(); i++) {
 		for(int j=0; j<graph.size(); j++) {
-			if(costs[i][j] > maxCost) {
+			if(i!=j && costs[i][j]>maxCost) {
 				maxCost = costs[i][j];
 				result[0] = vertices[i];
 				result[1] = vertices[j];
@@ -45,9 +45,6 @@ Square** MapGenerator::generateMap(int size) {
 	for(i=0; i<size; i++) {
         map[i] = new Square[size];
 	}
-	if(map == NULL) {
-		printf("L'allocation n'a pu être réalisée\n");
-	}
 	MapGenerator::initiateRand();
 
 	do {
@@ -57,6 +54,7 @@ Square** MapGenerator::generateMap(int size) {
 				map[i][j] = (Square)MapGenerator::randBounds(1, 6);
 			}
 		}
+		printf("Test\n");
 	} while(!Graph::isConnectedGraph(map, size));
 	return map;
 }

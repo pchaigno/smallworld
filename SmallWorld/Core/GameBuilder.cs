@@ -8,7 +8,9 @@ using System.Drawing;
 
 namespace SmallWorld {
 
+    // TODO Should be a singleton.
     public abstract class GameBuilder: IGameBuilder {
+        // TODO Are those really necessary?
         protected int maxRounds;
         protected int mapSize;
         protected int nbUnits;

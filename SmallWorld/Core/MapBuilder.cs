@@ -8,6 +8,7 @@ using System.Drawing;
 namespace SmallWorld {
 
     public class MapBuilder: IMapBuilder {
+        // TODO Should be a singleton.
 
         /**
          * Builds a map.

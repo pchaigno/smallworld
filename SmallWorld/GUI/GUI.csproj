@@ -144,6 +144,18 @@
       <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\background.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Button.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\ButtonHover.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>copy "$(SolutionDir)$(ConfigurationName)\LibCpp.dll" "$(TargetDir)"

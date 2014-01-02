@@ -1,7 +1,7 @@
 #include "MapGenerator.h"
 
 int main() {
-	int size = 5;
+	int size = 15;
     Square** map = MapGenerator::generateMap(size);
 	for(int i=0; i<size; i++) {
 		for(int j=0; j<size; j++) {
@@ -41,10 +41,10 @@ int main() {
 	/**
 	 * Test the placement of the units.
 	 */
-	Point* pos = MapGenerator::placeUnits(map, size);
+	/*Point* pos = MapGenerator::placeUnits(map, size);
 	printf("(%d, %d)\n", pos[0].x, pos[0].y);
 	printf("(%d, %d)\n", pos[1].x, pos[1].y);
-	printf("\n");
+	printf("\n");*/
 
 	system("pause");
     return 0;

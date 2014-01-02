@@ -9,6 +9,8 @@ namespace SmallWorld {
         private IUnitFactory factory;
         private string name;
         private int points;
+        private int number;
+        private static int count = 0;
 
         /**
          * Constructor
@@ -18,6 +20,8 @@ namespace SmallWorld {
         public Player(string name, IUnitFactory factory) {
             this.name = name;
             this.factory = factory;
+            count++;
+            this.number = count;
         }
 
         /**
@@ -32,6 +36,20 @@ namespace SmallWorld {
          */
         public int getPoints() {
             return this.points;
+        }
+
+        /**
+         * @returns The number assigned to the player.
+         */
+        public int getNumber() {
+            return this.number;
+        }
+
+        /**
+         * @returns The number associated to the nation of the player.
+         */
+        public int getNationNumber() {
+            return this.factory.getNumber();
         }
 
         /**
@@ -53,6 +71,21 @@ namespace SmallWorld {
          */
         public void addPoints(int n) {
             this.points += n;
+        }
+
+        public override bool Equals(Object obj) {
+            if(obj == null) {
+                return false;
+            }
+            if(!(obj is Player)) {
+                return false;
+            }
+            Player player = (Player)obj;
+            return this.number == player.number;
+        }
+
+        public override int GetHashCode() {
+            return this.number.GetHashCode();
         }
     }
 }

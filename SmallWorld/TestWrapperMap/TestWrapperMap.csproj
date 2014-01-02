@@ -55,8 +55,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestMapGenerator.cs" />
+    <Compile Include="TestAdviceGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -68,6 +69,10 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj">
+      <Project>{66ed7790-8914-4075-909b-59edb4162a31}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LibCLR\LibCLR.vcxproj">
       <Project>{20709410-3e0f-48f4-a32a-8532a665bfc3}</Project>
       <Name>LibCLR</Name>

@@ -48,11 +48,6 @@ namespace GUI {
 
             this.unitSelecterCollec = new Dictionary<Border, IUnit>();
             this.selectedUnit = null;
-
-            BitmapImage background = new BitmapImage(new Uri(@"..\..\Ressources\background.jpg", UriKind.Relative));
-            ImageBrush myBrush = new ImageBrush();
-            myBrush.ImageSource = background;
-            this.Background = myBrush;
         }
 
         /**
@@ -99,7 +94,7 @@ namespace GUI {
             Grid.SetColumn(rectangle, col);
             Grid.SetRow(rectangle, line);
             rectangle.StrokeThickness = 1;
-            rectangle.Stroke = Brushes.Black;
+            rectangle.Stroke = Brushes.Transparent;
 
             rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(this.rectangleMouseLeftMapHandler);
             rectangle.MouseRightButtonDown += new MouseButtonEventHandler(this.rectangleMouseRightHandler);
@@ -123,18 +118,18 @@ namespace GUI {
                 TextBlock unitText = new TextBlock();
                 unitText.Text = unit.getRemainingMovementPoints()+" MvPt \n"+unit.getLifePoints()+" lifePt";
                 unitText.FontSize = 14;
-                unitText.Foreground = Brushes.Red;
+                unitText.Foreground = Brushes.Black;
                 unitText.FontWeight = FontWeights.Bold;
-                //border.Child = unitText;
-                border.Width = 100;
-                border.Height = 100;
-                border.BorderThickness = new Thickness(3);
+                border.Child = unitText;
+                border.Width = 80;
+                border.Height = 120;
+                border.BorderThickness = new Thickness(2);
                 if(i == 0) {
-                    border.BorderBrush = Brushes.Red;
+                    border.BorderBrush = Brushes.Black;
                     i++;
                     selectedUnit = border;
                 } else {
-                    border.BorderBrush = Brushes.Black;
+                    border.BorderBrush = Brushes.Transparent;
                 }
 
                 border.MouseLeftButtonDown += new MouseButtonEventHandler(this.rectangleMouseLefUnitSelectertHandler);
@@ -184,7 +179,7 @@ namespace GUI {
                         Grid.SetColumn(rectangle, y);
                         Grid.SetRow(rectangle, x);
                         rectangle.StrokeThickness = 1;
-                        rectangle.Stroke = Brushes.Black;
+                        rectangle.Stroke = Brushes.Transparent;
                         rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(this.rectangleMouseLeftMapHandler);
                         rectangle.MouseRightButtonDown += new MouseButtonEventHandler(this.rectangleMouseRightHandler);
                         rectangle.MouseEnter += new MouseEventHandler(this.mouseEnterHandler);
@@ -207,7 +202,7 @@ namespace GUI {
         public void mouseEnterHandler(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             rectangle.StrokeThickness = 1;
-            rectangle.Stroke = Brushes.Blue;
+            rectangle.Stroke = Brushes.Black;
         }
 
         /**
@@ -223,7 +218,7 @@ namespace GUI {
                 rectangle.Stroke = Brushes.Red;
             } else {
                 rectangle.StrokeThickness = 1;
-                rectangle.Stroke = Brushes.Black;
+                rectangle.Stroke = Brushes.Transparent;
             }
         }
 
@@ -243,7 +238,7 @@ namespace GUI {
             this.unitSelecterCollec.Clear();
             this.unitSelecter.Children.Clear();
             if(this.selectedSquare != null) {
-                this.selectedSquare.Stroke = Brushes.Black;
+                this.selectedSquare.Stroke = Brushes.Transparent;
             }
 
             IRound round = game.getRound();
@@ -270,10 +265,10 @@ namespace GUI {
          * @param e The event.
          */
         public void rectangleMouseLefUnitSelectertHandler(object sender, MouseEventArgs e) {
-            this.selectedUnit.BorderBrush = Brushes.Black;
+            this.selectedUnit.BorderBrush = Brushes.Transparent;
 
             Border border = sender as Border;
-            border.BorderBrush = Brushes.Red;
+            border.BorderBrush = Brushes.Black;
             this.game.getRound().selectUnit(this.unitSelecterCollec[border]);
             selectedUnit = border;
             e.Handled = true;
