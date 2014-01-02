@@ -1,9 +1,34 @@
 ﻿<Window x:Class="GUI.CreateGame"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Creator" Height="600" Width="500">
-    <StackPanel>
-        <Grid Margin="20" HorizontalAlignment="Center" VerticalAlignment="Center" Name="mapGrid">
+        Title="Creator">
+
+    <Window.Resources>
+        <Style x:Key="textStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Pristina" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="10"/>
+        </Style>
+        <Style x:Key="comboStyle" TargetType="ComboBox">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Pristina" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Width" Value="200"/>
+        </Style>
+        <Style x:Key="boxStyle" TargetType="TextBox">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Pristina" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Width" Value="200"/>
+        </Style>
+    </Window.Resources>
+
+    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+        <TextBlock Width="500" Height="155" HorizontalAlignment="Center" Margin="10" Name="title"></TextBlock>
+        <Grid Margin="20" Name="mapGrid">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
@@ -19,22 +44,22 @@
                 <RowDefinition />
                 <RowDefinition />
             </Grid.RowDefinitions>
-            <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="0">Map size:</TextBlock>
-            <ComboBox Width="200" Height="20px" SelectionChanged="onChangeMap" Grid.Column="1" Grid.Row="0" Name="mapBox" ItemsSource="{Binding}" />
+            <TextBlock Style="{StaticResource textStyle}" Grid.Column="0" Grid.Row="0">Map size:</TextBlock>
+            <ComboBox Style="{StaticResource comboStyle}" SelectionChanged="onChangeMap" Grid.Column="1" Grid.Row="0" Name="mapBox" ItemsSource="{Binding}" />
 
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="1"></TextBlock>
-            <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="2">Player1</TextBlock>
-            <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="3">Name:</TextBlock>
-            <TextBox Margin="10" FontSize="20" Grid.Column="1" Grid.Row="3" Name="name1Box">Obelix</TextBox>
-            <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="4">People:</TextBlock>
-            <ComboBox Width="200" Height="20px" SelectionChanged="onChangePeople1" ItemsSource="{Binding}" Grid.Column="1" Grid.Row="4" Name="people1Box" />
+            <TextBlock Style="{StaticResource textStyle}" Grid.Column="0" Grid.Row="2">Player 1</TextBlock>
+            <TextBlock Style="{StaticResource textStyle}" Grid.Column="0" Grid.Row="3">Name:</TextBlock>
+            <TextBox Style="{StaticResource boxStyle}" Grid.Column="1" Grid.Row="3" Name="name1Box">Obelix</TextBox>
+            <TextBlock Style="{StaticResource textStyle}" Grid.Column="0" Grid.Row="4">People:</TextBlock>
+            <ComboBox Style="{StaticResource comboStyle}" SelectionChanged="onChangePeople1" ItemsSource="{Binding}" Grid.Column="1" Grid.Row="4" Name="people1Box" />
 
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="5"></TextBlock>
-            <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="6">Player2</TextBlock>
-            <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="7">Name:</TextBlock>
-            <TextBox Margin="10" FontSize="20" Grid.Column="1" Grid.Row="7" Name="name2Box">Thor</TextBox>
-            <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="8">People:</TextBlock>
-            <ComboBox Width="200" Height="20px" SelectionChanged="onChangePeople2" Grid.Column="1" Grid.Row="8" ItemsSource="{Binding}" Name="people2Box" />
+            <TextBlock Style="{StaticResource textStyle}" Grid.Column="0" Grid.Row="6">Player 2</TextBlock>
+            <TextBlock Style="{StaticResource textStyle}" Grid.Column="0" Grid.Row="7">Name:</TextBlock>
+            <TextBox Style="{StaticResource boxStyle}" Grid.Column="1" Grid.Row="7" Name="name2Box">Thor</TextBox>
+            <TextBlock Style="{StaticResource textStyle}" Grid.Column="0" Grid.Row="8">People:</TextBlock>
+            <ComboBox Style="{StaticResource comboStyle}" SelectionChanged="onChangePeople2" Grid.Column="1" Grid.Row="8" ItemsSource="{Binding}" Name="people2Box" />
 
             
 
@@ -47,3 +72,5 @@
 
     </StackPanel>
 </Window>
+
+

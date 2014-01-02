@@ -37,6 +37,7 @@ namespace GUI {
          * @param game The game represented by the window.
          */
         public MapWindow(IGame game) {
+            this.WindowState = WindowState.Maximized;
             InitializeComponent();
 
             this.game = game;
@@ -47,6 +48,11 @@ namespace GUI {
 
             this.unitSelecterCollec = new Dictionary<Border, IUnit>();
             this.selectedUnit = null;
+
+            BitmapImage background = new BitmapImage(new Uri(@"..\..\Ressources\background.jpg", UriKind.Relative));
+            ImageBrush myBrush = new ImageBrush();
+            myBrush.ImageSource = background;
+            this.Background = myBrush;
         }
 
         /**
@@ -119,7 +125,7 @@ namespace GUI {
                 unitText.FontSize = 14;
                 unitText.Foreground = Brushes.Red;
                 unitText.FontWeight = FontWeights.Bold;
-                border.Child = unitText;
+                //border.Child = unitText;
                 border.Width = 100;
                 border.Height = 100;
                 border.BorderThickness = new Thickness(3);
@@ -145,13 +151,13 @@ namespace GUI {
          */
         private void displayInfoPlayer() {
             IPlayer player1 = this.game.getPlayer1();
-            this.playerD1.Text = player1.getName()+" - Units: "+this.game.getNbUnits(player1)+" - Points :"+player1.getPoints();
+            this.playerD1.Text = player1.getName()+"     " + this.game.getNbUnits(player1)+ " Units     " + player1.getPoints() + " Pts";
 
             IPlayer player2 = this.game.getPlayer2();
-            this.playerD2.Text = player2.getName()+" - Units: "+this.game.getNbUnits(player2)+" - Points :"+player2.getPoints();
+            this.playerD2.Text = player2.getName() + "     " + this.game.getNbUnits(player2) + " Units     " + player2.getPoints() + " Pts";
 
             this.roundD.Text = "Round number: "+this.game.getCurrentRound();
-            this.currentD.Text = "Current PLayer: "+this.game.getCurrentPlayer().getName();
+            this.currentD.Text = "Current Player: "+this.game.getCurrentPlayer().getName();
 
             this.lastMove.Text = this.game.getRound().getLastMoveInfo();
         }

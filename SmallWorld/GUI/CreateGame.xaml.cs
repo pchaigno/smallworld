@@ -34,6 +34,7 @@ namespace GUI {
          * Intiliases the selectors.
          */
         public CreateGame() {
+            this.WindowState = WindowState.Maximized;
             InitializeComponent();
 
             mapCollection = new MapCollection();
@@ -48,6 +49,19 @@ namespace GUI {
             people2Box.DataContext = people2Collec;
             people2Box.SelectedItem = "Vikings";
 
+            BitmapImage background = new BitmapImage(new Uri(@"..\..\Ressources\background.jpg", UriKind.Relative));
+            ImageBrush myBrush = new ImageBrush();
+            myBrush.ImageSource = background;
+            this.Background = myBrush;
+
+            launcher.Background = myBrush;
+            name1Box.Background = myBrush;
+            people1Box.Background = myBrush;
+
+            background = new BitmapImage(new Uri(@"..\..\Ressources\title.png", UriKind.Relative));
+            myBrush = new ImageBrush();
+            myBrush.ImageSource = background;
+            title.Background = myBrush;
         }
 
         /**
