@@ -16,6 +16,7 @@ namespace SmallWorld {
         void moveUnit(IUnit unit, Point currentPosition, Point newPosition);
         void removeUnit(IUnit unit, Point position);
         int getSize();
-        Dictionary<IUnit, ISquare> getUnits(IPlayer player);
+        // TODO Should use an interface IPoint.
+        Dictionary<IUnit, Point> getUnits(IPlayer player);
     }
 }

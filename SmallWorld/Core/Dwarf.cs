@@ -15,9 +15,10 @@ namespace SmallWorld {
          * Dwarfs win twice the points when they are on a forest;
          * they don't win any if they are on a sea or on a lowland square.
          * @param position The type of square the unit is currently on.
+         * @param neighbours The neighbour squares (array of 4 squares or null if out bounds).
          * @returns The number of points won by the unit depending on the square she's on.
          */
-        public override int getPoint(ISquare square) {
+        public override int getPoints(ISquare square, ISquare[] neighbours) {
             if(square is IForest) {
                 return 2;
             } else if(square is ISea || square is ILowland) {

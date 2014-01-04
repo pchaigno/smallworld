@@ -89,10 +89,11 @@ namespace SmallWorld {
         }
 
         /**
-         * @param position The type of square the unit is currently on.
+         * @param square The type of square the unit is currently on.
+         * @param neighbours The neighbour squares (array of 4 squares or null if out bounds).
          * @returns The points won by the unit for this round.
          */
-        public abstract int getPoint(ISquare square);
+        public abstract int getPoints(ISquare square, ISquare[] neighbours);
 
         /**
          * Move the unit to its destination point and update the number of remaining points.

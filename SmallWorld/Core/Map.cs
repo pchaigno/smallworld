@@ -115,16 +115,16 @@ namespace SmallWorld {
         /**
          * Retrieves all units of a player.
          * @param player The player.
-         * @returns A dictionary of the units with the type of square they're on.
+         * @returns A dictionary of the units with their position.
          */
-        public Dictionary<IUnit, ISquare> getUnits(IPlayer player) {
-            Dictionary<IUnit, ISquare> result = new Dictionary<IUnit, ISquare>();
+        public Dictionary<IUnit, Point> getUnits(IPlayer player) {
+            Dictionary<IUnit, Point> result = new Dictionary<IUnit, Point>();
             for(int x=0; x<this.size; x++) {
                 for(int y=0; y<this.size; y++) {
                     List<IUnit> unitsAtPosition = this.units[x, y];
                     if(unitsAtPosition.Count > 0 && unitsAtPosition[0].getOwner() == player) {
                         foreach(IUnit unit in unitsAtPosition) {
-                            result.Add(unit, this.squares[x, y]);
+                            result.Add(unit, new Point(x, y));
                         }
                     }
                 }

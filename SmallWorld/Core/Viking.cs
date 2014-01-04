@@ -13,21 +13,27 @@ namespace SmallWorld {
         }
 
         /**
-         * Vikings win twice the points when they are on lowland;
+         * Vikings win one more point when they are next to the sea;
          * they don't win any if they are on the sea or in the desert.
-         * @param position The type of square the unit is currently on.
+         * @param square The type of square the unit is currently on.
+         * @param neighbours The neighbour squares (array of 4 squares or null if out bounds).
          * @returns The number of points won by the unit depending on the square she's on.
          */
         // TODO See Unit: Is 'override' needed?
-        public override int getPoint(ISquare square) {
+        public override int getPoints(ISquare square, ISquare[] neighbours) {
+            int points = 1;
             if(square is ILowland) {
-                // TODO Near sea instead of lowlands.
-                return 2;
+                points = 2;
             } else if(square is ISea || square is IDesert) {
-                return 0;
-            } else {
-                return 1;
+                points = 0;
             }
+            foreach(ISquare neighbour in neighbours) {
+                if(neighbour is ISea) {
+                    points++;
+                    break;
+                }
+            }
+            return points;
         }
 
         /**

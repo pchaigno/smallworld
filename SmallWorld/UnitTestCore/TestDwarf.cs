@@ -18,11 +18,12 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestGetPoints() {
-            Assert.AreEqual(2, dwarf.getPoint(new Forest()));
-            Assert.AreEqual(0, dwarf.getPoint(new Sea()));
-            Assert.AreEqual(0, dwarf.getPoint(new Lowland()));
-            Assert.AreEqual(1, dwarf.getPoint(new Desert()));
-            Assert.AreEqual(1, dwarf.getPoint(new Mountain()));
+            ISquare[] neighbours = new ISquare[] { new Lowland(), new Lowland(), new Lowland(), new Lowland() };
+            Assert.AreEqual(2, dwarf.getPoints(new Forest(), neighbours));
+            Assert.AreEqual(0, dwarf.getPoints(new Sea(), neighbours));
+            Assert.AreEqual(0, dwarf.getPoints(new Lowland(), neighbours));
+            Assert.AreEqual(1, dwarf.getPoints(new Desert(), neighbours));
+            Assert.AreEqual(1, dwarf.getPoints(new Mountain(), neighbours));
         }
 
         [TestMethod]

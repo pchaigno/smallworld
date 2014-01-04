@@ -16,12 +16,14 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestGetPoints() {
-            Assert.AreEqual(1, viking.getPoint(new Forest()));
-            Assert.AreEqual(0, viking.getPoint(new Sea()));
-            // TODO Near sea instead of lowlands.
-            Assert.AreEqual(2, viking.getPoint(new Lowland()));
-            Assert.AreEqual(0, viking.getPoint(new Desert()));
-            Assert.AreEqual(1, viking.getPoint(new Mountain()));
+            ISquare[] neighbours = new ISquare[4] {new Lowland(), new Lowland(), new Lowland(), new Lowland()};
+            Assert.AreEqual(1, viking.getPoints(new Forest(), neighbours));
+            Assert.AreEqual(0, viking.getPoints(new Sea(), neighbours));
+            Assert.AreEqual(1, viking.getPoints(new Lowland(), neighbours));
+            neighbours[0] = new Sea();
+            Assert.AreEqual(2, viking.getPoints(new Lowland(), neighbours));
+            Assert.AreEqual(0, viking.getPoints(new Desert(), neighbours));
+            Assert.AreEqual(1, viking.getPoints(new Mountain(), neighbours));
         }
 
         [TestMethod]

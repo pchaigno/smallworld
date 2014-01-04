@@ -82,9 +82,11 @@ namespace SmallWorld {
          * End the current round and start the next one.
          */
         public void endRound() {
-            Dictionary<IUnit, ISquare> units = map.getUnits(this.currentPlayer);
+            Dictionary<IUnit, Point> units = map.getUnits(this.currentPlayer);
             foreach(IUnit unit in units.Keys) {
-                this.currentPlayer.addPoints(unit.getPoint(units[unit]));
+                ISquare square = this.map.getSquare(units[unit]);
+                ISquare[] neighbours = this.getNeighbours(units[unit]);
+                this.currentPlayer.addPoints(unit.getPoints(square, neighbours));
                 unit.resetMovementPoints();
             }
             if(this.currentPlayer == this.player1) {
@@ -94,6 +96,27 @@ namespace SmallWorld {
                 this.currentRound++;
             }
             this.round = new Round(this, this.currentPlayer);
+        }
+
+        /**
+         * Retrieve the neighbours' types of a specific position.
+         * @param pos The position.
+         * @returns An array of neighbours' types, or null if a neighbour was out bounds.
+         */
+        private ISquare[] getNeighbours(Point pos) {
+            int[] xOffset = {0, -1, 0, 1};
+            int[] yOffset = {0, -1, 0, 1};
+            ISquare[] neighbours = new ISquare[4];
+            for(int i=0; i<4; i++) {
+                int x = pos.X + xOffset[i];
+                int y = pos.Y + yOffset[i];
+                if(x >= 0 && y >= 0 && x < this.map.getSize() && y < this.map.getSize()) {
+                    neighbours[i] = this.map.getSquare(new Point(x, y));
+                } else {
+                    neighbours[i] = null;
+                }
+            }
+            return neighbours;
         }
 
         /**
