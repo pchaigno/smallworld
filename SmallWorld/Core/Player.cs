@@ -68,8 +68,12 @@ namespace SmallWorld {
         /**
          * Add some points to the player.
          * @param n The number of points to add.
+         * @throws ArgumentOutOfRangeException If n if negative.
          */
         public void addPoints(int n) {
+            if(n < 0) {
+                throw new ArgumentOutOfRangeException("Only a positive number of points can be added to a player.");
+            }
             this.points += n;
         }
 

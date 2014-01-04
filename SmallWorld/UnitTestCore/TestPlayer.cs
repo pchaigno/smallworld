@@ -21,7 +21,12 @@ namespace UnitTestCore {
             Assert.AreEqual(0, player.getPoints());
             player.addPoints(5);
             Assert.AreEqual(5, player.getPoints());
-            player.addPoints(-5);
+            try {
+                player.addPoints(-5);
+                Assert.Fail();
+            } catch(ArgumentOutOfRangeException e) {
+            
+            }
             Assert.AreEqual(5, player.getPoints());
         }
 
