@@ -12,12 +12,12 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Point = System.Drawing.Point;
-using Bitmap = System.Drawing.Bitmap;
+using BitMap = System.Drawing.Bitmap;
 using Image = System.Drawing.Image;
 using TextureBrush = System.Drawing.TextureBrush;
 using Graphics = System.Drawing.Graphics;
 using SmallWorld;
+using Point = SmallWorld.Point;
 using GUI;
 
 namespace GUI {

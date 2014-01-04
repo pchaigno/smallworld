@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Drawing;
 using mWrapper;
 
 namespace SmallWorld {
@@ -41,7 +40,6 @@ namespace SmallWorld {
          * @returns The list of advised desinations.
          */
         public List<Point> getAdvisedDestinations(IUnit unit, Point pos) {
-            // TODO Retrieve from wrapper.
             IMap map = this.game.getMap();
             ISquare[,] squares = map.getSquares();
             int[][] mapBis = new int[map.getSize()][];

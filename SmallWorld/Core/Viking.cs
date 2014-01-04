@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Drawing;
 using System.Diagnostics;
 
 namespace SmallWorld {
@@ -42,7 +41,7 @@ namespace SmallWorld {
          * @returns True if the unit can move to the destination.
          */
         public override bool canMove(Point currentPosition, Point destination, ISquare square) {
-            return isNext(destination, currentPosition) 
+            return destination.isNext(currentPosition) 
                 && remainingMovementPoints>0;
         }
     }

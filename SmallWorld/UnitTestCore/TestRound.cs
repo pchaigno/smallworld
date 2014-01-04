@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmallWorld;
-using System.Drawing;
 using System.Collections.Generic;
 using System.Diagnostics;
 
@@ -100,7 +99,7 @@ namespace UnitTestCore {
                 }
             }
             Assert.Fail("nothing next to " + currentPos);
-            return new Point();
+            return null;
         }
     }
 }

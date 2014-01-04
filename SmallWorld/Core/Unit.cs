@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Drawing;
 
 namespace SmallWorld {
 
@@ -90,17 +89,6 @@ namespace SmallWorld {
         }
 
         /**
-         * Checks if two positions are adjacent.
-         * @param a The first position.
-         * @param b The second position.
-         * @returns True if the two positions are adjacent.
-         */
-        // TODO Should be in Point (or the Coordinate class if we had one...).
-        public static bool isNext(Point a, Point b) {
-            return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y) == 1;
-        }
-
-        /**
          * @param position The type of square the unit is currently on.
          * @returns The points won by the unit for this round.
          */
@@ -125,7 +113,7 @@ namespace SmallWorld {
          * @returns True if the unit can move to the destination.
          */
         public virtual bool canMove(Point currentPosition, Point destination, ISquare square) {
-            return isNext(destination, currentPosition) 
+            return destination.isNext(currentPosition) 
                 && remainingMovementPoints > 0
                 && !(square is ISea);
         }

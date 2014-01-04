@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using mWrapper;
-using System.Drawing;
 
 namespace SmallWorld {
 

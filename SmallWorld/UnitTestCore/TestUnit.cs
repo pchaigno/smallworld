@@ -1,7 +1,6 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmallWorld;
-using System.Drawing;
 
 namespace UnitTestCore {
     [TestClass]
@@ -42,14 +41,6 @@ namespace UnitTestCore {
                 unit.decreaseLifePoints();
             }
             Assert.IsFalse(unit.isAlive());
-        }
-
-        [TestMethod]
-        public void TestIsNext() {
-            Assert.IsTrue(Unit.isNext(new Point(0, 1), new Point(0, 0)));
-            Assert.IsFalse(Unit.isNext(new Point(1, 1), new Point(0, 0)));
-            Assert.IsTrue(Unit.isNext(new Point(14, 14), new Point(14, 13)));
-            Assert.IsFalse(Unit.isNext(new Point(14, 14), new Point(13, 13)));
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Drawing;
 using SmallWorld;
 
 namespace UnitTestCore {

@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using SmallWorld;
 using mWrapper;
-using System.Drawing;
 
 namespace SmallWorld {
 
-    // TODO Should be a singleton.
+    // TODO Should be a singleton?
     public abstract class GameBuilder: IGameBuilder {
         // TODO Are those really necessary?
         protected int maxRounds;

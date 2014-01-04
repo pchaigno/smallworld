@@ -60,6 +60,7 @@
     <Compile Include="TestGaulois.cs" />
     <Compile Include="TestDwarf.cs" />
     <Compile Include="TestRound.cs" />
+    <Compile Include="TestPoint.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Core\Core.csproj">
