@@ -15,6 +15,7 @@ private:
 	static vector<Point> getConnectedComposant(map<Point, vector<Point>> graph, Point vertex);
 	static vector<Point> getKeys(map<Point, vector<Point>> graph);
 	static bool inArray(Point pt, vector<Point> points);
+	static int Graph::getIndex(Point pt, Point* points, int nbPoints);
 
 public:
 	static bool isConnectedGraph(Square** map, int size);

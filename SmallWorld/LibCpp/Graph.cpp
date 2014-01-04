@@ -16,7 +16,6 @@ bool Graph::isConnectedGraph(Square** map, int size) {
  * Converts the map to a graph.
  * Squares are vertices if they're not sea.
  * Two squares are connected if they're adjacent (an unit can go from one to the other in one move).
- * TODO Put the number sea as a constant.
  * Note: Sea is represented by 1.
  * @param map The map randomly generated.
  * @param size The size of the map.
@@ -87,13 +86,7 @@ vector<Point> Graph::getConnectedComposant(map<Point, vector<Point>> graph, Poin
 		} else {
 			n[index]++;
 			Point pt = graph[vertices[index]][n[index]];
-			// Get the index for pt:
-			j = -1;
-			for(int i=0; i<graph.size(); i++) {
-				if(vertices[i] == pt) {
-					j = i;
-				}
-			}
+			j = Graph::getIndex(pt, vertices, graph.size());
 			if(p[j] == -1) {
 				p[j] = index;
 				index = j;
@@ -176,9 +169,8 @@ int** Graph::getBestCostRouting(map<Point, vector<Point>> graph, Point* vertices
  * Checks if a point if in a vector of points.
  * @param pt The point.
  * @param points The vector of points.
+ * @returns True if pt is in points.
  */
-// TODO Change vector of graph to array.
-// TODO Use inArray for the core of Tarjan algorithm.
 bool Graph::inArray(Point pt, vector<Point> points) {
 	for(int i=0; i<points.size(); i++) {
 		if(pt == points[i]) {
@@ -186,4 +178,20 @@ bool Graph::inArray(Point pt, vector<Point> points) {
 		}
 	}
 	return false;
+}
+
+/**
+ * Checks if a point if in a vector of points.
+ * @param pt The point.
+ * @param points The array of points.
+ * @param nbPoints The number of points in the array.
+ * @returns The index of pt in points or -1 if pt is not in points.
+ */
+int Graph::getIndex(Point pt, Point* points, int nbPoints) {
+	for(int i=0; i<nbPoints; i++) {
+		if(pt == points[i]) {
+			return i;
+		}
+	}
+	return -1;
 }
