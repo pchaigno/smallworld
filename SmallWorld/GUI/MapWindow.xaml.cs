@@ -312,19 +312,27 @@ namespace GUI {
 
             this.unitSelecterCollec.Clear();
             this.unitSelecter.Children.Clear();
+
             this.displayUnitsOnMap();
             this.displayInfoPlayer();
 
             if(this.game.isEndOfGame()) {
                 IPlayer player = this.game.getWinner();
-                // TODO Handle draw situations.
-                string messageBoxText = "Congratulation "+player.getName()+"\n You have defeated your enemy !";
-                string caption = "Victory!";
+
                 MessageBoxButton button = MessageBoxButton.OK;
                 MessageBoxImage icon = MessageBoxImage.Exclamation;
-                // Display message box
-                MessageBox.Show(messageBoxText, caption, button, icon);
 
+                if(player != null) {
+                    string messageBoxText = "Congratulation " + player.getName() + "\n You have defeated your enemy !";
+                    string caption = "Victory!";
+
+                    MessageBox.Show(messageBoxText, caption, button, icon);
+                } else {
+                    string messageBoxText = "This fight ended in a draw...";
+                    string caption = "Draw!";
+
+                    MessageBox.Show(messageBoxText, caption, button, icon);
+                }
                 this.Close();
             }
         }
