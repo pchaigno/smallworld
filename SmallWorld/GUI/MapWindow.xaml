@@ -16,7 +16,7 @@
             <Setter Property="Margin" Value="10"/>
             <Setter Property="Background">
                 <Setter.Value>
-                    <ImageBrush ImageSource="Images/Button.png"></ImageBrush>
+                    <ImageBrush ImageSource="Resources/button.png"></ImageBrush>
                 </Setter.Value>
             </Setter>
             <Setter Property="Width" Value="140"/>
@@ -34,7 +34,7 @@
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background">
                                     <Setter.Value>
-                                        <ImageBrush ImageSource="Images/ButtonHover.png"></ImageBrush>
+                                        <ImageBrush ImageSource="Resources/buttonHover.png"></ImageBrush>
                                     </Setter.Value>
                                 </Setter>
                             </Trigger>
@@ -46,7 +46,7 @@
     </Window.Resources>
     
     <Window.Background>
-        <ImageBrush ImageSource="Images/background.jpg"></ImageBrush>
+        <ImageBrush ImageSource="Resources/background.jpg"></ImageBrush>
     </Window.Background>
     
     <DockPanel>

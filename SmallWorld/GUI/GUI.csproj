@@ -145,16 +145,29 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="button.png" />
+    <Resource Include="Resources\background.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\background.jpg" />
+    <Resource Include="Resources\button.png" />
+    <Resource Include="Resources\buttonHover.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\Button.png" />
+    <Resource Include="Resources\Dwarf.png" />
+    <Resource Include="Resources\DwarfM.png" />
+    <Resource Include="Resources\DwarfUnit.png" />
+    <Resource Include="Resources\gaulois.png" />
+    <Resource Include="Resources\gauloisM.png" />
+    <Resource Include="Resources\gauloisUnit.png" />
+    <Resource Include="Resources\viking.png" />
+    <Resource Include="Resources\vikingM.png" />
+    <Resource Include="Resources\VikingUnit.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\ButtonHover.png" />
+    <Resource Include="Resources\Squares\desert.png" />
+    <Resource Include="Resources\Squares\forest.png" />
+    <Resource Include="Resources\Squares\lowland.png" />
+    <Resource Include="Resources\Squares\mountain.png" />
+    <Resource Include="Resources\Squares\sea.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
