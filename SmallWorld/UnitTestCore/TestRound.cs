@@ -23,11 +23,11 @@ namespace UnitTestCore {
             IRound round = game.getRound();
             for(int i = 0; i < size; i++) {
                 for(int j = 0; j < size; j++) {
-                    Point pos = new Point(i, j);
+                    IPoint pos = new Point(i, j);
                     if(round.isCurrentPlayerPosition(pos)) {
                         IUnit unit = round.getUnits(pos)[0];
                         round.selectUnit(unit, pos);
-                        Point destination = getDestination(game, pos, unit);
+                        IPoint destination = getDestination(game, pos, unit);
                         Assert.IsTrue(round.setDestination(destination));
                         round.executeMove();
 
@@ -52,11 +52,11 @@ namespace UnitTestCore {
             IRound round = game.getRound();
             for(int i = 0; i < size; i++) {
                 for(int j = 0; j < size; j++) {
-                    Point pos = new Point(i, j);
+                    IPoint pos = new Point(i, j);
                     if(round.isCurrentPlayerPosition(pos)) {
                         IUnit unit = round.getUnits(pos)[0];
                         round.selectUnit(unit, pos);
-                        Point destination = getDestination(game, pos, unit);
+                        IPoint destination = getDestination(game, pos, unit);
                         Assert.IsTrue(game.getCurrentPlayer().Equals(game.getPlayer1()));
                         IUnit enemy = game.getPlayer2().createUnits(1)[0];
                         game.getMap().placeUnit(enemy, destination);
@@ -84,7 +84,7 @@ namespace UnitTestCore {
             }
         }
 
-        private Point getDestination(IGame game, Point currentPos, IUnit unit) {
+        private IPoint getDestination(IGame game, IPoint currentPos, IUnit unit) {
             int size = game.getMap().getSize();
             int[] xOffsets = new int[4] {0, -1, 1, 0};
             int[] yOffsets = new int[4] {-1, 0, 0, 1};
@@ -92,7 +92,7 @@ namespace UnitTestCore {
                 int x = currentPos.X + xOffsets[i];
                 int y = currentPos.Y + yOffsets[i];
                 if(x>=0 && y>=0 && x<size && y<size) {
-                    Point destination = new Point(x, y);
+                    IPoint destination = new Point(x, y);
                     if(!(game.getMap().getSquare(destination) is ISea) && !game.getMap().isEnemyPosition(destination, unit)) {
                         return destination;
                     }

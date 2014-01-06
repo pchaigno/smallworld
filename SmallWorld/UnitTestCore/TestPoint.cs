@@ -9,7 +9,7 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestConstructor() {
-            Point pt = new Point(1, 5);
+            IPoint pt = new Point(1, 5);
             Assert.AreEqual(1, pt.X);
             Assert.AreEqual(5, pt.Y);
             pt.X = 10;

@@ -82,7 +82,7 @@ namespace SmallWorld {
          * End the current round and start the next one.
          */
         public void endRound() {
-            Dictionary<IUnit, Point> units = map.getUnits(this.currentPlayer);
+            Dictionary<IUnit, IPoint> units = map.getUnits(this.currentPlayer);
             foreach(IUnit unit in units.Keys) {
                 ISquare square = this.map.getSquare(units[unit]);
                 ISquare[] neighbours = this.getNeighbours(units[unit]);
@@ -103,7 +103,7 @@ namespace SmallWorld {
          * @param pos The position.
          * @returns An array of neighbours' types, or null if a neighbour was out bounds.
          */
-        private ISquare[] getNeighbours(Point pos) {
+        private ISquare[] getNeighbours(IPoint pos) {
             int[] xOffset = {0, -1, 0, 1};
             int[] yOffset = {0, -1, 0, 1};
             ISquare[] neighbours = new ISquare[4];

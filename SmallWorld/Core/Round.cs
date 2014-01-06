@@ -10,8 +10,8 @@ namespace SmallWorld {
         private IGame game;
         private IPlayer player;
         private IUnit selectedUnit;
-        private Point selectedPosition;
-        private Point destination;
+        private IPoint selectedPosition;
+        private IPoint destination;
         // TODO We should use a code and code/messages correspondances for move information.
         private String lastMoveInfo;
 
@@ -39,7 +39,7 @@ namespace SmallWorld {
          * @param pos The unit's position.
          * @returns The list of advised desinations.
          */
-        public List<Point> getAdvisedDestinations(IUnit unit, Point pos) {
+        public List<IPoint> getAdvisedDestinations(IUnit unit, IPoint pos) {
             IMap map = this.game.getMap();
             ISquare[,] squares = map.getSquares();
             int[][] mapBis = new int[map.getSize()][];
@@ -59,7 +59,7 @@ namespace SmallWorld {
             int nationPlayer1 = this.game.getPlayer1().getNationNumber();
             int nationPlayer2 = this.game.getPlayer2().getNationNumber();
             int[][] result = Wrapper.getAdvice(mapBis, map.getSize(), nationPlayer1, nationPlayer2, pos.X, pos.Y, units, this.player.getNumber());
-            List<Point> advice = new List<Point>();
+            List<IPoint> advice = new List<IPoint>();
             for(int i=0; i<3; i++) {
                 if(result[i][0]!=-1 && result[i][1]!=-1) {
                     advice.Add(new Point(result[i][0], result[i][1]));
@@ -83,7 +83,7 @@ namespace SmallWorld {
          * @param unit The unit to select.
          * @param position The unit's position.
          */
-        public void selectUnit(IUnit unit, Point position) {
+        public void selectUnit(IUnit unit, IPoint position) {
             this.selectedUnit = unit;
             this.selectedPosition = position;
         }
@@ -101,7 +101,7 @@ namespace SmallWorld {
          * @param position The position
          * @returns The units on this position.
          */
-        public List<IUnit> getUnits(Point position) {
+        public List<IUnit> getUnits(IPoint position) {
             return this.game.getMap().getUnits(position);
         }
 
@@ -110,7 +110,7 @@ namespace SmallWorld {
          * @param position The position.
          * @returns True if the position is under the control of the current player.
          */
-        public Boolean isCurrentPlayerPosition(Point position) {
+        public Boolean isCurrentPlayerPosition(IPoint position) {
             List<IUnit> units = this.game.getMap().getUnits(position);
             return units.Count > 0 
                 && units[0].getOwner() == this.player;
@@ -122,7 +122,7 @@ namespace SmallWorld {
          * @param destination The desination.
          * @param True if the current unit can move to the destination.
          */
-        public bool setDestination(Point destination) {
+        public bool setDestination(IPoint destination) {
             if(this.selectedUnit == null) {
                 this.lastMoveInfo = "You have to select a unit first.";
                 return false;

@@ -7,13 +7,13 @@ namespace SmallWorld {
 
     public interface IRound {
 
-        List<Point> getAdvisedDestinations(IUnit unit, Point position);
+        List<IPoint> getAdvisedDestinations(IUnit unit, IPoint position);
         void selectUnit(IUnit unit);
-        void selectUnit(IUnit unit, Point position);
+        void selectUnit(IUnit unit, IPoint position);
         void unselectUnit();
-        bool setDestination(Point destination);
-        List<IUnit> getUnits(Point position);
-        Boolean isCurrentPlayerPosition(Point position);
+        bool setDestination(IPoint destination);
+        List<IUnit> getUnits(IPoint position);
+        Boolean isCurrentPlayerPosition(IPoint position);
         void executeMove();
         String getLastMoveInfo();
     }
