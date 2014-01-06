@@ -13,7 +13,7 @@ namespace SmallWorld {
         void unselectUnit();
         bool setDestination(IPoint destination);
         List<IUnit> getUnits(IPoint position);
-        Boolean isCurrentPlayerPosition(IPoint position);
+        bool isCurrentPlayerPosition(IPoint position);
         void executeMove();
         String getLastMoveInfo();
     }

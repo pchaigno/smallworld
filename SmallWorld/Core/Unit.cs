@@ -84,7 +84,7 @@ namespace SmallWorld {
          * Checks if the unit is alive.
          * @returns True if the unit is alive.
          */
-        public Boolean isAlive() {
+        public bool isAlive() {
             return this.lifePoints > 0;
         }
 

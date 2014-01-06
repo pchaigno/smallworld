@@ -36,7 +36,7 @@ namespace SmallWorld {
          * @param square The type of square the destination is.
          * @returns True if the unit can move to the destination.
          */
-        public override Boolean canMove(IPoint currentPosition, IPoint destination, ISquare square) {
+        public override bool canMove(IPoint currentPosition, IPoint destination, ISquare square) {
             return base.canMove(currentPosition, destination, square)
                 && !(square is IMountain);
         }

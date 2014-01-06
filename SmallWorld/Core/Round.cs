@@ -110,7 +110,7 @@ namespace SmallWorld {
          * @param position The position.
          * @returns True if the position is under the control of the current player.
          */
-        public Boolean isCurrentPlayerPosition(IPoint position) {
+        public bool isCurrentPlayerPosition(IPoint position) {
             List<IUnit> units = this.game.getMap().getUnits(position);
             return units.Count > 0 
                 && units[0].getOwner() == this.player;
@@ -128,7 +128,7 @@ namespace SmallWorld {
                 return false;
             }
 
-            Boolean result = selectedUnit.canMove(this.selectedPosition, destination, game.getMap().getSquare(destination));
+            bool result = selectedUnit.canMove(this.selectedPosition, destination, game.getMap().getSquare(destination));
             if(result) {
                 this.destination = destination;
             } else {
@@ -163,7 +163,7 @@ namespace SmallWorld {
          * and the best one from the selected destination.
          * @returns True if the selected unit won the fight.
          */
-        private Boolean combat() {
+        private bool combat() {
             IUnit enemy = getBestUnit();
 
             Random randCombat = new Random();
