@@ -53,7 +53,7 @@ namespace SmallWorld {
          * @param position A position.
          * @returns The units at the position given.
          */
-        public List<IUnit> getUnits(Point position) {
+        public List<IUnit> getUnits(IPoint position) {
             return this.units[position.X, position.Y];
         }
 
@@ -62,7 +62,7 @@ namespace SmallWorld {
          * @param position The position.
          * @param unit The unit.
          */
-        public bool isEnemyPosition(Point position, IUnit unit) {
+        public bool isEnemyPosition(IPoint position, IUnit unit) {
             if(this.units[position.X, position.Y].Count == 0) {
                 return false;
             } else {
@@ -75,7 +75,7 @@ namespace SmallWorld {
          * @param unit The unit.
          * @param position The position for the unit.
          */
-        public void placeUnit(IUnit unit, Point position) {
+        public void placeUnit(IUnit unit, IPoint position) {
             this.units[position.X, position.Y].Add(unit);
         }
 
@@ -84,7 +84,7 @@ namespace SmallWorld {
          * @param position The position.
          * @returns The square at this position.
          */
-        public ISquare getSquare(Point position) {
+        public ISquare getSquare(IPoint position) {
             return this.squares[position.X, position.Y];
         }
 
@@ -94,7 +94,7 @@ namespace SmallWorld {
          * @param newPosition The new position.
          * @throws An exception if it's an enemy position.
          */
-        public void moveUnit(IUnit unit, Point currentPosition, Point newPosition) {
+        public void moveUnit(IUnit unit, IPoint currentPosition, IPoint newPosition) {
             this.units[currentPosition.X, currentPosition.Y].Remove(unit);
             if(this.isEnemyPosition(newPosition, unit)) {
                 throw new Exception("Erreur dans le deplacement");
@@ -108,7 +108,7 @@ namespace SmallWorld {
          * @param unit The unit.
          * @param position The position of the unit.
          */
-        public void removeUnit(IUnit unit, Point position) {
+        public void removeUnit(IUnit unit, IPoint position) {
             this.units[position.X, position.Y].Remove(unit);
         }
 
@@ -117,8 +117,8 @@ namespace SmallWorld {
          * @param player The player.
          * @returns A dictionary of the units with their position.
          */
-        public Dictionary<IUnit, Point> getUnits(IPlayer player) {
-            Dictionary<IUnit, Point> result = new Dictionary<IUnit, Point>();
+        public Dictionary<IUnit, IPoint> getUnits(IPlayer player) {
+            Dictionary<IUnit, IPoint> result = new Dictionary<IUnit, IPoint>();
             for(int x=0; x<this.size; x++) {
                 for(int y=0; y<this.size; y++) {
                     List<IUnit> unitsAtPosition = this.units[x, y];

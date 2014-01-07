@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace SmallWorld {
 
-    public class Point {
+    public class Point: IPoint {
         public int X {
             get;
             set;
@@ -31,7 +31,7 @@ namespace SmallWorld {
          * @param pt The position.
          * @returns True if the two positions are adjacent.
          */
-        public bool isNext(Point pt) {
+        public bool isNext(IPoint pt) {
             return Math.Abs(this.X - pt.X) + Math.Abs(this.Y - pt.Y) == 1;
         }
 
@@ -42,14 +42,14 @@ namespace SmallWorld {
             if(!(obj is Point)) {
                 return false;
             }
-            Point pt = (Point)obj;
+            IPoint pt = (Point)obj;
             return this.X == pt.X && this.Y == pt.Y;
         }
 
         public override int GetHashCode() {
             int hash = 17;
-            hash = hash * 23 + X.GetHashCode();
-            hash = hash * 23 + Y.GetHashCode();
+            hash = hash * 23 + this.X.GetHashCode();
+            hash = hash * 23 + this.Y.GetHashCode();
             return hash;
         }
     }

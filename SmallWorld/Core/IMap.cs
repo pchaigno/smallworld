@@ -7,16 +7,16 @@ namespace SmallWorld {
 
     public interface IMap {
 
-        List<IUnit> getUnits(Point coordinates);
-        bool isEnemyPosition(Point position, IUnit unit);
-        void placeUnit(IUnit unit, Point position);
-        ISquare getSquare(Point position);
+        List<IUnit> getUnits(IPoint coordinates);
+        bool isEnemyPosition(IPoint position, IUnit unit);
+        void placeUnit(IUnit unit, IPoint position);
+        ISquare getSquare(IPoint position);
         ISquare[,] getSquares();
         List<IUnit>[,] getUnits();
-        void moveUnit(IUnit unit, Point currentPosition, Point newPosition);
-        void removeUnit(IUnit unit, Point position);
+        void moveUnit(IUnit unit, IPoint currentPosition, IPoint newPosition);
+        void removeUnit(IUnit unit, IPoint position);
         int getSize();
         // TODO Should use an interface IPoint.
-        Dictionary<IUnit, Point> getUnits(IPlayer player);
+        Dictionary<IUnit, IPoint> getUnits(IPlayer player);
     }
 }

@@ -9,7 +9,6 @@ namespace SmallWorld {
 
     // TODO Should be a singleton?
     public abstract class GameBuilder: IGameBuilder {
-        // TODO Are those really necessary?
         protected int maxRounds;
         protected int mapSize;
         protected int nbUnits;
@@ -34,8 +33,8 @@ namespace SmallWorld {
             IPlayer player2 = new Player(name2, factory2);
 
             int[][] starts = Wrapper.getStartsPlayers(mapAsIntegers, this.mapSize);
-            Point startPlayer1 = new Point(starts[0][0], starts[0][1]);
-            Point startPlayer2 = new Point(starts[1][0], starts[1][1]);
+            IPoint startPlayer1 = new Point(starts[0][0], starts[0][1]);
+            IPoint startPlayer2 = new Point(starts[1][0], starts[1][1]);
 
             List<IUnit> units1 = player1.createUnits(this.nbUnits);
             for(int i = 0; i < this.nbUnits; i++) {
