@@ -209,14 +209,12 @@ namespace GUI {
          * Display advised destination on the map
          * @param positions advised destination
          */
-        private void displayAdvisedDestination(List<Point> positions) {
+        private void displayAdvisedDestination(List<IPoint> positions) {
             if(advisedDestination != null) {
-                foreach(Point point in positions) {
+                foreach(IPoint point in positions) {
                     Rectangle rect = squareRectangles[point.X, point.Y];
-                    if(selectedSquare != rect) {
-                        rect.Stroke = advisedBrush;
-                        advisedDestination.Add(rect);
-                    }
+                    rect.Stroke = advisedBrush;
+                    advisedDestination.Add(rect);
                 }
             }
         }
@@ -273,7 +271,7 @@ namespace GUI {
             var rectangle = sender as Rectangle;
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
-            Point position = new Point(row, column);
+            IPoint position = new Point(row, column);
 
             // Clear old selection
             this.unitSelecterCollec.Clear();
@@ -323,7 +321,7 @@ namespace GUI {
 
             int column = Grid.GetColumn(this.selectedSquare);
             int row = Grid.GetRow(this.selectedSquare);
-            Point position = new Point(row, column);
+            IPoint position = new Point(row, column);
 
             if(!multipleSelection) {
                 //clear old selection
@@ -368,7 +366,7 @@ namespace GUI {
             var rectangle = sender as Rectangle;
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
-            Point position = new Point(row, column);
+            IPoint position = new Point(row, column);
 
             IRound round = this.game.getRound();
             if(round.setDestination(position)) {
