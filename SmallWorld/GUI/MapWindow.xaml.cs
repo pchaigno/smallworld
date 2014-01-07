@@ -28,18 +28,20 @@ namespace GUI {
     public partial class MapWindow: Window {
 
         private Brush selectedBrush = Brushes.Red;
-        private Brush oberBrush = Brushes.Black;
+        private Brush overBrush = Brushes.Black;
         private Brush unitSelecterBrush = Brushes.Black;
         private Brush advisedBrush = Brushes.Blue;
         private Brush defaultBrush = Brushes.Transparent;
 
         private IGame game;
         private Rectangle[,] unitRectangles;
-        private Rectangle[,] rectangles;
+        private Rectangle[,] squareRectangles;
         private Rectangle selectedSquare;
         private Dictionary<Border, IUnit> unitSelecterCollec;
-        private Border selectedUnit;
+        private List<Border> selectedUnitBorder;
         private List<Rectangle> advisedDestination;
+
+        private bool multipleSelection;
 
         /**
          * Constructor
@@ -55,7 +57,11 @@ namespace GUI {
             this.selectedSquare = null;
             this.unitSelecterCollec = new Dictionary<Border, IUnit>();
             this.advisedDestination = new List<Rectangle>();
-            this.selectedUnit = null;
+            this.selectedUnitBorder = new List<Border>();
+            this.multipleSelection = false;
+
+            this.KeyDown += new KeyEventHandler(OnButtonKeyDown);
+            this.KeyUp += new KeyEventHandler(OnButtonKeyUp);
         }
 
         /**
@@ -73,7 +79,7 @@ namespace GUI {
                 });
             }
 
-            rectangles = new Rectangle[size, size];
+            squareRectangles = new Rectangle[size, size];
 
             for(int l=0; l<size; l++) {
                 this.mapGrid.RowDefinitions.Add(new RowDefinition() {
@@ -84,7 +90,7 @@ namespace GUI {
                     ISquare type = map.getSquare(new Point(l, c));
                     var rect = createSquares(type, c, l);
                     this.mapGrid.Children.Add(rect);
-                    rectangles[l, c] = rect; // is l c ?
+                    squareRectangles[l, c] = rect;
                 }
             }
 
@@ -119,13 +125,12 @@ namespace GUI {
          * Display the units selected at the left bottom of the window.
          * @param units The units selected.
          */
-        public void displayUnitSelecter(List<IUnit> units) {
+        private void displayUnitSelecter(List<IUnit> units, List<IUnit> selectedUnits) {
             this.unitSelecterCollec = new Dictionary<Border, IUnit>();
-            int i = 0;
             foreach(IUnit unit in units) {
                 Border border = new Border();
+                
                 border.Background = ImageFactory.getInstance().getBrushUnitFace(unit);
-
                 TextBlock unitText = new TextBlock();
                 unitText.Text = unit.getRemainingMovementPoints()+" MvPt \n"+unit.getLifePoints()+" lifePt";
                 unitText.FontSize = 14;
@@ -135,21 +140,18 @@ namespace GUI {
                 border.Width = 80;
                 border.Height = 120;
                 border.BorderThickness = new Thickness(2);
-                if(i == 0) {
-                    border.BorderBrush = oberBrush;
-                    i++;
-                    selectedUnit = border;
+
+                if(selectedUnits.Contains(unit)) {
+                    border.BorderBrush = overBrush;
+                    this.selectedUnitBorder.Add(border);
                 } else {
                     border.BorderBrush = defaultBrush;
                 }
 
-                border.MouseLeftButtonDown += new MouseButtonEventHandler(this.mouseLefUnitSelecter);
-
                 this.unitSelecter.Children.Add(border);
-
                 this.unitSelecterCollec.Add(border, unit);
+                border.MouseLeftButtonDown += new MouseButtonEventHandler(this.mouseLeftUnitSelecter);
             }
-
         }
 
         /**
@@ -210,7 +212,7 @@ namespace GUI {
         private void displayAdvisedDestination(List<Point> positions) {
             if(advisedDestination != null) {
                 foreach(Point point in positions) {
-                    Rectangle rect = rectangles[point.X, point.Y];
+                    Rectangle rect = squareRectangles[point.X, point.Y];
                     if(selectedSquare != rect) {
                         rect.Stroke = advisedBrush;
                         advisedDestination.Add(rect);
@@ -222,7 +224,7 @@ namespace GUI {
         /**
          * Clear advised destinations
          */
-        public void clearAdvisedDestination() {
+        private void clearAdvisedDestination() {
             if(advisedDestination != null) {
                 foreach(Rectangle rect in advisedDestination) {
                     if(selectedSquare != rect) {
@@ -239,9 +241,9 @@ namespace GUI {
          * @param sender The rectangle sender of the notification.
          * @param e The event.
          */
-        public void mouseEnterRectangle(object sender, MouseEventArgs e) {
+        private void mouseEnterRectangle(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
-            rectangle.Stroke = oberBrush;
+            rectangle.Stroke = overBrush;
         }
 
         /**
@@ -250,7 +252,7 @@ namespace GUI {
          * @param sender The rectangle sender of the notification.
          * @param e The event.
          */
-        public void mouseLeaveRectangle(object sender, MouseEventArgs e) {
+        private void mouseLeaveRectangle(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             if(rectangle == this.selectedSquare) {
                 rectangle.Stroke = selectedBrush;
@@ -267,7 +269,7 @@ namespace GUI {
          * @param sender The rectangle sender of the notification.
          * @param e The event.
          */
-        public void mouseLeftMapRectangle(object sender, MouseEventArgs e) {
+        private void mouseLeftMapRectangle(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
@@ -276,21 +278,30 @@ namespace GUI {
             // Clear old selection
             this.unitSelecterCollec.Clear();
             this.unitSelecter.Children.Clear();
+            this.selectedUnitBorder.Clear();
+            clearAdvisedDestination();
             if(this.selectedSquare != null) {
                 this.selectedSquare.Stroke = Brushes.Transparent;
             }
-            clearAdvisedDestination();
 
             IRound round = game.getRound();
             if(round.isCurrentPlayerPosition(position)) {
                 List<IUnit> units = round.getUnits(position);
-                round.selectUnit(units[0], position);
-                this.displayUnitSelecter(units);
+                List<IUnit> selectedUnits = new List<IUnit>();
 
+                if(this.multipleSelection) {
+                    foreach(IUnit unit in units) {
+                        selectedUnits.Add(unit);
+                    }
+                } else {
+                    selectedUnits.Add(units[0]);
+                }
+                round.selectUnits(selectedUnits, position);
+
+                this.displayUnitSelecter(units, selectedUnits);
                 this.displayAdvisedDestination(round.getAdvisedDestinations(units[0], position));
 
                 rectangle.Stroke = selectedBrush;
-
                 selectedSquare = rectangle;
             } else {
                 round.unselectUnit();
@@ -305,7 +316,8 @@ namespace GUI {
          * @param sender The sender of the notification, the object clicked.
          * @param e The event.
          */
-        public void mouseLefUnitSelecter(object sender, MouseEventArgs e) {
+        private void mouseLeftUnitSelecter(object sender, MouseEventArgs e) {
+
             IRound round = this.game.getRound();
             Border border = sender as Border;
 
@@ -313,14 +325,35 @@ namespace GUI {
             int row = Grid.GetRow(this.selectedSquare);
             Point position = new Point(row, column);
 
-            this.selectedUnit.BorderBrush = Brushes.Transparent;
-            border.BorderBrush = unitSelecterBrush;
-            round.selectUnit(this.unitSelecterCollec[border]);
-            selectedUnit = border;
+            if(!multipleSelection) {
+                //clear old selection
+                foreach(Border borderUnit in selectedUnitBorder) {
+                    borderUnit.BorderBrush = Brushes.Transparent;
+                }
+                selectedUnitBorder.Clear();
+            }
+
+            if(!this.selectedUnitBorder.Contains(border)) {
+                border.BorderBrush = unitSelecterBrush;
+                selectedUnitBorder.Add(border);
+            } else {
+                border.BorderBrush = defaultBrush;
+                selectedUnitBorder.Remove(border);
+            }
+
+            List<IUnit> selectedUnits = new List<IUnit>();
+            if(multipleSelection) {
+                foreach (Border borderUnit in this.selectedUnitBorder) {
+                    selectedUnits.Add(this.unitSelecterCollec[borderUnit]);
+                }
+            } else {
+                selectedUnits.Add(this.unitSelecterCollec[border]);
+            }
+            round.selectUnits(selectedUnits);
+
 
             clearAdvisedDestination();
             this.displayAdvisedDestination(round.getAdvisedDestinations(this.unitSelecterCollec[border], position));
-
 
             e.Handled = true;
         }
@@ -331,7 +364,7 @@ namespace GUI {
          * @param sender The rectangle sender of the notification.
          * @param e The event.
          */
-        public void mouseRightMapRectangle(object sender, MouseEventArgs e) {
+        private void mouseRightMapRectangle(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
@@ -349,6 +382,7 @@ namespace GUI {
             this.unitSelecterCollec.Clear();
             this.unitSelecter.Children.Clear();
             this.clearAdvisedDestination();
+            this.selectedUnitBorder.Clear();
 
             e.Handled = true;
         }
@@ -359,12 +393,13 @@ namespace GUI {
          * @param sender The sender of the notification.
          * @param e The event.
          */
-        public void onClickEndRound(object sender, RoutedEventArgs e) {
+        private void onClickEndRound(object sender, RoutedEventArgs e) {
             this.game.endRound();
 
             this.unitSelecterCollec.Clear();
             this.unitSelecter.Children.Clear();
             this.clearAdvisedDestination();
+            this.selectedUnitBorder.Clear();
 
             this.displayUnitsOnMap();
             this.displayInfoPlayer();
@@ -388,6 +423,29 @@ namespace GUI {
                 }
                 this.Close();
             }
+        }
+
+
+        /**
+         * Listener for pressed shift key
+         * Activate the multiple selection mode
+         */
+        private void OnButtonKeyDown(object sender, KeyEventArgs e) {
+            if(e.Key == Key.LeftShift || e.Key == Key.RightCtrl) {
+                this.multipleSelection = true;
+            }
+            e.Handled = true;
+        }
+
+        /**
+         * Listener for pressed shift key
+         * Deactive the multiple selection mode
+         */
+        private void OnButtonKeyUp(object sender, KeyEventArgs e) {
+            if(e.Key == Key.LeftShift || e.Key == Key.RightCtrl) {
+                this.multipleSelection = false;
+            }
+            e.Handled = true;
         }
     }
 }
