@@ -26,7 +26,9 @@ namespace UnitTestCore {
                     IPoint pos = new Point(i, j);
                     if(round.isCurrentPlayerPosition(pos)) {
                         IUnit unit = round.getUnits(pos)[0];
-                        round.selectUnit(unit, pos);
+                        List<IUnit> unitsL = new List<IUnit>();
+                        unitsL.Add(unit);
+                        round.selectUnits(unitsL, pos);
                         IPoint destination = getDestination(game, pos, unit);
                         Assert.IsTrue(round.setDestination(destination));
                         round.executeMove();
@@ -55,7 +57,9 @@ namespace UnitTestCore {
                     IPoint pos = new Point(i, j);
                     if(round.isCurrentPlayerPosition(pos)) {
                         IUnit unit = round.getUnits(pos)[0];
-                        round.selectUnit(unit, pos);
+                        List<IUnit> unitsL = new List<IUnit>();
+                        unitsL.Add(unit);
+                        round.selectUnits(unitsL, pos);
                         IPoint destination = getDestination(game, pos, unit);
                         Assert.IsTrue(game.getCurrentPlayer().Equals(game.getPlayer1()));
                         IUnit enemy = game.getPlayer2().createUnits(1)[0];
