@@ -125,7 +125,6 @@ namespace SmallWorld {
                 throw new Exception("Erreur dans le deplacement");
             }
             this.units[newPosition.X, newPosition.Y].Add(unit);
-            unit.move(this.getSquare(newPosition));
         }
 
         /**
