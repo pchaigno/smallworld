@@ -24,7 +24,7 @@ namespace SmallWorld {
          * @param neighbours The neighbour squares (array of 4 squares or null if out bounds).
          * @returns The number of points won by the unit depending on the square she's on.
          */
-        public override int getPoints(ISquare square, ISquare[] neighbours) {
+        public override int GetPoints(ISquare square, ISquare[] neighbours) {
             if(square is IForest) {
                 return 2;
             } else if(square is ISea || square is ILowland) {
@@ -42,8 +42,8 @@ namespace SmallWorld {
          * @param square The type of square the destination is.
          * @returns True if the unit can move to the destination.
          */
-        public override bool canMove(IPoint currentPosition, ISquare currentSquare, IPoint destination, ISquare square) {
-            return base.canMove(currentPosition, currentSquare, destination, square)
+        public override bool CanMove(IPoint currentPosition, ISquare currentSquare, IPoint destination, ISquare square) {
+            return base.CanMove(currentPosition, currentSquare, destination, square)
                 || (currentSquare is IMountain && square is IMountain);
         }
     }

@@ -31,7 +31,7 @@ namespace SmallWorld {
          * @param pt The position.
          * @returns True if the two positions are adjacent.
          */
-        public bool isNext(IPoint pt) {
+        public bool IsNext(IPoint pt) {
             return Math.Abs(this.X - pt.X) + Math.Abs(this.Y - pt.Y) == 1;
         }
 

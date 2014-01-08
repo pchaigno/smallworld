@@ -10,13 +10,6 @@ namespace SmallWorld {
     public class Forest: IForest {
 
         /**
-         * @returns The number corresponding to this square for the C++ library.
-         */
-        public int getNumber() {
-            return 2;
-        }
-
-        /**
          * Empty constructor.
          */
         public Forest() {
@@ -30,6 +23,13 @@ namespace SmallWorld {
          */
         public Forest(SerializationInfo info, StreamingContext context) {
 
+        }
+
+        /**
+         * @returns The number corresponding to this square for the C++ library.
+         */
+        public int GetNumber() {
+            return 2;
         }
         
         /**

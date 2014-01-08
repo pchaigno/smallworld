@@ -7,9 +7,9 @@ namespace UnitTestCore {
 
     [TestClass]
     public class TestGame {
-        private static IGame demo = new DemoGameBuilder().buildGame("test1", new VikingFactory(), "test2", new GauloisFactory());
-        private static IGame small = new SmallGameBuilder().buildGame("test1", new VikingFactory(), "test2", new GauloisFactory());
-        private static IGame normal = new NormalGameBuilder().buildGame("test1", new VikingFactory(), "test2", new GauloisFactory());
+        private static IGame demo = new DemoGameBuilder().BuildGame("test1", new VikingFactory(), "test2", new GauloisFactory());
+        private static IGame small = new SmallGameBuilder().BuildGame("test1", new VikingFactory(), "test2", new GauloisFactory());
+        private static IGame normal = new NormalGameBuilder().BuildGame("test1", new VikingFactory(), "test2", new GauloisFactory());
 
         [TestMethod]
         public void TestRounds() {
@@ -19,40 +19,40 @@ namespace UnitTestCore {
         }
 
         private void TestRounds(IGame game) {
-            for(int i = 1; i <= game.getMaxNbRound(); i++) {
-                Assert.AreEqual(i, game.getCurrentRound());
-                game.endRound();
-                Assert.IsTrue(game.getPlayer2().Equals(game.getCurrentPlayer()));
-                game.endRound();
-                Assert.IsTrue(game.getPlayer1().Equals(game.getCurrentPlayer()));
+            for(int i = 1; i <= game.GetMaxNbRound(); i++) {
+                Assert.AreEqual(i, game.GetCurrentRound());
+                game.EndRound();
+                Assert.IsTrue(game.GetPlayer2().Equals(game.GetCurrentPlayer()));
+                game.EndRound();
+                Assert.IsTrue(game.GetPlayer1().Equals(game.GetCurrentPlayer()));
             }
-            Assert.IsTrue(game.isEndOfGame());
+            Assert.IsTrue(game.IsEndOfGame());
         }
 
         [TestMethod]
-        public void testMap() {
-            Assert.AreEqual(5, demo.getMap().getSize());
-            Assert.AreEqual(10, small.getMap().getSize());
-            Assert.AreEqual(15, normal.getMap().getSize());
+        public void TestMap() {
+            Assert.AreEqual(5, demo.GetMap().GetSize());
+            Assert.AreEqual(10, small.GetMap().GetSize());
+            Assert.AreEqual(15, normal.GetMap().GetSize());
         }
 
         [TestMethod]
-        public void testWinner() {
-            this.testWinner(demo);
-            this.testWinner(small);
-            this.testWinner(normal);
+        public void TestWinner() {
+            this.TestWinner(demo);
+            this.TestWinner(small);
+            this.TestWinner(normal);
         }
 
-        private void testWinner(IGame game) {
-            game.getPlayer1().addPoints(1000);
-            while(!game.isEndOfGame()) {
-                game.endRound();
-                game.endRound();
+        private void TestWinner(IGame game) {
+            game.GetPlayer1().AddPoints(1000);
+            while(!game.IsEndOfGame()) {
+                game.EndRound();
+                game.EndRound();
             }
-            Assert.IsTrue(game.getWinner().Equals(game.getPlayer1()));
+            Assert.IsTrue(game.GetWinner().Equals(game.GetPlayer1()));
 
-            game.getPlayer2().addPoints(10000);
-            Assert.IsTrue(game.getWinner().Equals(game.getPlayer2()));
+            game.GetPlayer2().AddPoints(10000);
+            Assert.IsTrue(game.GetWinner().Equals(game.GetPlayer2()));
         }
     }
 }

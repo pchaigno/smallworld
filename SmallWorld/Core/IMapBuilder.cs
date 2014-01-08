@@ -8,6 +8,6 @@ namespace SmallWorld {
 
     public interface IMapBuilder {
 
-        IMap buildMap(int size);
+        IMap BuildMap(int size);
     }
 }

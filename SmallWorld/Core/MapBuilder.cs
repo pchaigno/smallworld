@@ -15,13 +15,13 @@ namespace SmallWorld {
          * @param size The size of the map to build.
          * @returns The map.
          */
-        public IMap buildMap(int size) {
+        public IMap BuildMap(int size) {
             int[][] composition = Wrapper.generateMapList(size);
             ISquare[,] squares = new ISquare[size, size];
 
             for(int x=0; x<size; x++) {
                 for(int y=0; y<size; y++) {
-                    squares[x, y] = SquareFactory.getInstance().getSquare(composition[x][y]);
+                    squares[x, y] = SquareFactory.GetInstance().GetSquare(composition[x][y]);
                 }
             }
             return new Map(squares);

@@ -7,6 +7,6 @@ namespace SmallWorld {
 
     public interface IGameBuilder {
 
-        IGame buildGame(String name1, IUnitFactory factory1, String name2, IUnitFactory factory2);
+        IGame BuildGame(String name1, IUnitFactory factory1, String name2, IUnitFactory factory2);
     }
 }

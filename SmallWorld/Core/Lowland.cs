@@ -10,13 +10,6 @@ namespace SmallWorld {
     public class Lowland: ILowland {
 
         /**
-         * @returns The number corresponding to this square for the C++ library.
-         */
-        public int getNumber() {
-            return 4;
-        }
-
-        /**
          * Empty constructor.
          */
         public Lowland() {
@@ -30,6 +23,13 @@ namespace SmallWorld {
          */
         public Lowland(SerializationInfo info, StreamingContext context) {
 
+        }
+
+        /**
+         * @returns The number corresponding to this square for the C++ library.
+         */
+        public int GetNumber() {
+            return 4;
         }
         
         /**

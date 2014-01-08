@@ -8,6 +8,6 @@ namespace SmallWorld {
     // TODO Why is there no public/private in interfaces?
     public interface ISquareFactory {
 
-        ISquare getSquare(int i);
+        ISquare GetSquare(int i);
     }
 }

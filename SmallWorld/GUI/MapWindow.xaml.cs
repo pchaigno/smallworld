@@ -54,7 +54,7 @@ namespace GUI {
             InitializeComponent();
 
             this.game = game;
-            int size = this.game.getMap().getSize();
+            int size = this.game.GetMap().GetSize();
             this.unitRectangles = new Rectangle[size, size];
             this.selectedSquare = null;
             this.unitSelecterCollec = new Dictionary<Border, IUnit>();
@@ -73,8 +73,8 @@ namespace GUI {
          * @param e The event.
          */
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            IMap map = this.game.getMap();
-            int size = map.getSize();
+            IMap map = this.game.GetMap();
+            int size = map.GetSize();
 
             for(int c=0; c<size; c++) {
                 this.mapGrid.ColumnDefinitions.Add(new ColumnDefinition() {
@@ -90,15 +90,15 @@ namespace GUI {
                 });
 
                 for(int c = 0; c < size; c++) {
-                    ISquare type = map.getSquare(new Point(l, c));
-                    var rect = createSquares(type, c, l);
+                    ISquare type = map.GetSquare(new Point(l, c));
+                    var rect = CreateSquares(type, c, l);
                     this.mapGrid.Children.Add(rect);
                     squareRectangles[l, c] = rect;
                 }
             }
 
-            this.displayUnitsOnMap();
-            this.displayInfoPlayer();
+            this.DisplayUnitsOnMap();
+            this.DisplayInfoPlayer();
         }
 
         /**
@@ -107,7 +107,7 @@ namespace GUI {
          * @param col The abscissa of the square on the map.
          * @param line The ordinate of the square on the map.
          */
-        private Rectangle createSquares(ISquare type, int col, int line) {
+        private Rectangle CreateSquares(ISquare type, int col, int line) {
             Rectangle rectangle = new Rectangle();
 
             rectangle.Fill = ImageFactory.getInstance().getBrushSquare(type);
@@ -116,10 +116,10 @@ namespace GUI {
             rectangle.StrokeThickness = 2;
             rectangle.Stroke = defaultBrush;
 
-            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(this.mouseLeftMapRectangle);
-            rectangle.MouseRightButtonDown += new MouseButtonEventHandler(this.mouseRightMapRectangle);
-            rectangle.MouseEnter += new MouseEventHandler(this.mouseEnterRectangle);
-            rectangle.MouseLeave += new MouseEventHandler(this.mouseLeaveRectangle);
+            rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(this.MouseLeftMapRectangle);
+            rectangle.MouseRightButtonDown += new MouseButtonEventHandler(this.MouseRightMapRectangle);
+            rectangle.MouseEnter += new MouseEventHandler(this.MouseEnterRectangle);
+            rectangle.MouseLeave += new MouseEventHandler(this.MouseLeaveRectangle);
 
             return rectangle;
         }
@@ -128,14 +128,14 @@ namespace GUI {
          * Display the units selected at the left bottom of the window.
          * @param units The units selected.
          */
-        private void displayUnitSelecter(List<IUnit> units, List<IUnit> selectedUnits) {
+        private void DisplayUnitSelecter(List<IUnit> units, List<IUnit> selectedUnits) {
             this.unitSelecterCollec = new Dictionary<Border, IUnit>();
             foreach(IUnit unit in units) {
                 Border border = new Border();
                 
                 border.Background = ImageFactory.getInstance().getBrushUnitFace(unit);
                 TextBlock unitText = new TextBlock();
-                unitText.Text = unit.getRemainingMovementPoints()+" MvPt \n"+unit.getLifePoints()+" lifePt";
+                unitText.Text = unit.GetRemainingMovementPoints()+" MvPt \n"+unit.GetLifePoints()+" lifePt";
                 unitText.FontSize = 14;
                 unitText.Foreground = unitSelecterBrush;
                 unitText.FontWeight = FontWeights.Bold;
@@ -153,31 +153,31 @@ namespace GUI {
 
                 this.unitSelecter.Children.Add(border);
                 this.unitSelecterCollec.Add(border, unit);
-                border.MouseLeftButtonDown += new MouseButtonEventHandler(this.mouseLeftUnitSelecter);
+                border.MouseLeftButtonDown += new MouseButtonEventHandler(this.MouseLeftUnitSelecter);
             }
         }
 
         /**
          * Display information about the current player at the right bottom of the window.
          */
-        private void displayInfoPlayer() {
-            IPlayer player1 = this.game.getPlayer1();
-            this.playerD1.Text = player1.getName()+"     " + this.game.getNbUnits(player1)+ " Units     " + player1.getPoints() + " Pts";
+        private void DisplayInfoPlayer() {
+            IPlayer player1 = this.game.GetPlayer1();
+            this.playerD1.Text = player1.GetName()+"     " + this.game.GetNbUnits(player1)+ " Units     " + player1.GetPoints() + " Pts";
 
-            IPlayer player2 = this.game.getPlayer2();
-            this.playerD2.Text = player2.getName() + "     " + this.game.getNbUnits(player2) + " Units     " + player2.getPoints() + " Pts";
+            IPlayer player2 = this.game.GetPlayer2();
+            this.playerD2.Text = player2.GetName() + "     " + this.game.GetNbUnits(player2) + " Units     " + player2.GetPoints() + " Pts";
 
-            this.roundD.Text = "Round number: "+this.game.getCurrentRound();
-            this.currentD.Text = "Current Player: "+this.game.getCurrentPlayer().getName();
+            this.roundD.Text = "Round number: "+this.game.GetCurrentRound();
+            this.currentD.Text = "Current Player: "+this.game.GetCurrentPlayer().GetName();
 
-            this.lastMove.Text = this.game.getRound().getLastMoveInfo();
+            this.lastMove.Text = this.game.GetRound().GetLastMoveInfo();
         }
 
         /**
          * Display all units on the map.
          */
-        private void displayUnitsOnMap() {
-            List<IUnit>[,] units = this.game.getMap().getUnits();
+        private void DisplayUnitsOnMap() {
+            List<IUnit>[,] units = this.game.GetMap().GetUnits();
 
             for(int x=0; x<this.unitRectangles.GetLength(0); x++) {
                 for(int y=0; y<this.unitRectangles.GetLength(1); y++) {
@@ -196,10 +196,10 @@ namespace GUI {
                         Grid.SetRow(rectangle, x);
                         rectangle.StrokeThickness = 2;
                         rectangle.Stroke = defaultBrush;
-                        rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(this.mouseLeftMapRectangle);
-                        rectangle.MouseRightButtonDown += new MouseButtonEventHandler(this.mouseRightMapRectangle);
-                        rectangle.MouseEnter += new MouseEventHandler(this.mouseEnterRectangle);
-                        rectangle.MouseLeave += new MouseEventHandler(this.mouseLeaveRectangle);
+                        rectangle.MouseLeftButtonDown += new MouseButtonEventHandler(this.MouseLeftMapRectangle);
+                        rectangle.MouseRightButtonDown += new MouseButtonEventHandler(this.MouseRightMapRectangle);
+                        rectangle.MouseEnter += new MouseEventHandler(this.MouseEnterRectangle);
+                        rectangle.MouseLeave += new MouseEventHandler(this.MouseLeaveRectangle);
                         this.mapGrid.Children.Add(rectangle);
 
                         this.unitRectangles[x, y] = rectangle;
@@ -212,7 +212,7 @@ namespace GUI {
          * Display advised destination on the map
          * @param positions advised destination
          */
-        private void displayAdvisedDestination(List<IPoint> positions) {
+        private void DisplayAdvisedDestination(List<IPoint> positions) {
             if(advisedDestination != null) {
                 foreach(IPoint point in positions) {
                     Rectangle rect = squareRectangles[point.X, point.Y];
@@ -225,7 +225,7 @@ namespace GUI {
         /**
          * Clear advised destinations
          */
-        private void clearAdvisedDestination() {
+        private void ClearAdvisedDestination() {
             if(advisedDestination != null) {
                 foreach(Rectangle rect in advisedDestination) {
                     if(selectedSquare != rect) {
@@ -242,7 +242,7 @@ namespace GUI {
          * @param sender The rectangle sender of the notification.
          * @param e The event.
          */
-        private void mouseEnterRectangle(object sender, MouseEventArgs e) {
+        private void MouseEnterRectangle(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             rectangle.Stroke = overBrush;
         }
@@ -253,7 +253,7 @@ namespace GUI {
          * @param sender The rectangle sender of the notification.
          * @param e The event.
          */
-        private void mouseLeaveRectangle(object sender, MouseEventArgs e) {
+        private void MouseLeaveRectangle(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             if(rectangle == this.selectedSquare) {
                 rectangle.Stroke = selectedBrush;
@@ -270,7 +270,7 @@ namespace GUI {
          * @param sender The rectangle sender of the notification.
          * @param e The event.
          */
-        private void mouseLeftMapRectangle(object sender, MouseEventArgs e) {
+        private void MouseLeftMapRectangle(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
@@ -280,14 +280,14 @@ namespace GUI {
             this.unitSelecterCollec.Clear();
             this.unitSelecter.Children.Clear();
             this.selectedUnitBorder.Clear();
-            clearAdvisedDestination();
+            ClearAdvisedDestination();
             if(this.selectedSquare != null) {
                 this.selectedSquare.Stroke = Brushes.Transparent;
             }
 
-            IRound round = game.getRound();
-            if(round.isCurrentPlayerPosition(position)) {
-                List<IUnit> units = round.getUnits(position);
+            IRound round = game.GetRound();
+            if(round.IsCurrentPlayerPosition(position)) {
+                List<IUnit> units = round.GetUnits(position);
                 List<IUnit> selectedUnits = new List<IUnit>();
 
                 if(this.multipleSelection) {
@@ -297,15 +297,15 @@ namespace GUI {
                 } else {
                     selectedUnits.Add(units[0]);
                 }
-                round.selectUnits(selectedUnits, position);
+                round.SelectUnits(selectedUnits, position);
 
-                this.displayUnitSelecter(units, selectedUnits);
-                this.displayAdvisedDestination(round.getAdvisedDestinations(units[0], position));
+                this.DisplayUnitSelecter(units, selectedUnits);
+                this.DisplayAdvisedDestination(round.GetAdvisedDestinations(units[0], position));
 
                 rectangle.Stroke = selectedBrush;
                 selectedSquare = rectangle;
             } else {
-                round.unselectUnit();
+                round.UnselectUnit();
             }
 
             e.Handled = true;
@@ -317,9 +317,9 @@ namespace GUI {
          * @param sender The sender of the notification, the object clicked.
          * @param e The event.
          */
-        private void mouseLeftUnitSelecter(object sender, MouseEventArgs e) {
+        private void MouseLeftUnitSelecter(object sender, MouseEventArgs e) {
 
-            IRound round = this.game.getRound();
+            IRound round = this.game.GetRound();
             Border border = sender as Border;
 
             int column = Grid.GetColumn(this.selectedSquare);
@@ -350,11 +350,11 @@ namespace GUI {
             } else {
                 selectedUnits.Add(this.unitSelecterCollec[border]);
             }
-            round.selectUnits(selectedUnits);
+            round.SelectUnits(selectedUnits);
 
 
-            clearAdvisedDestination();
-            this.displayAdvisedDestination(round.getAdvisedDestinations(this.unitSelecterCollec[border], position));
+            ClearAdvisedDestination();
+            this.DisplayAdvisedDestination(round.GetAdvisedDestinations(this.unitSelecterCollec[border], position));
 
             e.Handled = true;
         }
@@ -365,24 +365,24 @@ namespace GUI {
          * @param sender The rectangle sender of the notification.
          * @param e The event.
          */
-        private void mouseRightMapRectangle(object sender, MouseEventArgs e) {
+        private void MouseRightMapRectangle(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             int column = Grid.GetColumn(rectangle);
             int row = Grid.GetRow(rectangle);
             IPoint position = new Point(row, column);
 
-            IRound round = this.game.getRound();
-            if(round.setDestination(position)) {
-                round.executeMove();
+            IRound round = this.game.GetRound();
+            if(round.SetDestination(position)) {
+                round.ExecuteMove();
                 this.selectedSquare.Stroke = Brushes.Black;
 
-                this.displayUnitsOnMap();
+                this.DisplayUnitsOnMap();
             }
 
-            this.displayInfoPlayer();
+            this.DisplayInfoPlayer();
             this.unitSelecterCollec.Clear();
             this.unitSelecter.Children.Clear();
-            this.clearAdvisedDestination();
+            this.ClearAdvisedDestination();
             this.selectedUnitBorder.Clear();
 
             e.Handled = true;
@@ -394,25 +394,25 @@ namespace GUI {
          * @param sender The sender of the notification.
          * @param e The event.
          */
-        private void onClickEndRound(object sender, RoutedEventArgs e) {
-            this.game.endRound();
+        private void OnClickEndRound(object sender, RoutedEventArgs e) {
+            this.game.EndRound();
 
             this.unitSelecterCollec.Clear();
             this.unitSelecter.Children.Clear();
-            this.clearAdvisedDestination();
+            this.ClearAdvisedDestination();
             this.selectedUnitBorder.Clear();
 
-            this.displayUnitsOnMap();
-            this.displayInfoPlayer();
+            this.DisplayUnitsOnMap();
+            this.DisplayInfoPlayer();
 
-            if(this.game.isEndOfGame()) {
-                IPlayer player = this.game.getWinner();
+            if(this.game.IsEndOfGame()) {
+                IPlayer player = this.game.GetWinner();
 
                 MessageBoxButton button = MessageBoxButton.OK;
                 MessageBoxImage icon = MessageBoxImage.Exclamation;
 
                 if(player != null) {
-                    string messageBoxText = "Congratulation " + player.getName() + "\n You have defeated your enemy !";
+                    string messageBoxText = "Congratulation " + player.GetName() + "\n You have defeated your enemy !";
                     string caption = "Victory!";
 
                     MessageBox.Show(messageBoxText, caption, button, icon);
@@ -432,10 +432,10 @@ namespace GUI {
          * @param sender The sender of the notification.
          * @param e The event.
          */
-        private void onClickStartNewGame(object sender, RoutedEventArgs e) {
+        private void OnClickStartNewGame(object sender, RoutedEventArgs e) {
             MessageBoxResult result = MessageBox.Show("Do you want to save the game before starting a new game?", "Open a new game", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if(result == MessageBoxResult.Yes) {
-                this.saveGame();
+                this.SaveGame();
             }
             CreateGame createWindow = new CreateGame();
             createWindow.Show();
@@ -448,7 +448,7 @@ namespace GUI {
          * @param sender The sender of the notification.
          * @param e The event.
          */
-        private void onClickOpen(object sender, RoutedEventArgs e) {
+        private void OnClickOpen(object sender, RoutedEventArgs e) {
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.DefaultExt = ".sav";
             dlg.Filter = "Saved game (*.sav) | *.sav | All files (*.*) | *.*";
@@ -456,7 +456,7 @@ namespace GUI {
             if(result == true) {
                 this.saveFile = dlg.FileName;
 
-                this.restoreGame();
+                this.RestoreGame();
             }
         }
 
@@ -466,8 +466,8 @@ namespace GUI {
          * @param sender The sender of the notification.
          * @param e The event.
          */
-        private void onClickSave(object sender, RoutedEventArgs e) {
-            this.saveGame();
+        private void OnClickSave(object sender, RoutedEventArgs e) {
+            this.SaveGame();
         }
 
         /**
@@ -476,8 +476,8 @@ namespace GUI {
          * @param sender The sender of the notification.
          * @param e The event.
          */
-        private void onClickSaveAs(object sender, RoutedEventArgs e) {
-            this.saveGameAs();
+        private void OnClickSaveAs(object sender, RoutedEventArgs e) {
+            this.SaveGameAs();
         }
 
         /**
@@ -486,10 +486,10 @@ namespace GUI {
          * @param sender The sender of the notification.
          * @param e The event.
          */
-        private void onClickExit(object sender, RoutedEventArgs e) {
+        private void OnClickExit(object sender, RoutedEventArgs e) {
             MessageBoxResult result = MessageBox.Show("Do you want to save the game before exiting?", "Exit the game", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if(result == MessageBoxResult.Yes) {
-                this.saveGame();
+                this.SaveGame();
             }
             this.Close();
         }
@@ -499,14 +499,14 @@ namespace GUI {
          * Checks that there is already a save file defined.
          * If no save file is defined, calls SaveGameAs.
          */
-        private void saveGame() {
+        private void SaveGame() {
             // TODO
         }
 
         /**
          * Saves the current game after asking for the location for the save file.
          */
-        private void saveGameAs() {
+        private void SaveGameAs() {
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.DefaultExt = ".sav";
             dlg.Filter = "Saved game (*.sav) | *.sav | All files (*.*) | *.*";
@@ -514,14 +514,14 @@ namespace GUI {
             if(result == true) {
                 this.saveFile = dlg.FileName;
 
-                this.saveGame();
+                this.SaveGame();
             }
         }
 
         /**
          * Restores the game from the current save file.
          */
-        private void restoreGame() {
+        private void RestoreGame() {
             // TODO
         }
 

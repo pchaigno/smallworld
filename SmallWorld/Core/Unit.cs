@@ -46,69 +46,69 @@ namespace SmallWorld {
         public void GetObjectData(SerializationInfo info, StreamingContext context) {
             info.AddValue("LifePoints", this.lifePoints);
             info.AddValue("MovementPoints", this.remainingMovementPoints);
-            info.AddValue("Owner", this.owner.getNumber());
+            info.AddValue("Owner", this.owner.GetNumber());
         }
 
         /**
          * @returns The unit's life points.
          */
-        public int getLifePoints() {
+        public int GetLifePoints() {
             return this.lifePoints;
         }
 
         /**
          * Remove one life point to the unit.
          */
-        public void decreaseLifePoints() {
+        public void DecreaseLifePoints() {
             this.lifePoints--;
         }
 
         /**
          * @returns The default number of life points for this unit.
          */
-        public int getDefaultLifePoints() {
+        public int GetDefaultLifePoints() {
             return DEFAULT_LIFE_POINTS;
         }
 
         /**
          * @returns The unit's defense.
          */
-        public int getAttack() {
+        public int GetAttack() {
             return ATTACK;
         }
 
         /**
          * @returns The unit's defense.
          */
-        public int getDefense() {
+        public int GetDefense() {
             return DEFENSE;
         }
 
         /**
          * @returns The number of remaining movement points for this round.
          */
-        public int getRemainingMovementPoints() {
+        public int GetRemainingMovementPoints() {
             return this.remainingMovementPoints;
         }
 
         /**
          * @returns The player owner of the unit.
          */
-        public IPlayer getOwner() {
+        public IPlayer GetOwner() {
             return this.owner;
         }
 
         /**
          * @param owner The new unit's owner.
          */
-        public void setOwner(IPlayer owner) {
+        public void SetOwner(IPlayer owner) {
             this.owner = owner;
         }
 
         /**
          * Reset the remaining movement points to the default number.
          */
-        public void resetMovementPoints() {
+        public void ResetMovementPoints() {
             this.remainingMovementPoints = DEFAULT_MOVEMENT_POINTS;
         }
 
@@ -116,7 +116,7 @@ namespace SmallWorld {
          * Checks if the unit is alive.
          * @returns True if the unit is alive.
          */
-        public bool isAlive() {
+        public bool IsAlive() {
             return this.lifePoints > 0;
         }
 
@@ -125,13 +125,13 @@ namespace SmallWorld {
          * @param neighbours The neighbour squares (array of 4 squares or null if out bounds).
          * @returns The points won by the unit for this round.
          */
-        public abstract int getPoints(ISquare square, ISquare[] neighbours);
+        public abstract int GetPoints(ISquare square, ISquare[] neighbours);
 
         /**
          * Update the number of remaining points after a move.
          * @param destination The type of square the destination is.
          */
-        public virtual void move(ISquare destination) {
+        public virtual void Move(ISquare destination) {
             this.remainingMovementPoints -= 2;
         }
 
@@ -145,8 +145,8 @@ namespace SmallWorld {
          * @param square The type of square the destination is.
          * @returns True if the unit can move to the destination.
          */
-        public virtual bool canMove(IPoint currentPosition, ISquare currentSquare, IPoint destination, ISquare square) {
-            return destination.isNext(currentPosition) 
+        public virtual bool CanMove(IPoint currentPosition, ISquare currentSquare, IPoint destination, ISquare square) {
+            return destination.IsNext(currentPosition) 
                 && remainingMovementPoints > 0
                 && !(square is ISea);
         }

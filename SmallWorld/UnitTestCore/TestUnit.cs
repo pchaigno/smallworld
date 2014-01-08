@@ -20,11 +20,11 @@ namespace UnitTestCore {
         }
 
         private void TestMovementPoints(IUnit unit) {
-            int defaultMovementPoint = unit.getRemainingMovementPoints();
-            unit.move(new Forest());
-            Assert.AreEqual(defaultMovementPoint - 2, unit.getRemainingMovementPoints());
-            unit.resetMovementPoints();
-            Assert.AreEqual(defaultMovementPoint, unit.getRemainingMovementPoints());
+            int defaultMovementPoint = unit.GetRemainingMovementPoints();
+            unit.Move(new Forest());
+            Assert.AreEqual(defaultMovementPoint - 2, unit.GetRemainingMovementPoints());
+            unit.ResetMovementPoints();
+            Assert.AreEqual(defaultMovementPoint, unit.GetRemainingMovementPoints());
         }
 
         [TestMethod]
@@ -35,15 +35,15 @@ namespace UnitTestCore {
         }
 
         private void TestLifePoints(IUnit unit) {
-            Assert.AreEqual(unit.getDefaultLifePoints(), unit.getLifePoints());
-            Assert.IsTrue(unit.isAlive());
-            unit.decreaseLifePoints();
-            Assert.AreEqual(unit.getDefaultLifePoints() - 1, unit.getLifePoints());
-            while(unit.getLifePoints() > 0) {
-                Assert.IsTrue(unit.isAlive());
-                unit.decreaseLifePoints();
+            Assert.AreEqual(unit.GetDefaultLifePoints(), unit.GetLifePoints());
+            Assert.IsTrue(unit.IsAlive());
+            unit.DecreaseLifePoints();
+            Assert.AreEqual(unit.GetDefaultLifePoints() - 1, unit.GetLifePoints());
+            while(unit.GetLifePoints() > 0) {
+                Assert.IsTrue(unit.IsAlive());
+                unit.DecreaseLifePoints();
             }
-            Assert.IsFalse(unit.isAlive());
+            Assert.IsFalse(unit.IsAlive());
         }
 
         [TestMethod]
@@ -62,11 +62,11 @@ namespace UnitTestCore {
             stream = File.Open("Unit.sav", FileMode.Open);
             formatter = new BinaryFormatter();
             IUnit savedUnit = (IUnit)formatter.Deserialize(stream);
-            savedUnit.setOwner(unit.getOwner());
+            savedUnit.SetOwner(unit.GetOwner());
             stream.Close();
-            Assert.AreEqual(unit.getLifePoints(), savedUnit.getLifePoints());
-            Assert.AreEqual(unit.getRemainingMovementPoints(), savedUnit.getRemainingMovementPoints());
-            Assert.AreEqual(unit.getOwner().getNumber(), savedUnit.getOwner().getNumber());
+            Assert.AreEqual(unit.GetLifePoints(), savedUnit.GetLifePoints());
+            Assert.AreEqual(unit.GetRemainingMovementPoints(), savedUnit.GetRemainingMovementPoints());
+            Assert.AreEqual(unit.GetOwner().GetNumber(), savedUnit.GetOwner().GetNumber());
         }
     }
 }

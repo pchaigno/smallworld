@@ -21,16 +21,16 @@ namespace UnitTestCore {
         }
 
         private void TestPoints(IPlayer player) {
-            Assert.AreEqual(0, player.getPoints());
-            player.addPoints(5);
-            Assert.AreEqual(5, player.getPoints());
+            Assert.AreEqual(0, player.GetPoints());
+            player.AddPoints(5);
+            Assert.AreEqual(5, player.GetPoints());
             try {
-                player.addPoints(-5);
+                player.AddPoints(-5);
                 Assert.Fail();
             } catch(ArgumentOutOfRangeException e) {
             
             }
-            Assert.AreEqual(5, player.getPoints());
+            Assert.AreEqual(5, player.GetPoints());
         }
 
         [TestMethod]
@@ -41,7 +41,7 @@ namespace UnitTestCore {
         }
 
         private void TestCreateUnits(IPlayer player, Type unitType) {
-            List<IUnit> units = player.createUnits(2);
+            List<IUnit> units = player.CreateUnits(2);
             Assert.AreEqual(2, units.Count);
             foreach(IUnit unit in units) {
                 Assert.IsInstanceOfType(unit, unitType);
@@ -59,9 +59,9 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestNumber() {
-            Assert.AreNotEqual(viking.getNumber(), gaulois.getNumber());
-            Assert.AreNotEqual(gaulois.getNumber(), dwarf.getNumber());
-            Assert.AreNotEqual(dwarf.getNumber(), viking.getNumber());
+            Assert.AreNotEqual(viking.GetNumber(), gaulois.GetNumber());
+            Assert.AreNotEqual(gaulois.GetNumber(), dwarf.GetNumber());
+            Assert.AreNotEqual(dwarf.GetNumber(), viking.GetNumber());
         }
 
         [TestMethod]
@@ -82,9 +82,9 @@ namespace UnitTestCore {
             IPlayer savedPlayer = (IPlayer)formatter.Deserialize(stream);
             stream.Close();
             Assert.IsTrue(player.Equals(savedPlayer));
-            Assert.AreEqual(player.getPoints(), savedPlayer.getPoints());
-            Assert.AreEqual(player.getName(), savedPlayer.getName());
-            Assert.AreEqual(player.getNationNumber(), savedPlayer.getNationNumber());
+            Assert.AreEqual(player.GetPoints(), savedPlayer.GetPoints());
+            Assert.AreEqual(player.GetName(), savedPlayer.GetName());
+            Assert.AreEqual(player.GetNationNumber(), savedPlayer.GetNationNumber());
         }
     }
 }

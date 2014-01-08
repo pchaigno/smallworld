@@ -16,6 +16,6 @@ namespace SmallWorld {
             set;
         }
 
-        bool isNext(IPoint pt);
+        bool IsNext(IPoint pt);
     }
 }

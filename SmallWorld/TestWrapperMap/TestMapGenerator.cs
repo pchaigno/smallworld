@@ -33,8 +33,8 @@ namespace TestWrapperMap {
             this.TestStartPlayer(10);
             this.TestStartPlayer(15);
 
-            int sea = new Sea().getNumber();
-            int forest = new Forest().getNumber();
+            int sea = new Sea().GetNumber();
+            int forest = new Forest().GetNumber();
             int[][] map = new int[][] {
                 new int[5] {sea, sea, sea, sea, sea},
                 new int[5] {sea, sea, sea, sea, sea},
@@ -52,7 +52,7 @@ namespace TestWrapperMap {
         private void TestStartPlayer(int size) {
             int[][] map = Wrapper.generateMapList(size);
             int[][] starts = Wrapper.getStartsPlayers(map, size);
-            int seaNumber = new Sea().getNumber();
+            int seaNumber = new Sea().GetNumber();
             Assert.AreEqual(2, starts.Length);
             Assert.AreEqual(2, starts[0].Length);
             for(int i=0; i<2; i++) {

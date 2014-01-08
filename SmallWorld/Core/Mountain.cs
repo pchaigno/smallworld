@@ -10,13 +10,6 @@ namespace SmallWorld {
     public class Mountain: IMountain {
 
         /**
-         * @returns The number corresponding to this square for the C++ library.
-         */
-        public int getNumber() {
-            return 5;
-        }
-
-        /**
          * Empty constructor.
          */
         public Mountain() {
@@ -30,6 +23,13 @@ namespace SmallWorld {
          */
         public Mountain(SerializationInfo info, StreamingContext context) {
 
+        }
+
+        /**
+         * @returns The number corresponding to this square for the C++ library.
+         */
+        public int GetNumber() {
+            return 5;
         }
         
         /**

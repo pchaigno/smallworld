@@ -10,13 +10,6 @@ namespace SmallWorld {
     public class Sea: ISea {
 
         /**
-         * @returns The number corresponding to this square for the C++ library.
-         */
-        public int getNumber() {
-            return 1;
-        }
-
-        /**
          * Empty constructor.
          */
         public Sea() {
@@ -30,6 +23,13 @@ namespace SmallWorld {
          */
         public Sea(SerializationInfo info, StreamingContext context) {
 
+        }
+
+        /**
+         * @returns The number corresponding to this square for the C++ library.
+         */
+        public int GetNumber() {
+            return 1;
         }
         
         /**

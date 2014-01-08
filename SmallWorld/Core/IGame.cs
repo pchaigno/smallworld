@@ -7,16 +7,16 @@ namespace SmallWorld {
 
     public interface IGame {
 
-        bool isEndOfGame();
-        IPlayer getWinner();
-        IPlayer getPlayer1();
-        IPlayer getPlayer2();
-        IMap getMap();
-        void endRound();
-        IRound getRound();
-        int getCurrentRound();
-        int getMaxNbRound();
-        IPlayer getCurrentPlayer();
-        int getNbUnits(IPlayer p);
+        bool IsEndOfGame();
+        IPlayer GetWinner();
+        IPlayer GetPlayer1();
+        IPlayer GetPlayer2();
+        IMap GetMap();
+        void EndRound();
+        IRound GetRound();
+        int GetCurrentRound();
+        int GetMaxNbRound();
+        IPlayer GetCurrentPlayer();
+        int GetNbUnits(IPlayer p);
     }
 }

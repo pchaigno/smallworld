@@ -13,7 +13,7 @@ namespace SmallWorld {
          * @param player The player owner of the unit.
          * @returns The viking unit.
          */
-        public IUnit createUnit(IPlayer player) {
+        public IUnit CreateUnit(IPlayer player) {
             return new Viking(player);
         }
 
@@ -21,7 +21,7 @@ namespace SmallWorld {
          * Used by the wrapper.
          * @returns The number corresponding to this factory/nation.
          */
-        public int getNumber() {
+        public int GetNumber() {
             return 1;
         }
     }

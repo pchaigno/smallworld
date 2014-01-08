@@ -85,27 +85,27 @@
                 <RowDefinition />
             </Grid.RowDefinitions>
             <TextBlock Style="{StaticResource textStyle}" Grid.Column="0" Grid.Row="0">Map size:</TextBlock>
-            <ComboBox Style="{StaticResource comboStyle}" SelectionChanged="onChangeMap" Grid.Column="1" Grid.Row="0" Name="mapBox" ItemsSource="{Binding}" />
+            <ComboBox Style="{StaticResource comboStyle}" SelectionChanged="OnChangeMap" Grid.Column="1" Grid.Row="0" Name="mapBox" ItemsSource="{Binding}" />
 
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="1"></TextBlock>
             <TextBlock Style="{StaticResource textStyle}" Grid.Column="0" Grid.Row="2">Player 1</TextBlock>
             <TextBlock Style="{StaticResource textStyle}" Grid.Column="0" Grid.Row="3">Name:</TextBlock>
             <TextBox Style="{StaticResource boxStyle}" Grid.Column="1" Grid.Row="3" Name="name1Box">Obelix</TextBox>
             <TextBlock Style="{StaticResource textStyle}" Grid.Column="0" Grid.Row="4">People:</TextBlock>
-            <ComboBox Style="{StaticResource comboStyle}" SelectionChanged="onChangePeople1" ItemsSource="{Binding}" Grid.Column="1" Grid.Row="4" Name="people1Box" />
+            <ComboBox Style="{StaticResource comboStyle}" SelectionChanged="OnChangePeople1" ItemsSource="{Binding}" Grid.Column="1" Grid.Row="4" Name="people1Box" />
 
             <TextBlock Margin="10" FontSize="20" Grid.Column="0" Grid.Row="5"></TextBlock>
             <TextBlock Style="{StaticResource textStyle}" Grid.Column="0" Grid.Row="6">Player 2</TextBlock>
             <TextBlock Style="{StaticResource textStyle}" Grid.Column="0" Grid.Row="7">Name:</TextBlock>
             <TextBox Style="{StaticResource boxStyle}" Grid.Column="1" Grid.Row="7" Name="name2Box">Thor</TextBox>
             <TextBlock Style="{StaticResource textStyle}" Grid.Column="0" Grid.Row="8">People:</TextBlock>
-            <ComboBox Style="{StaticResource comboStyle}" SelectionChanged="onChangePeople2" Grid.Column="1" Grid.Row="8" ItemsSource="{Binding}" Name="people2Box" />
+            <ComboBox Style="{StaticResource comboStyle}" SelectionChanged="OnChangePeople2" Grid.Column="1" Grid.Row="8" ItemsSource="{Binding}" Name="people2Box" />
 
             
 
         </Grid>
 
-        <Button Name="launcher" Click="onClickLauncher" Style="{StaticResource buttonStyle}"
+        <Button Name="launcher" Click="OnClickLauncher" Style="{StaticResource buttonStyle}"
         Width="150" Height="50">
             Launch!
         </Button>

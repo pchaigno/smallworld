@@ -55,10 +55,10 @@ namespace GUI {
          * @param sender The sender of the notification.
          * @param e The event.
          */
-        public void onChangePeople1(object sender, SelectionChangedEventArgs e) {
+        public void OnChangePeople1(object sender, SelectionChangedEventArgs e) {
             string value = (String)people1Box.SelectedItem;
             people1Collec.selected = value;
-            people2Collec.remove(value);
+            people2Collec.Remove(value);
         }
 
         /**
@@ -66,10 +66,10 @@ namespace GUI {
          * @param sender The sender of the notification.
          * @param e The event.
          */
-        public void onChangePeople2(object sender, SelectionChangedEventArgs e) {
+        public void OnChangePeople2(object sender, SelectionChangedEventArgs e) {
             string value = (String)people2Box.SelectedItem;
             people2Collec.selected = value;
-            people1Collec.remove(value);
+            people1Collec.Remove(value);
         }
 
         /**
@@ -77,7 +77,7 @@ namespace GUI {
          * @param sender The sender of the notification.
          * @param e The event.
          */
-        public void onChangeMap(object sender, SelectionChangedEventArgs e) {
+        public void OnChangeMap(object sender, SelectionChangedEventArgs e) {
             mapCollection.selected = (String)mapBox.SelectedItem;
         }
 
@@ -86,15 +86,15 @@ namespace GUI {
          * @param sender The sender of the notification.
          * @param e The event.
          */
-        public void onClickLauncher(object sender, RoutedEventArgs e) {
+        public void OnClickLauncher(object sender, RoutedEventArgs e) {
             String name1 = name1Box.Text;
             String name2 = name2Box.Text;
-            IUnitFactory factory1 = people1Collec.getFactory();
-            IUnitFactory factory2 = people2Collec.getFactory();
-            IGameBuilder gameBuilder = mapCollection.getBuilder();
+            IUnitFactory factory1 = people1Collec.GetFactory();
+            IUnitFactory factory2 = people2Collec.GetFactory();
+            IGameBuilder gameBuilder = mapCollection.GetBuilder();
 
             if(name1!="" && name2!="" && factory1!=null && factory2!=null && gameBuilder!=null) {
-                IGame game = gameBuilder.buildGame(name1, factory1, name2, factory2);
+                IGame game = gameBuilder.BuildGame(name1, factory1, name2, factory2);
                 MapWindow window = new MapWindow(game);
                 window.Show();
                 this.Close();
@@ -131,8 +131,8 @@ namespace GUI {
          * Remove an element from the collection.
          * @param st The element to remove.
          */
-        public void remove(String st) {
-            Remove(st);
+        public void Remove(String st) {
+            base.Remove(st);
             if(removed != "") {
                 Add(removed);
             }
@@ -142,7 +142,7 @@ namespace GUI {
         /**
          * @returns The unit factory associated to the people selected.
          */
-        public IUnitFactory getFactory() {
+        public IUnitFactory GetFactory() {
             IUnitFactory factory = null;
             if(selected.Equals("Dwarves")) {
                 factory = new DwarfFactory();
@@ -176,7 +176,7 @@ namespace GUI {
         /**
          * @returns The game builder associated to the map selected.
          */
-        public IGameBuilder getBuilder() {
+        public IGameBuilder GetBuilder() {
             IGameBuilder builder = null;
             if(selected.Equals("Small")) {
                 builder = new SmallGameBuilder();

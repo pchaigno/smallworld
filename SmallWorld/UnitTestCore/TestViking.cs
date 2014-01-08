@@ -11,24 +11,24 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestCanMove() {
-            Assert.IsTrue(viking.canMove(new Point(0, 0), new Lowland(), new Point(0, 1), new Sea()));
+            Assert.IsTrue(viking.CanMove(new Point(0, 0), new Lowland(), new Point(0, 1), new Sea()));
         }
 
         [TestMethod]
         public void TestGetPoints() {
             ISquare[] neighbours = new ISquare[4] {new Lowland(), new Lowland(), new Lowland(), new Lowland()};
-            Assert.AreEqual(1, viking.getPoints(new Forest(), neighbours));
-            Assert.AreEqual(0, viking.getPoints(new Sea(), neighbours));
-            Assert.AreEqual(1, viking.getPoints(new Lowland(), neighbours));
+            Assert.AreEqual(1, viking.GetPoints(new Forest(), neighbours));
+            Assert.AreEqual(0, viking.GetPoints(new Sea(), neighbours));
+            Assert.AreEqual(1, viking.GetPoints(new Lowland(), neighbours));
             neighbours[0] = new Sea();
-            Assert.AreEqual(2, viking.getPoints(new Lowland(), neighbours));
-            Assert.AreEqual(0, viking.getPoints(new Desert(), neighbours));
-            Assert.AreEqual(1, viking.getPoints(new Mountain(), neighbours));
+            Assert.AreEqual(2, viking.GetPoints(new Lowland(), neighbours));
+            Assert.AreEqual(0, viking.GetPoints(new Desert(), neighbours));
+            Assert.AreEqual(1, viking.GetPoints(new Mountain(), neighbours));
         }
 
         [TestMethod]
         public void TestNationNumber() {
-            Assert.AreEqual(1, playerViking.getNationNumber());
+            Assert.AreEqual(1, playerViking.GetNationNumber());
         }
     }
 }

@@ -35,8 +35,8 @@ namespace SmallWorld {
          * @param player A player.
          * @returns The number of units owned by the player.
          */
-        public int getNbUnits(IPlayer player) {
-            return this.map.getUnits(player).Count;
+        public int GetNbUnits(IPlayer player) {
+            return this.map.GetUnits(player).Count;
         }
 
         /**
@@ -45,8 +45,8 @@ namespace SmallWorld {
          * @param player The player.
          * @returns True if the player lost.
          */
-        private bool isDefeated(IPlayer player) {
-            return this.getNbUnits(player) == 0;
+        private bool IsDefeated(IPlayer player) {
+            return this.GetNbUnits(player) == 0;
         }
 
         /**
@@ -54,24 +54,24 @@ namespace SmallWorld {
          * A game is ended if a player won or if they reached the maximum number of rounds.
          * @returns True if the game is ended.
          */
-        public bool isEndOfGame() {
-            return this.isDefeated(this.player1) 
-                || this.isDefeated(this.player2) 
+        public bool IsEndOfGame() {
+            return this.IsDefeated(this.player1) 
+                || this.IsDefeated(this.player2) 
                 || this.currentRound > this.maxRounds;
         }
 
         /**
          * @returns The winner, null if there is none.
          */
-        public IPlayer getWinner() {
-            if(this.isDefeated(this.player1)) {
+        public IPlayer GetWinner() {
+            if(this.IsDefeated(this.player1)) {
                 return this.player2;
-            } else if(this.isDefeated(this.player2)) {
+            } else if(this.IsDefeated(this.player2)) {
                 return this.player1;
             } else {
-                if(this.player1.getPoints() < this.player2.getPoints()) {
+                if(this.player1.GetPoints() < this.player2.GetPoints()) {
                     return this.player2;
-                } else if(this.player1.getPoints() > this.player2.getPoints()) {
+                } else if(this.player1.GetPoints() > this.player2.GetPoints()) {
                     return this.player1;
                 }
             }
@@ -81,13 +81,13 @@ namespace SmallWorld {
         /**
          * End the current round and start the next one.
          */
-        public void endRound() {
-            Dictionary<IUnit, IPoint> units = map.getUnits(this.currentPlayer);
+        public void EndRound() {
+            Dictionary<IUnit, IPoint> units = map.GetUnits(this.currentPlayer);
             foreach(IUnit unit in units.Keys) {
-                ISquare square = this.map.getSquare(units[unit]);
-                ISquare[] neighbours = this.getNeighbours(units[unit]);
-                this.currentPlayer.addPoints(unit.getPoints(square, neighbours));
-                unit.resetMovementPoints();
+                ISquare square = this.map.GetSquare(units[unit]);
+                ISquare[] neighbours = this.GetNeighbours(units[unit]);
+                this.currentPlayer.AddPoints(unit.GetPoints(square, neighbours));
+                unit.ResetMovementPoints();
             }
             if(this.currentPlayer == this.player1) {
                 this.currentPlayer = this.player2;
@@ -103,15 +103,15 @@ namespace SmallWorld {
          * @param pos The position.
          * @returns An array of neighbours' types, or null if a neighbour was out bounds.
          */
-        private ISquare[] getNeighbours(IPoint pos) {
+        private ISquare[] GetNeighbours(IPoint pos) {
             int[] xOffset = {0, -1, 0, 1};
             int[] yOffset = {0, -1, 0, 1};
             ISquare[] neighbours = new ISquare[4];
             for(int i=0; i<4; i++) {
                 int x = pos.X + xOffset[i];
                 int y = pos.Y + yOffset[i];
-                if(x >= 0 && y >= 0 && x < this.map.getSize() && y < this.map.getSize()) {
-                    neighbours[i] = this.map.getSquare(new Point(x, y));
+                if(x >= 0 && y >= 0 && x < this.map.GetSize() && y < this.map.GetSize()) {
+                    neighbours[i] = this.map.GetSquare(new Point(x, y));
                 } else {
                     neighbours[i] = null;
                 }
@@ -122,49 +122,49 @@ namespace SmallWorld {
         /**
          * @returns The first player.
          */
-        public IPlayer getPlayer1() {
+        public IPlayer GetPlayer1() {
             return this.player1;
         }
 
         /**
          * @returns The second player.
          */
-        public IPlayer getPlayer2() {
+        public IPlayer GetPlayer2() {
             return this.player2;
         }
 
         /**
          * @returns The map for this game.
          */
-        public IMap getMap() {
+        public IMap GetMap() {
             return this.map;
         }
 
         /**
          * @returns The manager for the current round.
          */
-        public IRound getRound() {
+        public IRound GetRound() {
             return this.round;
         }
 
         /**
          * @returns The number of the current round.
          */
-        public int getCurrentRound() {
+        public int GetCurrentRound() {
             return this.currentRound;
         }
 
         /**
          * @returns The maximum number of rounds allowed.
          */
-        public int getMaxNbRound() {
+        public int GetMaxNbRound() {
             return this.maxRounds;
         }
 
         /**
          * @returns The player currently playing.
          */
-        public IPlayer getCurrentPlayer() {
+        public IPlayer GetCurrentPlayer() {
             return this.currentPlayer;
         }
     }

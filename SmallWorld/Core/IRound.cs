@@ -6,14 +6,15 @@ using System.Text;
 namespace SmallWorld {
 
     public interface IRound {
-        List<IPoint> getAdvisedDestinations(IUnit unit, IPoint position);
-        void selectUnits(List<IUnit> units);
-        void selectUnits(List<IUnit> units, IPoint position);
-        void unselectUnit();
-        bool setDestination(IPoint destination);
-        List<IUnit> getUnits(IPoint position);
-        bool isCurrentPlayerPosition(IPoint position);
-        void executeMove();
-        String getLastMoveInfo();
+
+        List<IPoint> GetAdvisedDestinations(IUnit unit, IPoint position);
+        void SelectUnits(List<IUnit> units);
+        void SelectUnits(List<IUnit> units, IPoint position);
+        void UnselectUnit();
+        bool SetDestination(IPoint destination);
+        List<IUnit> GetUnits(IPoint position);
+        bool IsCurrentPlayerPosition(IPoint position);
+        void ExecuteMove();
+        String GetLastMoveInfo();
     }
 }

@@ -30,7 +30,7 @@ namespace SmallWorld {
         /**
          * @returns The information about the last move.
          */
-        public String getLastMoveInfo() {
+        public String GetLastMoveInfo() {
             return this.lastMoveInfo;
         }
 
@@ -40,26 +40,26 @@ namespace SmallWorld {
          * @param pos The unit's position.
          * @returns The list of advised desinations.
          */
-        public List<IPoint> getAdvisedDestinations(IUnit unit, IPoint pos) {
-            IMap map = this.game.getMap();
-            ISquare[,] squares = map.getSquares();
-            int[][] mapBis = new int[map.getSize()][];
-            int[][] units = new int[map.getSize()][];
-            for(int i=0; i<map.getSize(); i++) {
-                mapBis[i] = new int[map.getSize()];
-                units[i] = new int[map.getSize()];
-                for(int j=0; j<map.getSize(); j++) {
-                    mapBis[i][j] = squares[i, j].getNumber();
-                    List<IUnit> unitsAtPos = map.getUnits(new Point(i, j));
+        public List<IPoint> GetAdvisedDestinations(IUnit unit, IPoint pos) {
+            IMap map = this.game.GetMap();
+            ISquare[,] squares = map.GetSquares();
+            int[][] mapBis = new int[map.GetSize()][];
+            int[][] units = new int[map.GetSize()][];
+            for(int i=0; i<map.GetSize(); i++) {
+                mapBis[i] = new int[map.GetSize()];
+                units[i] = new int[map.GetSize()];
+                for(int j=0; j<map.GetSize(); j++) {
+                    mapBis[i][j] = squares[i, j].GetNumber();
+                    List<IUnit> unitsAtPos = map.GetUnits(new Point(i, j));
                     if(unitsAtPos.Count > 0) {
-                        units[i][j] = unitsAtPos[0].getOwner().getNumber();
+                        units[i][j] = unitsAtPos[0].GetOwner().GetNumber();
                     }
                 }
             }
             
-            int nationPlayer1 = this.game.getPlayer1().getNationNumber();
-            int nationPlayer2 = this.game.getPlayer2().getNationNumber();
-            int[][] result = Wrapper.getAdvice(mapBis, map.getSize(), nationPlayer1, nationPlayer2, pos.X, pos.Y, units, this.player.getNumber());
+            int nationPlayer1 = this.game.GetPlayer1().GetNationNumber();
+            int nationPlayer2 = this.game.GetPlayer2().GetNationNumber();
+            int[][] result = Wrapper.getAdvice(mapBis, map.GetSize(), nationPlayer1, nationPlayer2, pos.X, pos.Y, units, this.player.GetNumber());
             List<IPoint> advice = new List<IPoint>();
             for(int i=0; i<3; i++) {
                 if(result[i][0]!=-1 && result[i][1]!=-1) {
@@ -74,7 +74,7 @@ namespace SmallWorld {
          * The selected position stay the same.
          * @param unit The unit to select.
          */
-        public void selectUnits(List<IUnit> units) {
+        public void SelectUnits(List<IUnit> units) {
             this.selectedUnit = units;
         }
 
@@ -84,7 +84,7 @@ namespace SmallWorld {
          * @param unit The unit to select.
          * @param position The unit's position.
          */
-        public void selectUnits(List<IUnit> units, IPoint position) {
+        public void SelectUnits(List<IUnit> units, IPoint position) {
             this.selectedUnit = units;
             this.selectedPosition = position;
         }
@@ -93,7 +93,7 @@ namespace SmallWorld {
          * Unselect the last selected unit.
          * The last selected position isn't unselected.
          */
-        public void unselectUnit() {
+        public void UnselectUnit() {
             this.selectedUnit.Clear();
         }
 
@@ -102,8 +102,8 @@ namespace SmallWorld {
          * @param position The position
          * @returns The units on this position.
          */
-        public List<IUnit> getUnits(IPoint position) {
-            return this.game.getMap().getUnits(position);
+        public List<IUnit> GetUnits(IPoint position) {
+            return this.game.GetMap().GetUnits(position);
         }
 
         /**
@@ -111,10 +111,10 @@ namespace SmallWorld {
          * @param position The position.
          * @returns True if the position is under the control of the current player.
          */
-        public bool isCurrentPlayerPosition(IPoint position) {
-            List<IUnit> units = this.game.getMap().getUnits(position);
+        public bool IsCurrentPlayerPosition(IPoint position) {
+            List<IUnit> units = this.game.GetMap().GetUnits(position);
             return units.Count > 0 
-                && units[0].getOwner() == this.player;
+                && units[0].GetOwner() == this.player;
         }
 
         /**
@@ -123,7 +123,7 @@ namespace SmallWorld {
          * @param destination The desination.
          * @param True if the current unit can move to the destination.
          */
-        public bool setDestination(IPoint destination) {
+        public bool SetDestination(IPoint destination) {
             if(this.selectedUnit.Count == 0) {
                 this.lastMoveInfo = "You have to select a unit first.";
                 return false;
@@ -131,7 +131,7 @@ namespace SmallWorld {
 
             bool result = true;
             foreach(IUnit unit in this.selectedUnit) {
-                if(!unit.canMove(this.selectedPosition, game.getMap().getSquare(this.selectedPosition), destination, game.getMap().getSquare(destination))) {
+                if(!unit.CanMove(this.selectedPosition, game.GetMap().GetSquare(this.selectedPosition), destination, game.GetMap().GetSquare(destination))) {
                     result = false;
                     break;
                 }
@@ -151,25 +151,25 @@ namespace SmallWorld {
          * Unselect the unit.
          * @see setDestination
          */
-        public void executeMove() {
+        public void ExecuteMove() {
             // TODO improve message
 
-            if(this.game.getMap().isEnemyPosition(this.destination, this.selectedUnit[0])) {
+            if(this.game.GetMap().IsEnemyPosition(this.destination, this.selectedUnit[0])) {
                 for(int i = 0; i < this.selectedUnit.Count; i++) {
                     IUnit unit = this.selectedUnit[i];
-                    unit.move(game.getMap().getSquare(destination));
-                    if(combat(unit)) {
-                        if(this.game.getMap().getUnits(this.destination).Count == 0) {
-                            this.game.getMap().moveUnit(unit, this.selectedPosition, this.destination);
+                    unit.Move(game.GetMap().GetSquare(destination));
+                    if(Combat(unit)) {
+                        if(this.game.GetMap().GetUnits(this.destination).Count == 0) {
+                            this.game.GetMap().MoveUnit(unit, this.selectedPosition, this.destination);
                         }
                     }
                 }
             } else {
                 for(int i = 0; i < this.selectedUnit.Count; i++) {
                     IUnit unit = this.selectedUnit[i];
-                    unit.move(game.getMap().getSquare(destination));
-                    this.game.getMap().moveUnit(unit, this.selectedPosition, this.destination);
-                    this.lastMoveInfo = this.player.getName() + " moved an unit.";
+                    unit.Move(game.GetMap().GetSquare(destination));
+                    this.game.GetMap().MoveUnit(unit, this.selectedPosition, this.destination);
+                    this.lastMoveInfo = this.player.GetName() + " moved an unit.";
                 }
             }
             this.selectedUnit.Clear();
@@ -180,20 +180,20 @@ namespace SmallWorld {
          * and the best one from the selected destination.
          * @returns True if the selected unit won the fight.
          */
-        private bool combat(IUnit unit) {
-            IUnit enemy = getBestUnit();
+        private bool Combat(IUnit unit) {
+            IUnit enemy = GetBestUnit();
 
             Random randCombat = new Random();
             Random rand = new Random();
 
-            int nbRound = 3 + randCombat.Next((Math.Max(unit.getLifePoints(), enemy.getLifePoints())) + 2);
+            int nbRound = 3 + randCombat.Next((Math.Max(unit.GetLifePoints(), enemy.GetLifePoints())) + 2);
             int n = 0;
 
-            while(nbRound > n && unit.isAlive() && enemy.isAlive()) {
-                double ratioLife = (double)unit.getLifePoints() / (double)unit.getDefaultLifePoints();
-                double ratioLifeDef = (double)enemy.getLifePoints() / (double)enemy.getDefaultLifePoints();
-                double attaUnit = (double)unit.getAttack() * (double)ratioLife;
-                double defUnitdef = (double)enemy.getDefense() * (double)ratioLifeDef;
+            while(nbRound > n && unit.IsAlive() && enemy.IsAlive()) {
+                double ratioLife = (double)unit.GetLifePoints() / (double)unit.GetDefaultLifePoints();
+                double ratioLifeDef = (double)enemy.GetLifePoints() / (double)enemy.GetDefaultLifePoints();
+                double attaUnit = (double)unit.GetAttack() * (double)ratioLife;
+                double defUnitdef = (double)enemy.GetDefense() * (double)ratioLifeDef;
                 double ratioAttDef = (double)(attaUnit / defUnitdef);
                 double ratioChanceDef = 0;
                 if(ratioAttDef > 1) {
@@ -210,20 +210,20 @@ namespace SmallWorld {
                 double ratioCombat = (double)((double)rand.Next(100) / 100);
 
                 if(ratioCombat <= ratioChanceDef) {
-                    enemy.decreaseLifePoints();
+                    enemy.DecreaseLifePoints();
                 } else {
-                    unit.decreaseLifePoints();
+                    unit.DecreaseLifePoints();
                 }
                 n++;
             }
 
-            if(!unit.isAlive()) {
-                this.game.getMap().removeUnit(unit, this.selectedPosition);
-                this.lastMoveInfo = this.player.getName() + " lost the fight.";
+            if(!unit.IsAlive()) {
+                this.game.GetMap().RemoveUnit(unit, this.selectedPosition);
+                this.lastMoveInfo = this.player.GetName() + " lost the fight.";
                 return false;
-            } else if(!enemy.isAlive()) {
-                this.game.getMap().removeUnit(enemy, this.destination);
-                this.lastMoveInfo = this.player.getName() + " won the fight.";
+            } else if(!enemy.IsAlive()) {
+                this.game.GetMap().RemoveUnit(enemy, this.destination);
+                this.lastMoveInfo = this.player.GetName() + " won the fight.";
                 return true;
             } else {
                 this.lastMoveInfo = "The fight ended with a draw";
@@ -237,13 +237,13 @@ namespace SmallWorld {
          * The best unit is the one with the most life points.
          * @returns The best unit on the square currently selected.
          */
-        private IUnit getBestUnit() {
+        private IUnit GetBestUnit() {
             IUnit result = null;
-            List<IUnit> units = this.game.getMap().getUnits(this.destination);
+            List<IUnit> units = this.game.GetMap().GetUnits(this.destination);
             if(units.Count > 0) {
                 result = units[0];
                 for(int i=1; i<units.Count; i++) {
-                    if(result.getLifePoints() < units[i].getLifePoints()) {
+                    if(result.GetLifePoints() < units[i].GetLifePoints()) {
                         result = units[i];
                     }
                 }

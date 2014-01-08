@@ -24,7 +24,7 @@ namespace SmallWorld {
          * @param neighbours The neighbour squares (array of 4 squares or null if out bounds).
          * @returns The number of points won by the unit depending on the square she's on.
          */
-        public override int getPoints(ISquare square, ISquare[] neighbours) {
+        public override int GetPoints(ISquare square, ISquare[] neighbours) {
             if(square is ILowland) {
                 return 2;
             } else if(square is ISea || square is IMountain) {
@@ -39,8 +39,8 @@ namespace SmallWorld {
          * Gaulois use one point less than others to move on lowland.
          * @param destination The type of square the destination is.
          */
-        public override void move(ISquare destination) {
-            base.move(destination);
+        public override void Move(ISquare destination) {
+            base.Move(destination);
             if(destination is ILowland) {
                 this.remainingMovementPoints++;
             }

@@ -11,16 +11,16 @@ namespace UnitTestCore {
 
     [TestClass]
     public class TestMap {
-        IMap map = new MapBuilder().buildMap(15);
+        IMap map = new MapBuilder().BuildMap(15);
 
         [TestMethod]
         public void TestConstructor() {
-            Assert.IsTrue(15 == map.getSize());
-            ISquare[,] squares = map.getSquares();
+            Assert.IsTrue(15 == map.GetSize());
+            ISquare[,] squares = map.GetSquares();
             for(int i = 0; i < 15; i++) {
                 for(int j = 0; j < 15; j++) {
                     // We can use AreSame because we use a flyweight pattern.
-                    Assert.AreSame(squares[i, j], map.getSquare(new Point(i, j)));
+                    Assert.AreSame(squares[i, j], map.GetSquare(new Point(i, j)));
                 }
             }
         }
@@ -33,27 +33,27 @@ namespace UnitTestCore {
             IViking vikingB = new Viking(player1);
             IGaulois gauloisA = new Gaulois(player2);
             IGaulois gauloisB = new Gaulois(player2);
-            map.placeUnit(vikingA, new Point(0, 0));
-            map.placeUnit(vikingB, new Point(0, 0));
-            map.placeUnit(gauloisA, new Point(14, 14));
-            map.placeUnit(gauloisB, new Point(14, 14));
-            List<IUnit> units = map.getUnits(new Point(0, 0));
+            map.PlaceUnit(vikingA, new Point(0, 0));
+            map.PlaceUnit(vikingB, new Point(0, 0));
+            map.PlaceUnit(gauloisA, new Point(14, 14));
+            map.PlaceUnit(gauloisB, new Point(14, 14));
+            List<IUnit> units = map.GetUnits(new Point(0, 0));
             Assert.AreEqual(2, units.Count);
-            units = map.getUnits(new Point(14, 14));
+            units = map.GetUnits(new Point(14, 14));
             Assert.AreEqual(2, units.Count);
 
-            map.removeUnit(gauloisB, new Point(14, 14));
-            units = map.getUnits(new Point(14, 14));
+            map.RemoveUnit(gauloisB, new Point(14, 14));
+            units = map.GetUnits(new Point(14, 14));
             Assert.AreEqual(1, units.Count);
 
-            map.moveUnit(vikingB, new Point(0, 0), new Point(0, 1));
-            units = map.getUnits(new Point(0, 0));
+            map.MoveUnit(vikingB, new Point(0, 0), new Point(0, 1));
+            units = map.GetUnits(new Point(0, 0));
             Assert.AreEqual(1, units.Count);
-            units = map.getUnits(new Point(0, 1));
+            units = map.GetUnits(new Point(0, 1));
             Assert.AreEqual(1, units.Count);
             
-            Assert.IsFalse(map.isEnemyPosition(new Point(14, 14), gauloisA));
-            Assert.IsTrue(map.isEnemyPosition(new Point(0, 0), gauloisB));
+            Assert.IsFalse(map.IsEnemyPosition(new Point(14, 14), gauloisA));
+            Assert.IsTrue(map.IsEnemyPosition(new Point(0, 0), gauloisB));
         }
 
         [TestMethod]
@@ -67,16 +67,16 @@ namespace UnitTestCore {
             formatter = new BinaryFormatter();
             IMap savedMap = (IMap)formatter.Deserialize(stream);
             stream.Close();
-            Assert.AreEqual(map.getSize(), savedMap.getSize());
-            for(int i = 0; i < map.getSize(); i++) {
-                for(int j = 0; j < map.getSize(); j++) {
-                    Assert.IsInstanceOfType(savedMap.getSquare(new Point(i, j)), map.getSquare(new Point(i, j)).GetType());
+            Assert.AreEqual(map.GetSize(), savedMap.GetSize());
+            for(int i = 0; i < map.GetSize(); i++) {
+                for(int j = 0; j < map.GetSize(); j++) {
+                    Assert.IsInstanceOfType(savedMap.GetSquare(new Point(i, j)), map.GetSquare(new Point(i, j)).GetType());
                 }
             }
-            for(int i = 0; i < map.getSize(); i++) {
-                for(int j = 0; j < map.getSize(); j++) {
-                    List<IUnit> units = map.getUnits(new Point(i, j));
-                    List<IUnit> savedUnits = savedMap.getUnits(new Point(i, j));
+            for(int i = 0; i < map.GetSize(); i++) {
+                for(int j = 0; j < map.GetSize(); j++) {
+                    List<IUnit> units = map.GetUnits(new Point(i, j));
+                    List<IUnit> savedUnits = savedMap.GetUnits(new Point(i, j));
                     Assert.AreEqual(units.Count, savedUnits.Count);
                     for(int k=0; k<savedUnits.Count; k++) {
                         Assert.IsTrue(units.Contains(savedUnits[k]));

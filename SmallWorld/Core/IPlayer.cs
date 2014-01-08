@@ -7,11 +7,11 @@ namespace SmallWorld {
 
     public interface IPlayer {
 
-        List<IUnit> createUnits(int nbUnits);
-        String getName();
-        int getPoints();
-        void addPoints(int n);
-        int getNumber();
-        int getNationNumber();
+        List<IUnit> CreateUnits(int nbUnits);
+        String GetName();
+        int GetPoints();
+        void AddPoints(int n);
+        int GetNumber();
+        int GetNationNumber();
     }
 }

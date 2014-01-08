@@ -19,10 +19,10 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestIsNext() {
-            Assert.IsTrue(new Point(0, 1).isNext(new Point(0, 0)));
-            Assert.IsFalse(new Point(1, 1).isNext(new Point(0, 0)));
-            Assert.IsTrue(new Point(14, 14).isNext(new Point(14, 13)));
-            Assert.IsFalse(new Point(14, 14).isNext(new Point(13, 13)));
+            Assert.IsTrue(new Point(0, 1).IsNext(new Point(0, 0)));
+            Assert.IsFalse(new Point(1, 1).IsNext(new Point(0, 0)));
+            Assert.IsTrue(new Point(14, 14).IsNext(new Point(14, 13)));
+            Assert.IsFalse(new Point(14, 14).IsNext(new Point(13, 13)));
         }
 
         [TestMethod]

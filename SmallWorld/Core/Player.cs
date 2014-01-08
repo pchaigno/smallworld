@@ -38,11 +38,11 @@ namespace SmallWorld {
             IUnitFactory gauloisFactory = new GauloisFactory();
             IUnitFactory dwarfFactory = new DwarfFactory();
             int factoryNumber = (int)info.GetValue("Factory", typeof(int));
-            if(factoryNumber == vikingFactory.getNumber()) {
+            if(factoryNumber == vikingFactory.GetNumber()) {
                 this.factory = vikingFactory;
-            } else if(factoryNumber == gauloisFactory.getNumber()) {
+            } else if(factoryNumber == gauloisFactory.GetNumber()) {
                 this.factory = gauloisFactory;
-            } else if(factoryNumber == dwarfFactory.getNumber()) {
+            } else if(factoryNumber == dwarfFactory.GetNumber()) {
                 this.factory = dwarfFactory;
             } else {
                 // TODO Throw Exception.
@@ -61,35 +61,35 @@ namespace SmallWorld {
             info.AddValue("Name", this.name);
             info.AddValue("Points", this.points);
             info.AddValue("Number", this.number);
-            info.AddValue("Factory", this.factory.getNumber());
+            info.AddValue("Factory", this.factory.GetNumber());
         }
 
         /**
          * @returns The player's name.
          */
-        public string getName() {
+        public string GetName() {
             return this.name;
         }
 
         /**
          * @returns The number of points collected by the player.
          */
-        public int getPoints() {
+        public int GetPoints() {
             return this.points;
         }
 
         /**
          * @returns The number assigned to the player.
          */
-        public int getNumber() {
+        public int GetNumber() {
             return this.number;
         }
 
         /**
          * @returns The number associated to the nation of the player.
          */
-        public int getNationNumber() {
-            return this.factory.getNumber();
+        public int GetNationNumber() {
+            return this.factory.GetNumber();
         }
 
         /**
@@ -97,10 +97,10 @@ namespace SmallWorld {
          * @param nbUnits The number of units to create.
          * @returns The list of units created.
          */
-        public List<IUnit> createUnits(int nbUnits) {
+        public List<IUnit> CreateUnits(int nbUnits) {
             List<IUnit> units = new List<IUnit>();
             for(int i=0; i<nbUnits; i++) {
-                units.Add(factory.createUnit(this));
+                units.Add(factory.CreateUnit(this));
             }
             return units;
         }
@@ -110,7 +110,7 @@ namespace SmallWorld {
          * @param n The number of points to add.
          * @throws ArgumentOutOfRangeException If n if negative.
          */
-        public void addPoints(int n) {
+        public void AddPoints(int n) {
             if(n < 0) {
                 throw new ArgumentOutOfRangeException("Only a positive number of points can be added to a player.");
             }

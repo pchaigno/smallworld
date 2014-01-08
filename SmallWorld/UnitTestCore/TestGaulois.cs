@@ -11,24 +11,24 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestMove() {
-            int defaultMovementPoints = gaulois.getRemainingMovementPoints();
-            gaulois.move(new Lowland());
-            Assert.AreEqual(defaultMovementPoints - 1, gaulois.getRemainingMovementPoints());
+            int defaultMovementPoints = gaulois.GetRemainingMovementPoints();
+            gaulois.Move(new Lowland());
+            Assert.AreEqual(defaultMovementPoints - 1, gaulois.GetRemainingMovementPoints());
         }
 
         [TestMethod]
         public void TestGetPoints() {
             ISquare[] neighbours = new ISquare[] {new Lowland(), new Lowland(), new Lowland(), new Lowland()};
-            Assert.AreEqual(1, gaulois.getPoints(new Forest(), neighbours));
-            Assert.AreEqual(0, gaulois.getPoints(new Sea(), neighbours));
-            Assert.AreEqual(2, gaulois.getPoints(new Lowland(), neighbours));
-            Assert.AreEqual(1, gaulois.getPoints(new Desert(), neighbours));
-            Assert.AreEqual(0, gaulois.getPoints(new Mountain(), neighbours));
+            Assert.AreEqual(1, gaulois.GetPoints(new Forest(), neighbours));
+            Assert.AreEqual(0, gaulois.GetPoints(new Sea(), neighbours));
+            Assert.AreEqual(2, gaulois.GetPoints(new Lowland(), neighbours));
+            Assert.AreEqual(1, gaulois.GetPoints(new Desert(), neighbours));
+            Assert.AreEqual(0, gaulois.GetPoints(new Mountain(), neighbours));
         }
 
         [TestMethod]
         public void TestNationNumber() {
-            Assert.AreEqual(2, playerGaulois.getNationNumber());
+            Assert.AreEqual(2, playerGaulois.GetNationNumber());
         }
     }
 }

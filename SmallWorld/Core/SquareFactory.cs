@@ -28,7 +28,7 @@ namespace SmallWorld {
         /**
          * @returns The instance of the square factory.
          */
-        public static SquareFactory getInstance() {
+        public static SquareFactory GetInstance() {
             return INSTANCE;
         }
 
@@ -37,7 +37,7 @@ namespace SmallWorld {
          * @param type The number from the C++ library.
          * @returns The square.
          */
-        public ISquare getSquare(int type) {
+        public ISquare GetSquare(int type) {
             switch(type) {
                 case 1:
                     return this.sea;
@@ -60,12 +60,12 @@ namespace SmallWorld {
          * @param squares The map as a matrix of squares.
          * @returns The map as a matrix of integers.
          */
-        public static int[][] getNumbers(ISquare[,] squares) {
+        public static int[][] GetNumbers(ISquare[,] squares) {
             int[][] map = new int[squares.GetLength(0)][];
             for(int i=0; i<squares.GetLength(0); i++) {
                 map[i] = new int[squares.GetLength(1)];
                 for(int j=0; j<squares.GetLength(1); j++) {
-                    map[i][j] = squares[i, j].getNumber();
+                    map[i][j] = squares[i, j].GetNumber();
                 }
             }
             return map;

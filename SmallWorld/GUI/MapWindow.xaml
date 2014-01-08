@@ -52,12 +52,12 @@
     <DockPanel>
         <Menu IsMainMenu="True" DockPanel.Dock="Top">
             <MenuItem Header="_File">
-                <MenuItem Header="_Start new game" Click="onClickStartNewGame"/>
-                <MenuItem Header="_Open" Click="onClickOpen"/>
-                <MenuItem Header="_Save" Click="onClickSave"/>
-                <MenuItem Header="_Save as" Click="onClickSaveAs"/>
+                <MenuItem Header="_Start new game" Click="OnClickStartNewGame"/>
+                <MenuItem Header="_Open" Click="OnClickOpen"/>
+                <MenuItem Header="_Save" Click="OnClickSave"/>
+                <MenuItem Header="_Save as" Click="OnClickSaveAs"/>
                 <Separator/>
-                <MenuItem Header="_Exit" Click="onClickExit"/>
+                <MenuItem Header="_Exit" Click="OnClickExit"/>
                 </MenuItem>
         </Menu>
         
@@ -74,7 +74,7 @@
 
 
             <StackPanel Width="250" FlowDirection="RightToLeft">
-                <Button Name="endTurn"  Style="{StaticResource buttonStyle}" Click="onClickEndRound" HorizontalAlignment="left">
+                <Button Name="endTurn"  Style="{StaticResource buttonStyle}" Click="OnClickEndRound" HorizontalAlignment="left">
                     !End Turn
                 </Button>
                 <TextBlock Style="{StaticResource textStyle}" Name="roundD"></TextBlock>

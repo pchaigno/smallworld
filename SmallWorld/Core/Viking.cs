@@ -26,7 +26,7 @@ namespace SmallWorld {
          * @returns The number of points won by the unit depending on the square she's on.
          */
         // TODO See Unit: Is 'override' needed?
-        public override int getPoints(ISquare square, ISquare[] neighbours) {
+        public override int GetPoints(ISquare square, ISquare[] neighbours) {
             int points = 1;
             if(square is ILowland) {
                 points = 2;
@@ -52,8 +52,8 @@ namespace SmallWorld {
          * @param square The type of square the destination is.
          * @returns True if the unit can move to the destination.
          */
-        public override bool canMove(IPoint currentPosition, ISquare currentSquare, IPoint destination, ISquare square) {
-            return destination.isNext(currentPosition) 
+        public override bool CanMove(IPoint currentPosition, ISquare currentSquare, IPoint destination, ISquare square) {
+            return destination.IsNext(currentPosition) 
                 && remainingMovementPoints>0;
         }
     }

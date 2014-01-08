@@ -8,6 +8,6 @@ namespace SmallWorld {
 
     public interface ISquare: ISerializable {
 
-        int getNumber();
+        int GetNumber();
     }
 }

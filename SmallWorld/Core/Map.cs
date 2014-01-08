@@ -56,21 +56,21 @@ namespace SmallWorld {
         /**
          * @returns The size of the map.
          */
-        public int getSize() {
+        public int GetSize() {
             return this.size;
         }
 
         /**
          * @returns The composition of the map as a matrix of squares by coordinates.
          */
-        public ISquare[,] getSquares() {
+        public ISquare[,] GetSquares() {
             return this.squares;
         }
 
         /**
          * @returns The position of the units on the map as a matrix of units by coordinates.
          */
-        public List<IUnit>[,] getUnits() {
+        public List<IUnit>[,] GetUnits() {
             return this.units;
         }
 
@@ -78,7 +78,7 @@ namespace SmallWorld {
          * @param position A position.
          * @returns The units at the position given.
          */
-        public List<IUnit> getUnits(IPoint position) {
+        public List<IUnit> GetUnits(IPoint position) {
             return this.units[position.X, position.Y];
         }
 
@@ -87,11 +87,11 @@ namespace SmallWorld {
          * @param position The position.
          * @param unit The unit.
          */
-        public bool isEnemyPosition(IPoint position, IUnit unit) {
+        public bool IsEnemyPosition(IPoint position, IUnit unit) {
             if(this.units[position.X, position.Y].Count == 0) {
                 return false;
             } else {
-                return !this.units[position.X, position.Y][0].getOwner().Equals(unit.getOwner());
+                return !this.units[position.X, position.Y][0].GetOwner().Equals(unit.GetOwner());
             }
         }
 
@@ -100,7 +100,7 @@ namespace SmallWorld {
          * @param unit The unit.
          * @param position The position for the unit.
          */
-        public void placeUnit(IUnit unit, IPoint position) {
+        public void PlaceUnit(IUnit unit, IPoint position) {
             this.units[position.X, position.Y].Add(unit);
         }
 
@@ -109,7 +109,7 @@ namespace SmallWorld {
          * @param position The position.
          * @returns The square at this position.
          */
-        public ISquare getSquare(IPoint position) {
+        public ISquare GetSquare(IPoint position) {
             return this.squares[position.X, position.Y];
         }
 
@@ -119,9 +119,9 @@ namespace SmallWorld {
          * @param newPosition The new position.
          * @throws An exception if it's an enemy position.
          */
-        public void moveUnit(IUnit unit, IPoint currentPosition, IPoint newPosition) {
+        public void MoveUnit(IUnit unit, IPoint currentPosition, IPoint newPosition) {
             this.units[currentPosition.X, currentPosition.Y].Remove(unit);
-            if(this.isEnemyPosition(newPosition, unit)) {
+            if(this.IsEnemyPosition(newPosition, unit)) {
                 throw new Exception("Erreur dans le deplacement");
             }
             this.units[newPosition.X, newPosition.Y].Add(unit);
@@ -132,7 +132,7 @@ namespace SmallWorld {
          * @param unit The unit.
          * @param position The position of the unit.
          */
-        public void removeUnit(IUnit unit, IPoint position) {
+        public void RemoveUnit(IUnit unit, IPoint position) {
             this.units[position.X, position.Y].Remove(unit);
         }
 
@@ -141,12 +141,12 @@ namespace SmallWorld {
          * @param player The player.
          * @returns A dictionary of the units with their position.
          */
-        public Dictionary<IUnit, IPoint> getUnits(IPlayer player) {
+        public Dictionary<IUnit, IPoint> GetUnits(IPlayer player) {
             Dictionary<IUnit, IPoint> result = new Dictionary<IUnit, IPoint>();
             for(int x=0; x<this.size; x++) {
                 for(int y=0; y<this.size; y++) {
                     List<IUnit> unitsAtPosition = this.units[x, y];
-                    if(unitsAtPosition.Count > 0 && unitsAtPosition[0].getOwner() == player) {
+                    if(unitsAtPosition.Count > 0 && unitsAtPosition[0].GetOwner() == player) {
                         foreach(IUnit unit in unitsAtPosition) {
                             result.Add(unit, new Point(x, y));
                         }
