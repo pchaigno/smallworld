@@ -131,7 +131,7 @@ namespace SmallWorld {
 
             bool result = true;
             foreach(IUnit unit in this.selectedUnit) {
-                if(!unit.canMove(this.selectedPosition, destination, game.getMap().getSquare(destination)))  {
+                if(!unit.canMove(this.selectedPosition, game.getMap().getSquare(this.selectedPosition), destination, game.getMap().getSquare(destination))) {
                     result = false;
                     break;
                 }

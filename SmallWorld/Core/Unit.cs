@@ -145,7 +145,7 @@ namespace SmallWorld {
          * @param square The type of square the destination is.
          * @returns True if the unit can move to the destination.
          */
-        public virtual bool canMove(IPoint currentPosition, IPoint destination, ISquare square) {
+        public virtual bool canMove(IPoint currentPosition, ISquare currentSquare, IPoint destination, ISquare square) {
             return destination.isNext(currentPosition) 
                 && remainingMovementPoints > 0
                 && !(square is ISea);
