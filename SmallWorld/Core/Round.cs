@@ -131,7 +131,7 @@ namespace SmallWorld {
 
             bool result = true;
             foreach(IUnit unit in this.selectedUnit) {
-                if(!unit.canMove(this.selectedPosition, destination, game.getMap().getSquare(destination)))  {
+                if(!unit.canMove(this.selectedPosition, game.getMap().getSquare(this.selectedPosition), destination, game.getMap().getSquare(destination))) {
                     result = false;
                     break;
                 }
@@ -157,6 +157,7 @@ namespace SmallWorld {
             if(this.game.getMap().isEnemyPosition(this.destination, this.selectedUnit[0])) {
                 for(int i = 0; i < this.selectedUnit.Count; i++) {
                     IUnit unit = this.selectedUnit[i];
+                    unit.move(game.getMap().getSquare(destination));
                     if(combat(unit)) {
                         if(this.game.getMap().getUnits(this.destination).Count == 0) {
                             this.game.getMap().moveUnit(unit, this.selectedPosition, this.destination);
@@ -166,6 +167,7 @@ namespace SmallWorld {
             } else {
                 for(int i = 0; i < this.selectedUnit.Count; i++) {
                     IUnit unit = this.selectedUnit[i];
+                    unit.move(game.getMap().getSquare(destination));
                     this.game.getMap().moveUnit(unit, this.selectedPosition, this.destination);
                     this.lastMoveInfo = this.player.getName() + " moved an unit.";
                 }
@@ -224,7 +226,7 @@ namespace SmallWorld {
                 this.lastMoveInfo = this.player.getName() + " won the fight.";
                 return true;
             } else {
-                this.lastMoveInfo = "The fight ended with a draw (Grammar ??)";
+                this.lastMoveInfo = "The fight ended with a draw";
                 return false;
             }
 

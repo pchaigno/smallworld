@@ -128,7 +128,7 @@ namespace SmallWorld {
         public abstract int getPoints(ISquare square, ISquare[] neighbours);
 
         /**
-         * Move the unit to its destination point and update the number of remaining points.
+         * Update the number of remaining points after a move.
          * @param destination The type of square the destination is.
          */
         public virtual void move(ISquare destination) {
@@ -145,7 +145,7 @@ namespace SmallWorld {
          * @param square The type of square the destination is.
          * @returns True if the unit can move to the destination.
          */
-        public virtual bool canMove(IPoint currentPosition, IPoint destination, ISquare square) {
+        public virtual bool canMove(IPoint currentPosition, ISquare currentSquare, IPoint destination, ISquare square) {
             return destination.isNext(currentPosition) 
                 && remainingMovementPoints > 0
                 && !(square is ISea);
