@@ -48,8 +48,19 @@
     <Window.Background>
         <ImageBrush ImageSource="Resources/background.jpg"></ImageBrush>
     </Window.Background>
-    
+
     <DockPanel>
+        <Menu IsMainMenu="True" DockPanel.Dock="Top">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Start new game" Click="onClickStartNewGame"/>
+                <MenuItem Header="_Open" Click="onClickOpen"/>
+                <MenuItem Header="_Save" Click="onClickSave"/>
+                <MenuItem Header="_Save as" Click="onClickSaveAs"/>
+                <Separator/>
+                <MenuItem Header="_Exit" Click="onClickExit"/>
+                </MenuItem>
+        </Menu>
+        
         <StackPanel Orientation="Horizontal" Width="800" DockPanel.Dock="Bottom">
             <StackPanel Width="550">
                 <StackPanel Orientation="Horizontal"  DockPanel.Dock="Bottom">
@@ -78,6 +89,6 @@
                 <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Name="mapGrid"/>
             </Grid>
         </ScrollViewer >
-        
+
     </DockPanel>
 </Window>

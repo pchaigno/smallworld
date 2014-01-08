@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Microsoft.Win32;
 using BitMap = System.Drawing.Bitmap;
 using Image = System.Drawing.Image;
 using TextureBrush = System.Drawing.TextureBrush;
@@ -42,6 +43,7 @@ namespace GUI {
         private List<Rectangle> advisedDestination;
 
         private bool multipleSelection;
+        private String saveFile;
 
         /**
          * Constructor
@@ -59,6 +61,7 @@ namespace GUI {
             this.advisedDestination = new List<Rectangle>();
             this.selectedUnitBorder = new List<Border>();
             this.multipleSelection = false;
+            this.saveFile = null;
 
             this.KeyDown += new KeyEventHandler(OnButtonKeyDown);
             this.KeyUp += new KeyEventHandler(OnButtonKeyUp);
@@ -423,6 +426,104 @@ namespace GUI {
             }
         }
 
+        /**
+         * Listener for clicks on the start a new game menu item.
+         * Open the CreateGame window to start a new game.
+         * @param sender The sender of the notification.
+         * @param e The event.
+         */
+        private void onClickStartNewGame(object sender, RoutedEventArgs e) {
+            MessageBoxResult result = MessageBox.Show("Do you want to save the game before starting a new game?", "Open a new game", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if(result == MessageBoxResult.Yes) {
+                this.saveGame();
+            }
+            CreateGame createWindow = new CreateGame();
+            createWindow.Show();
+            this.Close();
+        }
+
+        /**
+         * Listener for clicks on the open menu item.
+         * Restore a new saved game.
+         * @param sender The sender of the notification.
+         * @param e The event.
+         */
+        private void onClickOpen(object sender, RoutedEventArgs e) {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.DefaultExt = ".sav";
+            dlg.Filter = "Saved game (*.sav) | *.sav | All files (*.*) | *.*";
+            Nullable<bool> result = dlg.ShowDialog();
+            if(result == true) {
+                this.saveFile = dlg.FileName;
+
+                this.restoreGame();
+            }
+        }
+
+        /**
+         * Listener for clicks on the save menu item.
+         * Save the current game.
+         * @param sender The sender of the notification.
+         * @param e The event.
+         */
+        private void onClickSave(object sender, RoutedEventArgs e) {
+            this.saveGame();
+        }
+
+        /**
+         * Listener for clicks on the save as menu item.
+         * Save the current game.
+         * @param sender The sender of the notification.
+         * @param e The event.
+         */
+        private void onClickSaveAs(object sender, RoutedEventArgs e) {
+            this.saveGameAs();
+        }
+
+        /**
+         * Listener for clicks on the exit menu item.
+         * End the round.
+         * @param sender The sender of the notification.
+         * @param e The event.
+         */
+        private void onClickExit(object sender, RoutedEventArgs e) {
+            MessageBoxResult result = MessageBox.Show("Do you want to save the game before exiting?", "Exit the game", MessageBoxButton.YesNo, MessageBoxImage.Warning);
+            if(result == MessageBoxResult.Yes) {
+                this.saveGame();
+            }
+            this.Close();
+        }
+
+        /**
+         * Saves the current game in the current save file.
+         * Checks that there is already a save file defined.
+         * If no save file is defined, calls SaveGameAs.
+         */
+        private void saveGame() {
+            // TODO
+        }
+
+        /**
+         * Saves the current game after asking for the location for the save file.
+         */
+        private void saveGameAs() {
+            OpenFileDialog dlg = new OpenFileDialog();
+            dlg.DefaultExt = ".sav";
+            dlg.Filter = "Saved game (*.sav) | *.sav | All files (*.*) | *.*";
+            Nullable<bool> result = dlg.ShowDialog();
+            if(result == true) {
+                this.saveFile = dlg.FileName;
+
+                this.saveGame();
+            }
+        }
+
+        /**
+         * Restores the game from the current save file.
+         */
+        private void restoreGame() {
+            // TODO
+        }
 
         /**
          * Listener for pressed shift key
