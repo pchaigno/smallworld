@@ -3,12 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
+using System.Runtime.Serialization;
 
 namespace SmallWorld {
 
+    [Serializable()]
     public class Viking: Unit, IViking {
 
         public Viking(IPlayer owner): base(owner) {
+
+        }
+
+        public Viking(SerializationInfo info, StreamingContext context): base(info, context) {
 
         }
 

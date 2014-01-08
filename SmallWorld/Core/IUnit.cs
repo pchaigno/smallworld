@@ -17,6 +17,7 @@ namespace SmallWorld {
         void move(ISquare destination);
         bool canMove(IPoint currentPosition, IPoint destination, ISquare square);
         IPlayer getOwner();
+        void setOwner(IPlayer owner);
         int getPoints(ISquare square, ISquare[] neighbours);
         bool isAlive();
     }

@@ -2,6 +2,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmallWorld;
 using System.Collections.Generic;
+using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+using System.Diagnostics;
 
 namespace UnitTestCore {
 
@@ -50,6 +54,35 @@ namespace UnitTestCore {
             
             Assert.IsFalse(map.isEnemyPosition(new Point(14, 14), gauloisA));
             Assert.IsTrue(map.isEnemyPosition(new Point(0, 0), gauloisB));
+        }
+
+        [TestMethod]
+        public void TestSerializationMap() {
+            Stream stream = File.Open("Map.sav", FileMode.Create);
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream, map);
+            stream.Close();
+
+            stream = File.Open("Map.sav", FileMode.Open);
+            formatter = new BinaryFormatter();
+            IMap savedMap = (IMap)formatter.Deserialize(stream);
+            stream.Close();
+            Assert.AreEqual(map.getSize(), savedMap.getSize());
+            for(int i = 0; i < map.getSize(); i++) {
+                for(int j = 0; j < map.getSize(); j++) {
+                    Assert.IsInstanceOfType(savedMap.getSquare(new Point(i, j)), map.getSquare(new Point(i, j)).GetType());
+                }
+            }
+            for(int i = 0; i < map.getSize(); i++) {
+                for(int j = 0; j < map.getSize(); j++) {
+                    List<IUnit> units = map.getUnits(new Point(i, j));
+                    List<IUnit> savedUnits = savedMap.getUnits(new Point(i, j));
+                    Assert.AreEqual(units.Count, savedUnits.Count);
+                    for(int k=0; k<savedUnits.Count; k++) {
+                        Assert.IsTrue(units.Contains(savedUnits[k]));
+                    }
+                }
+            }
         }
     }
 }

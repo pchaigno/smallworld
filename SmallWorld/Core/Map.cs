@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Windows;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace SmallWorld {
 
-    public class Map: IMap {
+    [Serializable()]
+    public class Map: IMap, ISerializable {
         private List<IUnit>[,] units;
         private ISquare[,] squares;
         private int size;
@@ -26,6 +28,29 @@ namespace SmallWorld {
                     units[x, y] = new List<IUnit>();
                 }
             }
+        }
+
+        /**
+         * Constructor for the deserialization.
+         * @param info Information for the serialization.
+         * @param context The context for the serialization.
+         */
+        public Map(SerializationInfo info, StreamingContext context) {
+            this.size = (int)info.GetValue("Size", typeof(int));
+            this.units = (List<IUnit>[,])info.GetValue("Units", typeof(List<IUnit>[,]));
+            this.squares = (ISquare[,])info.GetValue("Squares", typeof(ISquare[,]));
+        }
+        
+        /**
+         * Method for the serialization.
+         * Fills info with the attributs' values.
+         * @param info Information for the serialization.
+         * @param context The context for the serialization.
+         */
+        public void GetObjectData(SerializationInfo info, StreamingContext context) {
+            info.AddValue("Size", this.size);
+            info.AddValue("Units", this.units);
+            info.AddValue("Squares", this.squares);
         }
 
         /**

@@ -1,6 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmallWorld;
+using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace UnitTestCore {
     [TestClass]
@@ -41,6 +44,29 @@ namespace UnitTestCore {
                 unit.decreaseLifePoints();
             }
             Assert.IsFalse(unit.isAlive());
+        }
+
+        [TestMethod]
+        public void TestSerializationUnit() {
+            this.TestSerializationUnit(viking);
+            this.TestSerializationUnit(gaulois);
+            this.TestSerializationUnit(dwarf);
+        }
+
+        private void TestSerializationUnit(IUnit unit) {
+            Stream stream = File.Open("Unit.sav", FileMode.Create);
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream, unit);
+            stream.Close();
+
+            stream = File.Open("Unit.sav", FileMode.Open);
+            formatter = new BinaryFormatter();
+            IUnit savedUnit = (IUnit)formatter.Deserialize(stream);
+            savedUnit.setOwner(unit.getOwner());
+            stream.Close();
+            Assert.AreEqual(unit.getLifePoints(), savedUnit.getLifePoints());
+            Assert.AreEqual(unit.getRemainingMovementPoints(), savedUnit.getRemainingMovementPoints());
+            Assert.AreEqual(unit.getOwner().getNumber(), savedUnit.getOwner().getNumber());
         }
     }
 }

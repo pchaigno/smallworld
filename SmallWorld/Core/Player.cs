@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace SmallWorld {
 
-    public class Player: IPlayer {
+    [Serializable()]
+    public class Player: IPlayer, ISerializable {
         private IUnitFactory factory;
         private string name;
         private int points;
@@ -22,6 +24,44 @@ namespace SmallWorld {
             this.factory = factory;
             count++;
             this.number = count;
+        }
+
+        /**
+         * Constructor for the deserialization.
+         * @param info Information for the serialization.
+         * @param context The context for the serialization.
+         */
+        public Player(SerializationInfo info, StreamingContext context) {
+            this.name = (String)info.GetValue("Name", typeof(string));
+            this.points = (int)info.GetValue("Points", typeof(int));
+            IUnitFactory vikingFactory = new VikingFactory();
+            IUnitFactory gauloisFactory = new GauloisFactory();
+            IUnitFactory dwarfFactory = new DwarfFactory();
+            int factoryNumber = (int)info.GetValue("Factory", typeof(int));
+            if(factoryNumber == vikingFactory.getNumber()) {
+                this.factory = vikingFactory;
+            } else if(factoryNumber == gauloisFactory.getNumber()) {
+                this.factory = gauloisFactory;
+            } else if(factoryNumber == dwarfFactory.getNumber()) {
+                this.factory = dwarfFactory;
+            } else {
+                // TODO Throw Exception.
+            }
+            this.number = (int)info.GetValue("Number", typeof(int));
+            count++;
+        }
+        
+        /**
+         * Method for the serialization.
+         * Fills info with the attributs' values.
+         * @param info Information for the serialization.
+         * @param context The context for the serialization.
+         */
+        public void GetObjectData(SerializationInfo info, StreamingContext context) {
+            info.AddValue("Name", this.name);
+            info.AddValue("Points", this.points);
+            info.AddValue("Number", this.number);
+            info.AddValue("Factory", this.factory.getNumber());
         }
 
         /**

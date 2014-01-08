@@ -1,7 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Xml.Serialization;
 using SmallWorld;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace UnitTestCore {
     [TestClass]
@@ -59,6 +62,29 @@ namespace UnitTestCore {
             Assert.AreNotEqual(viking.getNumber(), gaulois.getNumber());
             Assert.AreNotEqual(gaulois.getNumber(), dwarf.getNumber());
             Assert.AreNotEqual(dwarf.getNumber(), viking.getNumber());
+        }
+
+        [TestMethod]
+        public void TestSerialization() {
+            this.TestSerialization(viking);
+            this.TestSerialization(gaulois);
+            this.TestSerialization(dwarf);
+        }
+
+        private void TestSerialization(IPlayer player) {
+            Stream stream = File.Open("Player.sav", FileMode.Create);
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream, player);
+            stream.Close();
+
+            stream = File.Open("Player.sav", FileMode.Open);
+            formatter = new BinaryFormatter();
+            IPlayer savedPlayer = (IPlayer)formatter.Deserialize(stream);
+            stream.Close();
+            Assert.IsTrue(player.Equals(savedPlayer));
+            Assert.AreEqual(player.getPoints(), savedPlayer.getPoints());
+            Assert.AreEqual(player.getName(), savedPlayer.getName());
+            Assert.AreEqual(player.getNationNumber(), savedPlayer.getNationNumber());
         }
     }
 }

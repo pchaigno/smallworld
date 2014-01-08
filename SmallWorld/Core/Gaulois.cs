@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace SmallWorld {
-
+    
+    [Serializable()]
     public class Gaulois: Unit, IGaulois {
 
         public Gaulois(IPlayer owner): base(owner) {
+
+        }
+
+        public Gaulois(SerializationInfo info, StreamingContext context): base(info, context) {
 
         }
 

@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace SmallWorld {
-
+    
+    [Serializable()]
     public class Dwarf: Unit, IDwarf {
 
         public Dwarf(IPlayer owner): base(owner) {
+
+        }
+
+        public Dwarf(SerializationInfo info, StreamingContext context): base(info, context) {
 
         }
 

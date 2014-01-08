@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
+using System.Diagnostics;
 
 namespace SmallWorld {
 
-    public abstract class Unit: IUnit {
+    [Serializable()]
+    public abstract class Unit: IUnit, ISerializable {
         protected const int ATTACK = 2;
         protected const int DEFENSE = 1;
         protected const int DEFAULT_LIFE_POINTS = 5;
@@ -22,6 +25,28 @@ namespace SmallWorld {
             this.owner = owner;
             this.lifePoints = DEFAULT_LIFE_POINTS;
             this.remainingMovementPoints = DEFAULT_MOVEMENT_POINTS;
+        }
+
+        /**
+         * Constructor for the deserialization.
+         * @param info Information for the serialization.
+         * @param context The context for the serialization.
+         */
+        public Unit(SerializationInfo info, StreamingContext context) {
+            this.lifePoints = (int)info.GetValue("LifePoints", typeof(int));
+            this.remainingMovementPoints = (int)info.GetValue("MovementPoints", typeof(int));
+        }
+        
+        /**
+         * Method for the serialization.
+         * Fills info with the attributs' values.
+         * @param info Information for the serialization.
+         * @param context The context for the serialization.
+         */
+        public void GetObjectData(SerializationInfo info, StreamingContext context) {
+            info.AddValue("LifePoints", this.lifePoints);
+            info.AddValue("MovementPoints", this.remainingMovementPoints);
+            info.AddValue("Owner", this.owner.getNumber());
         }
 
         /**
@@ -71,6 +96,13 @@ namespace SmallWorld {
          */
         public IPlayer getOwner() {
             return this.owner;
+        }
+
+        /**
+         * @param owner The new unit's owner.
+         */
+        public void setOwner(IPlayer owner) {
+            this.owner = owner;
         }
 
         /**
