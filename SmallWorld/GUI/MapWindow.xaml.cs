@@ -23,9 +23,9 @@ using GUI;
 
 namespace GUI {
 
-    /**
-     * Logique d'interaction pour MainWindow.xaml
-     */
+    /// <summary>
+    /// Logique d'interaction pour MainWindow.xaml
+    /// </summary>
     public partial class MapWindow: Window {
 
         private Brush selectedBrush = Brushes.Red;
@@ -45,10 +45,10 @@ namespace GUI {
         private bool multipleSelection;
         private String saveFile;
 
-        /**
-         * Constructor
-         * @param game The game represented by the window.
-         */
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="game">The game represented by the window.</param>
         public MapWindow(IGame game) {
             this.WindowState = WindowState.Maximized;
             InitializeComponent();
@@ -67,11 +67,11 @@ namespace GUI {
             this.KeyUp += new KeyEventHandler(OnButtonKeyUp);
         }
 
-        /**
-         * Called when the window is fully loaded.
-         * @param sender The sender of the notification.
-         * @param e The event.
-         */
+        /// <summary>
+        /// Called when the window is fully loaded.
+        /// </summary>
+        /// <param name="sender">The sender of the notification.</param>
+        /// <param name="e">The event.</param>
         private void Window_Loaded(object sender, RoutedEventArgs e) {
             IMap map = this.game.GetMap();
             int size = map.GetSize();
@@ -101,12 +101,13 @@ namespace GUI {
             this.DisplayInfoPlayer();
         }
 
-        /**
-         * Creates a graphic square associated to an ISquare.
-         * @param type The type of square.
-         * @param col The abscissa of the square on the map.
-         * @param line The ordinate of the square on the map.
-         */
+        /// <summary>
+        /// Creates a graphic square associated to an ISquare.
+        /// </summary>
+        /// <param name="type">The type of square.</param>
+        /// <param name="col">The abscissa of the square on the map.</param>
+        /// <param name="line">The ordinate of the square on the map.</param>
+        /// <returns></returns>
         private Rectangle CreateSquares(ISquare type, int col, int line) {
             Rectangle rectangle = new Rectangle();
 
@@ -124,10 +125,11 @@ namespace GUI {
             return rectangle;
         }
 
-        /**
-         * Display the units selected at the left bottom of the window.
-         * @param units The units selected.
-         */
+        /// <summary>
+        /// Displays the units selected at the left bottom of the window.
+        /// </summary>
+        /// <param name="units">All the units.</param>
+        /// <param name="selectedUnits">The units selected.</param>
         private void DisplayUnitSelecter(List<IUnit> units, List<IUnit> selectedUnits) {
             this.unitSelecterCollec = new Dictionary<Border, IUnit>();
             foreach(IUnit unit in units) {
@@ -157,9 +159,9 @@ namespace GUI {
             }
         }
 
-        /**
-         * Display information about the current player at the right bottom of the window.
-         */
+        /// <summary>
+        /// Displays information about the current player at the right bottom of the window.
+        /// </summary>
         private void DisplayInfoPlayer() {
             IPlayer player1 = this.game.GetPlayer1();
             this.playerD1.Text = player1.GetName()+"     " + this.game.GetNbUnits(player1)+ " Units     " + player1.GetPoints() + " Pts";
@@ -173,9 +175,9 @@ namespace GUI {
             this.lastMove.Text = this.game.GetRound().GetLastMoveInfo();
         }
 
-        /**
-         * Display all units on the map.
-         */
+        /// <summary>
+        /// Displays all units on the map.
+        /// </summary>
         private void DisplayUnitsOnMap() {
             List<IUnit>[,] units = this.game.GetMap().GetUnits();
 
@@ -208,10 +210,10 @@ namespace GUI {
             }
         }
 
-        /**
-         * Display advised destination on the map
-         * @param positions advised destination
-         */
+        /// <summary>
+        /// Displays advised destination on the map.
+        /// </summary>
+        /// <param name="positions">The advised destination.</param>
         private void DisplayAdvisedDestination(List<IPoint> positions) {
             if(advisedDestination != null) {
                 foreach(IPoint point in positions) {
@@ -222,9 +224,9 @@ namespace GUI {
             }
         }
 
-        /**
-         * Clear advised destinations
-         */
+        /// <summary>
+        /// Clear advised destinations.
+        /// </summary>
         private void ClearAdvisedDestination() {
             if(advisedDestination != null) {
                 foreach(Rectangle rect in advisedDestination) {
@@ -236,23 +238,23 @@ namespace GUI {
             advisedDestination.Clear();
         }
 
-        /**
-         * Listener for when the mouse enters a rectangle.
-         * Surround the rectangle with a blue halo.
-         * @param sender The rectangle sender of the notification.
-         * @param e The event.
-         */
+        /// <summary>
+        /// Listener for when the mouse enters a rectangle.
+        /// Surrounds the rectangle with a blue halo.
+        /// </summary>
+        /// <param name="sender">The rectangle sender of the notification.</param>
+        /// <param name="e">The event.</param>
         private void MouseEnterRectangle(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             rectangle.Stroke = overBrush;
         }
 
-        /**
-         * Listener for when the mouse leaves a rectangle.
-         * Remove the blue halo that surround the rectangle left.
-         * @param sender The rectangle sender of the notification.
-         * @param e The event.
-         */
+        /// <summary>
+        /// Listener for when the mouse leaves a rectangle.
+        /// Removes the blue halo that surround the rectangle left.
+        /// </summary>
+        /// <param name="sender">The rectangle sender of the notification.</param>
+        /// <param name="e">The event.</param>
         private void MouseLeaveRectangle(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             if(rectangle == this.selectedSquare) {
@@ -264,12 +266,12 @@ namespace GUI {
             }
         }
 
-        /**
-         * Listener for left clicks on a rectangle.
-         * Updates the current selected square (and units).
-         * @param sender The rectangle sender of the notification.
-         * @param e The event.
-         */
+        /// <summary>
+        /// Listener for left clicks on a rectangle.
+        /// Updates the current selected square (and units).
+        /// </summary>
+        /// <param name="sender">The rectangle sender of the notification.</param>
+        /// <param name="e">The event.</param>
         private void MouseLeftMapRectangle(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             int column = Grid.GetColumn(rectangle);
@@ -311,12 +313,12 @@ namespace GUI {
             e.Handled = true;
         }
 
-        /**
-         * Listener for left clicks on the list of units to select.
-         * Updates the current selected unit.
-         * @param sender The sender of the notification, the object clicked.
-         * @param e The event.
-         */
+        /// <summary>
+        /// Listener for left clicks on the list of units to select.
+        /// Updates the current selected unit.
+        /// </summary>
+        /// <param name="sender">The sender of the notification, the object clicked.</param>
+        /// <param name="e">The event.</param>
         private void MouseLeftUnitSelecter(object sender, MouseEventArgs e) {
 
             IRound round = this.game.GetRound();
@@ -358,13 +360,13 @@ namespace GUI {
 
             e.Handled = true;
         }
-
-        /**
-         * Listener for left clicks on a rectangle.
-         * Move the currently selected unit to the rectangle clicked if possible.
-         * @param sender The rectangle sender of the notification.
-         * @param e The event.
-         */
+        
+        /// <summary>
+        /// Listener for left clicks on a rectangle.
+        /// Moves the currently selected unit to the rectangle clicked if possible.
+        /// </summary>
+        /// <param name="sender">The rectangle sender of the notification.</param>
+        /// <param name="e">The event.</param>
         private void MouseRightMapRectangle(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
             int column = Grid.GetColumn(rectangle);
@@ -388,12 +390,12 @@ namespace GUI {
             e.Handled = true;
         }
 
-        /**
-         * Listener for clicks on the end round button.
-         * End the round.
-         * @param sender The sender of the notification.
-         * @param e The event.
-         */
+        /// <summary>
+        /// Listener for clicks on the end round button.
+        /// Ends the round.
+        /// </summary>
+        /// <param name="sender">The sender of the notification.</param>
+        /// <param name="e">The event.</param>
         private void OnClickEndRound(object sender, RoutedEventArgs e) {
             this.game.EndRound();
 
@@ -426,12 +428,12 @@ namespace GUI {
             }
         }
 
-        /**
-         * Listener for clicks on the start a new game menu item.
-         * Open the CreateGame window to start a new game.
-         * @param sender The sender of the notification.
-         * @param e The event.
-         */
+        /// <summary>
+        /// Listener for clicks on the start a new game menu item.
+        /// Opens the CreateGame window to start a new game.
+        /// </summary>
+        /// <param name="sender">The sender of the notification.</param>
+        /// <param name="e">The event.</param>
         private void OnClickStartNewGame(object sender, RoutedEventArgs e) {
             MessageBoxResult result = MessageBox.Show("Do you want to save the game before starting a new game?", "Open a new game", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if(result == MessageBoxResult.Yes) {
@@ -442,12 +444,12 @@ namespace GUI {
             this.Close();
         }
 
-        /**
-         * Listener for clicks on the open menu item.
-         * Restore a new saved game.
-         * @param sender The sender of the notification.
-         * @param e The event.
-         */
+        /// <summary>
+        /// Listener for clicks on the open menu item.
+        /// Restores a new saved game.
+        /// </summary>
+        /// <param name="sender">The sender of the notification.</param>
+        /// <param name="e">The event.</param>
         private void OnClickOpen(object sender, RoutedEventArgs e) {
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.DefaultExt = ".sav";
@@ -460,32 +462,32 @@ namespace GUI {
             }
         }
 
-        /**
-         * Listener for clicks on the save menu item.
-         * Save the current game.
-         * @param sender The sender of the notification.
-         * @param e The event.
-         */
+        /// <summary>
+        /// Listener for clicks on the save menu item.
+        /// Saves the current game.
+        /// </summary>
+        /// <param name="sender">The sender of the notification.</param>
+        /// <param name="e">The event.</param>
         private void OnClickSave(object sender, RoutedEventArgs e) {
             this.SaveGame();
         }
 
-        /**
-         * Listener for clicks on the save as menu item.
-         * Save the current game.
-         * @param sender The sender of the notification.
-         * @param e The event.
-         */
+        /// <summary>
+        /// Listener for clicks on the save as menu item.
+        /// Saves the current game.
+        /// </summary>
+        /// <param name="sender">The sender of the notification.</param>
+        /// <param name="e">The event.</param>
         private void OnClickSaveAs(object sender, RoutedEventArgs e) {
             this.SaveGameAs();
         }
 
-        /**
-         * Listener for clicks on the exit menu item.
-         * End the round.
-         * @param sender The sender of the notification.
-         * @param e The event.
-         */
+        /// <summary>
+        /// Listener for clicks on the exit menu item.
+        /// Ends the round.
+        /// </summary>
+        /// <param name="sender">The sender of the notification.</param>
+        /// <param name="e">The event.</param>
         private void OnClickExit(object sender, RoutedEventArgs e) {
             MessageBoxResult result = MessageBox.Show("Do you want to save the game before exiting?", "Exit the game", MessageBoxButton.YesNo, MessageBoxImage.Warning);
             if(result == MessageBoxResult.Yes) {
@@ -494,18 +496,18 @@ namespace GUI {
             this.Close();
         }
 
-        /**
-         * Saves the current game in the current save file.
-         * Checks that there is already a save file defined.
-         * If no save file is defined, calls SaveGameAs.
-         */
+        /// <summary>
+        /// Saves the current game in the current save file.
+        /// Checks that there is already a save file defined.
+        /// If no save file is defined, calls SaveGameAs.
+        /// </summary>
         private void SaveGame() {
             // TODO
         }
 
-        /**
-         * Saves the current game after asking for the location for the save file.
-         */
+        /// <summary>
+        /// Saves the current game after asking for the location for the save file.
+        /// </summary>
         private void SaveGameAs() {
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.DefaultExt = ".sav";
@@ -518,17 +520,19 @@ namespace GUI {
             }
         }
 
-        /**
-         * Restores the game from the current save file.
-         */
+        /// <summary>
+        /// Restores the game from the current save file.
+        /// </summary>
         private void RestoreGame() {
             // TODO
         }
 
-        /**
-         * Listener for pressed shift key
-         * Activate the multiple selection mode
-         */
+        /// <summary>
+        /// Listener for pressed shift key.
+        /// Activates the multiple selection mode.
+        /// </summary>
+        /// <param name="sender">The sender of the notification.</param>
+        /// <param name="e">The event.</param>
         private void OnButtonKeyDown(object sender, KeyEventArgs e) {
             if(e.Key == Key.LeftShift || e.Key == Key.RightShift || e.Key == Key.RightCtrl || e.Key == Key.LeftCtrl) {
                 this.multipleSelection = true;
@@ -536,10 +540,12 @@ namespace GUI {
             e.Handled = true;
         }
 
-        /**
-         * Listener for pressed shift key
-         * Deactive the multiple selection mode
-         */
+        /// <summary>
+        /// Listener for pressed shift key.
+        /// Desactive the multiple selection mode.
+        /// </summary>
+        /// <param name="sender">The sender of the notification.</param>
+        /// <param name="e">The event.</param>
         private void OnButtonKeyUp(object sender, KeyEventArgs e) {
             if(e.Key == Key.LeftShift || e.Key == Key.RightShift || e.Key == Key.RightCtrl || e.Key == Key.LeftCtrl) {
                 this.multipleSelection = false;

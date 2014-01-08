@@ -14,11 +14,11 @@ namespace SmallWorld {
         private int number;
         private static int count = 0;
 
-        /**
-         * Constructor
-         * @param name The name of the player.
-         * @param factory The factory for this player (represent the nation).
-         */
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="name">The name of the player.</param>
+        /// <param name="factory">The factory for this player (represent the nation).</param>
         public Player(string name, IUnitFactory factory) {
             this.name = name;
             this.factory = factory;
@@ -26,11 +26,11 @@ namespace SmallWorld {
             this.number = count;
         }
 
-        /**
-         * Constructor for the deserialization.
-         * @param info Information for the serialization.
-         * @param context The context for the serialization.
-         */
+        /// <summary>
+        /// Constructor for the deserialization.
+        /// </summary>
+        /// <param name="info">Information for the serialization.</param>
+        /// <param name="context">The context for the serialization.</param>
         public Player(SerializationInfo info, StreamingContext context) {
             this.name = (String)info.GetValue("Name", typeof(string));
             this.points = (int)info.GetValue("Points", typeof(int));
@@ -50,13 +50,13 @@ namespace SmallWorld {
             this.number = (int)info.GetValue("Number", typeof(int));
             count++;
         }
-        
-        /**
-         * Method for the serialization.
-         * Fills info with the attributs' values.
-         * @param info Information for the serialization.
-         * @param context The context for the serialization.
-         */
+
+        /// <summary>
+        /// Method for the serialization.
+        /// Fills info with the attributs' values.
+        /// </summary>
+        /// <param name="info">Information for the serialization.</param>
+        /// <param name="context">The context for the serialization.</param>
         public void GetObjectData(SerializationInfo info, StreamingContext context) {
             info.AddValue("Name", this.name);
             info.AddValue("Points", this.points);
@@ -64,39 +64,43 @@ namespace SmallWorld {
             info.AddValue("Factory", this.factory.GetNumber());
         }
 
-        /**
-         * @returns The player's name.
-         */
+        /// <summary>
+        /// Returns the player's name.
+        /// </summary>
+        /// <returns>The player's name.</returns>
         public string GetName() {
             return this.name;
         }
 
-        /**
-         * @returns The number of points collected by the player.
-         */
+        /// <summary>
+        /// Returns the number of points collected by the player.
+        /// </summary>
+        /// <returns>The number of points collected by the player.</returns>
         public int GetPoints() {
             return this.points;
         }
 
-        /**
-         * @returns The number assigned to the player.
-         */
+        /// <summary>
+        /// Returns the number assigned to the player.
+        /// </summary>
+        /// <returns>The number assigned to the player.</returns>
         public int GetNumber() {
             return this.number;
         }
 
-        /**
-         * @returns The number associated to the nation of the player.
-         */
+        /// <summary>
+        /// Returns the number associated to the nation of the player.
+        /// </summary>
+        /// <returns>The number associated to the nation of the player.</returns>
         public int GetNationNumber() {
             return this.factory.GetNumber();
         }
 
-        /**
-         * Creates some units using the factory of the player.
-         * @param nbUnits The number of units to create.
-         * @returns The list of units created.
-         */
+        /// <summary>
+        /// Creates some units using the factory of the player.
+        /// </summary>
+        /// <param name="nbUnits">The number of units to create.</param>
+        /// <returns>The list of units created.</returns>
         public List<IUnit> CreateUnits(int nbUnits) {
             List<IUnit> units = new List<IUnit>();
             for(int i=0; i<nbUnits; i++) {
@@ -105,11 +109,11 @@ namespace SmallWorld {
             return units;
         }
 
-        /**
-         * Add some points to the player.
-         * @param n The number of points to add.
-         * @throws ArgumentOutOfRangeException If n if negative.
-         */
+        /// <summary>
+        /// Adds some points to the player.
+        /// </summary>
+        /// <param name="n">The number of points to add.</param>
+        /// <exception cref="ArgumentOutOfRangeException">If n if negative.</exception>
         public void AddPoints(int n) {
             if(n < 0) {
                 throw new ArgumentOutOfRangeException("Only a positive number of points can be added to a player.");

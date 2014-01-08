@@ -9,12 +9,14 @@ namespace SmallWorld {
     public class MapBuilder: IMapBuilder {
         // TODO Should be a singleton.
 
-        /**
-         * Builds a map.
-         * The composition of the map is computed by in the C++ library.
-         * @param size The size of the map to build.
-         * @returns The map.
-         */
+        /// <summary>
+        /// Builds a map.
+        /// </summary>
+        /// <remarks>
+        /// The composition of the map is computed by in the C++ library.
+        /// </remarks>
+        /// <param name="size">The size of the map to build.</param>
+        /// <returns>The map.</returns>
         public IMap BuildMap(int size) {
             int[][] composition = Wrapper.generateMapList(size);
             ISquare[,] squares = new ISquare[size, size];

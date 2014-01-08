@@ -8,19 +8,19 @@ namespace SmallWorld {
 
     public class VikingFactory: IVikingFactory {
 
-        /**
-         * Creates a viking unit.
-         * @param player The player owner of the unit.
-         * @returns The viking unit.
-         */
+        /// <summary>
+        /// Creates a viking unit.
+        /// </summary>
+        /// <param name="player">The player owner of the unit.</param>
+        /// <returns>The viking unit.</returns>
         public IUnit CreateUnit(IPlayer player) {
             return new Viking(player);
         }
 
-        /**
-         * Used by the wrapper.
-         * @returns The number corresponding to this factory/nation.
-         */
+        /// <summary>
+        /// Used by the wrapper.
+        /// </summary>
+        /// <returns>The number corresponding to this factory/nation.</returns>
         public int GetNumber() {
             return 1;
         }

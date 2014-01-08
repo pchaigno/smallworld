@@ -13,16 +13,18 @@ namespace SmallWorld {
         protected int mapSize;
         protected int nbUnits;
 
-        /**
-         * Build the game.
-         * Creates the game manager with the right players, units and map.
-         * The map is created in the C++ library as for the unit positions.
-         * @param name1 The first player's name.
-         * @param factory1 The factory for the first player.
-         * @param name2 The second player's name.
-         * @param factory2 The factory for the second player.
-         * @returns The game manager.
-         */
+        /// <summary>
+        /// Build the game.
+        /// Creates the game manager with the right players, units and map.
+        /// </summary>
+        /// <remarks>
+        /// The map is created in the C++ library as for the unit positions.
+        /// </remarks>
+        /// <param name="name1">The first player's name.</param>
+        /// <param name="factory1">The factory for the first player.</param>
+        /// <param name="name2">The second player's name.</param>
+        /// <param name="factory2">The factory for the second player.</param>
+        /// <returns>The game manager.</returns>
         public IGame BuildGame(String name1, IUnitFactory factory1, String name2, IUnitFactory factory2) {
             IMapBuilder mapBuilder = new MapBuilder();
             IMap map = mapBuilder.BuildMap(this.mapSize);

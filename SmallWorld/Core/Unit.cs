@@ -17,134 +17,143 @@ namespace SmallWorld {
         protected int remainingMovementPoints;
         protected IPlayer owner;
 
-        /**
-         * Constructor
-         * @param owner The player owner of the unit.
-         */
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="owner">The player owner of the unit.</param>
         public Unit(IPlayer owner) {
             this.owner = owner;
             this.lifePoints = DEFAULT_LIFE_POINTS;
             this.remainingMovementPoints = DEFAULT_MOVEMENT_POINTS;
         }
 
-        /**
-         * Constructor for the deserialization.
-         * @param info Information for the serialization.
-         * @param context The context for the serialization.
-         */
+        /// <summary>
+        /// Constructor for the deserialization.
+        /// </summary>
+        /// <param name="info">Information for the serialization.</param>
+        /// <param name="context">The context for the serialization.</param>
         public Unit(SerializationInfo info, StreamingContext context) {
             this.lifePoints = (int)info.GetValue("LifePoints", typeof(int));
             this.remainingMovementPoints = (int)info.GetValue("MovementPoints", typeof(int));
         }
-        
-        /**
-         * Method for the serialization.
-         * Fills info with the attributs' values.
-         * @param info Information for the serialization.
-         * @param context The context for the serialization.
-         */
+
+        /// <summary>
+        /// Method for the serialization.
+        /// Fills info with the attributs' values.
+        /// </summary>
+        /// <param name="info">Information for the serialization.</param>
+        /// <param name="context">The context for the serialization.</param>
         public void GetObjectData(SerializationInfo info, StreamingContext context) {
             info.AddValue("LifePoints", this.lifePoints);
             info.AddValue("MovementPoints", this.remainingMovementPoints);
             info.AddValue("Owner", this.owner.GetNumber());
         }
 
-        /**
-         * @returns The unit's life points.
-         */
+        /// <summary>
+        /// Returns the unit's life points.
+        /// </summary>
+        /// <returns>The unit's life points.</returns>
         public int GetLifePoints() {
             return this.lifePoints;
         }
 
-        /**
-         * Remove one life point to the unit.
-         */
+        /// <summary>
+        /// Remove one life point to the unit.
+        /// </summary>
         public void DecreaseLifePoints() {
             this.lifePoints--;
         }
 
-        /**
-         * @returns The default number of life points for this unit.
-         */
+        /// <summary>
+        /// Returns the default number of life points for this unit.
+        /// </summary>
+        /// <returns>The default number of life points for this unit.</returns>
         public int GetDefaultLifePoints() {
             return DEFAULT_LIFE_POINTS;
         }
 
-        /**
-         * @returns The unit's defense.
-         */
+        /// <summary>
+        /// Returns the unit's defense.
+        /// </summary>
+        /// <returns>The unit's defense.</returns>
         public int GetAttack() {
             return ATTACK;
         }
 
-        /**
-         * @returns The unit's defense.
-         */
+        /// <summary>
+        /// Returns the unit's defense.
+        /// </summary>
+        /// <returns>The unit's defense.</returns>
         public int GetDefense() {
             return DEFENSE;
         }
 
-        /**
-         * @returns The number of remaining movement points for this round.
-         */
+        /// <summary>
+        /// Returns the number of remaining movement points for this round.
+        /// </summary>
+        /// <returns>The number of remaining movement points for this round.</returns>
         public int GetRemainingMovementPoints() {
             return this.remainingMovementPoints;
         }
 
-        /**
-         * @returns The player owner of the unit.
-         */
+        /// <summary>
+        /// Returns the player owner of the unit.
+        /// </summary>
+        /// <returns>The player owner of the unit.</returns>
         public IPlayer GetOwner() {
             return this.owner;
         }
 
-        /**
-         * @param owner The new unit's owner.
-         */
+        /// <summary>
+        /// Sets the unit's owner.
+        /// </summary>
+        /// <param name="owner">The new unit's owner.</param>
         public void SetOwner(IPlayer owner) {
             this.owner = owner;
         }
 
-        /**
-         * Reset the remaining movement points to the default number.
-         */
+        /// <summary>
+        /// Reset the remaining movement points to the default number.
+        /// </summary>
         public void ResetMovementPoints() {
             this.remainingMovementPoints = DEFAULT_MOVEMENT_POINTS;
         }
 
-        /**
-         * Checks if the unit is alive.
-         * @returns True if the unit is alive.
-         */
+        /// <summary>
+        /// Checks if the unit is alive.
+        /// </summary>
+        /// <returns>True if the unit is alive.</returns>
         public bool IsAlive() {
             return this.lifePoints > 0;
         }
 
-        /**
-         * @param square The type of square the unit is currently on.
-         * @param neighbours The neighbour squares (array of 4 squares or null if out bounds).
-         * @returns The points won by the unit for this round.
-         */
+        /// <summary>
+        /// Computes the points won by the unit.
+        /// </summary>
+        /// <param name="square">The type of square the unit is currently on.</param>
+        /// <param name="neighbours">The neighbour squares (array of 4 squares or null if out bounds).</param>
+        /// <returns>The points won by the unit for this round.</returns>
         public abstract int GetPoints(ISquare square, ISquare[] neighbours);
 
-        /**
-         * Update the number of remaining points after a move.
-         * @param destination The type of square the destination is.
-         */
+        /// <summary>
+        /// Updates the number of remaining points after a move.
+        /// </summary>
+        /// <param name="destination">The type of square the destination is.</param>
         public virtual void Move(ISquare destination) {
             this.remainingMovementPoints -= 2;
         }
 
-        /**
-         * Checks if the unit can move during this round to a certain destination.
-         * The destination must be next to the current position,
-         * the unit must have some movement points left,
-         * the square can't be a sea.
-         * @param currentPosition The current position.
-         * @param destination The destination to reach.
-         * @param square The type of square the destination is.
-         * @returns True if the unit can move to the destination.
-         */
+        /// <summary>
+        /// Checks if the unit can move during this round to a certain destination.
+        /// The destination must be next to the current position,
+        /// the unit must have some movement points left,
+        /// the square can't be a sea.
+        /// </summary>
+        /// <param name="currentPosition">The current position.</param>
+        /// <param name="currentSquare">The current type of square.</param>
+        /// <param name="destination">The destination to reach.</param>
+        /// <param name="square">The type of square the destination is.</param>
+        /// <returns>True if the unit can move to the destination.</returns>
         public virtual bool CanMove(IPoint currentPosition, ISquare currentSquare, IPoint destination, ISquare square) {
             return destination.IsNext(currentPosition) 
                 && remainingMovementPoints > 0

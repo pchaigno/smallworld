@@ -13,10 +13,12 @@ namespace SmallWorld {
         private IDesert desert;
         private static SquareFactory INSTANCE = new SquareFactory();
 
-        /**
-         * Constructor
-         * It is private because the class is a singleton.
-         */
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <remarks>
+        /// It is private because the class is a singleton.
+        /// </remarks>
         private SquareFactory() {
             this.mountain = new Mountain();
             this.lowland = new Lowland();
@@ -25,18 +27,19 @@ namespace SmallWorld {
             this.desert = new Desert();
         }
 
-        /**
-         * @returns The instance of the square factory.
-         */
+        /// <summary>
+        /// Returns the instance of the square factory.
+        /// </summary>
+        /// <returns>The instance of the square factory.</returns>
         public static SquareFactory GetInstance() {
             return INSTANCE;
         }
 
-        /**
-         * Gets the square corresponding to the number from the C++ library.
-         * @param type The number from the C++ library.
-         * @returns The square.
-         */
+        /// <summary>
+        /// Gets the square corresponding to the number from the C++ library.
+        /// </summary>
+        /// <param name="type">The number from the C++ library.</param>
+        /// <returns>The square.</returns>
         public ISquare GetSquare(int type) {
             switch(type) {
                 case 1:
@@ -55,11 +58,11 @@ namespace SmallWorld {
             }
         }
 
-        /**
-         * Convert a matrix of squares to a matrix of integers with the corresponding numbers.
-         * @param squares The map as a matrix of squares.
-         * @returns The map as a matrix of integers.
-         */
+        /// <summary>
+        /// Convert a matrix of squares to a matrix of integers with the corresponding numbers.
+        /// </summary>
+        /// <param name="squares">The map as a matrix of squares.</param>
+        /// <returns>The map as a matrix of integers.</returns>
         public static int[][] GetNumbers(ISquare[,] squares) {
             int[][] map = new int[squares.GetLength(0)][];
             for(int i=0; i<squares.GetLength(0); i++) {

@@ -8,19 +8,19 @@ namespace SmallWorld {
 
     public class DwarfFactory: IDwarfFactory {
 
-        /**
-         * Creates a dwarf unit.
-         * @param player The player owner of the unit.
-         * @returns The dwarf unit.
-         */
+        /// <summary>
+        /// Creates a dwarf unit.
+        /// </summary>
+        /// <param name="player">The player owner of the unit.</param>
+        /// <returns>The dwarf unit.</returns>
         public IUnit CreateUnit(IPlayer player) {
             return new Dwarf(player);
         }
 
-        /**
-         * Used by the wrapper.
-         * @returns The number corresponding to this factory/nation.
-         */
+        /// <summary>
+        /// Used by the wrapper.
+        /// </summary>
+        /// <returns>The number corresponding to this factory/nation.</returns>
         public int GetNumber() {
             return 3;
         }

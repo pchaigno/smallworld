@@ -10,11 +10,11 @@ namespace SmallWorld {
         private const int NUMBER_UNITS = 4;
         private const int MAP_SIZE = 5;
 
-        /**
-         * Constructor
-         * Defines the default parameters for the game:
-         * Number of rounds, size of the map and number of units.
-         */
+        /// <summary>
+        /// Constructor
+        /// Defines the default parameters for the game:
+        /// Number of rounds, size of the map and number of units.
+        /// </summary>
         public DemoGameBuilder() {
             this.maxRounds = MAXIMUM_ROUNDS;
             this.nbUnits = NUMBER_UNITS;

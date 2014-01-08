@@ -16,21 +16,21 @@ namespace SmallWorld {
             set;
         }
 
-        /**
-         * Constructor
-         * @param x The abscissa.
-         * @param y The ordinate.
-         */
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="x">The abscissa.</param>
+        /// <param name="y">The ordinate.</param>
         public Point(int x, int y) {
             this.X = x;
             this.Y = y;
         }
 
-        /**
-         * Checks if a position is adjacent to the current one.
-         * @param pt The position.
-         * @returns True if the two positions are adjacent.
-         */
+        /// <summary>
+        /// Checks if a position is adjacent to the current one.
+        /// </summary>
+        /// <param name="pt">The position.</param>
+        /// <returns>True if the two positions are adjacent.</returns>
         public bool IsNext(IPoint pt) {
             return Math.Abs(this.X - pt.X) + Math.Abs(this.Y - pt.Y) == 1;
         }

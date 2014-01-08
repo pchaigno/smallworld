@@ -15,11 +15,11 @@ namespace SmallWorld {
         // TODO We should use a code and code/messages correspondances for move information.
         private String lastMoveInfo;
 
-        /**
-         * Constructor
-         * @param game The game the round is part of.
-         * @param player The player for this round.
-         */
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="game">The game the round is part of.</param>
+        /// <param name="player">The player for this round.</param>
         public Round(IGame game, IPlayer player) {
             this.game = game;
             this.player = player;
@@ -27,19 +27,20 @@ namespace SmallWorld {
             selectedUnit = new List<IUnit>();
         }
 
-        /**
-         * @returns The information about the last move.
-         */
+        /// <summary>
+        /// Returns the information about the last move.
+        /// </summary>
+        /// <returns>The information about the last move.</returns>
         public String GetLastMoveInfo() {
             return this.lastMoveInfo;
         }
 
-        /**
-         * Retrieves advised destinations from the C++ library.
-         * @param unit The unit for which we want advise.
-         * @param pos The unit's position.
-         * @returns The list of advised desinations.
-         */
+        /// <summary>
+        /// Retrieves advised destinations from the C++ library.
+        /// </summary>
+        /// <param name="unit">The unit for which we want advise.</param>
+        /// <param name="pos">The unit's position.</param>
+        /// <returns>The list of advised desinations.</returns>
         public List<IPoint> GetAdvisedDestinations(IUnit unit, IPoint pos) {
             IMap map = this.game.GetMap();
             ISquare[,] squares = map.GetSquares();
@@ -69,60 +70,62 @@ namespace SmallWorld {
             return advice;
         }
 
-        /**
-         * Set the new selected unit.
-         * The selected position stay the same.
-         * @param unit The unit to select.
-         */
+        /// <summary>
+        /// Sets the new selected unit.
+        /// The selected position stay the same.
+        /// </summary>
+        /// <param name="units">The unit to select.</param>
         public void SelectUnits(List<IUnit> units) {
             this.selectedUnit = units;
         }
 
-        /**
-         * Set the new selected unit.
-         * The selected position is also updated.
-         * @param unit The unit to select.
-         * @param position The unit's position.
-         */
+        /// <summary>
+        /// Sets the new selected unit.
+        /// The selected position is also updated.
+        /// </summary>
+        /// <param name="units">The unit to select.</param>
+        /// <param name="position">The unit's position.</param>
         public void SelectUnits(List<IUnit> units, IPoint position) {
             this.selectedUnit = units;
             this.selectedPosition = position;
         }
 
-        /**
-         * Unselect the last selected unit.
-         * The last selected position isn't unselected.
-         */
+        /// <summary>
+        /// Unselects the last selected unit.
+        /// </summary>
+        /// <remarks>
+        /// The last selected position isn't unselected.
+        /// </remarks>
         public void UnselectUnit() {
             this.selectedUnit.Clear();
         }
 
-        /**
-         * Retrieve all units from a position.
-         * @param position The position
-         * @returns The units on this position.
-         */
+        /// <summary>
+        /// Retrieves all units from a position.
+        /// </summary>
+        /// <param name="position">The position.</param>
+        /// <returns>The units on this position.</returns>
         public List<IUnit> GetUnits(IPoint position) {
             return this.game.GetMap().GetUnits(position);
         }
 
-        /**
-         * Checks if a position is under the control of the current player.
-         * @param position The position.
-         * @returns True if the position is under the control of the current player.
-         */
+        /// <summary>
+        /// Checks if a position is under the control of the current player.
+        /// </summary>
+        /// <param name="position">The position.</param>
+        /// <returns>True if the position is under the control of the current player.</returns>
         public bool IsCurrentPlayerPosition(IPoint position) {
             List<IUnit> units = this.game.GetMap().GetUnits(position);
             return units.Count > 0 
                 && units[0].GetOwner() == this.player;
         }
 
-        /**
-         * Checks if the unit currently selected can move to a desination.
-         * Save the destination if the move is possible.
-         * @param destination The desination.
-         * @param True if the current unit can move to the destination.
-         */
+        /// <summary>
+        /// Checks if the unit currently selected can move to a desination.
+        /// Saves the destination if the move is possible.
+        /// </summary>
+        /// <param name="destination">The desination.</param>
+        /// <returns>True if the current unit can move to the destination.</returns>
         public bool SetDestination(IPoint destination) {
             if(this.selectedUnit.Count == 0) {
                 this.lastMoveInfo = "You have to select a unit first.";
@@ -146,11 +149,11 @@ namespace SmallWorld {
             return result;
         }
 
-        /**
-         * Execute the move of the current unit to the destination selected previously.
-         * Unselect the unit.
-         * @see setDestination
-         */
+        /// <summary>
+        /// Executes the move of the current unit to the destination selected previously.
+        /// Unselects the unit.
+        /// </summary>
+        /// <see cref="Round.SetDestination"/>
         public void ExecuteMove() {
             // TODO improve message
 
@@ -175,11 +178,12 @@ namespace SmallWorld {
             this.selectedUnit.Clear();
         }
 
-        /**
-         * Compute a fight between the currently selected unit
-         * and the best one from the selected destination.
-         * @returns True if the selected unit won the fight.
-         */
+        /// <summary>
+        /// Computes a fight between the currently selected unit
+        /// and the best one from the selected destination.
+        /// </summary>
+        /// <param name="unit">The unit who fight.</param>
+        /// <returns>True if the selected unit won the fight.</returns>
         private bool Combat(IUnit unit) {
             IUnit enemy = GetBestUnit();
 
@@ -229,14 +233,13 @@ namespace SmallWorld {
                 this.lastMoveInfo = "The fight ended with a draw";
                 return false;
             }
-
         }
 
-        /**
-         * Retrieves the best unit from the square currently selected.
-         * The best unit is the one with the most life points.
-         * @returns The best unit on the square currently selected.
-         */
+        /// <summary>
+        /// Retrieves the best unit from the square currently selected.
+        /// The best unit is the one with the most life points.
+        /// </summary>
+        /// <returns>The best unit on the square currently selected.</returns>
         private IUnit GetBestUnit() {
             IUnit result = null;
             List<IUnit> units = this.game.GetMap().GetUnits(this.destination);

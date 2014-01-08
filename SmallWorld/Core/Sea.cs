@@ -9,35 +9,36 @@ namespace SmallWorld {
     [Serializable()]
     public class Sea: ISea {
 
-        /**
-         * Empty constructor.
-         */
+        /// <summary>
+        /// Empty constructor.
+        /// </summary>
         public Sea() {
 
         }
 
-        /**
-         * Constructor for the deserialization.
-         * @param info Information for the serialization.
-         * @param context The context for the serialization.
-         */
+        /// <summary>
+        /// Constructor for the deserialization.
+        /// </summary>
+        /// <param name="info">Information for the serialization.</param>
+        /// <param name="context">The context for the serialization.</param>
         public Sea(SerializationInfo info, StreamingContext context) {
 
         }
 
-        /**
-         * @returns The number corresponding to this square for the C++ library.
-         */
+        /// <summary>
+        /// Returns the number corresponding to this square for the C++ library.
+        /// </summary>
+        /// <returns>The number corresponding to this square for the C++ library.</returns>
         public int GetNumber() {
             return 1;
         }
-        
-        /**
-         * Method for the serialization.
-         * Fills info with the attributs' values.
-         * @param info Information for the serialization.
-         * @param context The context for the serialization.
-         */
+
+        /// <summary>
+        /// Method for the serialization.
+        /// Fills info with the attributs' values.
+        /// </summary>
+        /// <param name="info">Information for the serialization.</param>
+        /// <param name="context">The context for the serialization.</param>
         public void GetObjectData(SerializationInfo info, StreamingContext context) {
             info.AddValue("Number", 1);
         }

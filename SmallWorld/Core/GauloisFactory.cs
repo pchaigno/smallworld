@@ -8,19 +8,19 @@ namespace SmallWorld {
 
     public class GauloisFactory: IGauloisFactory {
 
-        /**
-         * Creates a gaulois unit.
-         * @param player The player owner of the unit.
-         * @returns The gaulois unit.
-         */
+        /// <summary>
+        /// Creates a gaulois unit.
+        /// </summary>
+        /// <param name="player">The player owner of the unit.</param>
+        /// <returns>The gaulois unit.</returns>
         public IUnit CreateUnit(IPlayer player) {
             return new Gaulois(player);
         }
 
-        /**
-         * Used by the wrapper.
-         * @returns The number corresponding to this factory/nation.
-         */
+        /// <summary>
+        /// Used by the wrapper.
+        /// </summary>
+        /// <returns>The number corresponding to this factory/nation.</returns>
         public int GetNumber() {
             return 2;
         }

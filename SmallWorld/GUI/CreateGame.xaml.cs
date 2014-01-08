@@ -15,24 +15,23 @@ using System.Windows.Shapes;
 using SmallWorld;
 using MainWindow;
 
-/*
+/**
  * TODO correct bug empty combobox
  */
-
 namespace GUI {
 
-    /**
-     * Logique d'interaction pour Creator.xaml
-     */
+    /// <summary>
+    /// Logique d'interaction pour Creator.xaml
+    /// </summary>
     public partial class CreateGame: Window {
         PeopleCollection people1Collec;
         PeopleCollection people2Collec;
         MapCollection mapCollection;
 
-        /**
-         * Constructor
-         * Intiliases the selectors.
-         */
+        /// <summary>
+        /// Constructor
+        /// Intiliases the selectors.
+        /// </summary>
         public CreateGame() {
             this.WindowState = WindowState.Maximized;
             InitializeComponent();
@@ -50,42 +49,42 @@ namespace GUI {
             people2Box.SelectedItem = "Vikings";
         }
 
-        /**
-         * Listener for changes on people1.
-         * @param sender The sender of the notification.
-         * @param e The event.
-         */
+        /// <summary>
+        /// Listener for changes on people1.
+        /// </summary>
+        /// <param name="sender">The sender of the notification.</param>
+        /// <param name="e">The event.</param>
         public void OnChangePeople1(object sender, SelectionChangedEventArgs e) {
             string value = (String)people1Box.SelectedItem;
             people1Collec.selected = value;
             people2Collec.Remove(value);
         }
 
-        /**
-         * Listener for changes on people2.
-         * @param sender The sender of the notification.
-         * @param e The event.
-         */
+        /// <summary>
+        /// Listener for changes on people2.
+        /// </summary>
+        /// <param name="sender">The sender of the notification.</param>
+        /// <param name="e">The event.</param>
         public void OnChangePeople2(object sender, SelectionChangedEventArgs e) {
             string value = (String)people2Box.SelectedItem;
             people2Collec.selected = value;
             people1Collec.Remove(value);
         }
 
-        /**
-         * Listener for changes on map.
-         * @param sender The sender of the notification.
-         * @param e The event.
-         */
+        /// <summary>
+        /// Listener for changes on map.
+        /// </summary>
+        /// <param name="sender">The sender of the notification.</param>
+        /// <param name="e">The event.</param>
         public void OnChangeMap(object sender, SelectionChangedEventArgs e) {
             mapCollection.selected = (String)mapBox.SelectedItem;
         }
 
-        /**
-         * Listener for clicks on launcher.
-         * @param sender The sender of the notification.
-         * @param e The event.
-         */
+        /// <summary>
+        /// Listener for clicks on launcher.
+        /// </summary>
+        /// <param name="sender">The sender of the notification.</param>
+        /// <param name="e">The event.</param>
         public void OnClickLauncher(object sender, RoutedEventArgs e) {
             String name1 = name1Box.Text;
             String name2 = name2Box.Text;
@@ -108,9 +107,9 @@ namespace GUI {
         }
     }
 
-    /**
-     * The object represented by the people selector.
-     */
+    /// <summary>
+    /// The object represented by the people selector.
+    /// </summary>
     class PeopleCollection: ObservableCollection<String> {
         public String selected {
             get;
@@ -118,19 +117,19 @@ namespace GUI {
         }
         private String removed;
 
-        /**
-         * Constructor
-         */
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public PeopleCollection() {
             Add("Gaulois");
             Add("Dwarves");
             Add("Vikings");
         }
 
-        /**
-         * Remove an element from the collection.
-         * @param st The element to remove.
-         */
+        /// <summary>
+        /// Removes an element from the collection.
+        /// </summary>
+        /// <param name="st">The element to remove.</param>
         public void Remove(String st) {
             base.Remove(st);
             if(removed != "") {
@@ -139,9 +138,10 @@ namespace GUI {
             removed = st;
         }
 
-        /**
-         * @returns The unit factory associated to the people selected.
-         */
+        /// <summary>
+        /// Returns the unit factory associated to the people selected.
+        /// </summary>
+        /// <returns>The unit factory associated to the people selected.</returns>
         public IUnitFactory GetFactory() {
             IUnitFactory factory = null;
             if(selected.Equals("Dwarves")) {
@@ -155,27 +155,28 @@ namespace GUI {
         }
     }
 
-    /**
-     * The object represented by the map selector.
-     */
+    /// <summary>
+    /// The object represented by the map selector.
+    /// </summary>
     class MapCollection: ObservableCollection<String> {
         public String selected {
             get;
             set;
         }
 
-        /**
-         * Constructor
-         */
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public MapCollection() {
             Add("Small");
             Add("Normal");
             Add("Demo");
         }
 
-        /**
-         * @returns The game builder associated to the map selected.
-         */
+        /// <summary>
+        /// Returns the game builder associated to the map selected.
+        /// </summary>
+        /// <returns>The game builder associated to the map selected.</returns>
         public IGameBuilder GetBuilder() {
             IGameBuilder builder = null;
             if(selected.Equals("Small")) {
