@@ -429,7 +429,7 @@ namespace GUI {
          * Activate the multiple selection mode
          */
         private void OnButtonKeyDown(object sender, KeyEventArgs e) {
-            if(e.Key == Key.LeftShift || e.Key == Key.RightCtrl) {
+            if(e.Key == Key.LeftShift || e.Key == Key.RightShift || e.Key == Key.RightCtrl || e.Key == Key.LeftCtrl) {
                 this.multipleSelection = true;
             }
             e.Handled = true;
@@ -440,7 +440,7 @@ namespace GUI {
          * Deactive the multiple selection mode
          */
         private void OnButtonKeyUp(object sender, KeyEventArgs e) {
-            if(e.Key == Key.LeftShift || e.Key == Key.RightCtrl) {
+            if(e.Key == Key.LeftShift || e.Key == Key.RightShift || e.Key == Key.RightCtrl || e.Key == Key.LeftCtrl) {
                 this.multipleSelection = false;
             }
             e.Handled = true;

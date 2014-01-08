@@ -63,8 +63,8 @@
 
 
             <StackPanel Width="250" FlowDirection="RightToLeft">
-                <Button Name="endTour"  Style="{StaticResource buttonStyle}" Click="onClickEndRound" HorizontalAlignment="left">
-                    !End Tour
+                <Button Name="endTurn"  Style="{StaticResource buttonStyle}" Click="onClickEndRound" HorizontalAlignment="left">
+                    !End Turn
                 </Button>
                 <TextBlock Style="{StaticResource textStyle}" Name="roundD"></TextBlock>
                 <TextBlock Style="{StaticResource textStyle}" Name="playerD1"></TextBlock>
