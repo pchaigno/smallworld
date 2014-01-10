@@ -19,8 +19,8 @@ namespace UnitTestCore {
 
         public void TestMovement() {
             IGame game = new NormalGameBuilder().BuildGame("test1", new VikingFactory(), "test2", new GauloisFactory());
-            int size = game.GetMap().GetSize();
-            IRound round = game.GetRound();
+            int size = game.Map.Size;
+            IRound round = game.Round;
             for(int i = 0; i < size; i++) {
                 for(int j = 0; j < size; j++) {
                     IPoint pos = new Point(i, j);
@@ -33,7 +33,7 @@ namespace UnitTestCore {
                         Assert.IsTrue(round.SetDestination(destination));
                         round.ExecuteMove();
 
-                        List<IUnit> units = game.GetMap().GetUnits(destination);
+                        List<IUnit> units = game.Map.GetUnits(destination);
                         Assert.IsTrue(units.Contains(unit));
                         return;
                     }
@@ -50,8 +50,8 @@ namespace UnitTestCore {
 
         public void TestAttackMovement() {
             IGame game = new NormalGameBuilder().BuildGame("test1", new VikingFactory(), "test2", new GauloisFactory());
-            int size = game.GetMap().GetSize();
-            IRound round = game.GetRound();
+            int size = game.Map.Size;
+            IRound round = game.Round;
             for(int i = 0; i < size; i++) {
                 for(int j = 0; j < size; j++) {
                     IPoint pos = new Point(i, j);
@@ -61,22 +61,22 @@ namespace UnitTestCore {
                         unitsL.Add(unit);
                         round.SelectUnits(unitsL, pos);
                         IPoint destination = GetDestination(game, pos, unit);
-                        Assert.IsTrue(game.GetCurrentPlayer().Equals(game.GetPlayer1()));
-                        IUnit enemy = game.GetPlayer2().CreateUnits(1)[0];
-                        game.GetMap().PlaceUnit(enemy, destination);
+                        Assert.IsTrue(game.CurrentPlayer.Equals(game.Player1));
+                        IUnit enemy = game.Player2.CreateUnits(1)[0];
+                        game.Map.PlaceUnit(enemy, destination);
                         Assert.IsTrue(round.SetDestination(destination));
-                        Assert.IsTrue(game.GetMap().IsEnemyPosition(destination, unit));
+                        Assert.IsTrue(game.Map.IsEnemyPosition(destination, unit));
                         round.ExecuteMove();
 
-                        List<IUnit> unitsAtDestination = game.GetMap().GetUnits(destination);
-                        List<IUnit> unitsAtOrigin = game.GetMap().GetUnits(pos);
-                        if(round.GetLastMoveInfo() == "The fight ended with a draw (Grammar ??)") {
+                        List<IUnit> unitsAtDestination = game.Map.GetUnits(destination);
+                        List<IUnit> unitsAtOrigin = game.Map.GetUnits(pos);
+                        if(round.LastMoveInfo == "The fight ended with a draw (Grammar ??)") {
                             Assert.IsTrue(unitsAtOrigin.Contains(unit));
                             Assert.IsTrue(unitsAtDestination.Contains(enemy));
-                        } else if(round.GetLastMoveInfo() == game.GetPlayer1().GetName() + " lost the fight.") {
+                        } else if(round.LastMoveInfo == game.Player1.Name + " lost the fight.") {
                             Assert.IsTrue(!unitsAtOrigin.Contains(unit));
                             Assert.IsTrue(unitsAtDestination.Contains(enemy));
-                        } else if(round.GetLastMoveInfo() == game.GetPlayer1().GetName() + " won the fight.") {
+                        } else if(round.LastMoveInfo == game.Player1.Name + " won the fight.") {
                             Assert.IsTrue(!unitsAtDestination.Contains(enemy));
                             Assert.IsTrue(unitsAtOrigin.Contains(unit) || unitsAtDestination.Contains(unit));
                         } else {
@@ -89,7 +89,7 @@ namespace UnitTestCore {
         }
 
         private IPoint GetDestination(IGame game, IPoint currentPos, IUnit unit) {
-            int size = game.GetMap().GetSize();
+            int size = game.Map.Size;
             int[] xOffsets = new int[4] {0, -1, 1, 0};
             int[] yOffsets = new int[4] {-1, 0, 0, 1};
             for(int i=0; i<4; i++) {
@@ -97,7 +97,7 @@ namespace UnitTestCore {
                 int y = currentPos.Y + yOffsets[i];
                 if(x>=0 && y>=0 && x<size && y<size) {
                     IPoint destination = new Point(x, y);
-                    if(!(game.GetMap().GetSquare(destination) is ISea) && !game.GetMap().IsEnemyPosition(destination, unit)) {
+                    if(!(game.Map.GetSquare(destination) is ISea) && !game.Map.IsEnemyPosition(destination, unit)) {
                         return destination;
                     }
                 }

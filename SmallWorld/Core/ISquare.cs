@@ -7,7 +7,8 @@ using System.Runtime.Serialization;
 namespace SmallWorld {
 
     public interface ISquare: ISerializable {
-
-        int GetNumber();
+        int Number {
+            get;
+        }
     }
 }

@@ -7,6 +7,11 @@ using System.Runtime.Serialization;
 namespace SmallWorld {
 
     public class VikingFactory: IVikingFactory {
+        public int Number {
+            get {
+                return 1;
+            }
+        }
 
         /// <summary>
         /// Creates a viking unit.
@@ -15,14 +20,6 @@ namespace SmallWorld {
         /// <returns>The viking unit.</returns>
         public IUnit CreateUnit(IPlayer player) {
             return new Viking(player);
-        }
-
-        /// <summary>
-        /// Used by the wrapper.
-        /// </summary>
-        /// <returns>The number corresponding to this factory/nation.</returns>
-        public int GetNumber() {
-            return 1;
         }
     }
 }

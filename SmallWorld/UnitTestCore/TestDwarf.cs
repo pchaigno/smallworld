@@ -27,7 +27,7 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestNationNumber() {
-            Assert.AreEqual(3, playerDwarf.GetNationNumber());
+            Assert.AreEqual(3, playerDwarf.NationNumber);
         }
     }
 }

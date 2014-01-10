@@ -15,14 +15,42 @@ namespace SmallWorld {
         protected const int DEFAULT_MOVEMENT_POINTS = 2;
         protected int lifePoints;
         protected int remainingMovementPoints;
-        protected IPlayer owner;
+        public int LifePoints {
+            get {
+                return this.lifePoints;
+            }
+        }
+        public int DefaultLifePoints {
+            get {
+                return DEFAULT_LIFE_POINTS;
+            }
+        }
+        public int Attack {
+            get {
+                return ATTACK;
+            }
+        }
+        public int Defense {
+            get {
+                return DEFENSE;
+            }
+        }
+        public IPlayer Owner {
+            get;
+            set;
+        }
+        public int RemainingMovementPoints {
+            get {
+                return this.remainingMovementPoints;
+            }
+        }
 
         /// <summary>
         /// Constructor
         /// </summary>
         /// <param name="owner">The player owner of the unit.</param>
         public Unit(IPlayer owner) {
-            this.owner = owner;
+            this.Owner = owner;
             this.lifePoints = DEFAULT_LIFE_POINTS;
             this.remainingMovementPoints = DEFAULT_MOVEMENT_POINTS;
         }
@@ -46,15 +74,7 @@ namespace SmallWorld {
         public void GetObjectData(SerializationInfo info, StreamingContext context) {
             info.AddValue("LifePoints", this.lifePoints);
             info.AddValue("MovementPoints", this.remainingMovementPoints);
-            info.AddValue("Owner", this.owner.GetNumber());
-        }
-
-        /// <summary>
-        /// Returns the unit's life points.
-        /// </summary>
-        /// <returns>The unit's life points.</returns>
-        public int GetLifePoints() {
-            return this.lifePoints;
+            info.AddValue("Owner", this.Owner.Number);
         }
 
         /// <summary>
@@ -62,54 +82,6 @@ namespace SmallWorld {
         /// </summary>
         public void DecreaseLifePoints() {
             this.lifePoints--;
-        }
-
-        /// <summary>
-        /// Returns the default number of life points for this unit.
-        /// </summary>
-        /// <returns>The default number of life points for this unit.</returns>
-        public int GetDefaultLifePoints() {
-            return DEFAULT_LIFE_POINTS;
-        }
-
-        /// <summary>
-        /// Returns the unit's defense.
-        /// </summary>
-        /// <returns>The unit's defense.</returns>
-        public int GetAttack() {
-            return ATTACK;
-        }
-
-        /// <summary>
-        /// Returns the unit's defense.
-        /// </summary>
-        /// <returns>The unit's defense.</returns>
-        public int GetDefense() {
-            return DEFENSE;
-        }
-
-        /// <summary>
-        /// Returns the number of remaining movement points for this round.
-        /// </summary>
-        /// <returns>The number of remaining movement points for this round.</returns>
-        public int GetRemainingMovementPoints() {
-            return this.remainingMovementPoints;
-        }
-
-        /// <summary>
-        /// Returns the player owner of the unit.
-        /// </summary>
-        /// <returns>The player owner of the unit.</returns>
-        public IPlayer GetOwner() {
-            return this.owner;
-        }
-
-        /// <summary>
-        /// Sets the unit's owner.
-        /// </summary>
-        /// <param name="owner">The new unit's owner.</param>
-        public void SetOwner(IPlayer owner) {
-            this.owner = owner;
         }
 
         /// <summary>

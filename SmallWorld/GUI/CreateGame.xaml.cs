@@ -130,7 +130,7 @@ namespace GUI {
         /// Removes an element from the collection.
         /// </summary>
         /// <param name="st">The element to remove.</param>
-        public void Remove(String st) {
+        public new void Remove(String st) {
             base.Remove(st);
             if(removed != "") {
                 Add(removed);

@@ -23,7 +23,7 @@ namespace SmallWorld {
 
             for(int x=0; x<size; x++) {
                 for(int y=0; y<size; y++) {
-                    squares[x, y] = SquareFactory.GetInstance().GetSquare(composition[x][y]);
+                    squares[x, y] = SquareFactory.Instance.GetSquare(composition[x][y]);
                 }
             }
             return new Map(squares);

@@ -20,11 +20,11 @@ namespace UnitTestCore {
         }
 
         private void TestMovementPoints(IUnit unit) {
-            int defaultMovementPoint = unit.GetRemainingMovementPoints();
+            int defaultMovementPoint = unit.RemainingMovementPoints;
             unit.Move(new Forest());
-            Assert.AreEqual(defaultMovementPoint - 2, unit.GetRemainingMovementPoints());
+            Assert.AreEqual(defaultMovementPoint - 2, unit.RemainingMovementPoints);
             unit.ResetMovementPoints();
-            Assert.AreEqual(defaultMovementPoint, unit.GetRemainingMovementPoints());
+            Assert.AreEqual(defaultMovementPoint, unit.RemainingMovementPoints);
         }
 
         [TestMethod]
@@ -35,11 +35,11 @@ namespace UnitTestCore {
         }
 
         private void TestLifePoints(IUnit unit) {
-            Assert.AreEqual(unit.GetDefaultLifePoints(), unit.GetLifePoints());
+            Assert.AreEqual(unit.DefaultLifePoints, unit.LifePoints);
             Assert.IsTrue(unit.IsAlive());
             unit.DecreaseLifePoints();
-            Assert.AreEqual(unit.GetDefaultLifePoints() - 1, unit.GetLifePoints());
-            while(unit.GetLifePoints() > 0) {
+            Assert.AreEqual(unit.DefaultLifePoints - 1, unit.LifePoints);
+            while(unit.LifePoints > 0) {
                 Assert.IsTrue(unit.IsAlive());
                 unit.DecreaseLifePoints();
             }
@@ -62,11 +62,11 @@ namespace UnitTestCore {
             stream = File.Open("Unit.sav", FileMode.Open);
             formatter = new BinaryFormatter();
             IUnit savedUnit = (IUnit)formatter.Deserialize(stream);
-            savedUnit.SetOwner(unit.GetOwner());
+            savedUnit.Owner = unit.Owner;
             stream.Close();
-            Assert.AreEqual(unit.GetLifePoints(), savedUnit.GetLifePoints());
-            Assert.AreEqual(unit.GetRemainingMovementPoints(), savedUnit.GetRemainingMovementPoints());
-            Assert.AreEqual(unit.GetOwner().GetNumber(), savedUnit.GetOwner().GetNumber());
+            Assert.AreEqual(unit.LifePoints, savedUnit.LifePoints);
+            Assert.AreEqual(unit.RemainingMovementPoints, savedUnit.RemainingMovementPoints);
+            Assert.AreEqual(unit.Owner.Number, savedUnit.Owner.Number);
         }
     }
 }

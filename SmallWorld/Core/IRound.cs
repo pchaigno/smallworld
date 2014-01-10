@@ -6,6 +6,9 @@ using System.Text;
 namespace SmallWorld {
 
     public interface IRound {
+        String LastMoveInfo {
+            get;
+        }
 
         List<IPoint> GetAdvisedDestinations(IUnit unit, IPoint position);
         void SelectUnits(List<IUnit> units);
@@ -15,6 +18,5 @@ namespace SmallWorld {
         List<IUnit> GetUnits(IPoint position);
         bool IsCurrentPlayerPosition(IPoint position);
         void ExecuteMove();
-        String GetLastMoveInfo();
     }
 }

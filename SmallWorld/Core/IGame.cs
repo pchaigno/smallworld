@@ -6,17 +6,31 @@ using System.Text;
 namespace SmallWorld {
 
     public interface IGame {
+        IPlayer Player1 {
+            get;
+        }
+        IPlayer Player2 {
+            get;
+        }
+        IMap Map {
+            get;
+        }
+        IRound Round {
+            get;
+        }
+        int CurrentRound {
+            get;
+        }
+        int MaxNbRound {
+            get;
+        }
+        IPlayer CurrentPlayer {
+            get;
+        }
 
         bool IsEndOfGame();
         IPlayer GetWinner();
-        IPlayer GetPlayer1();
-        IPlayer GetPlayer2();
-        IMap GetMap();
         void EndRound();
-        IRound GetRound();
-        int GetCurrentRound();
-        int GetMaxNbRound();
-        IPlayer GetCurrentPlayer();
         int GetNbUnits(IPlayer p);
     }
 }

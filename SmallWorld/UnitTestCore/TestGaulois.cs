@@ -11,9 +11,9 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestMove() {
-            int defaultMovementPoints = gaulois.GetRemainingMovementPoints();
+            int defaultMovementPoints = gaulois.RemainingMovementPoints;
             gaulois.Move(new Lowland());
-            Assert.AreEqual(defaultMovementPoints - 1, gaulois.GetRemainingMovementPoints());
+            Assert.AreEqual(defaultMovementPoints - 1, gaulois.RemainingMovementPoints);
         }
 
         [TestMethod]
@@ -28,7 +28,7 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestNationNumber() {
-            Assert.AreEqual(2, playerGaulois.GetNationNumber());
+            Assert.AreEqual(2, playerGaulois.NationNumber);
         }
     }
 }

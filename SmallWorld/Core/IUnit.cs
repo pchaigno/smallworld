@@ -6,18 +6,30 @@ using System.Text;
 namespace SmallWorld {
 
     public interface IUnit {
+        int LifePoints {
+            get;
+        }
+        int DefaultLifePoints {
+            get;
+        }
+        int Attack {
+            get;
+        }
+        int Defense {
+            get;
+        }
+        IPlayer Owner {
+            get;
+            set;
+        }
+        int RemainingMovementPoints {
+            get;
+        }
 
-        int GetLifePoints();
         void DecreaseLifePoints();
-        int GetDefaultLifePoints();
-        int GetAttack();
-        int GetDefense();
-        int GetRemainingMovementPoints();
         void ResetMovementPoints();
         void Move(ISquare destination);
         bool CanMove(IPoint currentPosition, ISquare currentSquare, IPoint destination, ISquare square);
-        IPlayer GetOwner();
-        void SetOwner(IPlayer owner);
         int GetPoints(ISquare square, ISquare[] neighbours);
         bool IsAlive();
     }

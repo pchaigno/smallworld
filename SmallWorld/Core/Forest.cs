@@ -8,6 +8,11 @@ namespace SmallWorld {
 
     [Serializable()]
     public class Forest: IForest {
+        public int Number {
+            get {
+                return 2;
+            }
+        }
 
         /// <summary>
         /// Empty constructor.
@@ -23,19 +28,6 @@ namespace SmallWorld {
         /// <param name="context">The context for the serialization.</param>
         public Forest(SerializationInfo info, StreamingContext context) {
 
-        }
-
-        /**
-         * @returns 
-         */
-        int tt;
-
-        /// <summary>
-        /// Returns the number corresponding to this square for the C++ library.
-        /// </summary>
-        /// <returns>The number corresponding to this square for the C++ library.</returns>
-        public int GetNumber() {
-            return 2;
         }
 
         /// <summary>

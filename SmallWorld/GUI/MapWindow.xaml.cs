@@ -54,7 +54,7 @@ namespace GUI {
             InitializeComponent();
 
             this.game = game;
-            int size = this.game.GetMap().GetSize();
+            int size = this.game.Map.Size;
             this.unitRectangles = new Rectangle[size, size];
             this.selectedSquare = null;
             this.unitSelecterCollec = new Dictionary<Border, IUnit>();
@@ -73,8 +73,8 @@ namespace GUI {
         /// <param name="sender">The sender of the notification.</param>
         /// <param name="e">The event.</param>
         private void Window_Loaded(object sender, RoutedEventArgs e) {
-            IMap map = this.game.GetMap();
-            int size = map.GetSize();
+            IMap map = this.game.Map;
+            int size = map.Size;
 
             for(int c=0; c<size; c++) {
                 this.mapGrid.ColumnDefinitions.Add(new ColumnDefinition() {
@@ -137,7 +137,7 @@ namespace GUI {
                 
                 border.Background = ImageFactory.getInstance().getBrushUnitFace(unit);
                 TextBlock unitText = new TextBlock();
-                unitText.Text = unit.GetRemainingMovementPoints()+" MvPt \n"+unit.GetLifePoints()+" lifePt";
+                unitText.Text = unit.RemainingMovementPoints+" MvPt \n"+unit.LifePoints+" lifePt";
                 unitText.FontSize = 14;
                 unitText.Foreground = unitSelecterBrush;
                 unitText.FontWeight = FontWeights.Bold;
@@ -163,23 +163,23 @@ namespace GUI {
         /// Displays information about the current player at the right bottom of the window.
         /// </summary>
         private void DisplayInfoPlayer() {
-            IPlayer player1 = this.game.GetPlayer1();
-            this.playerD1.Text = player1.GetName()+"     " + this.game.GetNbUnits(player1)+ " Units     " + player1.GetPoints() + " Pts";
+            IPlayer player1 = this.game.Player1;
+            this.playerD1.Text = player1.Name+"     " + this.game.GetNbUnits(player1)+ " Units     " + player1.Points + " Pts";
 
-            IPlayer player2 = this.game.GetPlayer2();
-            this.playerD2.Text = player2.GetName() + "     " + this.game.GetNbUnits(player2) + " Units     " + player2.GetPoints() + " Pts";
+            IPlayer player2 = this.game.Player2;
+            this.playerD2.Text = player2.Name + "     " + this.game.GetNbUnits(player2) + " Units     " + player2.Points + " Pts";
 
-            this.roundD.Text = "Round number: "+this.game.GetCurrentRound();
-            this.currentD.Text = "Current Player: "+this.game.GetCurrentPlayer().GetName();
+            this.roundD.Text = "Round number: "+this.game.CurrentRound;
+            this.currentD.Text = "Current Player: "+this.game.CurrentPlayer.Name;
 
-            this.lastMove.Text = this.game.GetRound().GetLastMoveInfo();
+            this.lastMove.Text = this.game.Round.LastMoveInfo;
         }
 
         /// <summary>
         /// Displays all units on the map.
         /// </summary>
         private void DisplayUnitsOnMap() {
-            List<IUnit>[,] units = this.game.GetMap().GetUnits();
+            List<IUnit>[,] units = this.game.Map.Units;
 
             for(int x=0; x<this.unitRectangles.GetLength(0); x++) {
                 for(int y=0; y<this.unitRectangles.GetLength(1); y++) {
@@ -287,7 +287,7 @@ namespace GUI {
                 this.selectedSquare.Stroke = Brushes.Transparent;
             }
 
-            IRound round = game.GetRound();
+            IRound round = game.Round;
             if(round.IsCurrentPlayerPosition(position)) {
                 List<IUnit> units = round.GetUnits(position);
                 List<IUnit> selectedUnits = new List<IUnit>();
@@ -321,7 +321,7 @@ namespace GUI {
         /// <param name="e">The event.</param>
         private void MouseLeftUnitSelecter(object sender, MouseEventArgs e) {
 
-            IRound round = this.game.GetRound();
+            IRound round = this.game.Round;
             Border border = sender as Border;
 
             int column = Grid.GetColumn(this.selectedSquare);
@@ -373,7 +373,7 @@ namespace GUI {
             int row = Grid.GetRow(rectangle);
             IPoint position = new Point(row, column);
 
-            IRound round = this.game.GetRound();
+            IRound round = this.game.Round;
             if(round.SetDestination(position)) {
                 round.ExecuteMove();
                 this.selectedSquare.Stroke = Brushes.Black;
@@ -414,7 +414,7 @@ namespace GUI {
                 MessageBoxImage icon = MessageBoxImage.Exclamation;
 
                 if(player != null) {
-                    string messageBoxText = "Congratulation " + player.GetName() + "\n You have defeated your enemy !";
+                    string messageBoxText = "Congratulation " + player.Name + "\n You have defeated your enemy !";
                     string caption = "Victory!";
 
                     MessageBox.Show(messageBoxText, caption, button, icon);

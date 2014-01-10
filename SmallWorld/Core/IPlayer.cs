@@ -6,12 +6,20 @@ using System.Text;
 namespace SmallWorld {
 
     public interface IPlayer {
+        String Name {
+            get;
+        }
+        int Number {
+            get;
+        }
+        int Points {
+            get;
+        }
+        int NationNumber {
+            get;
+        }
 
         List<IUnit> CreateUnits(int nbUnits);
-        String GetName();
-        int GetPoints();
         void AddPoints(int n);
-        int GetNumber();
-        int GetNationNumber();
     }
 }

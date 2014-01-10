@@ -19,21 +19,21 @@ namespace UnitTestCore {
         }
 
         private void TestRounds(IGame game) {
-            for(int i = 1; i <= game.GetMaxNbRound(); i++) {
-                Assert.AreEqual(i, game.GetCurrentRound());
+            for(int i = 1; i <= game.MaxNbRound; i++) {
+                Assert.AreEqual(i, game.CurrentRound);
                 game.EndRound();
-                Assert.IsTrue(game.GetPlayer2().Equals(game.GetCurrentPlayer()));
+                Assert.IsTrue(game.Player2.Equals(game.CurrentPlayer));
                 game.EndRound();
-                Assert.IsTrue(game.GetPlayer1().Equals(game.GetCurrentPlayer()));
+                Assert.IsTrue(game.Player1.Equals(game.CurrentPlayer));
             }
             Assert.IsTrue(game.IsEndOfGame());
         }
 
         [TestMethod]
         public void TestMap() {
-            Assert.AreEqual(5, demo.GetMap().GetSize());
-            Assert.AreEqual(10, small.GetMap().GetSize());
-            Assert.AreEqual(15, normal.GetMap().GetSize());
+            Assert.AreEqual(5, demo.Map.Size);
+            Assert.AreEqual(10, small.Map.Size);
+            Assert.AreEqual(15, normal.Map.Size);
         }
 
         [TestMethod]
@@ -44,15 +44,15 @@ namespace UnitTestCore {
         }
 
         private void TestWinner(IGame game) {
-            game.GetPlayer1().AddPoints(1000);
+            game.Player1.AddPoints(1000);
             while(!game.IsEndOfGame()) {
                 game.EndRound();
                 game.EndRound();
             }
-            Assert.IsTrue(game.GetWinner().Equals(game.GetPlayer1()));
+            Assert.IsTrue(game.GetWinner().Equals(game.Player1));
 
-            game.GetPlayer2().AddPoints(10000);
-            Assert.IsTrue(game.GetWinner().Equals(game.GetPlayer2()));
+            game.Player2.AddPoints(10000);
+            Assert.IsTrue(game.GetWinner().Equals(game.Player2));
         }
     }
 }

@@ -11,7 +11,12 @@ namespace SmallWorld {
         private IForest forest;
         private ISea sea;
         private IDesert desert;
-        private static SquareFactory INSTANCE = new SquareFactory();
+        private static SquareFactory instance = new SquareFactory();
+        public static SquareFactory Instance {
+            get {
+                return instance;
+            }
+        }
 
         /// <summary>
         /// Constructor
@@ -25,14 +30,6 @@ namespace SmallWorld {
             this.forest = new Forest();
             this.sea = new Sea();
             this.desert = new Desert();
-        }
-
-        /// <summary>
-        /// Returns the instance of the square factory.
-        /// </summary>
-        /// <returns>The instance of the square factory.</returns>
-        public static SquareFactory GetInstance() {
-            return INSTANCE;
         }
 
         /// <summary>
@@ -68,7 +65,7 @@ namespace SmallWorld {
             for(int i=0; i<squares.GetLength(0); i++) {
                 map[i] = new int[squares.GetLength(1)];
                 for(int j=0; j<squares.GetLength(1); j++) {
-                    map[i][j] = squares[i, j].GetNumber();
+                    map[i][j] = squares[i, j].Number;
                 }
             }
             return map;

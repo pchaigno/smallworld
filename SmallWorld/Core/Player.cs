@@ -13,6 +13,26 @@ namespace SmallWorld {
         private int points;
         private int number;
         private static int count = 0;
+        public string Name {
+            get {
+                return this.name;
+            }
+        }
+        public int Points {
+            get {
+                return this.points;
+            }
+        }
+        public int Number {
+            get {
+                return this.number;
+            }
+        }
+        public int NationNumber {
+            get {
+                return this.factory.Number;
+            }
+        }
 
         /// <summary>
         /// Constructor
@@ -38,11 +58,11 @@ namespace SmallWorld {
             IUnitFactory gauloisFactory = new GauloisFactory();
             IUnitFactory dwarfFactory = new DwarfFactory();
             int factoryNumber = (int)info.GetValue("Factory", typeof(int));
-            if(factoryNumber == vikingFactory.GetNumber()) {
+            if(factoryNumber == vikingFactory.Number) {
                 this.factory = vikingFactory;
-            } else if(factoryNumber == gauloisFactory.GetNumber()) {
+            } else if(factoryNumber == gauloisFactory.Number) {
                 this.factory = gauloisFactory;
-            } else if(factoryNumber == dwarfFactory.GetNumber()) {
+            } else if(factoryNumber == dwarfFactory.Number) {
                 this.factory = dwarfFactory;
             } else {
                 // TODO Throw Exception.
@@ -61,39 +81,7 @@ namespace SmallWorld {
             info.AddValue("Name", this.name);
             info.AddValue("Points", this.points);
             info.AddValue("Number", this.number);
-            info.AddValue("Factory", this.factory.GetNumber());
-        }
-
-        /// <summary>
-        /// Returns the player's name.
-        /// </summary>
-        /// <returns>The player's name.</returns>
-        public string GetName() {
-            return this.name;
-        }
-
-        /// <summary>
-        /// Returns the number of points collected by the player.
-        /// </summary>
-        /// <returns>The number of points collected by the player.</returns>
-        public int GetPoints() {
-            return this.points;
-        }
-
-        /// <summary>
-        /// Returns the number assigned to the player.
-        /// </summary>
-        /// <returns>The number assigned to the player.</returns>
-        public int GetNumber() {
-            return this.number;
-        }
-
-        /// <summary>
-        /// Returns the number associated to the nation of the player.
-        /// </summary>
-        /// <returns>The number associated to the nation of the player.</returns>
-        public int GetNationNumber() {
-            return this.factory.GetNumber();
+            info.AddValue("Factory", this.factory.Number);
         }
 
         /// <summary>

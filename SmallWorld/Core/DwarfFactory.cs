@@ -7,6 +7,11 @@ using System.Runtime.Serialization;
 namespace SmallWorld {
 
     public class DwarfFactory: IDwarfFactory {
+        public int Number {
+            get {
+                return 3;
+            }
+        }
 
         /// <summary>
         /// Creates a dwarf unit.
@@ -15,14 +20,6 @@ namespace SmallWorld {
         /// <returns>The dwarf unit.</returns>
         public IUnit CreateUnit(IPlayer player) {
             return new Dwarf(player);
-        }
-
-        /// <summary>
-        /// Used by the wrapper.
-        /// </summary>
-        /// <returns>The number corresponding to this factory/nation.</returns>
-        public int GetNumber() {
-            return 3;
         }
     }
 }

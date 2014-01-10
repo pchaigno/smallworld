@@ -15,8 +15,8 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestConstructor() {
-            Assert.IsTrue(15 == map.GetSize());
-            ISquare[,] squares = map.GetSquares();
+            Assert.IsTrue(15 == map.Size);
+            ISquare[,] squares = map.Squares;
             for(int i = 0; i < 15; i++) {
                 for(int j = 0; j < 15; j++) {
                     // We can use AreSame because we use a flyweight pattern.
@@ -67,14 +67,14 @@ namespace UnitTestCore {
             formatter = new BinaryFormatter();
             IMap savedMap = (IMap)formatter.Deserialize(stream);
             stream.Close();
-            Assert.AreEqual(map.GetSize(), savedMap.GetSize());
-            for(int i = 0; i < map.GetSize(); i++) {
-                for(int j = 0; j < map.GetSize(); j++) {
+            Assert.AreEqual(map.Size, savedMap.Size);
+            for(int i = 0; i < map.Size; i++) {
+                for(int j = 0; j < map.Size; j++) {
                     Assert.IsInstanceOfType(savedMap.GetSquare(new Point(i, j)), map.GetSquare(new Point(i, j)).GetType());
                 }
             }
-            for(int i = 0; i < map.GetSize(); i++) {
-                for(int j = 0; j < map.GetSize(); j++) {
+            for(int i = 0; i < map.Size; i++) {
+                for(int j = 0; j < map.Size; j++) {
                     List<IUnit> units = map.GetUnits(new Point(i, j));
                     List<IUnit> savedUnits = savedMap.GetUnits(new Point(i, j));
                     Assert.AreEqual(units.Count, savedUnits.Count);

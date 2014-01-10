@@ -14,6 +14,11 @@ namespace SmallWorld {
         private IPoint destination;
         // TODO We should use a code and code/messages correspondances for move information.
         private String lastMoveInfo;
+        public String LastMoveInfo {
+            get {
+                return this.lastMoveInfo;
+            }
+        }
 
         /// <summary>
         /// Constructor
@@ -28,39 +33,31 @@ namespace SmallWorld {
         }
 
         /// <summary>
-        /// Returns the information about the last move.
-        /// </summary>
-        /// <returns>The information about the last move.</returns>
-        public String GetLastMoveInfo() {
-            return this.lastMoveInfo;
-        }
-
-        /// <summary>
         /// Retrieves advised destinations from the C++ library.
         /// </summary>
         /// <param name="unit">The unit for which we want advise.</param>
         /// <param name="pos">The unit's position.</param>
         /// <returns>The list of advised desinations.</returns>
         public List<IPoint> GetAdvisedDestinations(IUnit unit, IPoint pos) {
-            IMap map = this.game.GetMap();
-            ISquare[,] squares = map.GetSquares();
-            int[][] mapBis = new int[map.GetSize()][];
-            int[][] units = new int[map.GetSize()][];
-            for(int i=0; i<map.GetSize(); i++) {
-                mapBis[i] = new int[map.GetSize()];
-                units[i] = new int[map.GetSize()];
-                for(int j=0; j<map.GetSize(); j++) {
-                    mapBis[i][j] = squares[i, j].GetNumber();
+            IMap map = this.game.Map;
+            ISquare[,] squares = map.Squares;
+            int[][] mapBis = new int[map.Size][];
+            int[][] units = new int[map.Size][];
+            for(int i=0; i<map.Size; i++) {
+                mapBis[i] = new int[map.Size];
+                units[i] = new int[map.Size];
+                for(int j=0; j<map.Size; j++) {
+                    mapBis[i][j] = squares[i, j].Number;
                     List<IUnit> unitsAtPos = map.GetUnits(new Point(i, j));
                     if(unitsAtPos.Count > 0) {
-                        units[i][j] = unitsAtPos[0].GetOwner().GetNumber();
+                        units[i][j] = unitsAtPos[0].Owner.Number;
                     }
                 }
             }
             
-            int nationPlayer1 = this.game.GetPlayer1().GetNationNumber();
-            int nationPlayer2 = this.game.GetPlayer2().GetNationNumber();
-            int[][] result = Wrapper.getAdvice(mapBis, map.GetSize(), nationPlayer1, nationPlayer2, pos.X, pos.Y, units, this.player.GetNumber());
+            int nationPlayer1 = this.game.Player1.NationNumber;
+            int nationPlayer2 = this.game.Player2.NationNumber;
+            int[][] result = Wrapper.getAdvice(mapBis, map.Size, nationPlayer1, nationPlayer2, pos.X, pos.Y, units, this.player.Number);
             List<IPoint> advice = new List<IPoint>();
             for(int i=0; i<3; i++) {
                 if(result[i][0]!=-1 && result[i][1]!=-1) {
@@ -106,7 +103,7 @@ namespace SmallWorld {
         /// <param name="position">The position.</param>
         /// <returns>The units on this position.</returns>
         public List<IUnit> GetUnits(IPoint position) {
-            return this.game.GetMap().GetUnits(position);
+            return this.game.Map.GetUnits(position);
         }
 
         /// <summary>
@@ -115,9 +112,9 @@ namespace SmallWorld {
         /// <param name="position">The position.</param>
         /// <returns>True if the position is under the control of the current player.</returns>
         public bool IsCurrentPlayerPosition(IPoint position) {
-            List<IUnit> units = this.game.GetMap().GetUnits(position);
+            List<IUnit> units = this.game.Map.GetUnits(position);
             return units.Count > 0 
-                && units[0].GetOwner() == this.player;
+                && units[0].Owner == this.player;
         }
 
         /// <summary>
@@ -134,7 +131,7 @@ namespace SmallWorld {
 
             bool result = true;
             foreach(IUnit unit in this.selectedUnit) {
-                if(!unit.CanMove(this.selectedPosition, game.GetMap().GetSquare(this.selectedPosition), destination, game.GetMap().GetSquare(destination))) {
+                if(!unit.CanMove(this.selectedPosition, game.Map.GetSquare(this.selectedPosition), destination, game.Map.GetSquare(destination))) {
                     result = false;
                     break;
                 }
@@ -157,22 +154,22 @@ namespace SmallWorld {
         public void ExecuteMove() {
             // TODO improve message
 
-            if(this.game.GetMap().IsEnemyPosition(this.destination, this.selectedUnit[0])) {
+            if(this.game.Map.IsEnemyPosition(this.destination, this.selectedUnit[0])) {
                 for(int i = 0; i < this.selectedUnit.Count; i++) {
                     IUnit unit = this.selectedUnit[i];
-                    unit.Move(game.GetMap().GetSquare(destination));
+                    unit.Move(game.Map.GetSquare(destination));
                     if(Combat(unit)) {
-                        if(this.game.GetMap().GetUnits(this.destination).Count == 0) {
-                            this.game.GetMap().MoveUnit(unit, this.selectedPosition, this.destination);
+                        if(this.game.Map.GetUnits(this.destination).Count == 0) {
+                            this.game.Map.MoveUnit(unit, this.selectedPosition, this.destination);
                         }
                     }
                 }
             } else {
                 for(int i = 0; i < this.selectedUnit.Count; i++) {
                     IUnit unit = this.selectedUnit[i];
-                    unit.Move(game.GetMap().GetSquare(destination));
-                    this.game.GetMap().MoveUnit(unit, this.selectedPosition, this.destination);
-                    this.lastMoveInfo = this.player.GetName() + " moved an unit.";
+                    unit.Move(game.Map.GetSquare(destination));
+                    this.game.Map.MoveUnit(unit, this.selectedPosition, this.destination);
+                    this.lastMoveInfo = this.player.Name + " moved an unit.";
                 }
             }
             this.selectedUnit.Clear();
@@ -190,14 +187,14 @@ namespace SmallWorld {
             Random randCombat = new Random();
             Random rand = new Random();
 
-            int nbRound = 3 + randCombat.Next((Math.Max(unit.GetLifePoints(), enemy.GetLifePoints())) + 2);
+            int nbRound = 3 + randCombat.Next((Math.Max(unit.LifePoints, enemy.LifePoints)) + 2);
             int n = 0;
 
             while(nbRound > n && unit.IsAlive() && enemy.IsAlive()) {
-                double ratioLife = (double)unit.GetLifePoints() / (double)unit.GetDefaultLifePoints();
-                double ratioLifeDef = (double)enemy.GetLifePoints() / (double)enemy.GetDefaultLifePoints();
-                double attaUnit = (double)unit.GetAttack() * (double)ratioLife;
-                double defUnitdef = (double)enemy.GetDefense() * (double)ratioLifeDef;
+                double ratioLife = (double)unit.LifePoints / (double)unit.DefaultLifePoints;
+                double ratioLifeDef = (double)enemy.LifePoints / (double)enemy.DefaultLifePoints;
+                double attaUnit = (double)unit.Attack * (double)ratioLife;
+                double defUnitdef = (double)enemy.Defense * (double)ratioLifeDef;
                 double ratioAttDef = (double)(attaUnit / defUnitdef);
                 double ratioChanceDef = 0;
                 if(ratioAttDef > 1) {
@@ -222,12 +219,12 @@ namespace SmallWorld {
             }
 
             if(!unit.IsAlive()) {
-                this.game.GetMap().RemoveUnit(unit, this.selectedPosition);
-                this.lastMoveInfo = this.player.GetName() + " lost the fight.";
+                this.game.Map.RemoveUnit(unit, this.selectedPosition);
+                this.lastMoveInfo = this.player.Name + " lost the fight.";
                 return false;
             } else if(!enemy.IsAlive()) {
-                this.game.GetMap().RemoveUnit(enemy, this.destination);
-                this.lastMoveInfo = this.player.GetName() + " won the fight.";
+                this.game.Map.RemoveUnit(enemy, this.destination);
+                this.lastMoveInfo = this.player.Name + " won the fight.";
                 return true;
             } else {
                 this.lastMoveInfo = "The fight ended with a draw";
@@ -242,11 +239,11 @@ namespace SmallWorld {
         /// <returns>The best unit on the square currently selected.</returns>
         private IUnit GetBestUnit() {
             IUnit result = null;
-            List<IUnit> units = this.game.GetMap().GetUnits(this.destination);
+            List<IUnit> units = this.game.Map.GetUnits(this.destination);
             if(units.Count > 0) {
                 result = units[0];
                 for(int i=1; i<units.Count; i++) {
-                    if(result.GetLifePoints() < units[i].GetLifePoints()) {
+                    if(result.LifePoints < units[i].LifePoints) {
                         result = units[i];
                     }
                 }

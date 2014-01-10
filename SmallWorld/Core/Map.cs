@@ -12,6 +12,21 @@ namespace SmallWorld {
         private List<IUnit>[,] units;
         private ISquare[,] squares;
         private int size;
+        public List<IUnit>[,] Units {
+            get {
+                return this.units;
+            }
+        }
+        public ISquare[,] Squares {
+            get {
+                return this.squares;
+            }
+        }
+        public int Size {
+            get {
+                return this.size;
+            }
+        }
 
         /// <summary>
         /// Constructor
@@ -54,30 +69,6 @@ namespace SmallWorld {
         }
 
         /// <summary>
-        /// Returns the size of the map.
-        /// </summary>
-        /// <returns>The size of the map.</returns>
-        public int GetSize() {
-            return this.size;
-        }
-
-        /// <summary>
-        /// Returns the composition of the map as a matrix of squares by coordinates.
-        /// </summary>
-        /// <returns>The composition of the map as a matrix of squares by coordinates.</returns>
-        public ISquare[,] GetSquares() {
-            return this.squares;
-        }
-
-        /// <summary>
-        /// Returns the position of the units on the map as a matrix of units by coordinates.
-        /// </summary>
-        /// <returns>The position of the units on the map as a matrix of units by coordinates.</returns>
-        public List<IUnit>[,] GetUnits() {
-            return this.units;
-        }
-
-        /// <summary>
         /// Retrieves the units at a position.
         /// </summary>
         /// <param name="position">A position.</param>
@@ -96,7 +87,7 @@ namespace SmallWorld {
             if(this.units[position.X, position.Y].Count == 0) {
                 return false;
             } else {
-                return !this.units[position.X, position.Y][0].GetOwner().Equals(unit.GetOwner());
+                return !this.units[position.X, position.Y][0].Owner.Equals(unit.Owner);
             }
         }
 
@@ -153,7 +144,7 @@ namespace SmallWorld {
             for(int x=0; x<this.size; x++) {
                 for(int y=0; y<this.size; y++) {
                     List<IUnit> unitsAtPosition = this.units[x, y];
-                    if(unitsAtPosition.Count > 0 && unitsAtPosition[0].GetOwner() == player) {
+                    if(unitsAtPosition.Count > 0 && unitsAtPosition[0].Owner == player) {
                         foreach(IUnit unit in unitsAtPosition) {
                             result.Add(unit, new Point(x, y));
                         }

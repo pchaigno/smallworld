@@ -13,6 +13,41 @@ namespace SmallWorld {
         private int currentRound;
         private IPlayer currentPlayer;
         private IRound round;
+        public IPlayer Player1 {
+            get {
+                return this.player1;
+            }
+        }
+        public IPlayer Player2 {
+            get {
+                return this.player2;
+            }
+        }
+        public IMap Map {
+            get {
+                return this.map;
+            }
+        }
+        public IRound Round {
+            get {
+                return this.round;
+            }
+        }
+        public int CurrentRound {
+            get {
+                return this.currentRound;
+            }
+        }
+        public int MaxNbRound {
+            get {
+                return this.maxRounds;
+            }
+        }
+        public IPlayer CurrentPlayer {
+            get {
+                return this.currentPlayer;
+            }
+        }
 
         /// <summary>
         /// Constructor
@@ -71,9 +106,9 @@ namespace SmallWorld {
             } else if(this.IsDefeated(this.player2)) {
                 return this.player1;
             } else {
-                if(this.player1.GetPoints() < this.player2.GetPoints()) {
+                if(this.player1.Points < this.player2.Points) {
                     return this.player2;
-                } else if(this.player1.GetPoints() > this.player2.GetPoints()) {
+                } else if(this.player1.Points > this.player2.Points) {
                     return this.player1;
                 }
             }
@@ -112,69 +147,13 @@ namespace SmallWorld {
             for(int i=0; i<4; i++) {
                 int x = pos.X + xOffset[i];
                 int y = pos.Y + yOffset[i];
-                if(x >= 0 && y >= 0 && x < this.map.GetSize() && y < this.map.GetSize()) {
+                if(x >= 0 && y >= 0 && x < this.map.Size && y < this.map.Size) {
                     neighbours[i] = this.map.GetSquare(new Point(x, y));
                 } else {
                     neighbours[i] = null;
                 }
             }
             return neighbours;
-        }
-
-        /// <summary>
-        /// Returns the first player.
-        /// </summary>
-        /// <returns>The first player.</returns>
-        public IPlayer GetPlayer1() {
-            return this.player1;
-        }
-
-        /// <summary>
-        /// Returns the second player.
-        /// </summary>
-        /// <returns>The second player.</returns>
-        public IPlayer GetPlayer2() {
-            return this.player2;
-        }
-
-        /// <summary>
-        /// Returns the map for this game.
-        /// </summary>
-        /// <returns>The map for this game.</returns>
-        public IMap GetMap() {
-            return this.map;
-        }
-
-        /// <summary>
-        /// Returns the manager for the current round.
-        /// </summary>
-        /// <returns>The manager for the current round.</returns>
-        public IRound GetRound() {
-            return this.round;
-        }
-
-        /// <summary>
-        /// Returns the number of the current round.
-        /// </summary>
-        /// <returns>The number of the current round.</returns>
-        public int GetCurrentRound() {
-            return this.currentRound;
-        }
-
-        /// <summary>
-        /// Returns the maximum number of rounds allowed.
-        /// </summary>
-        /// <returns>The maximum number of rounds allowed.</returns>
-        public int GetMaxNbRound() {
-            return this.maxRounds;
-        }
-
-        /// <summary>
-        /// Returns the player currently playing.
-        /// </summary>
-        /// <returns>The player currently playing.</returns>
-        public IPlayer GetCurrentPlayer() {
-            return this.currentPlayer;
         }
     }
 }

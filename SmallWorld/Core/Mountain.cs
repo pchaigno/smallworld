@@ -8,6 +8,11 @@ namespace SmallWorld {
 
     [Serializable()]
     public class Mountain: IMountain {
+        public int Number {
+            get {
+                return 5;
+            }
+        }
 
         /// <summary>
         /// Empty constructor.
@@ -23,14 +28,6 @@ namespace SmallWorld {
         /// <param name="context">The context for the serialization.</param>
         public Mountain(SerializationInfo info, StreamingContext context) {
 
-        }
-
-        /// <summary>
-        /// Returns the number corresponding to this square for the C++ library.
-        /// </summary>
-        /// <returns>The number corresponding to this square for the C++ library.</returns>
-        public int GetNumber() {
-            return 5;
         }
 
         /// <summary>
