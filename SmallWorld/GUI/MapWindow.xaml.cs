@@ -225,7 +225,7 @@ namespace GUI {
         }
 
         /// <summary>
-        /// Clear advised destinations.
+        /// Clears advised destinations.
         /// </summary>
         private void ClearAdvisedDestination() {
             if(advisedDestination != null) {
@@ -379,13 +379,14 @@ namespace GUI {
                 this.selectedSquare.Stroke = Brushes.Black;
 
                 this.DisplayUnitsOnMap();
+
+                this.unitSelecterCollec.Clear();
+                this.unitSelecter.Children.Clear();
+                this.ClearAdvisedDestination();
+                this.selectedUnitBorder.Clear();
             }
 
             this.DisplayInfoPlayer();
-            this.unitSelecterCollec.Clear();
-            this.unitSelecter.Children.Clear();
-            this.ClearAdvisedDestination();
-            this.selectedUnitBorder.Clear();
 
             e.Handled = true;
         }
