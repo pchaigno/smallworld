@@ -13,8 +13,8 @@ namespace SmallWorld {
         private IPoint selectedPosition;
         private IPoint destination;
         // TODO We should use a code and code/messages correspondances for move information.
-        private String lastMoveInfo;
-        public String LastMoveInfo {
+        private string lastMoveInfo;
+        public string LastMoveInfo {
             get {
                 return this.lastMoveInfo;
             }

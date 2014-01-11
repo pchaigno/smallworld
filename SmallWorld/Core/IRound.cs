@@ -6,7 +6,7 @@ using System.Text;
 namespace SmallWorld {
 
     public interface IRound {
-        String LastMoveInfo {
+        string LastMoveInfo {
             get;
         }
 

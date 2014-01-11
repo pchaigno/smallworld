@@ -25,7 +25,7 @@ namespace SmallWorld {
         /// <param name="name2">The second player's name.</param>
         /// <param name="factory2">The factory for the second player.</param>
         /// <returns>The game manager.</returns>
-        public IGame BuildGame(String name1, IUnitFactory factory1, String name2, IUnitFactory factory2) {
+        public IGame BuildGame(string name1, IUnitFactory factory1, string name2, IUnitFactory factory2) {
             IMapBuilder mapBuilder = new MapBuilder();
             IMap map = mapBuilder.BuildMap(this.mapSize);
             ISquare[,] squares = map.Squares;

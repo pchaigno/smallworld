@@ -55,7 +55,7 @@ namespace GUI {
         /// <param name="sender">The sender of the notification.</param>
         /// <param name="e">The event.</param>
         public void OnChangePeople1(object sender, SelectionChangedEventArgs e) {
-            string value = (String)people1Box.SelectedItem;
+            string value = (string)people1Box.SelectedItem;
             people1Collec.selected = value;
             people2Collec.Remove(value);
         }
@@ -66,7 +66,7 @@ namespace GUI {
         /// <param name="sender">The sender of the notification.</param>
         /// <param name="e">The event.</param>
         public void OnChangePeople2(object sender, SelectionChangedEventArgs e) {
-            string value = (String)people2Box.SelectedItem;
+            string value = (string)people2Box.SelectedItem;
             people2Collec.selected = value;
             people1Collec.Remove(value);
         }
@@ -77,7 +77,7 @@ namespace GUI {
         /// <param name="sender">The sender of the notification.</param>
         /// <param name="e">The event.</param>
         public void OnChangeMap(object sender, SelectionChangedEventArgs e) {
-            mapCollection.selected = (String)mapBox.SelectedItem;
+            mapCollection.selected = (string)mapBox.SelectedItem;
         }
 
         /// <summary>
@@ -86,8 +86,8 @@ namespace GUI {
         /// <param name="sender">The sender of the notification.</param>
         /// <param name="e">The event.</param>
         public void OnClickLauncher(object sender, RoutedEventArgs e) {
-            String name1 = name1Box.Text;
-            String name2 = name2Box.Text;
+            string name1 = name1Box.Text;
+            string name2 = name2Box.Text;
             IUnitFactory factory1 = people1Collec.GetFactory();
             IUnitFactory factory2 = people2Collec.GetFactory();
             IGameBuilder gameBuilder = mapCollection.GetBuilder();
@@ -110,12 +110,12 @@ namespace GUI {
     /// <summary>
     /// The object represented by the people selector.
     /// </summary>
-    class PeopleCollection: ObservableCollection<String> {
-        public String selected {
+    class PeopleCollection: ObservableCollection<string> {
+        public string selected {
             get;
             set;
         }
-        private String removed;
+        private string removed;
 
         /// <summary>
         /// Constructor
@@ -130,7 +130,7 @@ namespace GUI {
         /// Removes an element from the collection.
         /// </summary>
         /// <param name="st">The element to remove.</param>
-        public new void Remove(String st) {
+        public new void Remove(string st) {
             base.Remove(st);
             if(removed != "") {
                 Add(removed);
@@ -158,8 +158,8 @@ namespace GUI {
     /// <summary>
     /// The object represented by the map selector.
     /// </summary>
-    class MapCollection: ObservableCollection<String> {
-        public String selected {
+    class MapCollection: ObservableCollection<string> {
+        public string selected {
             get;
             set;
         }

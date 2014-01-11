@@ -52,7 +52,7 @@ namespace SmallWorld {
         /// <param name="info">Information for the serialization.</param>
         /// <param name="context">The context for the serialization.</param>
         public Player(SerializationInfo info, StreamingContext context) {
-            this.name = (String)info.GetValue("Name", typeof(string));
+            this.name = (string)info.GetValue("Name", typeof(string));
             this.points = (int)info.GetValue("Points", typeof(int));
             IUnitFactory vikingFactory = new VikingFactory();
             IUnitFactory gauloisFactory = new GauloisFactory();

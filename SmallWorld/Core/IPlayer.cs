@@ -6,7 +6,7 @@ using System.Text;
 namespace SmallWorld {
 
     public interface IPlayer {
-        String Name {
+        string Name {
             get;
         }
         int Number {

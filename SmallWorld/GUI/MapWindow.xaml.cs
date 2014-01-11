@@ -43,7 +43,7 @@ namespace GUI {
         private List<Rectangle> advisedDestination;
 
         private bool multipleSelection;
-        private String saveFile;
+        private string saveFile;
 
         /// <summary>
         /// Constructor
