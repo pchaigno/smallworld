@@ -57,6 +57,25 @@ namespace UnitTestCore {
         }
 
         [TestMethod]
+        public void TestGetIdleUnit() {
+            Player player = new Player("test", new VikingFactory());
+            IViking vikingA = new Viking(player);
+            map.PlaceUnit(vikingA, new Point(0, 0));
+
+            Tuple<IUnit, IPoint> idleUnit = map.GetIdleUnit(player);
+            Assert.IsTrue(idleUnit.Item2.Equals(new Point(0, 0)));
+            Assert.AreSame(idleUnit.Item1, vikingA);
+
+            IViking vikingB = new Viking(player);
+            map.PlaceUnit(vikingB, new Point(1, 1));
+            Assert.IsTrue(vikingA.Move(new Forest()));
+
+            idleUnit = map.GetIdleUnit(player);
+            Assert.IsTrue(idleUnit.Item2.Equals(new Point(1, 1)));
+            Assert.AreSame(idleUnit.Item1, vikingB);
+        }
+
+        [TestMethod]
         public void TestSerializationMap() {
             Stream stream = File.Open("Map.sav", FileMode.Create);
             BinaryFormatter formatter = new BinaryFormatter();

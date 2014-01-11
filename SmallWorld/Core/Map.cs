@@ -154,5 +154,26 @@ namespace SmallWorld {
             }
             return result;
         }
+
+        /// <summary>
+        /// Retrieves an unit that can still move.
+        /// </summary>
+        /// <param name="player">The player whose turn it is.</param>
+        /// <returns>A tuple with an idle unit and its position.</returns>
+        public Tuple<IUnit, IPoint> GetIdleUnit(IPlayer player) {
+            for(int x = 0; x < this.size; x++) {
+                for(int y = 0; y < this.size; y++) {
+                    List<IUnit> unitsAtPosition = this.units[x, y];
+                    if(unitsAtPosition.Count>0 && unitsAtPosition[0].Owner==player) {
+                        foreach(IUnit unit in unitsAtPosition) {
+                            if(unit.RemainingMovementPoints > 0) {
+                                return Tuple.Create<IUnit, IPoint>(unit, new Point(x, y));
+                            }
+                        }
+                    }
+                }
+            }
+            return null;
+        }
     }
 }

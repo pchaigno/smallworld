@@ -23,5 +23,6 @@ namespace SmallWorld {
         void MoveUnit(IUnit unit, IPoint currentPosition, IPoint newPosition);
         bool RemoveUnit(IUnit unit, IPoint position);
         Dictionary<IUnit, IPoint> GetUnits(IPlayer player);
+        Tuple<IUnit, IPoint> GetIdleUnit(IPlayer player);
     }
 }

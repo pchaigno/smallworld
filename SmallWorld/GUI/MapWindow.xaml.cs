@@ -384,6 +384,12 @@ namespace GUI {
                 this.unitSelecter.Children.Clear();
                 this.ClearAdvisedDestination();
                 this.selectedUnitBorder.Clear();
+
+                Tuple<IUnit, IPoint> idleUnit = this.game.Map.GetIdleUnit(this.game.CurrentPlayer);
+                if(idleUnit == null) {
+                    this.DisplayInfoPlayer();
+                    this.endRound();
+                }
             }
 
             this.DisplayInfoPlayer();
@@ -398,6 +404,13 @@ namespace GUI {
         /// <param name="sender">The sender of the notification.</param>
         /// <param name="e">The event.</param>
         private void OnClickEndRound(object sender, RoutedEventArgs e) {
+            this.endRound();
+        }
+
+        /// <summary>
+        /// Ends the round.
+        /// </summary>
+        private void endRound() {
             this.game.EndRound();
 
             this.unitSelecterCollec.Clear();
