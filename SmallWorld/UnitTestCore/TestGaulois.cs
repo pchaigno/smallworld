@@ -11,9 +11,22 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestMove() {
+            gaulois.ResetMovementPoints();
             int defaultMovementPoints = gaulois.RemainingMovementPoints;
             Assert.IsTrue(gaulois.Move(new Lowland()));
             Assert.AreEqual(defaultMovementPoints - 1, gaulois.RemainingMovementPoints);
+        }
+
+        [TestMethod]
+        public void TestCanMove() {
+            gaulois.ResetMovementPoints();
+            Assert.IsTrue(gaulois.Move(new Lowland()));
+            Assert.IsTrue(gaulois.CanMove(new Point(0, 0), new Lowland(), new Point(0, 1), new Lowland()));
+            Assert.IsFalse(gaulois.CanMove(new Point(0, 0), new Lowland(), new Point(0, 1), new Forest()));
+
+            Assert.IsTrue(gaulois.Move(new Lowland()));
+            Assert.IsFalse(gaulois.CanMove(new Point(0, 1), new Lowland(), new Point(1, 1), new Forest()));
+            Assert.IsFalse(gaulois.CanMove(new Point(0, 1), new Lowland(), new Point(1, 1), new Lowland()));
         }
 
         [TestMethod]

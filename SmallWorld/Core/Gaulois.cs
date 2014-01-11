@@ -65,5 +65,23 @@ namespace SmallWorld {
             }
             return base.Move(destination);
         }
+
+        /// <summary>
+        /// Checks if the unit can move during this round to a certain destination.
+        /// The destination must be next to the current position,
+        /// the unit must have some movement points left,
+        /// the square can't be a sea.
+        /// </summary>
+        /// <param name="currentPosition">The current position.</param>
+        /// <param name="currentSquare">The current type of square.</param>
+        /// <param name="destination">The destination to reach.</param>
+        /// <param name="square">The type of square the destination is.</param>
+        /// <returns>True if the unit can move to the destination.</returns>
+        public virtual bool CanMove(IPoint currentPosition, ISquare currentSquare, IPoint destination, ISquare square) {
+            return !(square is ISea)
+                && destination.IsNext(currentPosition)
+                && (remainingMovementPoints >= MOVEMENT_COST 
+                    || ((square is ILowland) && remainingMovementPoints>=MOVEMENT_COST/2));
+        }
     }
 }

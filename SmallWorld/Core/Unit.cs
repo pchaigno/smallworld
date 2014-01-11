@@ -138,9 +138,9 @@ namespace SmallWorld {
         /// <param name="square">The type of square the destination is.</param>
         /// <returns>True if the unit can move to the destination.</returns>
         public virtual bool CanMove(IPoint currentPosition, ISquare currentSquare, IPoint destination, ISquare square) {
-            return destination.IsNext(currentPosition) 
-                && remainingMovementPoints > 0
-                && !(square is ISea);
+            return !(square is ISea)
+                && remainingMovementPoints >= MOVEMENT_COST
+                && destination.IsNext(currentPosition);
         }
     }
 }
