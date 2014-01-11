@@ -56,7 +56,7 @@ namespace SmallWorld {
         }
 
         /// <summary>
-        /// Convert a matrix of squares to a matrix of integers with the corresponding numbers.
+        /// Converts a matrix of squares to a matrix of integers with the corresponding numbers.
         /// </summary>
         /// <param name="squares">The map as a matrix of squares.</param>
         /// <returns>The map as a matrix of integers.</returns>

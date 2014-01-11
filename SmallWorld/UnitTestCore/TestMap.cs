@@ -42,7 +42,7 @@ namespace UnitTestCore {
             units = map.GetUnits(new Point(14, 14));
             Assert.AreEqual(2, units.Count);
 
-            map.RemoveUnit(gauloisB, new Point(14, 14));
+            Assert.IsTrue(map.RemoveUnit(gauloisB, new Point(14, 14)));
             units = map.GetUnits(new Point(14, 14));
             Assert.AreEqual(1, units.Count);
 

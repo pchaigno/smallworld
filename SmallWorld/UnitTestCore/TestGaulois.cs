@@ -12,7 +12,7 @@ namespace UnitTestCore {
         [TestMethod]
         public void TestMove() {
             int defaultMovementPoints = gaulois.RemainingMovementPoints;
-            gaulois.Move(new Lowland());
+            Assert.IsTrue(gaulois.Move(new Lowland()));
             Assert.AreEqual(defaultMovementPoints - 1, gaulois.RemainingMovementPoints);
         }
 

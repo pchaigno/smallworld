@@ -77,7 +77,7 @@ namespace SmallWorld {
 
         /// <summary>
         /// Checks if a player lost.
-        /// A player lose if he doesn't have any more units.
+        /// A player loses if he doesn't have any more units.
         /// </summary>
         /// <param name="player">The player.</param>
         /// <returns>True if the player lost.</returns>
@@ -103,20 +103,21 @@ namespace SmallWorld {
         public IPlayer GetWinner() {
             if(this.IsDefeated(this.player1)) {
                 return this.player2;
-            } else if(this.IsDefeated(this.player2)) {
+            }
+            if(this.IsDefeated(this.player2)) {
                 return this.player1;
-            } else {
-                if(this.player1.Points < this.player2.Points) {
-                    return this.player2;
-                } else if(this.player1.Points > this.player2.Points) {
-                    return this.player1;
-                }
+            }
+            if(this.player1.Points < this.player2.Points) {
+                return this.player2;
+            }
+            if(this.player1.Points > this.player2.Points) {
+                return this.player1;
             }
             return null;
         }
 
         /// <summary>
-        /// End the current round and start the next one.
+        /// Ends the current round and start the next one.
         /// </summary>
         public void EndRound() {
             Dictionary<IUnit, IPoint> units = map.GetUnits(this.currentPlayer);

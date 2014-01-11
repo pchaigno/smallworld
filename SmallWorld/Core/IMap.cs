@@ -21,7 +21,7 @@ namespace SmallWorld {
         void PlaceUnit(IUnit unit, IPoint position);
         ISquare GetSquare(IPoint position);
         void MoveUnit(IUnit unit, IPoint currentPosition, IPoint newPosition);
-        void RemoveUnit(IUnit unit, IPoint position);
+        bool RemoveUnit(IUnit unit, IPoint position);
         Dictionary<IUnit, IPoint> GetUnits(IPlayer player);
     }
 }

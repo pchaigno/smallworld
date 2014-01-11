@@ -82,7 +82,7 @@ namespace SmallWorld {
         /// </summary>
         /// <param name="position">The position.</param>
         /// <param name="unit">The unit.</param>
-        /// <returns></returns>
+        /// <returns>True if the position is an enemy position.</returns>
         public bool IsEnemyPosition(IPoint position, IUnit unit) {
             if(this.units[position.X, position.Y].Count == 0) {
                 return false;
@@ -130,8 +130,9 @@ namespace SmallWorld {
         /// </summary>
         /// <param name="unit">The unit.</param>
         /// <param name="position">The position of the unit.</param>
-        public void RemoveUnit(IUnit unit, IPoint position) {
-            this.units[position.X, position.Y].Remove(unit);
+        /// <returns>False if the unit wasn't found at this position.</returns>
+        public bool RemoveUnit(IUnit unit, IPoint position) {
+            return this.units[position.X, position.Y].Remove(unit);
         }
 
         /// <summary>

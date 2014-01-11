@@ -12,6 +12,7 @@ namespace UnitTestCore {
         [TestMethod]
         public void TestCanMove() {
             Assert.IsTrue(dwarf.CanMove(new Point(0, 0), new Mountain(), new Point(0, 1), new Mountain()));
+            Assert.IsTrue(dwarf.CanMove(new Point(0, 0), new Mountain(), new Point(4, 4), new Mountain()));
             Assert.IsFalse(dwarf.CanMove(new Point(0, 0), new Lowland(), new Point(0, 1), new Sea()));
         }
 

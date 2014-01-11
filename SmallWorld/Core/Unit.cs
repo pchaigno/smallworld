@@ -9,6 +9,7 @@ namespace SmallWorld {
 
     [Serializable()]
     public abstract class Unit: IUnit, ISerializable {
+        protected const int MOVEMENT_COST = 2;
         protected const int ATTACK = 2;
         protected const int DEFENSE = 1;
         protected const int DEFAULT_LIFE_POINTS = 5;
@@ -78,14 +79,19 @@ namespace SmallWorld {
         }
 
         /// <summary>
-        /// Remove one life point to the unit.
+        /// Removes one life point to the unit.
         /// </summary>
-        public void DecreaseLifePoints() {
+        /// <retruns>True if the life points have been decreased.</retruns>
+        public bool DecreaseLifePoints() {
+            if(this.lifePoints < 1) {
+                return false;
+            }
             this.lifePoints--;
+            return true;
         }
 
         /// <summary>
-        /// Reset the remaining movement points to the default number.
+        /// Resets the remaining movement points to the default number.
         /// </summary>
         public void ResetMovementPoints() {
             this.remainingMovementPoints = DEFAULT_MOVEMENT_POINTS;
@@ -111,8 +117,13 @@ namespace SmallWorld {
         /// Updates the number of remaining points after a move.
         /// </summary>
         /// <param name="destination">The type of square the destination is.</param>
-        public virtual void Move(ISquare destination) {
-            this.remainingMovementPoints -= 2;
+        /// <returns>False if the unit couldn't be move to that destination.</returns>
+        public virtual bool Move(ISquare destination) {
+            if(this.remainingMovementPoints < MOVEMENT_COST) {
+                return false;
+            }
+            this.remainingMovementPoints -= MOVEMENT_COST;
+            return true;
         }
 
         /// <summary>

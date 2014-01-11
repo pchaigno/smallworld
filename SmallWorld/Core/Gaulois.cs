@@ -53,11 +53,17 @@ namespace SmallWorld {
         /// Gaulois use one point less than others to move on lowland.
         /// </remarks>
         /// <param name="destination">The type of square the destination is.</param>
-        public override void Move(ISquare destination) {
-            base.Move(destination);
+        /// <returns>False if the unit couldn't be move to that destination.</returns>
+        public override bool Move(ISquare destination) {
             if(destination is ILowland) {
-                this.remainingMovementPoints++;
+                int movementCost = MOVEMENT_COST / 2;
+                if(this.remainingMovementPoints < movementCost) {
+                    return false;
+                }
+                this.remainingMovementPoints -= movementCost;
+                return true;
             }
+            return base.Move(destination);
         }
     }
 }

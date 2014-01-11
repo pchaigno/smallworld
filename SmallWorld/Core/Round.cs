@@ -151,13 +151,17 @@ namespace SmallWorld {
         /// Unselects the unit.
         /// </summary>
         /// <see cref="Round.SetDestination"/>
+        /// <exception cref="">If the unit couldn't be moved to the destination point.</exception>
         public void ExecuteMove() {
             // TODO improve message
 
             if(this.game.Map.IsEnemyPosition(this.destination, this.selectedUnit[0])) {
                 for(int i = 0; i < this.selectedUnit.Count; i++) {
                     IUnit unit = this.selectedUnit[i];
-                    unit.Move(game.Map.GetSquare(destination));
+                    if(!unit.Move(game.Map.GetSquare(destination))) {
+                        // TODO Need to define a better exception.
+                        throw new Exception("The unit " + unit + " couldn't be moved to " + destination + ".");
+                    }
                     if(Combat(unit)) {
                         if(this.game.Map.GetUnits(this.destination).Count == 0) {
                             this.game.Map.MoveUnit(unit, this.selectedPosition, this.destination);
@@ -167,7 +171,9 @@ namespace SmallWorld {
             } else {
                 for(int i = 0; i < this.selectedUnit.Count; i++) {
                     IUnit unit = this.selectedUnit[i];
-                    unit.Move(game.Map.GetSquare(destination));
+                    if(!unit.Move(game.Map.GetSquare(destination))) {
+                        throw new Exception("The unit " + unit + " couldn't be moved to " + destination + ".");
+                    }
                     this.game.Map.MoveUnit(unit, this.selectedPosition, this.destination);
                     this.lastMoveInfo = this.player.Name + " moved an unit.";
                 }

@@ -21,7 +21,7 @@ namespace UnitTestCore {
 
         private void TestMovementPoints(IUnit unit) {
             int defaultMovementPoint = unit.RemainingMovementPoints;
-            unit.Move(new Forest());
+            Assert.IsTrue(unit.Move(new Forest()));
             Assert.AreEqual(defaultMovementPoint - 2, unit.RemainingMovementPoints);
             unit.ResetMovementPoints();
             Assert.AreEqual(defaultMovementPoint, unit.RemainingMovementPoints);
@@ -37,11 +37,11 @@ namespace UnitTestCore {
         private void TestLifePoints(IUnit unit) {
             Assert.AreEqual(unit.DefaultLifePoints, unit.LifePoints);
             Assert.IsTrue(unit.IsAlive());
-            unit.DecreaseLifePoints();
+            Assert.IsTrue(unit.DecreaseLifePoints());
             Assert.AreEqual(unit.DefaultLifePoints - 1, unit.LifePoints);
             while(unit.LifePoints > 0) {
                 Assert.IsTrue(unit.IsAlive());
-                unit.DecreaseLifePoints();
+                Assert.IsTrue(unit.DecreaseLifePoints());
             }
             Assert.IsFalse(unit.IsAlive());
         }

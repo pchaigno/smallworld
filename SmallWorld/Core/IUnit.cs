@@ -26,9 +26,9 @@ namespace SmallWorld {
             get;
         }
 
-        void DecreaseLifePoints();
+        bool DecreaseLifePoints();
         void ResetMovementPoints();
-        void Move(ISquare destination);
+        bool Move(ISquare destination);
         bool CanMove(IPoint currentPosition, ISquare currentSquare, IPoint destination, ISquare square);
         int GetPoints(ISquare square, ISquare[] neighbours);
         bool IsAlive();
