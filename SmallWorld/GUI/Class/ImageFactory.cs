@@ -62,17 +62,17 @@ namespace GUI {
          * @param square The square to draw.
          * @returns The image corresponding to the square.
          */
-        public Brush getBrushSquare(ISquare square) {
+        public Brush getBrushTile(ITile tile) {
             ImageBrush brush = new ImageBrush();
-            if(square is IDesert) {
+            if(tile is IDesert) {
                 brush.ImageSource = this.tileDesert;
-            } else if(square is ISea) {
+            } else if(tile is ISea) {
                 brush.ImageSource = this.tileEau;
-            } else if(square is IForest) {
+            } else if(tile is IForest) {
                 brush.ImageSource = this.tileForet;
-            } else if(square is IMountain) {
+            } else if(tile is IMountain) {
                 brush.ImageSource = this.tileMontagne;
-            } else if(square is ILowland) {
+            } else if(tile is ILowland) {
                 brush.ImageSource = this.tilePlaine;
             }
             return brush;

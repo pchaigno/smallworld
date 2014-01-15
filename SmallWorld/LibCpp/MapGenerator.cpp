@@ -5,7 +5,7 @@
  * @param map The map as a matrix of integers.
  * @param size The size of the map.
  */
-Point* MapGenerator::placeUnits(Square** map, int size) {
+Point* MapGenerator::placeUnits(Tile** map, int size) {
 	Point* result = new Point[2];
 	result[0] = Point(0, 0);
 	result[1] = Point(size-1, size-1);
@@ -38,12 +38,12 @@ Point* MapGenerator::placeUnits(Square** map, int size) {
  * @param size The size of the map.
  * @returns The map as a matrix of integers.
  */
-Square** MapGenerator::generateMap(int size) {
+Tile** MapGenerator::generateMap(int size) {
 	// Initialisation:
 	int i, j;
-	Square** map = new Square*[size];
+	Tile** map = new Tile*[size];
 	for(i=0; i<size; i++) {
-        map[i] = new Square[size];
+        map[i] = new Tile[size];
 	}
 	MapGenerator::initiateRand();
 
@@ -51,7 +51,7 @@ Square** MapGenerator::generateMap(int size) {
 		// Compute the map composition:
 		for(i=0; i<size; i++) {
 			for(j=0; j<size; j++) {
-				map[i][j] = (Square)MapGenerator::randBounds(1, 6);
+				map[i][j] = (Tile)MapGenerator::randBounds(1, 6);
 			}
 		}
 		printf("Test\n");

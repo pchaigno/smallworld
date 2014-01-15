@@ -8,7 +8,7 @@
  * @returns A matrix of integer representing the different types of squares.
  */
 array<array<int>^>^ mWrapper::Wrapper::generateMapList(int size) {
-	Square** result = MapGenerator::generateMap(size);
+	Tile** result = MapGenerator::generateMap(size);
 
 	// Convert the result from the C++ library into a matrix readable by C#:
 	array<array<int>^>^ map = gcnew array<array<int>^>(size);
@@ -28,11 +28,11 @@ array<array<int>^>^ mWrapper::Wrapper::generateMapList(int size) {
  * @returns A matrix with the coordinate of the units for the two players.
  */
 array<array<int>^>^ mWrapper::Wrapper::getStartsPlayers(array<array<int>^>^ map, int size) {
-	Square** result = new Square*[size];
+	Tile** result = new Tile*[size];
 	for(int i=0; i<size; i++) {
-		result[i] = new Square[size];
+		result[i] = new Tile[size];
 		for(int j=0; j<size; j++) {
-			result[i][j] = (Square)map[i][j];
+			result[i][j] = (Tile)map[i][j];
 		}
 	}
 	Point* starts = MapGenerator::placeUnits(result, size);
@@ -59,11 +59,11 @@ array<array<int>^>^ mWrapper::Wrapper::getStartsPlayers(array<array<int>^>^ map,
  * @returns Some advice of destinations for the current unit.
  */
 array<array<int>^>^ mWrapper::Wrapper::getAdvice(array<array<int>^>^ map, int size, int nationPlayer1, int nationPlayer2, int x, int y, array<array<int>^>^ units, int player) {
-	Square** mapBis = new Square*[size];
+	Tile** mapBis = new Tile*[size];
 	for(int i=0; i<size; i++) {
-		mapBis[i] = new Square[size];
+		mapBis[i] = new Tile[size];
 		for(int j=0; j<size; j++) {
-			mapBis[i][j] = (Square)map[i][j];
+			mapBis[i][j] = (Tile)map[i][j];
 		}
 	}
 	AdviceGenerator generator = AdviceGenerator(mapBis, size, (Nation)nationPlayer1, (Nation)nationPlayer2);

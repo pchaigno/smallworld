@@ -40,14 +40,14 @@ namespace SmallWorld {
         /// <returns>The list of advised desinations.</returns>
         public List<IPoint> GetAdvisedDestinations(IUnit unit, IPoint pos) {
             IMap map = this.game.Map;
-            ISquare[,] squares = map.Squares;
+            ITile[,] tiles = map.Tiles;
             int[][] mapBis = new int[map.Size][];
             int[][] units = new int[map.Size][];
             for(int i=0; i<map.Size; i++) {
                 mapBis[i] = new int[map.Size];
                 units[i] = new int[map.Size];
                 for(int j=0; j<map.Size; j++) {
-                    mapBis[i][j] = squares[i, j].Number;
+                    mapBis[i][j] = tiles[i, j].Number;
                     List<IUnit> unitsAtPos = map.GetUnits(new Point(i, j));
                     if(unitsAtPos.Count > 0) {
                         units[i][j] = unitsAtPos[0].Owner.Number;
@@ -131,7 +131,7 @@ namespace SmallWorld {
 
             bool result = true;
             foreach(IUnit unit in this.selectedUnit) {
-                if(!unit.CanMove(this.selectedPosition, game.Map.GetSquare(this.selectedPosition), destination, game.Map.GetSquare(destination))) {
+                if(!unit.CanMove(this.selectedPosition, game.Map.GetTile(this.selectedPosition), destination, game.Map.GetTile(destination))) {
                     result = false;
                     break;
                 }
@@ -158,7 +158,7 @@ namespace SmallWorld {
             if(this.game.Map.IsEnemyPosition(this.destination, this.selectedUnit[0])) {
                 for(int i = 0; i < this.selectedUnit.Count; i++) {
                     IUnit unit = this.selectedUnit[i];
-                    if(!unit.Move(game.Map.GetSquare(destination))) {
+                    if(!unit.Move(game.Map.GetTile(destination))) {
                         // TODO Need to define a better exception.
                         throw new Exception("The unit " + unit + " couldn't be moved to " + destination + ".");
                     }
@@ -171,7 +171,7 @@ namespace SmallWorld {
             } else {
                 for(int i = 0; i < this.selectedUnit.Count; i++) {
                     IUnit unit = this.selectedUnit[i];
-                    if(!unit.Move(game.Map.GetSquare(destination))) {
+                    if(!unit.Move(game.Map.GetTile(destination))) {
                         throw new Exception("The unit " + unit + " couldn't be moved to " + destination + ".");
                     }
                     this.game.Map.MoveUnit(unit, this.selectedPosition, this.destination);
@@ -239,10 +239,10 @@ namespace SmallWorld {
         }
 
         /// <summary>
-        /// Retrieves the best unit from the square currently selected.
+        /// Retrieves the best unit from the tile currently selected.
         /// The best unit is the one with the most life points.
         /// </summary>
-        /// <returns>The best unit on the square currently selected.</returns>
+        /// <returns>The best unit on the tile currently selected.</returns>
         private IUnit GetBestUnit() {
             IUnit result = null;
             List<IUnit> units = this.game.Map.GetUnits(this.destination);

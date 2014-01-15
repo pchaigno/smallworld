@@ -31,15 +31,15 @@ namespace SmallWorld {
         /// </summary>
         /// <remarks>
         /// Dwarfs win twice the points when they are on a forest;
-        /// they don't win any if they are on a sea or on a lowland square.
+        /// they don't win any if they are on a sea or on a lowland tile.
         /// </remarks>
-        /// <param name="square">The type of square the unit is currently on.</param>
-        /// <param name="neighbours">The neighbour squares (array of 4 squares or null if out bounds).</param>
-        /// <returns>The number of points won by the unit depending on the square she's on.</returns>
-        public override int GetPoints(ISquare square, ISquare[] neighbours) {
-            if(square is IForest) {
+        /// <param name="tile">The type of tile the unit is currently on.</param>
+        /// <param name="neighbours">The neighbour tiles (array of 4 tiles or null if out bounds).</param>
+        /// <returns>The number of points won by the unit depending on the tile she's on.</returns>
+        public override int GetPoints(ITile tile, ITile[] neighbours) {
+            if(tile is IForest) {
                 return 2;
-            } else if(square is ISea || square is ILowland) {
+            } else if(tile is ISea || tile is ILowland) {
                 return 0;
             } else {
                 return 1;
@@ -53,13 +53,13 @@ namespace SmallWorld {
         /// Dwarfs have the particularity that they can't move on mountains.
         /// </remarks>
         /// <param name="currentPosition">The current position.</param>
-        /// <param name="currentSquare">The current type of square.</param>
+        /// <param name="currentTile">The current type of tile.</param>
         /// <param name="destination">The destination to reach.</param>
-        /// <param name="square">The type of square the destination is.</param>
+        /// <param name="tile">The type of tile the destination is.</param>
         /// <returns>True if the unit can move to the destination.</returns>
-        public override bool CanMove(IPoint currentPosition, ISquare currentSquare, IPoint destination, ISquare square) {
-            return base.CanMove(currentPosition, currentSquare, destination, square)
-                || (currentSquare is IMountain && square is IMountain);
+        public override bool CanMove(IPoint currentPosition, ITile currentTile, IPoint destination, ITile tile) {
+            return base.CanMove(currentPosition, currentTile, destination, tile)
+                || (currentTile is IMountain && tile is IMountain);
         }
     }
 }

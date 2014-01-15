@@ -18,7 +18,7 @@ private:
 	static int Graph::getIndex(Point pt, Point* points, int nbPoints);
 
 public:
-	static bool isConnectedGraph(Square** map, int size);
+	static bool isConnectedGraph(Tile** map, int size);
 	static int** getBestCostRouting(map<Point, vector<Point>> graph, Point* vertices);
-	static map<Point, vector<Point>> convertToGraph(Square** map, int size);
+	static map<Point, vector<Point>> convertToGraph(Tile** map, int size);
 };

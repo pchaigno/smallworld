@@ -34,17 +34,17 @@ namespace SmallWorld {
         /// Vikings win one more point when they are next to the sea;
         /// they don't win any if they are on the sea or in the desert.
         /// </remarks>
-        /// <param name="square">The type of square the unit is currently on.</param>
-        /// <param name="neighbours">The neighbour squares (array of 4 squares or null if out bounds).</param>
-        /// <returns>The number of points won by the unit depending on the square she's on.</returns>
-        public override int GetPoints(ISquare square, ISquare[] neighbours) {
+        /// <param name="tile">The type of tile the unit is currently on.</param>
+        /// <param name="neighbours">The neighbour tiles (array of 4 tiles or null if out bounds).</param>
+        /// <returns>The number of points won by the unit depending on the tile she's on.</returns>
+        public override int GetPoints(ITile tile, ITile[] neighbours) {
             int points = 1;
-            if(square is ILowland) {
+            if(tile is ILowland) {
                 points = 2;
-            } else if(square is ISea || square is IDesert) {
+            } else if(tile is ISea || tile is IDesert) {
                 points = 0;
             }
-            foreach(ISquare neighbour in neighbours) {
+            foreach(ITile neighbour in neighbours) {
                 if(neighbour is ISea) {
                     points++;
                     break;
@@ -62,11 +62,11 @@ namespace SmallWorld {
         /// Contrary to must units, viking can move on the sea.
         /// </remarks>
         /// <param name="currentPosition">The current position.</param>
-        /// <param name="currentSquare">The current type of square.</param>
+        /// <param name="currentTile">The current type of tile.</param>
         /// <param name="destination">The destination to reach.</param>
-        /// <param name="square">The type of square the destination is.</param>
+        /// <param name="tile">The type of tile the destination is.</param>
         /// <returns>True if the unit can move to the destination.</returns>
-        public override bool CanMove(IPoint currentPosition, ISquare currentSquare, IPoint destination, ISquare square) {
+        public override bool CanMove(IPoint currentPosition, ITile currentTile, IPoint destination, ITile tile) {
             return remainingMovementPoints>0
                 && destination.IsNext(currentPosition);
         }

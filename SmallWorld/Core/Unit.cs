@@ -108,17 +108,17 @@ namespace SmallWorld {
         /// <summary>
         /// Computes the points won by the unit.
         /// </summary>
-        /// <param name="square">The type of square the unit is currently on.</param>
-        /// <param name="neighbours">The neighbour squares (array of 4 squares or null if out bounds).</param>
+        /// <param name="tile">The type of tile the unit is currently on.</param>
+        /// <param name="neighbours">The neighbour tiles (array of 4 tiles or null if out bounds).</param>
         /// <returns>The points won by the unit for this round.</returns>
-        public abstract int GetPoints(ISquare square, ISquare[] neighbours);
+        public abstract int GetPoints(ITile tile, ITile[] neighbours);
 
         /// <summary>
         /// Updates the number of remaining points after a move.
         /// </summary>
-        /// <param name="destination">The type of square the destination is.</param>
+        /// <param name="destination">The type of tile the destination is.</param>
         /// <returns>False if the unit couldn't be move to that destination.</returns>
-        public virtual bool Move(ISquare destination) {
+        public virtual bool Move(ITile destination) {
             if(this.remainingMovementPoints < MOVEMENT_COST) {
                 return false;
             }
@@ -130,15 +130,15 @@ namespace SmallWorld {
         /// Checks if the unit can move during this round to a certain destination.
         /// The destination must be next to the current position,
         /// the unit must have some movement points left,
-        /// the square can't be a sea.
+        /// the tile can't be a sea.
         /// </summary>
         /// <param name="currentPosition">The current position.</param>
-        /// <param name="currentSquare">The current type of square.</param>
+        /// <param name="currentTile">The current type of tile.</param>
         /// <param name="destination">The destination to reach.</param>
-        /// <param name="square">The type of square the destination is.</param>
+        /// <param name="tile">The type of tile the destination is.</param>
         /// <returns>True if the unit can move to the destination.</returns>
-        public virtual bool CanMove(IPoint currentPosition, ISquare currentSquare, IPoint destination, ISquare square) {
-            return !(square is ISea)
+        public virtual bool CanMove(IPoint currentPosition, ITile currentTile, IPoint destination, ITile tile) {
+            return !(tile is ISea)
                 && remainingMovementPoints >= MOVEMENT_COST
                 && destination.IsNext(currentPosition);
         }

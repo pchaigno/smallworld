@@ -69,8 +69,8 @@
     <Compile Include="IRound.cs" />
     <Compile Include="ISea.cs" />
     <Compile Include="ISmallGameBuilder.cs" />
-    <Compile Include="ISquare.cs" />
-    <Compile Include="ISquareFactory.cs" />
+    <Compile Include="ITile.cs" />
+    <Compile Include="ITileFactory.cs" />
     <Compile Include="IUnit.cs" />
     <Compile Include="IUnitFactory.cs" />
     <Compile Include="IViking.cs" />
@@ -85,7 +85,7 @@
     <Compile Include="Round.cs" />
     <Compile Include="Sea.cs" />
     <Compile Include="SmallGameBuilder.cs" />
-    <Compile Include="SquareFactory.cs" />
+    <Compile Include="TileFactory.cs" />
     <Compile Include="Unit.cs" />
     <Compile Include="Viking.cs" />
     <Compile Include="VikingFactory.cs" />

@@ -31,7 +31,7 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestGetPoints() {
-            ISquare[] neighbours = new ISquare[] {new Lowland(), new Lowland(), new Lowland(), new Lowland()};
+            ITile[] neighbours = new ITile[] {new Lowland(), new Lowland(), new Lowland(), new Lowland()};
             Assert.AreEqual(1, gaulois.GetPoints(new Forest(), neighbours));
             Assert.AreEqual(0, gaulois.GetPoints(new Sea(), neighbours));
             Assert.AreEqual(2, gaulois.GetPoints(new Lowland(), neighbours));

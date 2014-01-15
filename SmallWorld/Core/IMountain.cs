@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SmallWorld {
 
-    public interface IMountain: ISquare {
+    public interface IMountain: ITile {
 
     }
 }

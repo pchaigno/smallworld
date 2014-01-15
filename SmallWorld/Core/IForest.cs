@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SmallWorld {
 
-    public interface IForest: ISquare {
+    public interface IForest: ITile {
 
     }
 }

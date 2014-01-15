@@ -10,16 +10,16 @@ namespace SmallWorld {
     [Serializable()]
     public class Map: IMap, ISerializable {
         private List<IUnit>[,] units;
-        private ISquare[,] squares;
+        private ITile[,] tiles;
         private int size;
         public List<IUnit>[,] Units {
             get {
                 return this.units;
             }
         }
-        public ISquare[,] Squares {
+        public ITile[,] Tiles {
             get {
-                return this.squares;
+                return this.tiles;
             }
         }
         public int Size {
@@ -31,10 +31,10 @@ namespace SmallWorld {
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="squares">A matrix with the type of square for each position.</param>
-        public Map(ISquare[,] squares) {
-            this.squares = squares;
-            this.size = this.squares.GetLength(0);
+        /// <param name="tiles">A matrix with the type of tile for each position.</param>
+        public Map(ITile[,] tiles) {
+            this.tiles = tiles;
+            this.size = this.tiles.GetLength(0);
 
             // Initialize the matrix of units:
             units = new List<IUnit>[size, size];
@@ -53,7 +53,7 @@ namespace SmallWorld {
         public Map(SerializationInfo info, StreamingContext context) {
             this.size = (int)info.GetValue("Size", typeof(int));
             this.units = (List<IUnit>[,])info.GetValue("Units", typeof(List<IUnit>[,]));
-            this.squares = (ISquare[,])info.GetValue("Squares", typeof(ISquare[,]));
+            this.tiles = (ITile[,])info.GetValue("Tiles", typeof(ITile[,]));
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace SmallWorld {
         public void GetObjectData(SerializationInfo info, StreamingContext context) {
             info.AddValue("Size", this.size);
             info.AddValue("Units", this.units);
-            info.AddValue("Squares", this.squares);
+            info.AddValue("Tiles", this.tiles);
         }
 
         /// <summary>
@@ -101,12 +101,12 @@ namespace SmallWorld {
         }
 
         /// <summary>
-        /// Gets the squares (its type) at a certain position.
+        /// Gets the tiles (its type) at a certain position.
         /// </summary>
         /// <param name="position">The position.</param>
-        /// <returns>The square at this position.</returns>
-        public ISquare GetSquare(IPoint position) {
-            return this.squares[position.X, position.Y];
+        /// <returns>The tile at this position.</returns>
+        public ITile GetTile(IPoint position) {
+            return this.tiles[position.X, position.Y];
         }
 
         /// <summary>

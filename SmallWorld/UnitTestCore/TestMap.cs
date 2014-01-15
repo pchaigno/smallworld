@@ -16,11 +16,11 @@ namespace UnitTestCore {
         [TestMethod]
         public void TestConstructor() {
             Assert.IsTrue(15 == map.Size);
-            ISquare[,] squares = map.Squares;
+            ITile[,] tiles = map.Tiles;
             for(int i = 0; i < 15; i++) {
                 for(int j = 0; j < 15; j++) {
                     // We can use AreSame because we use a flyweight pattern.
-                    Assert.AreSame(squares[i, j], map.GetSquare(new Point(i, j)));
+                    Assert.AreSame(tiles[i, j], map.GetTile(new Point(i, j)));
                 }
             }
         }
@@ -89,7 +89,7 @@ namespace UnitTestCore {
             Assert.AreEqual(map.Size, savedMap.Size);
             for(int i = 0; i < map.Size; i++) {
                 for(int j = 0; j < map.Size; j++) {
-                    Assert.IsInstanceOfType(savedMap.GetSquare(new Point(i, j)), map.GetSquare(new Point(i, j)).GetType());
+                    Assert.IsInstanceOfType(savedMap.GetTile(new Point(i, j)), map.GetTile(new Point(i, j)).GetType());
                 }
             }
             for(int i = 0; i < map.Size; i++) {

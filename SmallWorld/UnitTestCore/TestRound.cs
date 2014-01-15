@@ -97,7 +97,7 @@ namespace UnitTestCore {
                 int y = currentPos.Y + yOffsets[i];
                 if(x>=0 && y>=0 && x<size && y<size) {
                     IPoint destination = new Point(x, y);
-                    if(!(game.Map.GetSquare(destination) is ISea) && !game.Map.IsEnemyPosition(destination, unit)) {
+                    if(!(game.Map.GetTile(destination) is ISea) && !game.Map.IsEnemyPosition(destination, unit)) {
                         return destination;
                     }
                 }

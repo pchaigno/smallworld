@@ -2,7 +2,7 @@
 
 int main() {
 	int size = 15;
-    Square** map = MapGenerator::generateMap(size);
+    Tile** map = MapGenerator::generateMap(size);
 	for(int i=0; i<size; i++) {
 		for(int j=0; j<size; j++) {
 			printf("%d ", map[j][i]);

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SmallWorld {
 
-    public interface ISea: ISquare {
+    public interface ISea: ITile {
 
     }
 }

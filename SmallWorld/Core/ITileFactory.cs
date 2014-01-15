@@ -6,8 +6,8 @@ using System.Text;
 namespace SmallWorld {
 
     // TODO Why is there no public/private in interfaces?
-    public interface ISquareFactory {
+    public interface ITileFactory {
 
-        ISquare GetSquare(int i);
+        ITile GetTile(int i);
     }
 }

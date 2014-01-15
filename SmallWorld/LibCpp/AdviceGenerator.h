@@ -12,13 +12,13 @@ using namespace std;
 
 class AdviceGenerator {
 private:
-	Square** map;
+	Tile** map;
 	int size;
 	Nation* nations;
 
 	int getScore(Point pos, Nation nation);
 
 public:
-	DLL AdviceGenerator(Square** map, int size, Nation nationPlayer1, Nation nationPlayer2);
+	DLL AdviceGenerator(Tile** map, int size, Nation nationPlayer1, Nation nationPlayer2);
 	DLL Point* getAdvice(int x, int y, Player** units, Player player);
 };

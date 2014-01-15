@@ -19,14 +19,14 @@ namespace SmallWorld {
         /// <returns>The map.</returns>
         public IMap BuildMap(int size) {
             int[][] composition = Wrapper.generateMapList(size);
-            ISquare[,] squares = new ISquare[size, size];
+            ITile[,] tiles = new ITile[size, size];
 
             for(int x=0; x<size; x++) {
                 for(int y=0; y<size; y++) {
-                    squares[x, y] = SquareFactory.Instance.GetSquare(composition[x][y]);
+                    tiles[x, y] = TileFactory.Instance.GetTile(composition[x][y]);
                 }
             }
-            return new Map(squares);
+            return new Map(tiles);
         }
     }
 }

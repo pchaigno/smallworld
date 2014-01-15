@@ -36,8 +36,8 @@ namespace GUI {
 
         private IGame game;
         private Rectangle[,] unitRectangles;
-        private Rectangle[,] squareRectangles;
-        private Rectangle selectedSquare;
+        private Rectangle[,] tileRectangles;
+        private Rectangle selectedTile;
         private Dictionary<Border, IUnit> unitSelecterCollec;
         private List<Border> selectedUnitBorder;
         private List<Rectangle> advisedDestination;
@@ -56,7 +56,7 @@ namespace GUI {
             this.game = game;
             int size = this.game.Map.Size;
             this.unitRectangles = new Rectangle[size, size];
-            this.selectedSquare = null;
+            this.selectedTile = null;
             this.unitSelecterCollec = new Dictionary<Border, IUnit>();
             this.advisedDestination = new List<Rectangle>();
             this.selectedUnitBorder = new List<Border>();
@@ -82,7 +82,7 @@ namespace GUI {
                 });
             }
 
-            squareRectangles = new Rectangle[size, size];
+            tileRectangles = new Rectangle[size, size];
 
             for(int l=0; l<size; l++) {
                 this.mapGrid.RowDefinitions.Add(new RowDefinition() {
@@ -90,10 +90,10 @@ namespace GUI {
                 });
 
                 for(int c = 0; c < size; c++) {
-                    ISquare type = map.GetSquare(new Point(l, c));
-                    var rect = CreateSquares(type, c, l);
+                    ITile type = map.GetTile(new Point(l, c));
+                    var rect = CreateTiles(type, c, l);
                     this.mapGrid.Children.Add(rect);
-                    squareRectangles[l, c] = rect;
+                    tileRectangles[l, c] = rect;
                 }
             }
 
@@ -102,16 +102,16 @@ namespace GUI {
         }
 
         /// <summary>
-        /// Creates a graphic square associated to an ISquare.
+        /// Creates a graphic tile associated to an ITile.
         /// </summary>
-        /// <param name="type">The type of square.</param>
-        /// <param name="col">The abscissa of the square on the map.</param>
-        /// <param name="line">The ordinate of the square on the map.</param>
+        /// <param name="type">The type of tile.</param>
+        /// <param name="col">The abscissa of the tile on the map.</param>
+        /// <param name="line">The ordinate of the tile on the map.</param>
         /// <returns></returns>
-        private Rectangle CreateSquares(ISquare type, int col, int line) {
+        private Rectangle CreateTiles(ITile type, int col, int line) {
             Rectangle rectangle = new Rectangle();
 
-            rectangle.Fill = ImageFactory.getInstance().getBrushSquare(type);
+            rectangle.Fill = ImageFactory.getInstance().getBrushTile(type);
             Grid.SetColumn(rectangle, col);
             Grid.SetRow(rectangle, line);
             rectangle.StrokeThickness = 2;
@@ -217,7 +217,7 @@ namespace GUI {
         private void DisplayAdvisedDestination(List<IPoint> positions) {
             if(advisedDestination != null) {
                 foreach(IPoint point in positions) {
-                    Rectangle rect = squareRectangles[point.X, point.Y];
+                    Rectangle rect = tileRectangles[point.X, point.Y];
                     rect.Stroke = advisedBrush;
                     advisedDestination.Add(rect);
                 }
@@ -230,7 +230,7 @@ namespace GUI {
         private void ClearAdvisedDestination() {
             if(advisedDestination != null) {
                 foreach(Rectangle rect in advisedDestination) {
-                    if(selectedSquare != rect) {
+                    if(selectedTile != rect) {
                         rect.Stroke = defaultBrush;
                     }
                 }
@@ -257,7 +257,7 @@ namespace GUI {
         /// <param name="e">The event.</param>
         private void MouseLeaveRectangle(object sender, MouseEventArgs e) {
             var rectangle = sender as Rectangle;
-            if(rectangle == this.selectedSquare) {
+            if(rectangle == this.selectedTile) {
                 rectangle.Stroke = selectedBrush;
             } else if (advisedDestination.Contains(rectangle)){
                 rectangle.Stroke = advisedBrush;
@@ -268,7 +268,7 @@ namespace GUI {
 
         /// <summary>
         /// Listener for left clicks on a rectangle.
-        /// Updates the current selected square (and units).
+        /// Updates the current selected tile (and units).
         /// </summary>
         /// <param name="sender">The rectangle sender of the notification.</param>
         /// <param name="e">The event.</param>
@@ -283,8 +283,8 @@ namespace GUI {
             this.unitSelecter.Children.Clear();
             this.selectedUnitBorder.Clear();
             ClearAdvisedDestination();
-            if(this.selectedSquare != null) {
-                this.selectedSquare.Stroke = Brushes.Transparent;
+            if(this.selectedTile != null) {
+                this.selectedTile.Stroke = Brushes.Transparent;
             }
 
             IRound round = game.Round;
@@ -305,7 +305,7 @@ namespace GUI {
                 this.DisplayAdvisedDestination(round.GetAdvisedDestinations(units[0], position));
 
                 rectangle.Stroke = selectedBrush;
-                selectedSquare = rectangle;
+                selectedTile = rectangle;
             } else {
                 round.UnselectUnit();
             }
@@ -324,8 +324,8 @@ namespace GUI {
             IRound round = this.game.Round;
             Border border = sender as Border;
 
-            int column = Grid.GetColumn(this.selectedSquare);
-            int row = Grid.GetRow(this.selectedSquare);
+            int column = Grid.GetColumn(this.selectedTile);
+            int row = Grid.GetRow(this.selectedTile);
             IPoint position = new Point(row, column);
 
             if(!multipleSelection) {
@@ -376,7 +376,7 @@ namespace GUI {
             IRound round = this.game.Round;
             if(round.SetDestination(position)) {
                 round.ExecuteMove();
-                this.selectedSquare.Stroke = Brushes.Black;
+                this.selectedTile.Stroke = Brushes.Black;
 
                 this.DisplayUnitsOnMap();
 

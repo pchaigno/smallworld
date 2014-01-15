@@ -6,7 +6,7 @@ enum Nation {
 	DWARFS = 3
 };
 
-enum Square {
+enum Tile {
 	SEA = 1,
 	FOREST = 2,
 	DESERT = 3,

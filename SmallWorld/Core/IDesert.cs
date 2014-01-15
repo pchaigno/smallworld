@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SmallWorld {
 
-    public interface IDesert: ISquare {
+    public interface IDesert: ITile {
 
     }
 }

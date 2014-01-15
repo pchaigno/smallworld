@@ -18,7 +18,7 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestGetPoints() {
-            ISquare[] neighbours = new ISquare[] { new Lowland(), new Lowland(), new Lowland(), new Lowland() };
+            ITile[] neighbours = new ITile[] { new Lowland(), new Lowland(), new Lowland(), new Lowland() };
             Assert.AreEqual(2, dwarf.GetPoints(new Forest(), neighbours));
             Assert.AreEqual(0, dwarf.GetPoints(new Sea(), neighbours));
             Assert.AreEqual(0, dwarf.GetPoints(new Lowland(), neighbours));

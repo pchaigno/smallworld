@@ -28,8 +28,8 @@ namespace SmallWorld {
         public IGame BuildGame(string name1, IUnitFactory factory1, string name2, IUnitFactory factory2) {
             IMapBuilder mapBuilder = new MapBuilder();
             IMap map = mapBuilder.BuildMap(this.mapSize);
-            ISquare[,] squares = map.Squares;
-            int[][] mapAsIntegers = SquareFactory.GetNumbers(squares);
+            ITile[,] tiles = map.Tiles;
+            int[][] mapAsIntegers = TileFactory.GetNumbers(tiles);
 
             IPlayer player1 = new Player(name1, factory1);
             IPlayer player2 = new Player(name2, factory2);

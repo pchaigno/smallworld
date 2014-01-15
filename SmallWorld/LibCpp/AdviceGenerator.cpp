@@ -7,7 +7,7 @@
  * @param nationPlayer1 The nation of the first player.
  * @param nationPlayer2 The nation of the second player.
  */
-AdviceGenerator::AdviceGenerator(Square** map, int size, Nation nationPlayer1, Nation nationPlayer2) {
+AdviceGenerator::AdviceGenerator(Tile** map, int size, Nation nationPlayer1, Nation nationPlayer2) {
 	this->map = map;
 	this->size = size;
 	this->nations = (Nation*)malloc(sizeof(Nation) * 2);
@@ -60,7 +60,7 @@ Point* AdviceGenerator::getAdvice(int x, int y, Player** units, Player player) {
  * @param nation The nation of the unit to advise.
  */
 int AdviceGenerator::getScore(Point pos, Nation nation) {
-	Square square = this->map[pos.x][pos.y];
+	Tile square = this->map[pos.x][pos.y];
 	int scoresDwarfs[5] = {INT_MIN, 2, 0, -2, 1};
 	int scoresVikings[5] = {-1, 0, -2, 0, 0};
 	int scoresGaulois[5] = {INT_MIN, 0, 0, 3, -2};

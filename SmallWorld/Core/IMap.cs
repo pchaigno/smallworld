@@ -6,7 +6,7 @@ using System.Text;
 namespace SmallWorld {
 
     public interface IMap {
-        ISquare[,] Squares {
+        ITile[,] Tiles {
             get;
         }
         List<IUnit>[,] Units {
@@ -19,7 +19,7 @@ namespace SmallWorld {
         List<IUnit> GetUnits(IPoint coordinates);
         bool IsEnemyPosition(IPoint position, IUnit unit);
         void PlaceUnit(IUnit unit, IPoint position);
-        ISquare GetSquare(IPoint position);
+        ITile GetTile(IPoint position);
         void MoveUnit(IUnit unit, IPoint currentPosition, IPoint newPosition);
         bool RemoveUnit(IUnit unit, IPoint position);
         Dictionary<IUnit, IPoint> GetUnits(IPlayer player);

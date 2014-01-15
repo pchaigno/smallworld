@@ -122,9 +122,9 @@ namespace SmallWorld {
         public void EndRound() {
             Dictionary<IUnit, IPoint> units = map.GetUnits(this.currentPlayer);
             foreach(IUnit unit in units.Keys) {
-                ISquare square = this.map.GetSquare(units[unit]);
-                ISquare[] neighbours = this.GetNeighbours(units[unit]);
-                this.currentPlayer.AddPoints(unit.GetPoints(square, neighbours));
+                ITile tile = this.map.GetTile(units[unit]);
+                ITile[] neighbours = this.GetNeighbours(units[unit]);
+                this.currentPlayer.AddPoints(unit.GetPoints(tile, neighbours));
                 unit.ResetMovementPoints();
             }
             if(this.currentPlayer == this.player1) {
@@ -141,15 +141,15 @@ namespace SmallWorld {
         /// </summary>
         /// <param name="pos">The position.</param>
         /// <returns>An array of neighbours' types, or null if a neighbour was out bounds.</returns>
-        private ISquare[] GetNeighbours(IPoint pos) {
+        private ITile[] GetNeighbours(IPoint pos) {
             int[] xOffset = {0, -1, 0, 1};
             int[] yOffset = {0, -1, 0, 1};
-            ISquare[] neighbours = new ISquare[4];
+            ITile[] neighbours = new ITile[4];
             for(int i=0; i<4; i++) {
                 int x = pos.X + xOffset[i];
                 int y = pos.Y + yOffset[i];
                 if(x >= 0 && y >= 0 && x < this.map.Size && y < this.map.Size) {
-                    neighbours[i] = this.map.GetSquare(new Point(x, y));
+                    neighbours[i] = this.map.GetTile(new Point(x, y));
                 } else {
                     neighbours[i] = null;
                 }
