@@ -68,6 +68,9 @@ namespace GUI {
 
             this.KeyDown += new KeyEventHandler(OnButtonKeyDown);
             this.KeyUp += new KeyEventHandler(OnButtonKeyUp);
+
+            Uri iconUri = new Uri("../../Resources/icon.png", UriKind.Relative);
+            this.Icon = BitmapFrame.Create(iconUri);
         }
 
         /// <summary>

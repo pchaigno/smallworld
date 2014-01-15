@@ -110,6 +110,11 @@
             Launch!
         </Button>
 
+        <Button Name="end" Click="OnClickEnd" Style="{StaticResource buttonStyle}"
+        Width="80" Height="40" FontSize="16">
+            Exit
+        </Button>
+
     </StackPanel>
 </Window>
 

@@ -47,6 +47,9 @@ namespace GUI {
             people2Collec = new PeopleCollection();
             people2Box.DataContext = people2Collec;
             people2Box.SelectedItem = "Vikings";
+
+            Uri iconUri = new Uri("../../Resources/icon.png", UriKind.Relative);
+            this.Icon = BitmapFrame.Create(iconUri);
         }
 
         /// <summary>
@@ -104,6 +107,11 @@ namespace GUI {
                 MessageBoxImage icon = MessageBoxImage.Warning;
                 MessageBox.Show(messageBoxText, caption, button, icon);
             }
+        }
+
+        public void OnClickEnd(object sender, RoutedEventArgs e) {
+
+            this.Close();
         }
     }
 
