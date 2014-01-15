@@ -19,10 +19,10 @@ bool Point::operator<(const Point& pt) const {
 }
 
 bool Point::isValid(int size) const {
-	if(this->x>=0 && this->x<size) {
+	if(this->x<0 && this->x>=size) {
 		return false;
 	}
-	if(this->y>=0 && this->y<size) {
+	if(this->y<0 && this->y>=size) {
 		return false;
 	}
 	return true;

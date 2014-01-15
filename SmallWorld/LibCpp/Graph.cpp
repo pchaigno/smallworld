@@ -1,14 +1,21 @@
 #include "Graph.h"
 
 /**
+ * @returns The size of the graph.
+ */
+int Graph::size() const {
+	return this->succs.size();
+}
+
+/**
  * Checks if an unit can go from one point to all others of the map.
  * @param map The map.
  * @param size The size of the map.
  * @returns True if all squares of the map are accessible from one.
  */
 bool Graph::isConnectedGraph(Tile** map, int size) {
-	std::map<Point, vector<Point>> graph = Graph::convertToGraph(map, size);
-	vector<Point> composant = Graph::getConnectedComposant(graph, Graph::getKeys(graph)[0]);
+	Graph graph = Graph(map, size);
+	vector<Point> composant = graph.getConnectedComposant(graph.getKeys()[0]);
 	return composant.size() == graph.size();
 }
 
@@ -21,8 +28,7 @@ bool Graph::isConnectedGraph(Tile** map, int size) {
  * @param size The size of the map.
  * @returns The graph as a map of adjacent vertices by vertex.
  */
-map<Point, vector<Point>> Graph::convertToGraph(Tile** map, int size) {
-	std::map<Point, vector<Point>> graph;
+Graph::Graph(Tile** map, int size) {
 	for(int i=0; i<size; i++) {
 		for(int j=0; j<size; j++) {
 			Point pos = Point(i, j);
@@ -31,48 +37,46 @@ map<Point, vector<Point>> Graph::convertToGraph(Tile** map, int size) {
 				Point adjacent;
 				for(int x=i-1; x<=i+1; x+=2) {
 					adjacent = Point(x, j);
-					if(adjacent.isValid(size) && !adjacent.isSea(map)) {
+					if(x>=0 && x<size && !adjacent.isSea(map)) {
 						adjacents.push_back(adjacent);
 					}
 				}
 				for(int y=j-1; y<=j+1; y+=2) {
 					adjacent = Point(i, y);
-					if(adjacent.isValid(size) && !adjacent.isSea(map)) {
+					if(y>=0 && y<size && !adjacent.isSea(map)) {
 						adjacents.push_back(adjacent);
 					}
 				}
-				graph.insert(make_pair(pos, adjacents));
+				this->succs.insert(make_pair(pos, adjacents));
 			}
 		}
 	}
-	return graph;
 }
 
 /**
  * Tarjan algorithm to find a connected composant.
- * @param graph The graph as a map of adjacent vertices by vertex.
  * @param vertex The vertex to start
  * @returns The connected composant containing vertex.
  */
-vector<Point> Graph::getConnectedComposant(map<Point, vector<Point>> graph, Point vertex) {
+vector<Point> Graph::getConnectedComposant(Point vertex) {
 	// Attributes integers to each vertex:
-	Point* vertices = new Point[graph.size()];
+	Point* vertices = new Point[this->size()];
 	int j=0;
-	for(map<Point, vector<Point>>::iterator it = graph.begin(); it!=graph.end(); ++it) {
+	for(map<Point, vector<Point>>::iterator it = this->succs.begin(); it!=this->succs.end(); ++it) {
 		vertices[j] = it->first;
 		j++;
 	}
 	
 	// Initialization:
-	int* p = new int[graph.size()];
-	int* d = new int[graph.size()];
-	int* n = new int[graph.size()];
-	int* num = new int[graph.size()];
+	int* p = new int[this->succs.size()];
+	int* d = new int[this->succs.size()];
+	int* n = new int[this->succs.size()];
+	int* num = new int[this->succs.size()];
 	int numA = -1;
-	for(int i=0; i<graph.size(); i++) {
+	for(int i=0; i<this->succs.size(); i++) {
 		num[i] = -1;
 		p[i] = -1;
-		d[i] = graph[vertices[i]].size();
+		d[i] = this->succs[vertices[i]].size();
 		n[i] = -1;
 		if(vertices[i] == vertex) {
 			numA = i;
@@ -89,8 +93,8 @@ vector<Point> Graph::getConnectedComposant(map<Point, vector<Point>> graph, Poin
 			index = p[index];
 		} else {
 			n[index]++;
-			Point pt = graph[vertices[index]][n[index]];
-			j = Graph::getIndex(pt, vertices, graph.size());
+			Point pt = this->succs[vertices[index]][n[index]];
+			j = Graph::getIndex(pt, vertices, this->size());
 			if(p[j] == -1) {
 				p[j] = index;
 				index = j;
@@ -101,12 +105,12 @@ vector<Point> Graph::getConnectedComposant(map<Point, vector<Point>> graph, Poin
 	}
 
 	// Check if the graph is connected:
-	if(k+1 == graph.size()) {
-		return Graph::getKeys(graph);
+	if(k+1 == this->size()) {
+		return this->getKeys();
 	}
 
 	vector<Point> connectedVertices;
-	for(int i=0; i<graph.size(); i++) {
+	for(int i=0; i<this->size(); i++) {
 		if(num[i]<=k && num[i]!=-1) {
 			connectedVertices.push_back(vertices[i]);
 		}
@@ -115,32 +119,43 @@ vector<Point> Graph::getConnectedComposant(map<Point, vector<Point>> graph, Poin
 }
 
 /**
- * @param graph A graph.
- * @param The keys of the graph object.
+ * @returns The keys of the graph object.
  */
-vector<Point> Graph::getKeys(map<Point, vector<Point>> graph) {
+vector<Point> Graph::getKeys() {
 	vector<Point> keys;
-	for(map<Point, vector<Point>>::iterator it = graph.begin(); it!=graph.end(); ++it) {
+	for(map<Point, vector<Point>>::iterator it = this->succs.begin(); it!=this->succs.end(); ++it) {
 		keys.push_back(it->first);
 	}
 	return keys;
 }
 
 /**
+ * @returns The keys of the graph object.
+ */
+Point* Graph::getKeysAsArray() {
+	Point* keys = new Point[this->size()];
+	int i = 0;
+	for(map<Point, vector<Point>>::iterator it = this->succs.begin(); it!=this->succs.end(); ++it) {
+		keys[i] = it->first;
+		i++;
+	}
+	return keys;
+}
+
+/**
  * Roy-Marshall algorithm to find the best cost routing in a graph.
- * @param graph The graph.
  * @param vertices The vertices as an array (to associate a Point to a number).
  * @returns The matrix with the best cost for each origin-destination couple.
  */
-int** Graph::getBestCostRouting(map<Point, vector<Point>> graph, Point* vertices) {
+int** Graph::getBestCostRouting(Point* vertices) {
 	// Initialization:
-	int** routes = new int*[graph.size()];
-	int** costs = new int*[graph.size()];
-	for(int i=0; i<graph.size(); i++) {
-		routes[i] = new int[graph.size()];
-		costs[i] = new int[graph.size()];
-		for(int j=0; j<graph.size(); j++) {
-			if(inArray(vertices[j], graph[vertices[i]])) {
+	int** routes = new int*[this->size()];
+	int** costs = new int*[this->size()];
+	for(int i=0; i<this->size(); i++) {
+		routes[i] = new int[this->size()];
+		costs[i] = new int[this->size()];
+		for(int j=0; j<this->size(); j++) {
+			if(inArray(vertices[j], this->succs[vertices[i]])) {
 				routes[i][j] = j;
 				costs[i][j] = 1;
 			} else {
@@ -151,10 +166,10 @@ int** Graph::getBestCostRouting(map<Point, vector<Point>> graph, Point* vertices
 	}
 
 	// Roy-Marshall's algorithm:
-	for(int i=0; i<graph.size(); i++) {
-		for(int x=0; x<graph.size(); x++) {
+	for(int i=0; i<this->size(); i++) {
+		for(int x=0; x<this->size(); x++) {
 			if(routes[x][i] != -1) {
-				for(int y=0; y<graph.size(); y++) {
+				for(int y=0; y<this->size(); y++) {
 					if(routes[i][y] != -1) {
 						if(costs[x][y] > costs[x][i]+costs[i][y]) {
 							costs[x][y] = costs[x][i] + costs[i][y];
