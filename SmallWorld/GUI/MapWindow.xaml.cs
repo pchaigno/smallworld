@@ -173,7 +173,18 @@ namespace GUI {
             this.playerD2.Text = player2.Name + "     " + this.game.GetNbUnits(player2) + " Units     " + player2.Points + " Pts";
 
             this.roundD.Text = "Round number: "+this.game.CurrentRound;
-            this.currentD.Text = "Current Player: "+this.game.CurrentPlayer.Name;
+            //this.currentD.Text = "Current Player: "+this.game.CurrentPlayer.Name;
+
+            if (this.game.CurrentPlayer.Equals(player1))
+            {
+                this.playerD1.Foreground = Brushes.Blue;
+                this.playerD2.Foreground = Brushes.Black;
+            }
+            else
+            {
+                this.playerD2.Foreground = Brushes.Blue;
+                this.playerD1.Foreground = Brushes.Black;
+            }
 
             this.lastMove.Text = this.game.Round.LastMoveInfo;
         }
@@ -549,7 +560,6 @@ namespace GUI {
         /// Restores the game from the current save file.
         /// </summary>
         private void RestoreGame() {
-            // TODO
             Stream stream = File.Open(this.saveFile, FileMode.Open);
             BinaryFormatter formatter = new BinaryFormatter();
             IGame savedGame = (IGame)formatter.Deserialize(stream);

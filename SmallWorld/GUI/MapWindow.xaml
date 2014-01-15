@@ -43,6 +43,47 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <Style x:Key="menuStyle" TargetType="MenuItem">
+            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontFamily" Value="Harrington" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="10"/>
+            <Setter Property="Header" Value="Center"/>
+            <Setter Property="Background">
+               
+                <Setter.Value>
+                    <ImageBrush ImageSource="Resources/button.png"></ImageBrush>
+                </Setter.Value>
+            </Setter>
+            <Setter Property="Width" Value="140"/>
+            
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="Resources/button.png"></ImageBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Trigger>
+                <Trigger Property="IsHighlighted" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="Resources/button.png"></ImageBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Trigger>
+                <Trigger Property="IsSuspendingPopupAnimation" Value="True">
+                    <Setter Property="Background">
+                        <Setter.Value>
+                            <ImageBrush ImageSource="Resources/button.png"></ImageBrush>
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="BorderThickness" Value="0"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
     </Window.Resources>
     
     <Window.Background>
@@ -50,15 +91,15 @@
     </Window.Background>
 
     <DockPanel>
-        <Menu IsMainMenu="True" DockPanel.Dock="Top">
-            <MenuItem Header="_File">
+        <Menu IsMainMenu="True" DockPanel.Dock="Top" Background="Transparent" HorizontalAlignment="Center">
+            <MenuItem Header="       Menu" Style="{StaticResource menuStyle}" Height="40">
                 <MenuItem Header="_Start new game" Click="OnClickStartNewGame"/>
                 <MenuItem Header="_Open" Click="OnClickOpen"/>
                 <MenuItem Header="_Save" Click="OnClickSave"/>
                 <MenuItem Header="_Save as" Click="OnClickSaveAs"/>
                 <Separator/>
                 <MenuItem Header="_Exit" Click="OnClickExit"/>
-                </MenuItem>
+            </MenuItem>
         </Menu>
         
         <StackPanel Orientation="Horizontal" Width="800" DockPanel.Dock="Bottom">
