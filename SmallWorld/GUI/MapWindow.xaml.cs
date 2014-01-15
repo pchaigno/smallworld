@@ -549,7 +549,6 @@ namespace GUI {
         /// Restores the game from the current save file.
         /// </summary>
         private void RestoreGame() {
-            // TODO
             Stream stream = File.Open(this.saveFile, FileMode.Open);
             BinaryFormatter formatter = new BinaryFormatter();
             IGame savedGame = (IGame)formatter.Deserialize(stream);
