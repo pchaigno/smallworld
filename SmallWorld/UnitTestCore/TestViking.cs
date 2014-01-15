@@ -11,7 +11,7 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestCanMove() {
-            Assert.IsTrue(viking.CanMove(new Point(0, 0), new Lowland(), new Point(0, 1), new Sea()));
+            Assert.IsTrue(viking.CanMove(new Point(0, 0), new Lowland(), new Point(0, 1), new Sea(), true));
         }
 
         [TestMethod]

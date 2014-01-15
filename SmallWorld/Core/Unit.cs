@@ -137,7 +137,7 @@ namespace SmallWorld {
         /// <param name="destination">The destination to reach.</param>
         /// <param name="tile">The type of tile the destination is.</param>
         /// <returns>True if the unit can move to the destination.</returns>
-        public virtual bool CanMove(IPoint currentPosition, ITile currentTile, IPoint destination, ITile tile) {
+        public virtual bool CanMove(IPoint currentPosition, ITile currentTile, IPoint destination, ITile tile, bool occupied) {
             return !(tile is ISea)
                 && remainingMovementPoints >= MOVEMENT_COST
                 && destination.IsNext(currentPosition);

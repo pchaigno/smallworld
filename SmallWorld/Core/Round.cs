@@ -131,7 +131,8 @@ namespace SmallWorld {
 
             bool result = true;
             foreach(IUnit unit in this.selectedUnit) {
-                if(!unit.CanMove(this.selectedPosition, game.Map.GetTile(this.selectedPosition), destination, game.Map.GetTile(destination))) {
+                bool occupied = game.Map.IsEnemyPosition(destination, unit);
+                if(!unit.CanMove(this.selectedPosition, game.Map.GetTile(this.selectedPosition), destination, game.Map.GetTile(destination), occupied)) {
                     result = false;
                     break;
                 }
