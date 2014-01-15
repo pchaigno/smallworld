@@ -80,6 +80,7 @@ namespace SmallWorld {
             this.maxRounds = (int)info.GetValue("MaxRounds", typeof(int));
             this.currentRound = (int)info.GetValue("CurrentRound", typeof(int));
             this.currentPlayer = (IPlayer)info.GetValue("CurrentPlayer", typeof(IPlayer));
+            this.round = new Round(this, currentPlayer);
         }
 
         /// <summary>

@@ -70,6 +70,8 @@ namespace UnitTestCore {
             formatter = new BinaryFormatter();
             IGame savedGame = (IGame)formatter.Deserialize(stream);
             stream.Close();
+            Assert.IsTrue(normal.Player1.Equals(savedGame.Player1));
+            Assert.IsTrue(normal.Player2.Equals(savedGame.Player2));
             Assert.IsTrue(normal.CurrentPlayer.Equals(savedGame.CurrentPlayer));
             Assert.AreEqual(normal.CurrentRound, savedGame.CurrentRound);
 

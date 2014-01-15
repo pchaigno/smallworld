@@ -116,7 +116,7 @@ namespace SmallWorld {
         public bool IsCurrentPlayerPosition(IPoint position) {
             List<IUnit> units = this.game.Map.GetUnits(position);
             return units.Count > 0 
-                && units[0].Owner == this.player;
+                && units[0].Owner.Equals(this.player);
         }
 
         /// <summary>

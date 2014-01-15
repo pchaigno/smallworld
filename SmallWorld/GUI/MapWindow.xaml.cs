@@ -20,6 +20,9 @@ using Graphics = System.Drawing.Graphics;
 using SmallWorld;
 using Point = SmallWorld.Point;
 using GUI;
+using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace GUI {
 
@@ -517,15 +520,23 @@ namespace GUI {
         /// </summary>
         private void SaveGame() {
             // TODO
+            if(this.saveFile == null) {
+                this.SaveGameAs();
+            } else {
+                Stream stream = File.Open(this.saveFile, FileMode.Create);
+                BinaryFormatter formatter = new BinaryFormatter();
+                formatter.Serialize(stream, this.game);
+                stream.Close();
+            }
         }
 
         /// <summary>
         /// Saves the current game after asking for the location for the save file.
         /// </summary>
         private void SaveGameAs() {
-            OpenFileDialog dlg = new OpenFileDialog();
+            SaveFileDialog dlg = new SaveFileDialog();
             dlg.DefaultExt = ".sav";
-            dlg.Filter = "Saved game (*.sav) | *.sav | All files (*.*) | *.*";
+            dlg.Filter = "Saved game (*.sav)|*.sav|All files (*.*)|*.*";
             Nullable<bool> result = dlg.ShowDialog();
             if(result == true) {
                 this.saveFile = dlg.FileName;
@@ -539,6 +550,12 @@ namespace GUI {
         /// </summary>
         private void RestoreGame() {
             // TODO
+            Stream stream = File.Open(this.saveFile, FileMode.Open);
+            BinaryFormatter formatter = new BinaryFormatter();
+            IGame savedGame = (IGame)formatter.Deserialize(stream);
+            stream.Close();
+            new MapWindow(savedGame).Show();
+            this.Close();
         }
 
         /// <summary>
