@@ -49,10 +49,8 @@ namespace SmallWorld {
                     return this.lowland;
                 case 5:
                     return this.mountain;
-                default:
-                    return null;
-                    // TODO Throw exception.
             }
+            throw new IncorrectTileNumberException(type);
         }
 
         /// <summary>

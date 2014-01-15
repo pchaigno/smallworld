@@ -154,7 +154,7 @@ namespace SmallWorld {
         /// Unselects the unit.
         /// </summary>
         /// <see cref="Round.SetDestination"/>
-        /// <exception cref="">If the unit couldn't be moved to the destination point.</exception>
+        /// <exception cref="IncorrectActionException">If the unit couldn't be moved to the destination point.</exception>
         public void ExecuteMove() {
             // TODO improve message
 
@@ -162,8 +162,7 @@ namespace SmallWorld {
                 for(int i = 0; i < this.selectedUnits.Count; i++) {
                     IUnit unit = this.selectedUnits[i];
                     if(!unit.Move(game.Map.GetTile(destination))) {
-                        // TODO Need to define a better exception.
-                        throw new Exception("The unit " + unit + " couldn't be moved to " + destination + ".");
+                        throw new IncorrectActionException("The unit " + unit + " couldn't be moved to " + destination + ".");
                     }
                     if(Combat(unit)) {
                         if(this.game.Map.GetUnits(this.destination).Count == 0) {
@@ -175,7 +174,7 @@ namespace SmallWorld {
                 for(int i = 0; i < this.selectedUnits.Count; i++) {
                     IUnit unit = this.selectedUnits[i];
                     if(!unit.Move(game.Map.GetTile(destination))) {
-                        throw new Exception("The unit " + unit + " couldn't be moved to " + destination + ".");
+                        throw new IncorrectActionException("The unit " + unit + " couldn't be moved to " + destination + ".");
                     }
                     this.game.Map.MoveUnit(unit, this.selectedPosition, this.destination);
                     this.lastMoveInfo = this.player.Name + " moved an unit.";
@@ -246,6 +245,7 @@ namespace SmallWorld {
         /// The best unit is the one with the most life points.
         /// </summary>
         /// <returns>The best unit on the tile currently selected.</returns>
+        /// <exception cref="IncorrectActionException">If there is no unit on the destination point.</exception>
         private IUnit GetBestUnit() {
             IUnit result = null;
             List<IUnit> units = this.game.Map.GetUnits(this.destination);
@@ -257,7 +257,8 @@ namespace SmallWorld {
                     }
                 }
             } else {
-                // TODO Throw exception
+                // This shouldn't happen if ExecuteMove is correctly implemented.
+                throw new IncorrectActionException("There are no unit on "+this.destination);
             }
             return result;
         }

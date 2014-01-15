@@ -115,12 +115,13 @@ namespace SmallWorld {
         /// <param name="unit">The unit.</param>
         /// <param name="currentPosition">The current position.</param>
         /// <param name="newPosition">The new position.</param>
-        /// <exception cref="TODO">An exception if it's an enemy position.</exception>
+        /// <exception cref="IncorrectActionException">An exception if it's an enemy position.</exception>
         public void MoveUnit(IUnit unit, IPoint currentPosition, IPoint newPosition) {
             this.units[currentPosition.X, currentPosition.Y].Remove(unit);
             if(this.IsEnemyPosition(newPosition, unit)) {
-                // TODO Need to define a better exception.
-                throw new Exception("Erreur dans le deplacement");
+                // Shouldn't happen if it's correctly implemented:
+                // The destination should be checked in setDestination.
+                throw new IncorrectActionException("You can't move to an enemy position.");
             }
             this.units[newPosition.X, newPosition.Y].Add(unit);
         }
