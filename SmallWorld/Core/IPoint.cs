@@ -17,5 +17,6 @@ namespace SmallWorld {
         }
 
         bool IsNext(IPoint pt);
+        bool isValid(int size);
     }
 }

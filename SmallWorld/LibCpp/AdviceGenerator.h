@@ -16,7 +16,9 @@ private:
 	int size;
 	Nation* nations;
 
-	int getScore(Point pos, Nation nation);
+	int getMovementScore(Point pos, Nation nation);
+	bool hasSeaNeighbour(Point pos);
+	int getAttackScore(Point pos, Player occupant, Player player);
 
 public:
 	DLL AdviceGenerator(Tile** map, int size, Nation nationPlayer1, Nation nationPlayer2);

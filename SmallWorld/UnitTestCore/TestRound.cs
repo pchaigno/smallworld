@@ -92,14 +92,11 @@ namespace UnitTestCore {
         }
 
         private IPoint GetDestination(IGame game, IPoint currentPos, IUnit unit) {
-            int size = game.Map.Size;
             int[] xOffsets = new int[4] {0, -1, 1, 0};
             int[] yOffsets = new int[4] {-1, 0, 0, 1};
             for(int i=0; i<4; i++) {
-                int x = currentPos.X + xOffsets[i];
-                int y = currentPos.Y + yOffsets[i];
-                if(x>=0 && y>=0 && x<size && y<size) {
-                    IPoint destination = new Point(x, y);
+                IPoint destination = new Point(currentPos.X + xOffsets[i], currentPos.Y + yOffsets[i]);
+                if(destination.isValid(game.Map.Size)) {
                     if(!(game.Map.GetTile(destination) is ISea) && !game.Map.IsEnemyPosition(destination, unit)) {
                         return destination;
                     }

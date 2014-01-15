@@ -58,6 +58,21 @@ namespace SmallWorld {
             return Math.Abs(this.X - pt.X) + Math.Abs(this.Y - pt.Y) == 1;
         }
 
+        /// <summary>
+        /// Checks if a position is valid; it's valid if it is on the map.
+        /// </summary>
+        /// <param name="size">The size of the map.</param>
+        /// <returns>True if the position is on the map.</returns>
+        public bool isValid(int size) {
+            if(this.X>=0 && this.X<size) {
+                return false;
+            }
+            if(this.Y>=0 && this.Y<size) {
+                return false;
+            }
+            return true;
+        }
+
         public override bool Equals(object obj) {
             if(obj == null) {
                 return false;
