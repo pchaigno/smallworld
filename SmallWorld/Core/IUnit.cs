@@ -28,7 +28,7 @@ namespace SmallWorld {
         bool DecreaseLifePoints();
         void ResetMovementPoints();
         bool Move(ITile destination);
-        bool CanMove(IPoint currentPosition, ITile currentTile, IPoint destination, ITile tile);
+        bool CanMove(IPoint currentPosition, ITile currentTile, IPoint destination, ITile tile, bool occupied);
         int GetPoints(ITile tile, ITile[] neighbours);
         bool IsAlive();
     }

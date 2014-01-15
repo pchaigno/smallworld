@@ -39,9 +39,7 @@ namespace SmallWorld {
         /// <returns>The number of points won by the unit depending on the tile she's on.</returns>
         public override int GetPoints(ITile tile, ITile[] neighbours) {
             int points = 1;
-            if(tile is ILowland) {
-                points = 2;
-            } else if(tile is ISea || tile is IDesert) {
+            if(tile is ISea || tile is IDesert) {
                 points = 0;
             }
             foreach(ITile neighbour in neighbours) {
@@ -66,7 +64,7 @@ namespace SmallWorld {
         /// <param name="destination">The destination to reach.</param>
         /// <param name="tile">The type of tile the destination is.</param>
         /// <returns>True if the unit can move to the destination.</returns>
-        public override bool CanMove(IPoint currentPosition, ITile currentTile, IPoint destination, ITile tile) {
+        public override bool CanMove(IPoint currentPosition, ITile currentTile, IPoint destination, ITile tile, bool occupied) {
             return remainingMovementPoints>0
                 && destination.IsNext(currentPosition);
         }

@@ -57,9 +57,9 @@ namespace SmallWorld {
         /// <param name="destination">The destination to reach.</param>
         /// <param name="tile">The type of tile the destination is.</param>
         /// <returns>True if the unit can move to the destination.</returns>
-        public override bool CanMove(IPoint currentPosition, ITile currentTile, IPoint destination, ITile tile) {
-            return base.CanMove(currentPosition, currentTile, destination, tile)
-                || (currentTile is IMountain && tile is IMountain);
+        public override bool CanMove(IPoint currentPosition, ITile currentTile, IPoint destination, ITile tile, bool occupied) {
+            return base.CanMove(currentPosition, currentTile, destination, tile, occupied)
+                || (currentTile is IMountain && tile is IMountain && !occupied);
         }
     }
 }
