@@ -18,6 +18,7 @@ namespace SmallWorld {
         protected const int DEFAULT_MOVEMENT_POINTS = 2;
         protected int lifePoints;
         protected int remainingMovementPoints;
+        protected IPlayer owner;
         public int LifePoints {
             get {
                 return this.lifePoints;
@@ -39,8 +40,9 @@ namespace SmallWorld {
             }
         }
         public IPlayer Owner {
-            get;
-            set;
+            get {
+                return this.owner;
+            }
         }
         public int RemainingMovementPoints {
             get {
@@ -53,7 +55,7 @@ namespace SmallWorld {
         /// </summary>
         /// <param name="owner">The player owner of the unit.</param>
         public Unit(IPlayer owner) {
-            this.Owner = owner;
+            this.owner = owner;
             this.lifePoints = DEFAULT_LIFE_POINTS;
             this.remainingMovementPoints = DEFAULT_MOVEMENT_POINTS;
             count++;
@@ -69,6 +71,7 @@ namespace SmallWorld {
             this.lifePoints = (int)info.GetValue("LifePoints", typeof(int));
             this.remainingMovementPoints = (int)info.GetValue("MovementPoints", typeof(int));
             this.number = (int)info.GetValue("Number", typeof(int));
+            this.owner = (IPlayer)info.GetValue("Owner", typeof(IPlayer));
         }
 
         /// <summary>
@@ -80,7 +83,7 @@ namespace SmallWorld {
         public void GetObjectData(SerializationInfo info, StreamingContext context) {
             info.AddValue("LifePoints", this.lifePoints);
             info.AddValue("MovementPoints", this.remainingMovementPoints);
-            info.AddValue("Owner", this.Owner.Number);
+            info.AddValue("Owner", this.owner);
             info.AddValue("Number", this.number);
         }
 

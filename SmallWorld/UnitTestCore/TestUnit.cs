@@ -69,12 +69,11 @@ namespace UnitTestCore {
             stream = File.Open("Unit.sav", FileMode.Open);
             formatter = new BinaryFormatter();
             IUnit savedUnit = (IUnit)formatter.Deserialize(stream);
-            savedUnit.Owner = unit.Owner;
             stream.Close();
             Assert.IsTrue(unit.Equals(savedUnit));
             Assert.AreEqual(unit.LifePoints, savedUnit.LifePoints);
             Assert.AreEqual(unit.RemainingMovementPoints, savedUnit.RemainingMovementPoints);
-            Assert.AreEqual(unit.Owner.Number, savedUnit.Owner.Number);
+            Assert.IsTrue(unit.Owner.Equals(savedUnit.Owner));
         }
     }
 }

@@ -20,7 +20,6 @@ namespace SmallWorld {
         }
         IPlayer Owner {
             get;
-            set;
         }
         int RemainingMovementPoints {
             get;
