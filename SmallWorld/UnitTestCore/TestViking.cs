@@ -21,9 +21,10 @@ namespace UnitTestCore {
             Assert.AreEqual(0, viking.GetPoints(new Sea(), neighbours));
             Assert.AreEqual(1, viking.GetPoints(new Lowland(), neighbours));
             neighbours[0] = new Sea();
+            neighbours[1] = new Sea();
             Assert.AreEqual(2, viking.GetPoints(new Lowland(), neighbours));
-            Assert.AreEqual(0, viking.GetPoints(new Desert(), neighbours));
-            Assert.AreEqual(1, viking.GetPoints(new Mountain(), neighbours));
+            Assert.AreEqual(1, viking.GetPoints(new Desert(), neighbours));
+            Assert.AreEqual(2, viking.GetPoints(new Mountain(), neighbours));
         }
 
         [TestMethod]

@@ -39,9 +39,7 @@ namespace SmallWorld {
         /// <returns>The number of points won by the unit depending on the tile she's on.</returns>
         public override int GetPoints(ITile tile, ITile[] neighbours) {
             int points = 1;
-            if(tile is ILowland) {
-                points = 2;
-            } else if(tile is ISea || tile is IDesert) {
+            if(tile is ISea || tile is IDesert) {
                 points = 0;
             }
             foreach(ITile neighbour in neighbours) {
