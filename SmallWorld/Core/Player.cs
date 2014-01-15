@@ -65,7 +65,7 @@ namespace SmallWorld {
             } else if(factoryNumber == dwarfFactory.Number) {
                 this.factory = dwarfFactory;
             } else {
-                // TODO Throw Exception.
+                throw new IncorrectFactoryNumberException(factoryNumber);
             }
             this.number = (int)info.GetValue("Number", typeof(int));
             count++;
@@ -101,7 +101,7 @@ namespace SmallWorld {
         /// Adds some points to the player.
         /// </summary>
         /// <param name="n">The number of points to add.</param>
-        /// <exception cref="ArgumentOutOfRangeException">If n if negative.</exception>
+        /// <exception cref="ArgumentOutOfRangeException">If n is negative.</exception>
         public void AddPoints(int n) {
             if(n < 0) {
                 throw new ArgumentOutOfRangeException("Only a positive number of points can be added to a player.");

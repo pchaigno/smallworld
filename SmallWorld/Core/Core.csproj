@@ -40,6 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IncorrectActionException.cs" />
+    <Compile Include="IncorrectFactoryNumberException.cs" />
+    <Compile Include="IncorrectTileNumberException.cs" />
     <Compile Include="IPoint.cs" />
     <Compile Include="Point.cs" />
     <Compile Include="DemoGameBuilder.cs" />
