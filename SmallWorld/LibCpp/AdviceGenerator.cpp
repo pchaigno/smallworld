@@ -23,7 +23,7 @@ AdviceGenerator::AdviceGenerator(Tile** map, int size, Nation nationPlayer1, Nat
  * @param player The current player (first or second).
  * @results The advice of destinations.
  */
-Point* AdviceGenerator::getAdvice(int x, int y, Player** units, Player player) {
+Point* AdviceGenerator::getAdvice(int x, int y, Player** units, Player player) const {
 	Nation nation = nations[player-1];
 	// Compute the scores for each neighbour positions:
 	std::map<Point, int> scores;
@@ -57,7 +57,7 @@ Point* AdviceGenerator::getAdvice(int x, int y, Player** units, Player player) {
  * @param pos The position to check.
  * @param nation The nation of the unit to advise.
  */
-int AdviceGenerator::getMovementScore(Point pos, Nation nation) {
+int AdviceGenerator::getMovementScore(Point pos, Nation nation) const {
 	Tile square = this->map[pos.x][pos.y];
 	int scoresDwarfs[5] = {INT_MIN, 2, 0, -2, 1};
 	int scoresVikings[5] = {-1, 0, -2, 0, 0};
@@ -84,7 +84,7 @@ int AdviceGenerator::getMovementScore(Point pos, Nation nation) {
  * @param pos The position to check for sea neighbours.
  * @returns True if one of the neighbour of the position to check is sea.
  */
-bool AdviceGenerator::hasSeaNeighbour(Point pos) {
+bool AdviceGenerator::hasSeaNeighbour(Point pos) const {
 	int xOffset[] = {-1, 0, 0, 1};
 	int yOffset[] = {0, 1, -1, 0};
 	for(int i=0; i<4; i++) {
@@ -102,7 +102,7 @@ bool AdviceGenerator::hasSeaNeighbour(Point pos) {
  * @param occupant The occupant of the position to check.
  * @param player The current player (first or second).
  */
-int AdviceGenerator::getAttackScore(Point pos, Player occupant, Player player) {
+int AdviceGenerator::getAttackScore(Point pos, Player occupant, Player player) const {
 	if(occupant == player) {
 		return INT_MIN;
 	}
