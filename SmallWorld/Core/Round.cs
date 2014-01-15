@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using mWrapper;
 using System.Runtime.Serialization;
+using System.Diagnostics;
 
 namespace SmallWorld {
 
@@ -19,6 +20,12 @@ namespace SmallWorld {
         public string LastMoveInfo {
             get {
                 return this.lastMoveInfo;
+            }
+        }
+        private CombatResult lastCombatResult;
+        public CombatResult LastCombatResult {
+            get {
+                return this.lastCombatResult;
             }
         }
 
@@ -156,15 +163,13 @@ namespace SmallWorld {
         /// <see cref="Round.SetDestination"/>
         /// <exception cref="IncorrectActionException">If the unit couldn't be moved to the destination point.</exception>
         public void ExecuteMove() {
-            // TODO improve message
-
             if(this.game.Map.IsEnemyPosition(this.destination, this.selectedUnits[0])) {
                 for(int i = 0; i < this.selectedUnits.Count; i++) {
                     IUnit unit = this.selectedUnits[i];
                     if(!unit.Move(game.Map.GetTile(destination))) {
                         throw new IncorrectActionException("The unit " + unit + " couldn't be moved to " + destination + ".");
                     }
-                    if(Combat(unit)) {
+                    if(Combat(unit) == CombatResult.WIN) {
                         if(this.game.Map.GetUnits(this.destination).Count == 0) {
                             this.game.Map.MoveUnit(unit, this.selectedPosition, this.destination);
                         }
@@ -188,8 +193,8 @@ namespace SmallWorld {
         /// and the best one from the selected destination.
         /// </summary>
         /// <param name="unit">The unit who fight.</param>
-        /// <returns>True if the selected unit won the fight.</returns>
-        private bool Combat(IUnit unit) {
+        /// <returns>A constant from the CombatResult enumeration to describe the result.</returns>
+        private CombatResult Combat(IUnit unit) {
             IUnit enemy = GetBestUnit();
 
             Random randCombat = new Random();
@@ -229,15 +234,16 @@ namespace SmallWorld {
             if(!unit.IsAlive()) {
                 this.game.Map.RemoveUnit(unit, this.selectedPosition);
                 this.lastMoveInfo = this.player.Name + " lost the fight.";
-                return false;
+                this.lastCombatResult = CombatResult.LOSE;
             } else if(!enemy.IsAlive()) {
                 this.game.Map.RemoveUnit(enemy, this.destination);
                 this.lastMoveInfo = this.player.Name + " won the fight.";
-                return true;
+                this.lastCombatResult = CombatResult.WIN;
             } else {
                 this.lastMoveInfo = "The fight ended with a draw";
-                return false;
+                this.lastCombatResult = CombatResult.DRAW;
             }
+            return this.lastCombatResult;
         }
 
         /// <summary>

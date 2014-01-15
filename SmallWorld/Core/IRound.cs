@@ -9,6 +9,9 @@ namespace SmallWorld {
         string LastMoveInfo {
             get;
         }
+        CombatResult LastCombatResult {
+            get;
+        }
 
         List<IPoint> GetAdvisedDestinations(IUnit unit, IPoint position);
         void SelectUnits(List<IUnit> units);

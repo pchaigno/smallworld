@@ -11,7 +11,7 @@ namespace UnitTestCore {
 
     [TestClass]
     public class TestRound {
-        private const int NB_TESTS = 5;
+        private const int NB_TESTS = 10;
 
         [TestMethod]
         public void TestMultipleMovements() {
@@ -73,17 +73,22 @@ namespace UnitTestCore {
 
                         List<IUnit> unitsAtDestination = game.Map.GetUnits(destination);
                         List<IUnit> unitsAtOrigin = game.Map.GetUnits(pos);
-                        if(round.LastMoveInfo == "The fight ended with a draw (Grammar ??)") {
-                            Assert.IsTrue(unitsAtOrigin.Contains(unit));
-                            Assert.IsTrue(unitsAtDestination.Contains(enemy));
-                        } else if(round.LastMoveInfo == game.Player1.Name + " lost the fight.") {
-                            Assert.IsTrue(!unitsAtOrigin.Contains(unit));
-                            Assert.IsTrue(unitsAtDestination.Contains(enemy));
-                        } else if(round.LastMoveInfo == game.Player1.Name + " won the fight.") {
-                            Assert.IsTrue(!unitsAtDestination.Contains(enemy));
-                            Assert.IsTrue(unitsAtOrigin.Contains(unit) || unitsAtDestination.Contains(unit));
-                        } else {
-                            Assert.Fail();
+                        switch(round.LastCombatResult) {
+                            case CombatResult.DRAW:
+                                Assert.IsTrue(unitsAtOrigin.Contains(unit));
+                                Assert.IsTrue(unitsAtDestination.Contains(enemy));
+                                break;
+                            case CombatResult.LOSE:
+                                Assert.IsFalse(unitsAtOrigin.Contains(unit));
+                                Assert.IsTrue(unitsAtDestination.Contains(enemy));
+                                break;
+                            case CombatResult.WIN:
+                                Assert.IsFalse(unitsAtDestination.Contains(enemy));
+                                Assert.IsTrue(unitsAtOrigin.Contains(unit) || unitsAtDestination.Contains(unit));
+                                break;
+                            default:
+                                Assert.Fail();
+                                break;
                         }
                         return;
                     }

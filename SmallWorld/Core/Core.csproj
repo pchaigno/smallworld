@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CombatResult.cs" />
     <Compile Include="IncorrectActionException.cs" />
     <Compile Include="IncorrectFactoryNumberException.cs" />
     <Compile Include="IncorrectTileNumberException.cs" />
