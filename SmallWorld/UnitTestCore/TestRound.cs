@@ -3,12 +3,15 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmallWorld;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Xml.Serialization;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
 namespace UnitTestCore {
 
     [TestClass]
     public class TestRound {
-        private const int NB_TESTS = 10;
+        private const int NB_TESTS = 5;
 
         [TestMethod]
         public void TestMultipleMovements() {

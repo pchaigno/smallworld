@@ -3,13 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using mWrapper;
+using System.Runtime.Serialization;
 
 namespace SmallWorld {
 
+    [Serializable()]
     public class Round: IRound {
         private IGame game;
         private IPlayer player;
-        private List<IUnit> selectedUnit;
+        private List<IUnit> selectedUnits;
         private IPoint selectedPosition;
         private IPoint destination;
         // TODO We should use a code and code/messages correspondances for move information.
@@ -29,7 +31,7 @@ namespace SmallWorld {
             this.game = game;
             this.player = player;
             this.lastMoveInfo = "";
-            selectedUnit = new List<IUnit>();
+            selectedUnits = new List<IUnit>();
         }
 
         /// <summary>
@@ -73,7 +75,7 @@ namespace SmallWorld {
         /// </summary>
         /// <param name="units">The unit to select.</param>
         public void SelectUnits(List<IUnit> units) {
-            this.selectedUnit = units;
+            this.selectedUnits = units;
         }
 
         /// <summary>
@@ -83,7 +85,7 @@ namespace SmallWorld {
         /// <param name="units">The unit to select.</param>
         /// <param name="position">The unit's position.</param>
         public void SelectUnits(List<IUnit> units, IPoint position) {
-            this.selectedUnit = units;
+            this.selectedUnits = units;
             this.selectedPosition = position;
         }
 
@@ -94,7 +96,7 @@ namespace SmallWorld {
         /// The last selected position isn't unselected.
         /// </remarks>
         public void UnselectUnit() {
-            this.selectedUnit.Clear();
+            this.selectedUnits.Clear();
         }
 
         /// <summary>
@@ -124,13 +126,13 @@ namespace SmallWorld {
         /// <param name="destination">The desination.</param>
         /// <returns>True if the current unit can move to the destination.</returns>
         public bool SetDestination(IPoint destination) {
-            if(this.selectedUnit.Count == 0) {
+            if(this.selectedUnits.Count == 0) {
                 this.lastMoveInfo = "You have to select a unit first.";
                 return false;
             }
 
             bool result = true;
-            foreach(IUnit unit in this.selectedUnit) {
+            foreach(IUnit unit in this.selectedUnits) {
                 if(!unit.CanMove(this.selectedPosition, game.Map.GetTile(this.selectedPosition), destination, game.Map.GetTile(destination))) {
                     result = false;
                     break;
@@ -155,9 +157,9 @@ namespace SmallWorld {
         public void ExecuteMove() {
             // TODO improve message
 
-            if(this.game.Map.IsEnemyPosition(this.destination, this.selectedUnit[0])) {
-                for(int i = 0; i < this.selectedUnit.Count; i++) {
-                    IUnit unit = this.selectedUnit[i];
+            if(this.game.Map.IsEnemyPosition(this.destination, this.selectedUnits[0])) {
+                for(int i = 0; i < this.selectedUnits.Count; i++) {
+                    IUnit unit = this.selectedUnits[i];
                     if(!unit.Move(game.Map.GetTile(destination))) {
                         // TODO Need to define a better exception.
                         throw new Exception("The unit " + unit + " couldn't be moved to " + destination + ".");
@@ -169,8 +171,8 @@ namespace SmallWorld {
                     }
                 }
             } else {
-                for(int i = 0; i < this.selectedUnit.Count; i++) {
-                    IUnit unit = this.selectedUnit[i];
+                for(int i = 0; i < this.selectedUnits.Count; i++) {
+                    IUnit unit = this.selectedUnits[i];
                     if(!unit.Move(game.Map.GetTile(destination))) {
                         throw new Exception("The unit " + unit + " couldn't be moved to " + destination + ".");
                     }
@@ -178,7 +180,7 @@ namespace SmallWorld {
                     this.lastMoveInfo = this.player.Name + " moved an unit.";
                 }
             }
-            this.selectedUnit.Clear();
+            this.selectedUnits.Clear();
         }
 
         /// <summary>
