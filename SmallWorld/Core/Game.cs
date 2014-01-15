@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Runtime.Serialization;
 
 namespace SmallWorld {
 
+    [Serializable()]
     public class Game: IGame {
         private IPlayer player2;
         private IPlayer player1;
@@ -64,6 +66,35 @@ namespace SmallWorld {
             this.currentRound = 1;
             this.currentPlayer = player1;
             this.round = new Round(this, currentPlayer);
+        }
+
+        /// <summary>
+        /// Constructor for the deserialization.
+        /// </summary>
+        /// <param name="info">Information for the serialization.</param>
+        /// <param name="context">The context for the serialization.</param>
+        public Game(SerializationInfo info, StreamingContext context) {
+            this.player1 = (IPlayer)info.GetValue("Player1", typeof(IPlayer));
+            this.player2 = (IPlayer)info.GetValue("Player2", typeof(IPlayer));
+            this.map = (IMap)info.GetValue("Map", typeof(IMap));
+            this.maxRounds = (int)info.GetValue("MaxRounds", typeof(int));
+            this.currentRound = (int)info.GetValue("CurrentRound", typeof(int));
+            this.currentPlayer = (IPlayer)info.GetValue("CurrentPlayer", typeof(IPlayer));
+        }
+
+        /// <summary>
+        /// Method for the serialization.
+        /// Fills info with the attributs' values.
+        /// </summary>
+        /// <param name="info">Information for the serialization.</param>
+        /// <param name="context">The context for the serialization.</param>
+        public void GetObjectData(SerializationInfo info, StreamingContext context) {
+            info.AddValue("Player1", this.player1);
+            info.AddValue("Player2", this.player2);
+            info.AddValue("Map", this.map);
+            info.AddValue("MaxRounds", this.maxRounds);
+            info.AddValue("CurrentRound", this.currentRound);
+            info.AddValue("CurrentPlayer", this.currentPlayer);
         }
 
         /// <summary>

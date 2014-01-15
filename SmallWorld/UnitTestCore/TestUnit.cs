@@ -13,6 +13,13 @@ namespace UnitTestCore {
         private static IDwarf dwarf = new Dwarf(new Player("test", new DwarfFactory()));
 
         [TestMethod]
+        public void TestEquals() {
+            Assert.IsTrue(viking.Equals(viking));
+            Assert.IsFalse(dwarf.Equals(viking));
+            Assert.IsFalse(gaulois.Equals(dwarf));
+        }
+
+        [TestMethod]
         public void TestMovementPoints() {
             this.TestMovementPoints(viking);
             this.TestMovementPoints(gaulois);
@@ -64,6 +71,7 @@ namespace UnitTestCore {
             IUnit savedUnit = (IUnit)formatter.Deserialize(stream);
             savedUnit.Owner = unit.Owner;
             stream.Close();
+            Assert.IsTrue(unit.Equals(savedUnit));
             Assert.AreEqual(unit.LifePoints, savedUnit.LifePoints);
             Assert.AreEqual(unit.RemainingMovementPoints, savedUnit.RemainingMovementPoints);
             Assert.AreEqual(unit.Owner.Number, savedUnit.Owner.Number);

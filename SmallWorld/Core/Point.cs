@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace SmallWorld {
 
+    [Serializable()]
     public class Point: IPoint {
         public int X {
             get;
@@ -24,6 +26,27 @@ namespace SmallWorld {
         public Point(int x, int y) {
             this.X = x;
             this.Y = y;
+        }
+
+        /// <summary>
+        /// Constructor for the deserialization.
+        /// </summary>
+        /// <param name="info">Information for the serialization.</param>
+        /// <param name="context">The context for the serialization.</param>
+        public Point(SerializationInfo info, StreamingContext context) {
+            this.X = (int)info.GetValue("X", typeof(int));
+            this.Y = (int)info.GetValue("Y", typeof(int));
+        }
+
+        /// <summary>
+        /// Method for the serialization.
+        /// Fills info with the attributs' values.
+        /// </summary>
+        /// <param name="info">Information for the serialization.</param>
+        /// <param name="context">The context for the serialization.</param>
+        public void GetObjectData(SerializationInfo info, StreamingContext context) {
+            info.AddValue("X", this.X);
+            info.AddValue("Y", this.Y);
         }
 
         /// <summary>

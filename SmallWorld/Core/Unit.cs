@@ -9,6 +9,8 @@ namespace SmallWorld {
 
     [Serializable()]
     public abstract class Unit: IUnit, ISerializable {
+        private int number;
+        private static int count = 0;
         protected const int MOVEMENT_COST = 2;
         protected const int ATTACK = 2;
         protected const int DEFENSE = 1;
@@ -54,6 +56,8 @@ namespace SmallWorld {
             this.Owner = owner;
             this.lifePoints = DEFAULT_LIFE_POINTS;
             this.remainingMovementPoints = DEFAULT_MOVEMENT_POINTS;
+            count++;
+            this.number = count;
         }
 
         /// <summary>
@@ -64,6 +68,7 @@ namespace SmallWorld {
         public Unit(SerializationInfo info, StreamingContext context) {
             this.lifePoints = (int)info.GetValue("LifePoints", typeof(int));
             this.remainingMovementPoints = (int)info.GetValue("MovementPoints", typeof(int));
+            this.number = (int)info.GetValue("Number", typeof(int));
         }
 
         /// <summary>
@@ -76,6 +81,7 @@ namespace SmallWorld {
             info.AddValue("LifePoints", this.lifePoints);
             info.AddValue("MovementPoints", this.remainingMovementPoints);
             info.AddValue("Owner", this.Owner.Number);
+            info.AddValue("Number", this.number);
         }
 
         /// <summary>
@@ -141,6 +147,21 @@ namespace SmallWorld {
             return !(tile is ISea)
                 && remainingMovementPoints >= MOVEMENT_COST
                 && destination.IsNext(currentPosition);
+        }
+
+        public override bool Equals(Object obj) {
+            if(obj == null) {
+                return false;
+            }
+            if(!(obj is Unit)) {
+                return false;
+            }
+            Unit unit = (Unit)obj;
+            return this.number == unit.number;
+        }
+
+        public override int GetHashCode() {
+            return this.number.GetHashCode();
         }
     }
 }
