@@ -108,6 +108,11 @@ namespace GUI {
                 MessageBox.Show(messageBoxText, caption, button, icon);
             }
         }
+
+        public void OnClickEnd(object sender, RoutedEventArgs e) {
+
+            this.Close();
+        }
     }
 
     /// <summary>
