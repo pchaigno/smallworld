@@ -25,19 +25,23 @@ map<Point, vector<Point>> Graph::convertToGraph(Tile** map, int size) {
 	std::map<Point, vector<Point>> graph;
 	for(int i=0; i<size; i++) {
 		for(int j=0; j<size; j++) {
-			if(map[i][j] != SEA) {
+			Point pos = Point(i, j);
+			if(!pos.isSea(map)) {
 				vector<Point> adjacents;
+				Point adjacent;
 				for(int x=i-1; x<=i+1; x+=2) {
-					if(x>=0 && x<size && map[x][j]!=SEA) {
-						adjacents.push_back(Point(x, j));
+					adjacent = Point(x, j);
+					if(adjacent.isValid(size) && !adjacent.isSea(map)) {
+						adjacents.push_back(adjacent);
 					}
 				}
 				for(int y=j-1; y<=j+1; y+=2) {
-					if(y>=0 && y<size && map[i][y]!=SEA) {
-						adjacents.push_back(Point(i, y));
+					adjacent = Point(i, y);
+					if(adjacent.isValid(size) && !adjacent.isSea(map)) {
+						adjacents.push_back(adjacent);
 					}
 				}
-				graph.insert(make_pair(Point(i, j), adjacents));
+				graph.insert(make_pair(pos, adjacents));
 			}
 		}
 	}

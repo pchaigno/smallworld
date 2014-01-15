@@ -30,12 +30,10 @@ Point* AdviceGenerator::getAdvice(int x, int y, Player** units, Player player) {
 	int xOffset[] = {-1, 0, 0, 1};
 	int yOffset[] = {0, 1, -1, 0};
 	for(int i=0; i<4; i++) {
-		int xCoord = xOffset[i] + x;
-		int yCoord = yOffset[i] + y;
-		if(xCoord>=0 && xCoord<size && yCoord>=0 && yCoord<size && map[xCoord][yCoord]!=SEA) {
-			Point neighbour = Point(xCoord, yCoord);
+		Point neighbour = Point(xOffset[i] + x, yOffset[i] + y);
+		if(neighbour.isValid(this->size) && !neighbour.isSea(this->map)) {
 			int score = this->getMovementScore(neighbour, nation);
-			score += this->getAttackScore(neighbour, units[xCoord][yCoord], player);
+			score += this->getAttackScore(neighbour, units[neighbour.x][neighbour.y], player);
 			scores.insert(make_pair(neighbour, score));
 		}
 	}
@@ -70,7 +68,7 @@ int AdviceGenerator::getMovementScore(Point pos, Nation nation) {
 			score = scoresDwarfs[square - 1];
 		case VIKINGS:
 			score = scoresVikings[square - 1];
-			if(this->map[pos.x][pos.y]!=SEA && this->hasSeaNeighbour(pos)) {
+			if(!pos.isSea(this->map) && this->hasSeaNeighbour(pos)) {
 			// A viking doesn't get any point if he is on the sea
 			// even if he is also next to a sea tile.
 				score++;
@@ -90,12 +88,9 @@ bool AdviceGenerator::hasSeaNeighbour(Point pos) {
 	int xOffset[] = {-1, 0, 0, 1};
 	int yOffset[] = {0, 1, -1, 0};
 	for(int i=0; i<4; i++) {
-		int x = xOffset[i] + pos.x;
-		int y = yOffset[i] + pos.y;
-		if(x>=0 && x<this->size && y>=0 && y<this->size) {
-			if(this->map[x][y] != SEA) {
-				return true;
-			}
+		Point neighbour = Point(xOffset[i] + pos.x, yOffset[i] + pos.y);
+		if(neighbour.isValid(size) && !neighbour.isSea(this->map)) {
+			return true;
 		}
 	}
 	return false;

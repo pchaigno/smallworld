@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cmath>
+#include "SmallWorld.h"
 
 class Point {
 
@@ -11,4 +12,6 @@ public:
 	Point();
 	bool operator==(const Point& pt) const;
 	bool operator<(const Point& pt) const;
+	bool isValid(int size) const;
+	bool isSea(Tile** map) const;
 };

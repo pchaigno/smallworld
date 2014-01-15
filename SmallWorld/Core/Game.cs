@@ -178,10 +178,9 @@ namespace SmallWorld {
             int[] yOffset = {0, -1, 0, 1};
             ITile[] neighbours = new ITile[4];
             for(int i=0; i<4; i++) {
-                int x = pos.X + xOffset[i];
-                int y = pos.Y + yOffset[i];
-                if(x >= 0 && y >= 0 && x < this.map.Size && y < this.map.Size) {
-                    neighbours[i] = this.map.GetTile(new Point(x, y));
+                IPoint neighbour = new Point(pos.X + xOffset[i], pos.Y + yOffset[i]);
+                if(neighbour.isValid(this.map.Size)) {
+                    neighbours[i] = this.map.GetTile(neighbour);
                 } else {
                     neighbours[i] = null;
                 }
