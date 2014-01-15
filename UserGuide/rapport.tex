@@ -51,22 +51,22 @@ SmallWorld est un jeu tour-par-tour où le but est de gérer des unités sur une
 
 
 \section{La carte}
-La carte du monde se compose de cases carrées. Il existe différents types de case : montagne, plaine, désert, eau, forêt. La carte est crée de manière aléatoire.
+La carte du monde se compose de cases carrées. Il existe différents types de case : montagne, plaine, désert, eau, forêt. La carte est créée de manière aléatoire.
 
 Il existe 3 types de cartes :
 
 \begin{itemize}
-\item Démo : 2 joueurs, 5 cases × 5 cases, 5 tours, 4 unités par peuples.
-\item Petite : 2 joueurs, 10 cases × 10 cases, 20 tours, 6 unités par peuples.
+\item Démo : 2 joueurs, 5 cases × 5 cases, 5 tours, 4 unités par peuples ;
+\item Petite : 2 joueurs, 10 cases × 10 cases, 20 tours, 6 unités par peuples ;
 \item Normale : 2 joueurs, 15 cases × 15 cases, 30 tours, 8 unités par peuples.
 \end{itemize}
 
 
 \section{Les peuples et unités}
-À chaque tour, toutes les unités peuvent se déplacer ou attaquer. Par défaut (c.-à-d. hors bonus), chaque unité peut se déplacer d’une case par tour. Chaque unité possède 5 d’attaque, 2 de défense et 5 points de vie. Aussi par défault, elle rapporte un point à chaque tour.
+À chaque tour, toutes les unités peuvent se déplacer ou attaquer. Par défaut (c.-à-d. hors bonus), chaque unité peut se déplacer d’une case par tour. Chaque unité possède 5 d’attaque, 2 de défense et 5 points de vie. Aussi par défaut, elle rapporte un point à chaque tour.
 
 \subsection{Gaulois}
-Le coût de déplacement sur une case de plaine est divisisé par deux.
+Le coût de déplacement sur une case de plaine est divisé par deux.
 
 Une unité gauloise fournit un point de plus lorsqu'elle occupe une case de type plaine.
 
@@ -91,7 +91,7 @@ Une unité Nain n’acquière aucun point sur les cases de type plaine.
 
 \section{Gestion des parties}
 \subsection{Création d'une nouvelle partie}
-Lorsque vous cliquez sur l'executable, une fenetre apparait (fig \ref{fig:create}) et vous permet de creer une nouvelle partie. Remplissez les champs et cliquez sur "Launch" pour lancer la partie.
+Lorsque vous cliquez sur l'exécutable, une fenêtre apparait (fig \ref{fig:create}) et vous permet de créer une nouvelle partie. Remplissez les champs et cliquez sur "Launch" pour lancer la partie.
 
 \begin{figure}[H]
    \includegraphics[width=\textwidth]{create.png}
@@ -101,10 +101,10 @@ Lorsque vous cliquez sur l'executable, une fenetre apparait (fig \ref{fig:create
 \FloatBarrier
 
 \subsection{Chargement d'une partie enregistrée}
-Dans le menu "file", sélectionnez "open" puis naviguez jusqu'au dossier contenant le fichier de jeu. Celui a pour extension ".sav".
+Dans le menu, sélectionnez "open" puis naviguez jusqu'au dossier contenant le fichier de jeu. Celui a pour extension ".sav".
 
 \subsection{Sauvegarde d'une partie}
-Pour sauvegarder une partie, vous devez aller dans le menu file et séletionner "save as" si vous sauvegardez pour la première fois ou "save" si la partie a déjà été sauvegardée une première fois.
+Pour sauvegarder une partie, vous devez aller dans le menu et sélectionner "save as" si vous sauvegardez pour la première fois ou "save" si la partie a déjà été sauvegardée une première fois.
 
 
 \section{Déroulement du jeu}
@@ -129,9 +129,9 @@ Pour sauvegarder une partie, vous devez aller dans le menu file et séletionner 
 \subsubsection{Déplacement d'une unité}
 Lors d'un tour, vous allez être amené à déplacer des unités. Pour ce faire, vous devez :
 \begin{itemize}
-\item \textbf{Sélectionner une case en utilisant le clique gauche de la souris}. Si la case contient des units de votre peuple, elles s'afficheront en bas gauche de l'écran dans le "sélecteur d'unités".
-\item Par défaut, une unité est sélectionnée dans le selecteur, mais vous pouvez en choisir une autre en cliquant avec le bouton gauche de la souris. Une fois sélectionnée, l'unité est entouré en noir.
-\item Une fois l'unité sélectionnée, vous pouvez la \textbf{déplacer sur la carte en utilisant le bouton droit de la souris}.
+\item \textbf{Sélectionner une case en utilisant le clique gauche de la souris}. Si la case contient des unités de votre peuple, elles s'afficheront en bas à gauche de l'écran dans le "sélecteur d'unités" ;
+\item Par défaut, une unité est sélectionnée dans le sélecteur, mais vous pouvez en choisir une autre en cliquant avec le bouton gauche de la souris. Une fois sélectionnée, l'unité est entourée en noir ;
+\item Lorsqu'une unité est sélectionnée, vous pouvez la \textbf{déplacer sur la carte en utilisant le bouton droit de la souris} ;
 \item Si la case est occupée par des unités adverses, un combat commencera.
 \end{itemize}
 
@@ -153,7 +153,7 @@ Pour mettre fin à un tour, deux options s'offrent à vous :
 \end{itemize}
 
 \subsection{Fin du jeu}
-À la fin de chaque tour, le jeu vérifie si un des joueurs à gagner, plusueurs scénarions existent :
+À la fin de chaque tour, le jeu vérifie si un des joueurs à gagner, plusieurs scénarios existent :
 \begin{itemize}
 \item Un joueur n'a plus d'unité, l'autre joueur gagne la partie ;
 \item À l'issu du nombre de tour défini par le type de la carte, le joueur ayant le plus de points remporte la partie.
