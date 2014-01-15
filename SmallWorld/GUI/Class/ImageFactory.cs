@@ -32,22 +32,22 @@ namespace GUI {
          * It is private because the class is a singleton.
          */
         private ImageFactory() {
-            this.tileDesert = new BitmapImage(new Uri("../../Resources/Squares/desert.png", UriKind.Relative));
-            this.tileEau = new BitmapImage(new Uri("../../Resources/Squares/sea.png", UriKind.Relative));
-            this.tileForet = new BitmapImage(new Uri("../../Resources/Squares/forest.png", UriKind.Relative));
-            this.tileMontagne = new BitmapImage(new Uri("../../Resources/Squares/mountain.png", UriKind.Relative));
-            this.tilePlaine = new BitmapImage(new Uri("../../Resources/Squares/lowland.png", UriKind.Relative));
+            this.tileDesert = new BitmapImage(new Uri(@"Resources/Squares/desert.png", UriKind.Relative));
+            this.tileEau = new BitmapImage(new Uri(@"Resources/Squares/sea.png", UriKind.Relative));
+            this.tileForet = new BitmapImage(new Uri(@"Resources/Squares/forest.png", UriKind.Relative));
+            this.tileMontagne = new BitmapImage(new Uri(@"Resources/Squares/mountain.png", UriKind.Relative));
+            this.tilePlaine = new BitmapImage(new Uri(@"Resources/Squares/lowland.png", UriKind.Relative));
 
-            this.dwarfM = new BitmapImage(new Uri("../../Resources/dwarfM.png", UriKind.Relative));
-            this.dwarf = new BitmapImage(new Uri("../../Resources/dwarf.png", UriKind.Relative));
-            this.gauloisM = new BitmapImage(new Uri("../../Resources/gauloisM.png", UriKind.Relative));
-            this.gaulois = new BitmapImage(new Uri("../../Resources/gaulois.png", UriKind.Relative));
-            this.vikingM = new BitmapImage(new Uri("../../Resources/vikingM.png", UriKind.Relative));
-            this.viking = new BitmapImage(new Uri("../../Resources/viking.png", UriKind.Relative));
+            this.dwarfM = new BitmapImage(new Uri(@"Resources/dwarfM.png", UriKind.Relative));
+            this.dwarf = new BitmapImage(new Uri(@"Resources/dwarf.png", UriKind.Relative));
+            this.gauloisM = new BitmapImage(new Uri(@"Resources/gauloisM.png", UriKind.Relative));
+            this.gaulois = new BitmapImage(new Uri(@"Resources/gaulois.png", UriKind.Relative));
+            this.vikingM = new BitmapImage(new Uri(@"Resources/vikingM.png", UriKind.Relative));
+            this.viking = new BitmapImage(new Uri(@"Resources/viking.png", UriKind.Relative));
 
-            this.dwarfUnit = new BitmapImage(new Uri("../../Resources/dwarfUnit.png", UriKind.Relative));
-            this.gauloisUnit = new BitmapImage(new Uri("../../Resources/gauloisUnit.png", UriKind.Relative));
-            this.vikingUnit = new BitmapImage(new Uri("../../Resources/vikingUnit.png", UriKind.Relative));
+            this.dwarfUnit = new BitmapImage(new Uri(@"Resources/dwarfUnit.png", UriKind.Relative));
+            this.gauloisUnit = new BitmapImage(new Uri(@"Resources/gauloisUnit.png", UriKind.Relative));
+            this.vikingUnit = new BitmapImage(new Uri(@"Resources/vikingUnit.png", UriKind.Relative));
         }
 
         /**

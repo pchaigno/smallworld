@@ -48,7 +48,7 @@ namespace GUI {
             people2Box.DataContext = people2Collec;
             people2Box.SelectedItem = "Vikings";
 
-            Uri iconUri = new Uri("../../Resources/icon.png", UriKind.Relative);
+            Uri iconUri = new Uri(@"Resources/icon.png", UriKind.Relative);
             this.Icon = BitmapFrame.Create(iconUri);
         }
 
