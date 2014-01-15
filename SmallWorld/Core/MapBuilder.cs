@@ -7,7 +7,19 @@ using mWrapper;
 namespace SmallWorld {
 
     public class MapBuilder: IMapBuilder {
-        // TODO Should be a singleton.
+        private static IMapBuilder instance = new MapBuilder();
+        public static IMapBuilder Instance {
+            get {
+                return instance;
+            }
+        }
+
+        /// <summary>
+        /// Empty constructor.
+        /// </summary>
+        private MapBuilder() {
+
+        }
 
         /// <summary>
         /// Builds a map.
@@ -18,6 +30,8 @@ namespace SmallWorld {
         /// <param name="size">The size of the map to build.</param>
         /// <returns>The map.</returns>
         public IMap BuildMap(int size) {
+            // Retrieves the composition of the map from the wrapper
+            // and converts it to a 2D array of tiles: 
             int[][] composition = Wrapper.generateMapList(size);
             ITile[,] tiles = new ITile[size, size];
 

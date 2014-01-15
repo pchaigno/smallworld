@@ -153,18 +153,24 @@ namespace SmallWorld {
         /// </summary>
         public void EndRound() {
             Dictionary<IUnit, IPoint> units = map.GetUnits(this.currentPlayer);
+            // Resets the movements points for each unit
+            // and computes the points:
             foreach(IUnit unit in units.Keys) {
                 ITile tile = this.map.GetTile(units[unit]);
                 ITile[] neighbours = this.GetNeighbours(units[unit]);
                 this.currentPlayer.AddPoints(unit.GetPoints(tile, neighbours));
                 unit.ResetMovementPoints();
             }
+
+            // Updates the current player:
             if(this.currentPlayer == this.player1) {
                 this.currentPlayer = this.player2;
             } else {
                 this.currentPlayer = player1;
                 this.currentRound++;
             }
+
+            // Updates round.
             this.round = new Round(this, this.currentPlayer);
         }
 

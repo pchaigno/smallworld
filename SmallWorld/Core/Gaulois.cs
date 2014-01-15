@@ -50,7 +50,7 @@ namespace SmallWorld {
         /// Moves the unit to its destination point and update the number of remaining points.
         /// </summary>
         /// <remarks>
-        /// Gaulois use one point less than others to move on lowland.
+        /// Gaulois use half the points to move on lowland.
         /// </remarks>
         /// <param name="destination">The type of tile the destination is.</param>
         /// <returns>False if the unit couldn't be move to that destination.</returns>
@@ -77,10 +77,11 @@ namespace SmallWorld {
         /// <param name="destination">The destination to reach.</param>
         /// <param name="tile">The type of tile the destination is.</param>
         /// <returns>True if the unit can move to the destination.</returns>
-        public virtual bool CanMove(IPoint currentPosition, ITile currentTile, IPoint destination, ITile tile, bool occupied) {
+        public override bool CanMove(IPoint currentPosition, ITile currentTile, IPoint destination, ITile tile, bool occupied) {
             return !(tile is ISea)
                 && destination.IsNext(currentPosition)
                 && (remainingMovementPoints >= MOVEMENT_COST
+                    // Special case for movement to lowland.
                     || ((tile is ILowland) && remainingMovementPoints >= MOVEMENT_COST / 2));
         }
     }

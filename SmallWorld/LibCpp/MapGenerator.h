@@ -19,7 +19,6 @@ public:
 	DLL static Point* placeUnits(Tile** map, int size);
 
 private:
-	// TODO Is DLL keyword mandatory?
 	DLL static int randBounds(int a, int b);
 	DLL static void initiateRand();
 };

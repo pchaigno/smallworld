@@ -57,6 +57,7 @@ namespace SmallWorld {
             IUnitFactory vikingFactory = new VikingFactory();
             IUnitFactory gauloisFactory = new GauloisFactory();
             IUnitFactory dwarfFactory = new DwarfFactory();
+            // Deserialises the factory by its unique number:
             int factoryNumber = (int)info.GetValue("Factory", typeof(int));
             if(factoryNumber == vikingFactory.Number) {
                 this.factory = vikingFactory;

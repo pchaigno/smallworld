@@ -15,7 +15,6 @@ namespace SmallWorld {
         private List<IUnit> selectedUnits;
         private IPoint selectedPosition;
         private IPoint destination;
-        // TODO We should use a code and code/messages correspondances for move information.
         private string lastMoveInfo;
         public string LastMoveInfo {
             get {
@@ -48,6 +47,7 @@ namespace SmallWorld {
         /// <param name="pos">The unit's position.</param>
         /// <returns>The list of advised desinations.</returns>
         public List<IPoint> GetAdvisedDestinations(IUnit unit, IPoint pos) {
+            // Prepare the map and the units' position for the wrapper:
             IMap map = this.game.Map;
             ITile[,] tiles = map.Tiles;
             int[][] mapBis = new int[map.Size][];
@@ -64,12 +64,14 @@ namespace SmallWorld {
                 }
             }
             
+            // Calls the wrapper and converts its results into a list of advice:
             int nationPlayer1 = this.game.Player1.NationNumber;
             int nationPlayer2 = this.game.Player2.NationNumber;
             int[][] result = Wrapper.getAdvice(mapBis, map.Size, nationPlayer1, nationPlayer2, pos.X, pos.Y, units, this.player.Number);
             List<IPoint> advice = new List<IPoint>();
             for(int i=0; i<3; i++) {
                 if(result[i][0]!=-1 && result[i][1]!=-1) {
+                // The advice isn't null (the wrapper always send 3 advice, null ones to complete).
                     advice.Add(new Point(result[i][0], result[i][1]));
                 }
             }
@@ -140,6 +142,7 @@ namespace SmallWorld {
 
             bool result = true;
             foreach(IUnit unit in this.selectedUnits) {
+                // Checks that the selected units can move to the destination point:
                 bool occupied = game.Map.IsEnemyPosition(destination, unit);
                 if(!unit.CanMove(this.selectedPosition, game.Map.GetTile(this.selectedPosition), destination, game.Map.GetTile(destination), occupied)) {
                     result = false;
@@ -164,9 +167,11 @@ namespace SmallWorld {
         /// <exception cref="IncorrectActionException">If the unit couldn't be moved to the destination point.</exception>
         public void ExecuteMove() {
             if(this.game.Map.IsEnemyPosition(this.destination, this.selectedUnits[0])) {
+            // It's an enemy position: attack!
                 for(int i = 0; i < this.selectedUnits.Count; i++) {
                     IUnit unit = this.selectedUnits[i];
                     if(!unit.Move(game.Map.GetTile(destination))) {
+                        // This shouldn't happen as it has been checked in setDestination.
                         throw new IncorrectActionException("The unit " + unit + " couldn't be moved to " + destination + ".");
                     }
                     if(Combat(unit) == CombatResult.WIN) {
@@ -176,9 +181,11 @@ namespace SmallWorld {
                     }
                 }
             } else {
+            // We'll just furtively move to this point...
                 for(int i = 0; i < this.selectedUnits.Count; i++) {
                     IUnit unit = this.selectedUnits[i];
                     if(!unit.Move(game.Map.GetTile(destination))) {
+                        // This shouldn't happen as it has been checked in setDestination.
                         throw new IncorrectActionException("The unit " + unit + " couldn't be moved to " + destination + ".");
                     }
                     this.game.Map.MoveUnit(unit, this.selectedPosition, this.destination);
@@ -231,6 +238,7 @@ namespace SmallWorld {
                 n++;
             }
 
+            // Computes the result of the fight:
             if(!unit.IsAlive()) {
                 this.game.Map.RemoveUnit(unit, this.selectedPosition);
                 this.lastMoveInfo = this.player.Name + " lost the fight.";

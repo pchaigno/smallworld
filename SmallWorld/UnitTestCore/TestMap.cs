@@ -11,7 +11,7 @@ namespace UnitTestCore {
 
     [TestClass]
     public class TestMap {
-        IMap map = new MapBuilder().BuildMap(15);
+        IMap map = MapBuilder.Instance.BuildMap(15);
 
         [TestMethod]
         public void TestConstructor() {

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace SmallWorld {
 
+    /// <summary>
+    /// Represents the result of a fight from the point of view of the assailant.
+    /// </summary>
     public enum CombatResult {
         WIN,
         LOSE,

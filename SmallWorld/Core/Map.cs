@@ -36,7 +36,7 @@ namespace SmallWorld {
             this.tiles = tiles;
             this.size = this.tiles.GetLength(0);
 
-            // Initialize the matrix of units:
+            // Initializes the matrix of units:
             units = new List<IUnit>[size, size];
             for(int x=0; x<this.size; x++) {
                 for(int y=0; y<this.size; y++) {
@@ -146,7 +146,7 @@ namespace SmallWorld {
             for(int x=0; x<this.size; x++) {
                 for(int y=0; y<this.size; y++) {
                     List<IUnit> unitsAtPosition = this.units[x, y];
-                    if(unitsAtPosition.Count > 0 && unitsAtPosition[0].Owner == player) {
+                    if(unitsAtPosition.Count > 0 && unitsAtPosition[0].Owner.Equals(player)) {
                         foreach(IUnit unit in unitsAtPosition) {
                             result.Add(unit, new Point(x, y));
                         }
@@ -157,7 +157,7 @@ namespace SmallWorld {
         }
 
         /// <summary>
-        /// Retrieves an unit that can still move.
+        /// Retrieves an unit of the current player that can still move.
         /// </summary>
         /// <param name="player">The player whose turn it is.</param>
         /// <returns>A tuple with an idle unit and its position.</returns>
@@ -165,7 +165,7 @@ namespace SmallWorld {
             for(int x = 0; x < this.size; x++) {
                 for(int y = 0; y < this.size; y++) {
                     List<IUnit> unitsAtPosition = this.units[x, y];
-                    if(unitsAtPosition.Count>0 && unitsAtPosition[0].Owner==player) {
+                    if(unitsAtPosition.Count>0 && unitsAtPosition[0].Owner.Equals(player)) {
                         foreach(IUnit unit in unitsAtPosition) {
                             if(unit.RemainingMovementPoints > 0) {
                                 return Tuple.Create<IUnit, IPoint>(unit, new Point(x, y));
