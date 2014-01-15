@@ -20,6 +20,8 @@ namespace UnitTestCore {
             Assert.AreEqual(1, viking.GetPoints(new Forest(), neighbours));
             Assert.AreEqual(0, viking.GetPoints(new Sea(), neighbours));
             Assert.AreEqual(1, viking.GetPoints(new Lowland(), neighbours));
+
+            // Vikings have one more point if they are next the sea:
             neighbours[0] = new Sea();
             neighbours[1] = new Sea();
             Assert.AreEqual(2, viking.GetPoints(new Lowland(), neighbours));

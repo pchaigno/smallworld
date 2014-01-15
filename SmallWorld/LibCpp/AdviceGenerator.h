@@ -18,7 +18,7 @@ private:
 
 	int getMovementScore(Point pos, Nation nation) const;
 	bool hasSeaNeighbour(Point pos) const;
-	int getAttackScore(Point pos, Player occupant, Player player) const;
+	int getCaptureScore(Point pos, Player occupant, Player player) const;
 
 public:
 	DLL AdviceGenerator(Tile** map, int size, Nation nationPlayer1, Nation nationPlayer2);

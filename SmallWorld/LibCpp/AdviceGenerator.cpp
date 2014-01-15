@@ -32,8 +32,10 @@ Point* AdviceGenerator::getAdvice(int x, int y, Player** units, Player player) c
 	for(int i=0; i<4; i++) {
 		Point neighbour = Point(xOffset[i] + x, yOffset[i] + y);
 		if(neighbour.isValid(this->size) && !neighbour.isSea(this->map)) {
+			// The movement score depends on neighbour's type of tile.
 			int score = this->getMovementScore(neighbour, nation);
-			score += this->getAttackScore(neighbour, units[neighbour.x][neighbour.y], player);
+			// The capture score depends on who owns the neighbour position.
+			score += this->getCaptureScore(neighbour, units[neighbour.x][neighbour.y], player);
 			scores.insert(make_pair(neighbour, score));
 		}
 	}
@@ -102,9 +104,13 @@ bool AdviceGenerator::hasSeaNeighbour(Point pos) const {
  * @param occupant The occupant of the position to check.
  * @param player The current player (first or second).
  */
-int AdviceGenerator::getAttackScore(Point pos, Player occupant, Player player) const {
+int AdviceGenerator::getCaptureScore(Point pos, Player occupant, Player player) const {
 	if(occupant == player) {
+	// The player already owns this position.
+	// He won't win more points if he moves to it.
 		return INT_MIN;
 	}
+	// All other situations (vacant or enemy position) depends on the player strategie
+	// We only want to notify him the interesting positions.
 	return 0;
 }

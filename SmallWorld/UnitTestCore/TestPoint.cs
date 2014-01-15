@@ -41,11 +41,13 @@ namespace UnitTestCore {
         public void TestSerializationPoint() {
             IPoint pts = new Point(42, 43);
 
+            // Serializes:
             Stream stream = File.Open("Point.sav", FileMode.Create);
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(stream, pts);
             stream.Close();
 
+            // Deserializes and checks the values:
             stream = File.Open("Point.sav", FileMode.Open);
             formatter = new BinaryFormatter();
             IPoint savedPts = (IPoint)formatter.Deserialize(stream);

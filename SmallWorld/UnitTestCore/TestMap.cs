@@ -27,6 +27,7 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestUnitPositions() {
+            // Places a few units for tests:
             Player player1 = new Player("test1", new VikingFactory());
             Player player2 = new Player("test2", new GauloisFactory());
             IViking vikingA = new Viking(player1);
@@ -42,16 +43,19 @@ namespace UnitTestCore {
             units = map.GetUnits(new Point(14, 14));
             Assert.AreEqual(2, units.Count);
 
+            // Tests RemoveUnit:
             Assert.IsTrue(map.RemoveUnit(gauloisB, new Point(14, 14)));
             units = map.GetUnits(new Point(14, 14));
             Assert.AreEqual(1, units.Count);
 
+            // Tests MoveUnit:
             map.MoveUnit(vikingB, new Point(0, 0), new Point(0, 1));
             units = map.GetUnits(new Point(0, 0));
             Assert.AreEqual(1, units.Count);
             units = map.GetUnits(new Point(0, 1));
             Assert.AreEqual(1, units.Count);
             
+            // Tests EnemyPosition:
             Assert.IsFalse(map.IsEnemyPosition(new Point(14, 14), gauloisA));
             Assert.IsTrue(map.IsEnemyPosition(new Point(0, 0), gauloisB));
         }
@@ -77,21 +81,25 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestSerializationMap() {
+            // Serializes:
             Stream stream = File.Open("Map.sav", FileMode.Create);
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(stream, map);
             stream.Close();
 
+            // Deserializes and checks the values:
             stream = File.Open("Map.sav", FileMode.Open);
             formatter = new BinaryFormatter();
             IMap savedMap = (IMap)formatter.Deserialize(stream);
             stream.Close();
             Assert.AreEqual(map.Size, savedMap.Size);
+            // Checks the map composition:
             for(int i = 0; i < map.Size; i++) {
                 for(int j = 0; j < map.Size; j++) {
                     Assert.IsInstanceOfType(savedMap.GetTile(new Point(i, j)), map.GetTile(new Point(i, j)).GetType());
                 }
             }
+            // Checks the units on the map:
             for(int i = 0; i < map.Size; i++) {
                 for(int j = 0; j < map.Size; j++) {
                     List<IUnit> units = map.GetUnits(new Point(i, j));

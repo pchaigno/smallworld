@@ -25,6 +25,7 @@ namespace UnitTestCore {
             player.AddPoints(5);
             Assert.AreEqual(5, player.Points);
             try {
+                // AddPoints only accept positive number:
                 player.AddPoints(-5);
                 Assert.Fail();
             } catch(ArgumentOutOfRangeException e) {
@@ -72,11 +73,13 @@ namespace UnitTestCore {
         }
 
         private void TestSerialization(IPlayer player) {
+            // Serializes:
             Stream stream = File.Open("Player.sav", FileMode.Create);
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(stream, player);
             stream.Close();
 
+            // Deserializes and checks the values:
             stream = File.Open("Player.sav", FileMode.Open);
             formatter = new BinaryFormatter();
             IPlayer savedPlayer = (IPlayer)formatter.Deserialize(stream);

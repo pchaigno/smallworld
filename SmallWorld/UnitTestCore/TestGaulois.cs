@@ -11,6 +11,7 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestMove() {
+            // Checks the special case for movement of gaulois to lowlands.
             gaulois.ResetMovementPoints();
             int defaultMovementPoints = gaulois.RemainingMovementPoints;
             Assert.IsTrue(gaulois.Move(new Lowland()));
@@ -19,6 +20,7 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestCanMove() {
+            // Checks the special case for movement of gaulois to lowlands.
             gaulois.ResetMovementPoints();
             Assert.IsTrue(gaulois.Move(new Lowland()));
             Assert.IsTrue(gaulois.CanMove(new Point(0, 0), new Lowland(), new Point(0, 1), new Lowland(), true));

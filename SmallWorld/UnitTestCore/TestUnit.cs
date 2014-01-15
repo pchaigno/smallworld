@@ -28,8 +28,12 @@ namespace UnitTestCore {
 
         private void TestMovementPoints(IUnit unit) {
             int defaultMovementPoint = unit.RemainingMovementPoints;
+
+            // Tests Move:
             Assert.IsTrue(unit.Move(new Forest()));
             Assert.AreEqual(defaultMovementPoint - 2, unit.RemainingMovementPoints);
+
+            // Tests ResetMovementPoints:
             unit.ResetMovementPoints();
             Assert.AreEqual(defaultMovementPoint, unit.RemainingMovementPoints);
         }
@@ -46,6 +50,8 @@ namespace UnitTestCore {
             Assert.IsTrue(unit.IsAlive());
             Assert.IsTrue(unit.DecreaseLifePoints());
             Assert.AreEqual(unit.DefaultLifePoints - 1, unit.LifePoints);
+
+            // Removes life points until the unit is dead:
             while(unit.LifePoints > 0) {
                 Assert.IsTrue(unit.IsAlive());
                 Assert.IsTrue(unit.DecreaseLifePoints());
@@ -61,11 +67,13 @@ namespace UnitTestCore {
         }
 
         private void TestSerializationUnit(IUnit unit) {
+            // Serializes:
             Stream stream = File.Open("Unit.sav", FileMode.Create);
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(stream, unit);
             stream.Close();
 
+            // Deserializes and checks the values:
             stream = File.Open("Unit.sav", FileMode.Open);
             formatter = new BinaryFormatter();
             IUnit savedUnit = (IUnit)formatter.Deserialize(stream);

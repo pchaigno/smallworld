@@ -54,8 +54,8 @@ Graph::Graph(Tile** map, int size) {
 }
 
 /**
- * Tarjan algorithm to find a connected composant.
- * @param vertex The vertex to start
+ * Tarjan algorithm to find a connected composant from a starting vertex.
+ * @param vertex The vertex to start.
  * @returns The connected composant containing vertex.
  */
 vector<Point> Graph::getConnectedComposant(const Point& vertex) const {

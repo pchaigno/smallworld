@@ -23,6 +23,7 @@ namespace UnitTestCore {
         }
 
         private void TestRounds(IGame game) {
+            // Quickly push the game to its end:
             for(int i = 1; i <= game.MaxNbRound; i++) {
                 Assert.AreEqual(i, game.CurrentRound);
                 game.EndRound();
@@ -47,6 +48,11 @@ namespace UnitTestCore {
             this.TestWinner(normal);
         }
 
+        /// <summary>
+        /// Ends the game quickly and checks the winner by adding
+        /// a great number of points to each player one after the other.
+        /// </summary>
+        /// <param name="game">The game to test.</param>
         private void TestWinner(IGame game) {
             game.Player1.AddPoints(1000);
             while(!game.IsEndOfGame()) {
@@ -61,11 +67,13 @@ namespace UnitTestCore {
 
         [TestMethod]
         public void TestSerializationGame() {
+            // Serializes:
             Stream stream = File.Open("Game.sav", FileMode.Create);
             BinaryFormatter formatter = new BinaryFormatter();
             formatter.Serialize(stream, normal);
             stream.Close();
 
+            // Deserializes and checks the values:
             stream = File.Open("Game.sav", FileMode.Open);
             formatter = new BinaryFormatter();
             IGame savedGame = (IGame)formatter.Deserialize(stream);
@@ -74,7 +82,7 @@ namespace UnitTestCore {
             Assert.IsTrue(normal.Player2.Equals(savedGame.Player2));
             Assert.IsTrue(normal.CurrentPlayer.Equals(savedGame.CurrentPlayer));
             Assert.AreEqual(normal.CurrentRound, savedGame.CurrentRound);
-
+            // Checks the map values:
             IMap map = normal.Map;
             IMap savedMap = savedGame.Map;
             Assert.AreEqual(map.Size, savedMap.Size);
