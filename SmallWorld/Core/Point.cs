@@ -64,10 +64,10 @@ namespace SmallWorld {
         /// <param name="size">The size of the map.</param>
         /// <returns>True if the position is on the map.</returns>
         public bool isValid(int size) {
-            if(this.X<0 && this.X>=size) {
+            if(this.X<0 || this.X>=size) {
                 return false;
             }
-            if(this.Y<0 && this.Y>=size) {
+            if(this.Y<0 || this.Y>=size) {
                 return false;
             }
             return true;

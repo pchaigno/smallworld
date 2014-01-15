@@ -11,19 +11,17 @@ using namespace std;
 
 class Graph {
 private:
-	static bool inArray(Point pt, vector<Point> points);
-	static int Graph::getIndex(Point pt, Point* points, int nbPoints);
+	map<Point, vector<Point>> succs;
+
+	vector<Point> getConnectedComposant(const Point& vertex) const;
+	static bool inArray(const Point& pt, const vector<Point>& points);
+	static int Graph::getIndex(const Point& pt, Point* points, int nbPoints);
 
 public:
 	static bool isConnectedGraph(Tile** map, int size);
-	int** getBestCostRouting(Point* vertices);
+	int** getBestCostRouting(Point* vertices) const;
 	Graph(Tile** map, int size);
-	Point* getKeysAsArray();
-	vector<Point> getKeys();
+	Point* getKeysAsArray() const;
+	vector<Point> getKeys() const;
 	int size() const;
-
-
-	map<Point, vector<Point>> succs;
-
-	vector<Point> getConnectedComposant(Point vertex);
 };

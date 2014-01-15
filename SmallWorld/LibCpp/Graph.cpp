@@ -58,11 +58,11 @@ Graph::Graph(Tile** map, int size) {
  * @param vertex The vertex to start
  * @returns The connected composant containing vertex.
  */
-vector<Point> Graph::getConnectedComposant(Point vertex) {
+vector<Point> Graph::getConnectedComposant(const Point& vertex) const {
 	// Attributes integers to each vertex:
 	Point* vertices = new Point[this->size()];
 	int j=0;
-	for(map<Point, vector<Point>>::iterator it = this->succs.begin(); it!=this->succs.end(); ++it) {
+	for(map<Point, vector<Point>>::const_iterator it = this->succs.begin(); it!=this->succs.end(); ++it) {
 		vertices[j] = it->first;
 		j++;
 	}
@@ -76,7 +76,7 @@ vector<Point> Graph::getConnectedComposant(Point vertex) {
 	for(int i=0; i<this->succs.size(); i++) {
 		num[i] = -1;
 		p[i] = -1;
-		d[i] = this->succs[vertices[i]].size();
+		d[i] = this->succs.at(vertices[i]).size();
 		n[i] = -1;
 		if(vertices[i] == vertex) {
 			numA = i;
@@ -93,7 +93,7 @@ vector<Point> Graph::getConnectedComposant(Point vertex) {
 			index = p[index];
 		} else {
 			n[index]++;
-			Point pt = this->succs[vertices[index]][n[index]];
+			Point pt = this->succs.at(vertices[index])[n[index]];
 			j = Graph::getIndex(pt, vertices, this->size());
 			if(p[j] == -1) {
 				p[j] = index;
@@ -121,9 +121,9 @@ vector<Point> Graph::getConnectedComposant(Point vertex) {
 /**
  * @returns The keys of the graph object.
  */
-vector<Point> Graph::getKeys() {
+vector<Point> Graph::getKeys() const {
 	vector<Point> keys;
-	for(map<Point, vector<Point>>::iterator it = this->succs.begin(); it!=this->succs.end(); ++it) {
+	for(map<Point, vector<Point>>::const_iterator it = this->succs.begin(); it!=this->succs.end(); ++it) {
 		keys.push_back(it->first);
 	}
 	return keys;
@@ -132,10 +132,10 @@ vector<Point> Graph::getKeys() {
 /**
  * @returns The keys of the graph object.
  */
-Point* Graph::getKeysAsArray() {
+Point* Graph::getKeysAsArray() const {
 	Point* keys = new Point[this->size()];
 	int i = 0;
-	for(map<Point, vector<Point>>::iterator it = this->succs.begin(); it!=this->succs.end(); ++it) {
+	for(map<Point, vector<Point>>::const_iterator it = this->succs.begin(); it!=this->succs.end(); ++it) {
 		keys[i] = it->first;
 		i++;
 	}
@@ -147,7 +147,7 @@ Point* Graph::getKeysAsArray() {
  * @param vertices The vertices as an array (to associate a Point to a number).
  * @returns The matrix with the best cost for each origin-destination couple.
  */
-int** Graph::getBestCostRouting(Point* vertices) {
+int** Graph::getBestCostRouting(Point* vertices) const {
 	// Initialization:
 	int** routes = new int*[this->size()];
 	int** costs = new int*[this->size()];
@@ -155,7 +155,7 @@ int** Graph::getBestCostRouting(Point* vertices) {
 		routes[i] = new int[this->size()];
 		costs[i] = new int[this->size()];
 		for(int j=0; j<this->size(); j++) {
-			if(inArray(vertices[j], this->succs[vertices[i]])) {
+			if(inArray(vertices[j], this->succs.at(vertices[i]))) {
 				routes[i][j] = j;
 				costs[i][j] = 1;
 			} else {
@@ -190,7 +190,7 @@ int** Graph::getBestCostRouting(Point* vertices) {
  * @param points The vector of points.
  * @returns True if pt is in points.
  */
-bool Graph::inArray(Point pt, vector<Point> points) {
+bool Graph::inArray(const Point& pt, const vector<Point>& points) {
 	for(int i=0; i<points.size(); i++) {
 		if(pt == points[i]) {
 			return true;
@@ -206,7 +206,7 @@ bool Graph::inArray(Point pt, vector<Point> points) {
  * @param nbPoints The number of points in the array.
  * @returns The index of pt in points or -1 if pt is not in points.
  */
-int Graph::getIndex(Point pt, Point* points, int nbPoints) {
+int Graph::getIndex(const Point& pt, Point* points, int nbPoints) {
 	for(int i=0; i<nbPoints; i++) {
 		if(pt == points[i]) {
 			return i;

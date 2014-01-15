@@ -16,11 +16,11 @@ private:
 	int size;
 	Nation* nations;
 
-	int getMovementScore(Point pos, Nation nation);
-	bool hasSeaNeighbour(Point pos);
-	int getAttackScore(Point pos, Player occupant, Player player);
+	int getMovementScore(Point pos, Nation nation) const;
+	bool hasSeaNeighbour(Point pos) const;
+	int getAttackScore(Point pos, Player occupant, Player player) const;
 
 public:
 	DLL AdviceGenerator(Tile** map, int size, Nation nationPlayer1, Nation nationPlayer2);
-	DLL Point* getAdvice(int x, int y, Player** units, Player player);
+	DLL Point* getAdvice(int x, int y, Player** units, Player player) const;
 };
