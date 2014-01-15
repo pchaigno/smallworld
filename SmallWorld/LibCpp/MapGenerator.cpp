@@ -10,14 +10,9 @@ Point* MapGenerator::placeUnits(Tile** map, int size) {
 	result[0] = Point(0, 0);
 	result[1] = Point(size-1, size-1);
 
-	std::map<Point, vector<Point>> graph = Graph::convertToGraph(map, size);
-	Point* vertices = new Point[graph.size()];
-	int i=0;
-	for(std::map<Point, vector<Point>>::iterator it = graph.begin(); it!=graph.end(); ++it) {
-		vertices[i] = it->first;
-		i++;
-	}
-	int** costs = Graph::getBestCostRouting(graph, vertices);
+	Graph graph = Graph(map, size);
+	Point* vertices = graph.getKeysAsArray();
+	int** costs = graph.getBestCostRouting(vertices);
 	int maxCost = 0;
 	for(int i=0; i<graph.size(); i++) {
 		for(int j=0; j<graph.size(); j++) {
@@ -54,7 +49,6 @@ Tile** MapGenerator::generateMap(int size) {
 				map[i][j] = (Tile)MapGenerator::randBounds(1, 6);
 			}
 		}
-		printf("Test\n");
 	} while(!Graph::isConnectedGraph(map, size));
 	return map;
 }

@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include "SmallWorld.h"
+#include <iostream>
 
 class Point {
 
