@@ -1,6 +1,9 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using SmallWorld;
+using System.Xml.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
 
 namespace UnitTestCore {
 
@@ -32,6 +35,23 @@ namespace UnitTestCore {
             Assert.IsFalse(new Point(0, 5).Equals(new Point(5, 0)));
             Assert.IsFalse(new Point(1, 5).Equals(new Point(1, 6)));
             Assert.IsFalse(new Point(1, 5).Equals(new Point(0, 5)));
+        }
+
+        [TestMethod]
+        public void TestSerializationPoint() {
+            IPoint pts = new Point(42, 43);
+
+            Stream stream = File.Open("Point.sav", FileMode.Create);
+            BinaryFormatter formatter = new BinaryFormatter();
+            formatter.Serialize(stream, pts);
+            stream.Close();
+
+            stream = File.Open("Point.sav", FileMode.Open);
+            formatter = new BinaryFormatter();
+            IPoint savedPts = (IPoint)formatter.Deserialize(stream);
+            stream.Close();
+            Assert.AreEqual(pts.X, savedPts.X);
+            Assert.AreEqual(pts.Y, savedPts.Y);
         }
     }
 }
