@@ -27,16 +27,16 @@ Point* AdviceGenerator::getAdvice(int x, int y, Player** units, Player player) {
 	Nation nation = nations[player-1];
 	// Compute the scores for each neighbour positions:
 	std::map<Point, int> scores;
-	for(int i=x-1; i<=x+1; i+=2) {
-		if(i>=0 && i<size && map[i][y]!=SEA) {
-			Point neighbour = Point(i, y);
-			scores.insert(make_pair(neighbour, this->getScore(neighbour, nation)));
-		}
-	}
-	for(int j=y-1; j<=y+1; j+=2) {
-		if(j>=0 && j<size && map[x][j]!=SEA) {
-			Point neighbour = Point(x, j);
-			scores.insert(make_pair(neighbour, this->getScore(neighbour, nation)));
+	int xOffset[] = {-1, 0, 0, 1};
+	int yOffset[] = {0, 1, -1, 0};
+	for(int i=0; i<4; i++) {
+		int xCoord = xOffset[i] + x;
+		int yCoord = yOffset[i] + y;
+		if(xCoord>=0 && xCoord<size && yCoord>=0 && yCoord<size && map[xCoord][yCoord]!=SEA) {
+			Point neighbour = Point(xCoord, yCoord);
+			int score = this->getMovementScore(neighbour, nation);
+			score += this->getAttackScore(neighbour, units[xCoord][yCoord], player);
+			scores.insert(make_pair(neighbour, score));
 		}
 	}
 	
@@ -55,23 +55,61 @@ Point* AdviceGenerator::getAdvice(int x, int y, Player** units, Player player) {
 }
 
 /**
- * Get the score for a specific position and a specific nation.
+ * Computes the score for a specific position and a specific nation.
  * @param pos The position to check.
  * @param nation The nation of the unit to advise.
  */
-int AdviceGenerator::getScore(Point pos, Nation nation) {
+int AdviceGenerator::getMovementScore(Point pos, Nation nation) {
 	Tile square = this->map[pos.x][pos.y];
 	int scoresDwarfs[5] = {INT_MIN, 2, 0, -2, 1};
 	int scoresVikings[5] = {-1, 0, -2, 0, 0};
 	int scoresGaulois[5] = {INT_MIN, 0, 0, 3, -2};
+	int score = 0;
 	switch(nation) {
 		case DWARFS:
-			return scoresDwarfs[square - 1];
+			score = scoresDwarfs[square - 1];
 		case VIKINGS:
-			// TODO Vikings get 2 if they are next to the sea.
-			return scoresVikings[square - 1];
+			score = scoresVikings[square - 1];
+			if(this->map[pos.x][pos.y]!=SEA && this->hasSeaNeighbour(pos)) {
+			// A viking doesn't get any point if he is on the sea
+			// even if he is also next to a sea tile.
+				score++;
+			}
 		case GAULOIS:
-			return scoresGaulois[square - 1];
+			score = scoresGaulois[square - 1];
+	}
+	return score;
+}
+
+/**
+ * Checks if a tile as the sea as a neighbour.
+ * @param pos The position to check for sea neighbours.
+ * @returns True if one of the neighbour of the position to check is sea.
+ */
+bool AdviceGenerator::hasSeaNeighbour(Point pos) {
+	int xOffset[] = {-1, 0, 0, 1};
+	int yOffset[] = {0, 1, -1, 0};
+	for(int i=0; i<4; i++) {
+		int x = xOffset[i] + pos.x;
+		int y = yOffset[i] + pos.y;
+		if(x>=0 && x<this->size && y>=0 && y<this->size) {
+			if(this->map[x][y] != SEA) {
+				return true;
+			}
+		}
+	}
+	return false;
+}
+
+/**
+ * Computes the score for a specific position and a specific occupant.
+ * @param pos The position to check.
+ * @param occupant The occupant of the position to check.
+ * @param player The current player (first or second).
+ */
+int AdviceGenerator::getAttackScore(Point pos, Player occupant, Player player) {
+	if(occupant == player) {
+		return INT_MIN;
 	}
 	return 0;
 }
